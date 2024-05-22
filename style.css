@@ -282,3 +282,107 @@ font-family: poppins , sans-serif;
 .logo{
     margin-left: 40px;
 }
+
+
+/* Slider */    
+
+.slider{
+	position: relative;
+	width: 100%;
+	background: #2c3e50;
+    height: 50vh;
+}
+.myslide{
+	height: 100%;
+	display: none;
+	overflow: hidden;
+}
+
+
+.dotsbox{
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	bottom: 50px;
+	cursor: pointer;
+}
+.dot{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border: 3px solid #fff;
+	border-radius: 50%;
+    background: #fff;
+	margin: 2px;
+	cursor: pointer;
+}
+
+
+
+.active, .dot:hover{
+	border-color:var(--header-color);
+    background: var(--header-color); 
+    width: 25px;
+    border-radius: 50px;
+    height: 10px;
+}
+
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: 0.8}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: 0.8}
+  to {opacity: 1}
+}
+
+ .txt{
+	position: absolute;
+	color: #fff;
+	letter-spacing: 2px;
+	line-height: 35px;
+	top: 40%;
+	left: 15%;
+	z-index: 1;
+} 
+ 
+.txt h1{
+	color: #00a7ff; 
+	font-size: 50px;
+	margin-bottom: 20px;
+}
+.txt p{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
