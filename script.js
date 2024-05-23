@@ -20,7 +20,7 @@ function handleLinkHover(event) {
   const elm = event.target;
   const elmRect = elm.getBoundingClientRect();
   const { width, left, height, top } = elmRect;
-  const offsetBottom = 10;
+  const offsetBottom = 15;
   line.style.width = `${width}px`;
   line.style.left = `${left}px`;
   line.style.top = `${top + height + offsetBottom}px`;
@@ -72,3 +72,51 @@ function slidefun(n) {
 	myslide[counter - 1].style.display = "block";
 	dot[counter - 1].className += " active";
 }
+
+
+
+
+
+
+
+    document.querySelector('.menu-link').addEventListener('mouseover', function() {
+        const svgDoc = this.querySelector('object').contentDocument;
+        svgDoc.querySelector('svg').style.fill = 'red';
+		// svgDoc.setAttribute('data', './home.svg' );
+    });
+
+    document.querySelector('.menu-link').addEventListener('mouseout', function() {
+        const svgDoc = this.querySelector('object').contentDocument;
+        svgDoc.querySelector('svg').style.fill = 'black';
+		// svgDoc.setAttribute('data', originalSrc );
+    });
+
+
+
+
+
+
+	  
+
+//   document.addEventListener('DOMContentLoaded', () => {
+//     // Get the current page URL
+//     const currentPage = window.location.href;
+
+//     // Define page-to-ID mapping
+//     const pageMapping = {
+//       'home.html': 'home',
+//       'research.html': 'research',
+//       'about.html': 'about',
+//       'center.html': 'center',
+//       'contact.html': 'contact'
+//     };
+
+//     // Determine the current page ID based on the URL
+//     for (const [page, id] of Object.entries(pageMapping)) {
+//       if (currentPage.includes(page)) {
+//         document.getElementById(id).classList.add('active');
+//         break;
+//       }
+//     }
+//   });
+
