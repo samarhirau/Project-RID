@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RID</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="css.css" /> -->
+    <link rel="stylesheet" href="./css/responsive.css" />
     <!-- /* box-icon link */ -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link
@@ -70,7 +72,7 @@
           <ul class="lowerNav">
             <li ><a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/add_home_work.svg" type="image/svg+xml"></object>Home</a></li>
             <li><a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/article_shortcut.svg" type="image/svg+xml"></object>Research Papers</a></li>
-            <li><a class="menu-link" href="#"><object class="svg-object" data="./home.svg" type="image/svg+xml"></object>About Us</a></li>
+            <li><a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/group.svg" type="image/svg+xml"></object>About Us</a></li>
             <li>
               <a class="menu-link" href="#"
                 ><object class="svg-object" data="./assets/icons/balcony.svg" type="image/svg+xml"></object>Center <i class="fas fa-chevron-down"></i
@@ -229,6 +231,22 @@
       </div>
       </div>
     </div>
+
+    <script>
+          document.querySelector('.menu-link').addEventListener('mouseover', function() {
+        const svgDoc = this.querySelector('.svg-object').contentDocument;
+        svgDoc.querySelector('svg').style.fill = 'red';
+		// svgDoc.setAttribute('data', './home.svg' );
+    });
+  
+
+    document.querySelector('.menu-link').addEventListener('mouseout', function() {
+        const svgDoc = this.querySelector('.svg-object').contentDocument;
+        svgDoc.querySelector('svg').style.fill = 'black';
+		// svgDoc.setAttribute('data', "./science.svg" );
+    });
+
+    </script>
 
     <script src="script.js"></script>
   </body>

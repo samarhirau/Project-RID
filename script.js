@@ -80,15 +80,16 @@ function slidefun(n) {
 
 
     document.querySelector('.menu-link').addEventListener('mouseover', function() {
-        const svgDoc = this.querySelector('object').contentDocument;
+        const svgDoc = this.querySelector('.svg-object').contentDocument;
         svgDoc.querySelector('svg').style.fill = 'red';
 		// svgDoc.setAttribute('data', './home.svg' );
     });
+  
 
     document.querySelector('.menu-link').addEventListener('mouseout', function() {
         const svgDoc = this.querySelector('object').contentDocument;
         svgDoc.querySelector('svg').style.fill = 'black';
-		// svgDoc.setAttribute('data', originalSrc );
+		// svgDoc.setAttribute('data', "./science.svg" );
     });
 
 
