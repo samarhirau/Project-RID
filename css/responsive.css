@@ -101,9 +101,10 @@
 	  height: 80px;
 	}
   
-	.content-box .content-text h2, .content-box .content-text ol {
-	  /* text-align: center; */
-	}
+/* .content-box .content-text h2,
+ .content-box .content-text ol {
+	  text-align: center;
+	} */
   
 	.content-img h2 {
 	  font-size: 1rem;
