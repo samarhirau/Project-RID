@@ -2,6 +2,9 @@
 /* slider styles */
 
 @media screen and (max-width: 800px){
+
+
+	
 	.myslide{
 		height: 500px;
 	}
@@ -48,7 +51,12 @@
 	  padding: 10px;
 	  /* text-align: center; */
 	}
-  
+	header,nav{
+		display: none;
+	}
+	.content{
+		margin-top: 50px;
+	}
 	.web-text p {
 	  margin-left: 0;
 	  font-size: 0.8rem;

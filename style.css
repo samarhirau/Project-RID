@@ -284,6 +284,7 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer; 
+  
 }
 
 
@@ -359,22 +360,38 @@ body {
 }
 .dot {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border: 3px solid #fff;
   border-radius: 50%;
   background: #fff;
   margin: 2px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.6;
 }
 
-.active,
-.dot:hover {
+.active{
   border-color: var(--header-color);
   background: var(--header-color);
   width: 25px;
   border-radius: 50px;
-  height: 10px;
+  height: 8px;
+  opacity: 1;
+}
+.dot:hover  {
+  border-radius: 50px;
+  height: 8px;
+  opacity: 1;
+}
+
+.active:hover{
+
+  border-color: var(--header-color);
+  background: var(--header-color);
+  border-radius: 50px;
+  height: 8px;
+  opacity: 1;
 }
 
 .fade {
