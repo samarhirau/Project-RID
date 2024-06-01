@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./form.css">
+</head>
+<body>
+    <div class="db-container">
+        <form action="/post" method="post" class="form">
+            <label for="regd_no">Registration Number :</label>
+            <input type="text" id="regd_no" name="regd_no">
+            <label for="name">Name :</label>
+            <input type="text" id="name" name="name">
+            <label for="email">Email :</label>
+            <input type="text" id="email" name="email">
+            <label for="branch">Branch :</label>
+            <select name="branch" id="branch">
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="MECH">MECH</option>
+                <option value="CIVIL">CIVIL</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>
