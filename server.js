@@ -5,6 +5,10 @@ const fs = require('fs');
 const { MongoClient } = require('mongodb');
 const bodyParser = require('body-parser');
 const multer = require('multer');
+require('dotenv').config();
+
+
+
 
 const app = express();
 const port = 3000;
@@ -205,6 +209,24 @@ app.get('/view', (req, res) => {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Start the server
 app.listen(port, async () => {
