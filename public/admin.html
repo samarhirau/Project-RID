@@ -1,0 +1,61 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Upload Certificate</title>
+</head>
+<body>
+  <h1>Upload Certificate</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="text" id="mobileNumber" name="mobileNumber" required>
+    <br><br>
+    <label for="certificate">Certificate:</label>
+    <input type="file" id="certificate" name="certificate" accept=".pdf,.jpg,.jpeg,.png" required>
+    <br><br>
+    <button type="submit">Upload</button>
+  </form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Upload Certificate</title>
+</head>
+<body>
+  <h1>Upload Certificate</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="text" id="mobileNumber" name="mobileNumber" required>
+    <br><br>
+    <label for="certificate">Certificate:</label>
+    <input type="file" id="certificate" name="certificate" accept=".pdf,.jpg,.jpeg,.png" required>
+    <br><br>
+    <button type="submit">Upload</button>
+  </form>
+  <div id="errorMessage" style="color: red;"></div>
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+
+      const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.status === 400) {
+        const errorMessage = await response.text();
+        document.getElementById('errorMessage').textContent = errorMessage;
+      } else {
+        window.location.href = '/uploaded.html';
+      }
+    });
+  </script>
+</body>
+</html>
