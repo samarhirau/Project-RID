@@ -6,7 +6,7 @@ const { MongoClient } = require('mongodb');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 require('dotenv').config();
-
+const crypto = require('crypto');
 
 
 
@@ -78,11 +78,14 @@ app.post('/post', async(req,res)=>{
 
   try {
     // Assuming you have a 'Users' model defined
+
+    const hashedPassword = crypto.createHash('sha256').update(req.body.password).digest('hex');
     const user = new Users({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-        password: req.body.password,
+        // password: req.body.password,
+        password: hashedPassword,
         phone: req.body.phone,
         dob: req.body.dob,
         gender: req.body.gender,
@@ -175,6 +178,8 @@ app.get('/admin', (req, res) => {
 // });
 // Route to handle form submission
 app.post('/upload', upload.single('certificate'), async (req, res) => {
+
+  res.sendFile(path.join(__dirname, 'public', 'uploaded.html'));
   const { mobileNumber } = req.body;
   const certificateFile = req.file;
 
