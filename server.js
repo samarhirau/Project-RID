@@ -16,91 +16,196 @@ const port = 3000;
 app.use(express.static(__dirname))
 app.use(express.urlencoded({extended:true}))
 
-mongoose.connect('mongodb://127.0.0.1:27017/students')
-const db_ = mongoose.connection
-db_.once('open',()=>{
-    console.log("Mongodb connection successful")
-})
 
-const userSchema = new mongoose.Schema({
+
+
+
+
+// mongoose.connect('mongodb://127.0.0.1:27017/students')
+// const db_ = mongoose.connection
+// db_.once('open',()=>{
+//     console.log("Mongodb connection successful")
+// })
+
+// const userSchema = new mongoose.Schema({
    
-  firstname: {
-    type: String,
-    required: true
-},
-lastname: {
-    type: String,
-    required: true
-},
-email: {
-    type: String,
-    required: true,
-    unique: true
-},
-password: {
-    type: String,
-    required: true
-},
-phone: {
-    type: String,
-    required: true
-},
-dob: {
-    type: Date,
-    required: true
-},
-gender: {
-    type: String,
-    // enum: ['Male', 'Female', 'Other'],
-    required: true
-},
-address: {
-    type: String,
-    required: true
-},
-course: {
-    type: String,
-    required: true
-}
+//   firstname: {
+//     type: String,
+//     required: true
+// },
+// lastname: {
+//     type: String,
+//     required: true
+// },
+// email: {
+//     type: String,
+//     required: true,
+//     unique: true
+// },
+// password: {
+//     type: String,
+//     required: true
+// },
+// phone: {
+//     type: String,
+//     required: true
+// },
+// dob: {
+//     type: Date,
+//     required: true
+// },
+// gender: {
+//     type: String,
+//     // enum: ['Male', 'Female', 'Other'],
+//     required: true
+// },
+// address: {
+//     type: String,
+//     required: true
+// },
+// course: {
+//     type: String,
+//     required: true
+// }
     
-})
+// })
 
-const Users = mongoose.model("data",userSchema)
+// const Users = mongoose.model("data",userSchema)
 
-// Serve static files from the 'public' directory
-// app.use(express.static(path.join(__dirname, 'public')));
-app.get('/form',(req, res) => {
-    res.sendFile(path.join(__dirname, 'public','form.html'))
-    // res.send('Hello World')
-})
+// // Serve static files from the 'public' directory
+// // app.use(express.static(path.join(__dirname, 'public')));
+// app.get('/form',(req, res) => {
+//     res.sendFile(path.join(__dirname, 'public','form.html'))
+//     // res.send('Hello World')
+// })
 
-app.post('/post', async(req,res)=>{
+// app.post('/post', async(req,res)=>{
 
-  try {
-    // Assuming you have a 'Users' model defined
+//   try {
+//     // Assuming you have a 'Users' model defined
 
-    const hashedPassword = crypto.createHash('sha256').update(req.body.password).digest('hex');
-    const user = new Users({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
-        // password: req.body.password,
-        password: hashedPassword,
-        phone: req.body.phone,
-        dob: req.body.dob,
-        gender: req.body.gender,
-        address: req.body.address,
-        course: req.body.course
-    });
-    await user.save();
-    res.send("Data saved");
-    console.log("User registered:", req.body);
-} catch (error) {
-    res.status(400).send('Email is already exist'); // Sending error message back to the client
-    console.error("Error:", error);
-}
+//     const hashedPassword = crypto.createHash('sha256').update(req.body.password).digest('hex');
+//     const user = new Users({
+//         firstname: req.body.firstname,
+//         lastname: req.body.lastname,
+//         email: req.body.email,
+//         // password: req.body.password,
+//         password: hashedPassword,
+//         phone: req.body.phone,
+//         dob: req.body.dob,
+//         gender: req.body.gender,
+//         address: req.body.address,
+//         course: req.body.course
+//     });
+//     await user.save();
+//     res.send("Data saved");
+//     console.log("User registered:", req.body);
+// } catch (error) {
+//     res.status(400).send('Email is already exist'); // Sending error message back to the client
+//     console.error("Error:", error);
+// }
 
-})
+// })
+
+// MongoDB connection
+// mongoose.connect('mongodb://127.0.0.1:27017/students', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
+mongoose.connect('mongodb://127.0.0.1:27017/students');
+
+const db_ = mongoose.connection;
+db_.once('open', () => {
+    console.log("Mongodb connection successful");
+});
+
+// User schema definition
+const userSchema = new mongoose.Schema({
+    firstname: { type: String, required: true },
+    lastname: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    phone: { type: String, required: true },
+    dob: { type: Date, required: true },
+    gender: { type: String, required: true },
+    address: { type: String, required: true },
+    course: { type: String, required: true }
+});
+
+const Users = mongoose.model("data", userSchema);
+
+// Serve the form
+app.get('/form', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'form.html'));
+});
+
+// Handle form submission and save to MongoDB
+app.post('/post', async (req, res) => {
+    try {
+        const hashedPassword = crypto.createHash('sha256').update(req.body.password).digest('hex');
+        const user = new Users({
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
+            password: hashedPassword,
+            phone: req.body.phone,
+            dob: req.body.dob,
+            gender: req.body.gender,
+            address: req.body.address,
+            course: req.body.course
+        });
+        await user.save();
+        res.send("Data saved");
+        console.log("User registered:", req.body);
+    } catch (error) {
+        res.status(400).send('Email already exists');
+        console.error("Error:", error);
+    }
+});
+
+// Serve the login page
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+// Handle login requests
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await Users.findOne({ email: email });
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
+
+        if (user.password !== hashedPassword) {
+            return res.status(401).send('Invalid password');
+        }
+
+        // res.send('Login successful');
+        res.sendFile(path.join(__dirname, 'public', 'search.html'));
+    } catch (error) {
+        res.status(500).send('Internal Server Error');
+        console.error("Error:", error);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -258,6 +363,10 @@ app.get('/view', (req, res) => {
     }
   });
 });
+
+
+
+
 
 
 

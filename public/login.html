@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,66 +6,99 @@
     <title>Login</title>
 </head>
 <body>
-    <div id="login-section">
-        <form id="login-form">
-            <input type="text" id="user-id" name="username" placeholder="User ID" autocomplete="username" required>
-
-            <input type="password" id="password" name="password" placeholder="Password" autocomplete="current-password" required>
-
-            <button type="button" id="login-button">Login</button>
-        </form>
-        <p id="error-message" style="color: red; display: none;">Invalid credentials, please try again.</p>
-    </div>
-    
-    <div id="profile-section" style="display: none;">
-        <h2>Welcome, User!</h2>
-        <p>Profile Information</p>
-        <button id="logout-button">Logout</button>
-    </div>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <button type="submit">Login</button>
+    </form>
 
     <script>
-        document.getElementById('login-button').addEventListener('click', async function() {
-            const email = document.getElementById('user-id').value;
-            const password = document.getElementById('password').value;
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
 
-            const response = await fetch('http://localhost:3000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
 
-            const result = await response.json();
-
-            if (result.success) {
-                // Hide the login section
-                document.getElementById('login-section').style.display = 'none';
-                
-                // Show the profile section
-                document.getElementById('profile-section').style.display = 'block';
-            } else {
-                // Show an error message
-                // document.getElementById('error-message').innerText = 'Invalid credentials, please try again.';
-                document.getElementById('error-message').innerText = result.message;
-                document.getElementById('error-message').style.display = 'block';
+              
+            } catch (error) {
+                console.error('Error:', error.message);
             }
         });
-
-        document.getElementById('logout-button').addEventListener('click', function() {
-            // Hide the profile section
-            document.getElementById('profile-section').style.display = 'none';
-            
-            // Show the login section
-            document.getElementById('login-section').style.display = 'block';
-            
-            // Hide the error message
-            document.getElementById('error-message').style.display = 'none';
-            
-            // Clear input fields
-            document.getElementById('user-id').value = '';
-            document.getElementById('password').value = '';
-        });
     </script>
+</body>
+</html> -->
+<!-- login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 300px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="email"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" action="/login" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 </html>

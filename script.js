@@ -97,31 +97,13 @@ function slidefun(n) {
 
 
 
-	  
-
-//   document.addEventListener('DOMContentLoaded', () => {
-//     // Get the current page URL
-//     const currentPage = window.location.href;
-
-//     // Define page-to-ID mapping
-//     const pageMapping = {
-//       'home.html': 'home',
-//       'research.html': 'research',
-//       'about.html': 'about',
-//       'center.html': 'center',
-//       'contact.html': 'contact'
-//     };
-
-//     // Determine the current page ID based on the URL
-//     for (const [page, id] of Object.entries(pageMapping)) {
-//       if (currentPage.includes(page)) {
-//         document.getElementById(id).classList.add('active');
-//         break;
-//       }
-//     }
-//   });
-
+	
 // user sign up button
 document.getElementById('signUpButton').onclick = function() {
 	window.location.href = 'public/form.html';
+};
+
+// udser login button
+document.getElementById('logInButton').onclick = function() {
+	window.location.href = 'public/login.html';
 };
