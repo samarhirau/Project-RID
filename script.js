@@ -121,3 +121,7 @@ function slidefun(n) {
 //     }
 //   });
 
+// user sign up button
+document.getElementById('signUpButton').onclick = function() {
+	window.location.href = 'public/form.html';
+};

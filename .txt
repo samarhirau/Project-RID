@@ -1,0 +1,21 @@
+ firstname:req.body.firstname,
+        lastname:req.body.lastname,
+        email:req.body.email,
+        password:req.body.password,
+        phone:req.body.phone,
+        dob:req.body.dob,
+        gender:req.body,
+        address:req.body.address,
+        course:req.body.course
+
+
+
+         firstname:String,
+  lastname:String,
+    email:String,
+    password:String,
+    phone:String,
+    dob:String,
+    gender:String,
+    address:String,
+    course:String

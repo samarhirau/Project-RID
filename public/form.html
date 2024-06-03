@@ -1,31 +1,128 @@
+<!-- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./form.css">
+    <title>Education Website Signup Form</title>
+   <link rel="stylesheet" href="/css/form.css">
 </head>
 <body>
-    <div class="db-container">
-        <form action="/post" method="post" class="form">
-            <label for="regd_no">Registration Number :</label>
-            <input type="text" id="regd_no" name="regd_no">
-            <label for="name">Name :</label>
-            <input type="text" id="name" name="name">
-            <label for="email">Email :</label>
-            <input type="text" id="email" name="email">
-            <label for="branch">Branch :</label>
-            <select name="branch" id="branch">
-                <option value="CSE">CSE</option>
-                <option value="ECE">ECE</option>
-                <option value="EEE">EEE</option>
-                <option value="MECH">MECH</option>
-                <option value="CIVIL">CIVIL</option>
-            </select>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+
+<div class="signup-form">
+    <h2>Signup</h2>
+    <form action="/post" method="post" class="form">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" required>
+
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="3" required></textarea>
+
+        <label for="course">Preferred Course:</label>
+        <input type="text" id="course" name="course" placeholder="Search for a course" autocomplete="off" list="courseList" required>
+        <datalist id="courseList">
+            <option value="Science">
+            <option value="Arts">
+            <option value="Commerce">
+            <option value="Engineering">
+            <option value="Medicine">
+            <option value="Law">
+            <option value="Business">
+        </datalist>
+        
+
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
 
 </body>
 </html>
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Education Website Signup Form</title>
+    
+ </head>
+ <body>
+ 
+ <div class="signup-form">
+     <h2>Signup</h2>
+     <form action="/post" method="post" class="form">
+         <label for="firstname">First Name:</label>
+         <input type="text" id="firstname" name="firstname" required>
+ 
+         <label for="lastname">Last Name:</label>
+         <input type="text" id="lastname" name="lastname" required>
+ 
+         <label for="email">Email:</label>
+         <input type="email" id="email" name="email" required>
+ 
+         <label for="password">Password:</label>
+         <input type="password" id="password" name="password" required>
+ 
+         <label for="phone">Phone Number:</label>
+         <input type="tel" id="phone" name="phone" required>
+ 
+         <label for="dob">Date of Birth:</label>
+         <input type="date" id="dob" name="dob" required>
+ 
+         <label for="gender">Gender:</label>
+         <select id="gender" name="gender" required>
+             <option value="">Select Gender</option>
+             <option value="male">Male</option>
+             <option value="female">Female</option>
+             <option value="other">Other</option>
+         </select>
+ 
+         <label for="address">Address:</label>
+         <textarea id="address" name="address" rows="3" required></textarea>
+ 
+         <label for="course">Preferred Course:</label>
+         <input type="text" id="course" name="course" placeholder="Search for a course" autocomplete="off" list="courseList" required>
+         <datalist id="courseList">
+             <option value="Science">
+             <option value="Arts">
+             <option value="Commerce">
+             <option value="Engineering">
+             <option value="Medicine">
+             <option value="Law">
+             <option value="Business">
+         </datalist>
+         
+ 
+         <button type="submit">Sign Up</button>
+     </form>
+ </div>
+ 
+ </body>
+ </html>
+ 
+ 
