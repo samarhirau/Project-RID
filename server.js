@@ -7,8 +7,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 require('dotenv').config();
 const crypto = require('crypto');
-
-
+const nodemailer = require('nodemailer');
 
 
 const app = express();
@@ -186,7 +185,7 @@ app.post('/login', async (req, res) => {
         }
 
         // res.send('Login successful');
-        res.sendFile(path.join(__dirname, 'public', 'search.html'));
+        res.sendFile(path.join(__dirname, 'index.html'));
     } catch (error) {
         res.status(500).send('Internal Server Error');
         console.error("Error:", error);
@@ -367,8 +366,60 @@ app.get('/view', (req, res) => {
 
 
 
+let generatedOTP;
+
+// Create reusable transporter object using the default SMTP transport
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+  }
+});
 
 
+app.get('/otp', (req, res) => {
+
+    res.sendFile(path.join(__dirname, 'public', 'otp.html'));
+}
+);
+// Endpoint to send OTP
+app.post('/send-otp', (req, res) => {
+    const email = req.body.email;
+
+    if (!email) {
+        console.error('Email is required');
+        return res.status(400).send('Email is required');
+    }
+
+    generatedOTP = Math.floor(100000 + Math.random() * 900000); // Generate a 6-digit OTP
+
+    const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: 'Your OTP Code',
+        text: `Your OTP code is ${generatedOTP}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending OTP:', error);
+            return res.status(500).send('Error sending OTP');
+        }
+        console.log('OTP sent: %s', info.messageId);
+        res.status(200).send('OTP sent successfully');
+    });
+});
+
+// Endpoint to verify OTP
+app.post('/verify-otp', (req, res) => {
+    const userOTP = req.body.otp;
+    if (userOTP == generatedOTP) {
+        res.status(200).send('OTP verified successfully');
+    } else {
+        res.status(400).send('Invalid OTP');
+    }
+});
 
 
 

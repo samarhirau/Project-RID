@@ -311,7 +311,7 @@ body {
   
 }
 
-.menu-link:hover,
+
 .menu-link:focus,
 .nav-link:hover  {
   color: var(--header-color);
@@ -574,11 +574,14 @@ body {
   border-radius: 50%;
 }
 
-.svg-object:hover, .menu-link:hover {
-  filter: invert(27%) sepia(99%) saturate(5707%) hue-rotate(188deg) brightness(103%) contrast(103%);
+
+.svg-object:hover{
+  filter: invert(27%) sepia(96%) saturate(1812%) hue-rotate(182deg) brightness(89%) contrast(91%);
 }
 
-
+.menu-link:hover{
+  color: var(--header-color);
+}
 
 
 .search-box {
