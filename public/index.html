@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RID</title>
+    <link rel="stylesheet" href="/client/css/style.css" />
+    <!-- <link rel="stylesheet" href="css.css" /> -->
+    <link rel="stylesheet" href="/client/css/responsive.css" />
+    <!-- /* box-icon link */ -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script>
+      let isLoggedIn = false;
+  
+      function handleLogin() {
+        // Replace with your actual login form data retrieval
+        const username = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+  
+        // Send login request to server (replace with your AJAX/fetch logic)
+        fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        })
+          .then(response => {
+            if (response.status === 200) { // Assuming success code as 200
+              return response.json();
+            } else {
+              throw new Error('Login failed'); // Handle non-200 status codes
+            }
+          })
+          .then(data => {
+            if (data.success) { // Assuming success data has a 'success' property
+              isLoggedIn = true;
+              hideLoginButtons();
+              // Optionally, display a welcome message or logout button
+            } else {
+              // Handle failed login, e.g., display error message using data.error
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            // Handle general errors like network issues
+            alert('Login failed. Please check your credentials or try again later.');
+          });
+      }
+  
+      function hideLoginButtons() {
+        const loginButton = document.getElementById('logInButton');
+        const signUpButton = document.getElementById('signUpButton');
+        loginButton.style.display = 'none';
+        signUpButton.style.display = 'none'; // Hide both buttons on success
+      }
+  
+  
+    
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Mrs+Saint+Delafield&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+td,
+th,
+div,
+span,
+input,
+textarea,
+select,
+button,
+label,
+form,
+header,
+label {
+  margin: 0; /* Reset all margins and paddings */
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Add border-box to all elements */
+}
+
+/* Reset all list styles */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Reset all anchor styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reset all button styles */
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Reset all input styles */
+
+input {
+  border: none;
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--header-color);
+}
+
+:root {
+  --header-color: #0a66c2;
+  --background: rgba(10, 102, 194, 0.05);
+}
+
+body {
+  font-family: poppins, sans-serif;
+  /* background: rgba(159, 157, 157, 0.779); */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--header-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 40px;
+  width: 100%;
+  font-size: 14px;
+}
+.web-text p {
+  display: inline-block;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+.web-text p:first-child {
+  margin-left: 40px;
+}
+.web-text p span {
+  font-weight: 300;
+}
+.web-text p::after {
+  content: "|";
+  margin: 0 10px;
+  color: white;
+  font-weight: 300;
+}
+.web-text p:last-child::after {
+  content: "";
+}
+.right-text {
+  display: flex;
+  
+}
+
+.right-text .link {
+  display: flex;
+  align-items: center;
+
+}
+
+.right-text .link .svg-object {
+  /* margin-right: 3px;  */
+  width: 1rem;
+  height: 1rem;
+}
+
+
+.right-text .link {
+  color: white;
+  font-size: 0.6rem;
+  transition: all 0.3s ease;
+}
+.right-text a:last-child {
+  margin-right: 40px;
+}
+.right-text a::after {
+  content: "|";
+  margin: 0 8px;
+  color: white;
+  font-weight: 300;
+}
+.right-text a:last-child::after {
+  content: "";
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 40px;
+}
+.menu ul {
+  display: flex;
+  gap: 20px;
+}
+.upperNav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.upperNav .search {
+  border: 0.5px solid var(--header-color);
+  border-radius: 3px;
+  padding: 5px 10px;
+  /* margin-right: 20px; */
+  /* width: 300px; */
+  max-width: 400px;
+}
+.search svg {
+  fill: var(--header-color);
+  margin-right: 10px;
+}
+.search {
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.15) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.2) 0px 3px 7px -3px;
+}
+.search input {
+  width: 360px;
+  height: 25px;
+  border: none;
+  /* margin-top: 5px; */
+  font-size: 18px;
+}
+.search input::placeholder {
+  font-size: 16px;
+}
+.upperNav a {
+  background: var(--header-color);
+  color: white;
+  /* padding: 8px 15px; */
+  /* padding: 5px 10px; */
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* .signUp , .login{
+  height: 30px;
+  width: 135px;
+  background: var(--header-color);
+  color: white;
+  border-radius: 3px;
+ 
+  transition: all 0.3s ease;
+  text-align: center;
+ 
+ } */
+.upperNav button {
+  background: var(--header-color);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  /* height: 25px; */
+  width: 100px;
+  text-align: center;
+}
+.lowerNav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40px;
+  /* background: #f77070; */
+}
+.lowerNav ul {
+  display: flex;
+  gap: 20px;
+}
+.lowerNav li {
+  position: relative;
+}
+
+.lowerNav li a {
+  font-size: 0.8rem;
+  transition: all 0.3s ease-in-out;
+}
+.lowerNav li:hover .dropdown-menu {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  /* backdrop-filter: blur(5px); */
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+}
+
+.dropdown-menu {
+  display: none;
+  z-index: 33;
+}
+.lowerNav li:hover .dropdown-menu ul {
+  display: block;
+  /* margin: 10px; */
+}
+.lowerNav li:hover .dropdown-menu ul li {
+  padding: 10px;
+  width: 140px;
+  font-size: 0.8rem;
+}
+.dropdown-menu .nav-link {
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  cursor: pointer; 
+  
+}
+
+
+.svg-object {
+  /* display: inline-block; */
+  margin-right: 0.21em;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+
+}
+
+
+.dropdown-menu .fas {
+  margin-left: 15px;
+  /* float: right; */
+  font-size: 10px;
+  padding-top: 3px;
+}
+.lowerNav .fas {
+  font-size: 10px;
+  /* padding-top: 3px; */
+  margin-left: 5px;
+  
+}
+
+
+.menu-link:focus,
+.nav-link:hover  {
+  color: var(--header-color);
+}
+
+.line-effects {
+  width: 0;
+  height: 2px;
+  background-color: var(--header-color);
+  transition: all 0.2s linear;
+  position: fixed;
+}
+
+.logo {
+  margin-left: 40px;
+}
+
+
+.menu-link:hover .fas {
+  opacity: 1;
+  transform: rotate(180deg);
+  transition: all 0.3s ease-in;
+}
+
+/* Slider */
+
+.slider {
+  position: relative;
+  width: 100%;
+  background: #2c3e50;
+  height: 50vh;
+  overflow: hidden;
+}
+.myslide {
+  height: 100%;
+  display: none;
+  overflow: hidden;
+}
+
+.dotsbox {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 50px;
+  cursor: pointer;
+}
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #fff;
+  margin: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.active{
+  border-color: var(--header-color);
+  background: var(--header-color);
+  width: 25px;
+  border-radius: 50px;
+  height: 8px;
+  opacity: 1;
+}
+.dot:hover  {
+  border-radius: 50px;
+  height: 8px;
+  opacity: 1;
+}
+
+.active:hover{
+
+  border-color: var(--header-color);
+  background: var(--header-color);
+  border-radius: 50px;
+  height: 8px;
+  opacity: 1;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.txt {
+  position: absolute;
+  color: #fff;
+  letter-spacing: 2px;
+  line-height: 35px;
+  top: 40%;
+  left: 15%;
+  z-index: 1;
+}
+
+.txt h1 {
+  color: #00a7ff;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+.txt p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.onText-slider {
+  margin: 0 auto;
+  height: 100px;
+  width: 80%;
+  background: #fff;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  left: 50%;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.onText-slider .text-area h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-left: 40px;
+}
+.onText-slider .text-area p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #333;
+  margin-left: 40px;
+  width: 80%;
+}
+.onText-slider button {
+  background: var(--header-color);
+  color: #fff;
+  padding: 10px 10px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 140px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+.onText-slider .text-area::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 4px;
+  transform: translatey(-50%);
+  height: 60%;
+  border-radius: 5px;
+  background: var(--header-color);
+  z-index: 2;
+}
+
+.home-content {
+  height: 100%;
+  background: var(--background);
+  margin: 80px 40px;
+}
+
+.home-content .content p {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #333;
+  margin: 10px 0;
+}
+.home-content .content span {
+  /* font-size: 0.9rem; */
+  font-weight: 700;
+  color: #333;
+}
+.home-content .content h1 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #333;
+  margin: 10px 0;
+}
+.home-content .content strong {
+  color: var(--header-color);
+}
+.home-content .content-box {
+  height: 300px;
+  width: 100%;
+  /* background: grey; */
+  border: 1px solid #cac6c6;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  background: #fff;
+}
+.boxes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 20px;
+}
+.content-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.content-box .content-text h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+.content-box .content-text ol {
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin: 0 10px;
+}
+.content-img h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.content-img{
+  float: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* padding: 20px; */
+}
+
+
+.content-img object{
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  background: var(--header-color);
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+.svg-object:hover{
+  filter: invert(27%) sepia(96%) saturate(1812%) hue-rotate(182deg) brightness(89%) contrast(91%);
+}
+
+.menu-link:hover{
+  color: var(--header-color);
+}
+
+
+.search-box {
+  font-size: 20px;
+  border: solid 0.3em #000000;
+  display: inline-block;
+  position: relative;
+  border-radius: 2.5em;
+}
+.search-box input[type=text] {
+  font-family: inherit;
+  font-weight: bold;
+  width: 2.5em;
+  height: 2.5em;
+  padding: 0.3em 2.1em 0.3em 0.4em;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 2.5em;
+  transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 150ms;
+}
+.search-box input[type=text]:focus {
+  outline: none;
+}
+.search-box input[type=text]:focus, .search-box input[type=text]:not(:placeholder-shown) {
+  width: 18em;
+  transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.search-box input[type=text]:focus + button[type=reset], .search-box input[type=text]:not(:placeholder-shown) + button[type=reset] {
+  transform: rotate(-45deg) translateY(0);
+  transition: transform 150ms ease-out 800ms;
+}
+.search-box input[type=text]:focus + button[type=reset]:after, .search-box input[type=text]:not(:placeholder-shown) + button[type=reset]:after {
+  opacity: 1;
+  transition: top 150ms ease-out 950ms, right 150ms ease-out 950ms, opacity 150ms ease 950ms;
+}
+.search-box button[type=reset] {
+  background-color: transparent;
+  width: 1.4em;
+  height: 1.4em;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0.55em;
+  right: 0.55em;
+  transform: rotate(-45deg) translateY(2.2em);
+  transition: transform 150ms ease-out 150ms;
+}
+.search-box button[type=reset]:before, .search-box button[type=reset]:after {
+  content: "";
+  background-color: #000000;
+  width: 0.3em;
+  height: 1.4em;
+  position: absolute;
+}
+.search-box button[type=reset]:after {
+  transform: rotate(90deg);
+  opacity: 0;
+  transition: transform 150ms ease-out, opacity 150ms ease-out;
+}
+
+.success-message {
+            padding: 10px;
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <div class="web-text">
+          <p>
+            Website:
+            <span
+              >RID (Reserch Innovation & Discovery) by TWSKAA Welfare Foundation
+            </span>
+          </p>
+
+          <p>Helpline: <span>+91 98927 82728 </span></p>
+          <p>Email: <span>supportid@gamil.com</span></p>
+        </div>
+        <div class="right-text">
+          <a class="link" href="#"
+            ><object
+              class="svg-object"
+              data="/assets/icons/important_devices.svg"
+              type="image/svg+xml"
+            ></object
+            >Main Content</a
+          >
+          <a class="link" href="#">+A A A-</a>
+          <a class="link" href="#"
+            ><object
+              class="svg-object"
+              data="/assets/icons/forum.svg"
+              type="image/svg+xml"
+            ></object
+            >Feedback</a
+          >
+          <a class="link" href="#"
+            ><object
+              class="svg-object"
+              data="./assets/icons/support_agent.svg"
+              type="image/svg+xml"
+            ></object
+            >Support</a
+          >
+        </div>
+      </div>
+    </header>
+    <nav>
+      <div class="nav">
+        <div class="logo">
+          <img src="./assets/images/image 1.png" alt="logo" />
+        </div>
+        <div class="menu">
+          <ul class="upperNav">
+            <div class="search">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"
+                ></path>
+              </svg>
+              <input type="text" placeholder="Search Anything..." />
+            </div>
+            <div class="login">
+              <!-- <a href="#">Login</a> -->
+              <button onclick="window.location.href= '/login'" id="logInButton">Login</button>
+            </div>
+            <div class="signUp">
+              <!-- <a href="#">Sign Up</a> -->
+              <button  onclick="window.location.href= '/form'">Sign Up</button>
+            </div>
+          </ul>
+
+          <ul class="lowerNav">
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/add_home_work.svg"
+                  type="image/svg+xml"
+                ></object
+                >Home</a
+              >
+            </li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/article_shortcut.svg"
+                  type="image/svg+xml"
+                ></object
+                >Research Papers</a
+              >
+            </li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/group.svg"
+                  type="image/svg+xml"
+                ></object
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/balcony.svg"
+                  type="image/svg+xml"
+                ></object
+                >Center <i class="fas fa-chevron-down"></i
+              ></a>
+
+              <div class="dropdown-menu">
+                <ul>
+                  <li>
+                    <a class="nav-link" href="#"
+                      ><object
+                        class="svg-object"
+                        data="./assets/icons/rocket.svg"
+                        type="image/svg+xml"
+                      ></object
+                      >Skill Center <i class="fas fa-chevron-right"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="#"
+                      ><object
+                        class="svg-object"
+                        data="./assets/icons/science.svg"
+                        type="image/svg+xml"
+                      ></object
+                      >WIT Center <i class="fas fa-chevron-right"></i
+                    ></a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="#"
+                      ><object
+                        class="svg-object"
+                        data="./assets/icons/diagnosis.svg"
+                        type="image/svg+xml"
+                      ></object
+                      >RID Center <i class="fas fa-chevron-right"></i
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/call_log.svg"
+                  type="image/svg+xml"
+                ></object
+                >Contact Us</a
+              >
+            </li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/psychology_alt.svg"
+                  type="image/svg+xml"
+                ></object
+                >Why Us?</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="slider">
+      <div class="myslide fade">
+        <!-- <div class="txt">
+          <h1>IMAGE 1</h1>
+          <p>Web Devoloper<br />Text</p>
+        </div> -->
+        <img
+          src="./assets/Group 42Image.png"
+          style="width: 100%; height: 100%"
+        />
+      </div>
+
+      <div class="myslide fade">
+        <div class="txt">
+          <h1>IMAGE 2</h1>
+          <p>Web Devoloper<br />Text</p>
+        </div>
+        <img src="./assets/images/img1.jpg" style="width: 100%; height: 100%" />
+      </div>
+
+      <div class="myslide fade">
+        <div class="txt">
+          <h1>IMAGE 3</h1>
+          <p>Web Devoloper<br />Text</p>
+        </div>
+        <img src="./assets/images/img3.jpg" style="width: 100%; height: 100%" />
+      </div>
+
+      <div class="myslide fade">
+        <div class="txt">
+          <h1>IMAGE 4</h1>
+          <p>Web Devoloper<br />Text</p>
+        </div>
+        <img src="./assets/images/img1.png" style="width: 100%; height: 100%" />
+      </div>
+
+      <div class="dotsbox" style="text-align: center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <!-- <span class="dot" onclick="currentSlide(5)"></span> -->
+      </div>
+    </div>
+    <div class="onText-slider">
+      <div class="text-area">
+        <h1>
+          welcome to the future of
+          <span>Reserch Innovation & Discovery (RID)</span>
+        </h1>
+        <p>
+          At RID, we bring the world's most promising minds into our circle to
+          investigate, inspire, and innovate a technical & logical world for
+          all.
+        </p>
+      </div>
+      <button>
+        <object
+          class="svg-object"
+          data="./assets/icons/slideshow.svg"
+          type="image/svg+xml"
+        ></object
+        >Learn More
+      </button>
+    </div>
+
+    <div class="home-content">
+      <div class="content">
+        <h1>What is <span>RID Organization</span>?</h1>
+        <p>
+          <strong>RID</strong> Organization i.e.
+          <strong>Research, Innovation </strong> and
+          <strong> Discovery</strong> Organization is an organization which is
+          run by <strong>TWF (TWKSAA WELFARE FOUNDATION)</strong> NGO. The main
+          objective of which is that in the coming times, the discovery,
+          publication and use of NEW (RID, PMS & TLR) should be done first in
+          Indian culture, civilization and language from this holy land of
+          India.
+        </p>
+        <div class="boxes">
+          <div class="content-box">
+            <div class="content-img">
+              <h2>
+                <object
+                  class="svg-object"
+                  data="./assets/icons/experiment.svg"
+                  type="image/svg+xml"
+                ></object
+                >Research (R)
+              </h2>
+            </div>
+            <div class="content-text">
+              <h2>Question: Why we should Reserch?</h2>
+              <ol>
+                <li>Acquisition of new knowledge</li>
+                <li>To solve problems</li>
+                <li>To Social progress</li>
+                <li>To promote development</li>
+                <li>To advances in technology & business</li>
+                <li>To develop the country's science & technology</li>
+              </ol>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <h2>
+                <object
+                  class="svg-object"
+                  data="./assets/icons/innovation.svg"
+                  type="image/svg+xml"
+                ></object>
+                Innovation (I)
+              </h2>
+            </div>
+            <div class="content-text">
+              <h2>Question: Why we should Innovate?</h2>
+              <ol>
+                <li>To progress</li>
+                <li>For change</li>
+                <li>To improve production</li>
+                <li>To benefit society</li>
+                <li>To be ahead of competition</li>
+                <li>Development of the country's science and technology</li>
+              </ol>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <h2>
+                <object
+                  class="svg-object"
+                  data="./assets/icons/travel_explore.svg"
+                  type="image/svg+xml"
+                ></object
+                >Discovery(D)
+              </h2>
+            </div>
+            <div class="content-text">
+              <h2>Question: Why we should Discover?</h2>
+
+              <ol>
+                <li>Acquisition of new knowledge</li>
+                <li>To discovery of inventions</li>
+                <li>To solving problems</li>
+                <li>Contribution to development of knowledge</li>
+                <li>For progress of society</li>
+                <li>To develop the country's science & technology</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      document
+        .querySelector(".menu-link")
+        .addEventListener("mouseover", function () {
+          const svgDoc = this.querySelector(".svg-object").contentDocument;
+          svgDoc.querySelector("svg").style.fill = "red";
+          // svgDoc.setAttribute('data', './home.svg' );
+        });
+
+      document
+        .querySelector(".menu-link")
+        .addEventListener("mouseout", function () {
+          const svgDoc = this.querySelector(".svg-object").contentDocument;
+          svgDoc.querySelector("svg").style.fill = "black";
+          // svgDoc.setAttribute('data', "./science.svg" );
+        });
+    </script>
+
+<script>
+  window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('login') === 'success') {
+          const successMessage = document.createElement('div');
+          successMessage.className = 'success-message';
+          successMessage.innerText = 'Login successful! Welcome back!';
+          document.body.prepend(successMessage);
+      }
+  };
+</script>
+
+    ======= //Hyperdgx >>>>>>> 3edf6f4732849e787a83487d4969d13011c63af2
+    <script src="script.js"></script>
+  </body>
+</html>
