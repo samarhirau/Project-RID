@@ -1,0 +1,46 @@
+/project-root
+│
+├── /client
+│   ├── /css
+│   │   └── styles.css
+│   ├── /js
+│   │   └── main.js
+│   ├── /images
+│   │   └── logo.png
+│   ├── /fonts
+│   │   └── custom-font.ttf
+│   ├── /html
+│   │   └── index.html
+│   └── /components
+│       └── header.html
+│       └── footer.html
+│
+├── /server
+│   ├── /controllers
+│   │   └── userController.js
+│   ├── /models
+│   │   └── userModel.js
+│   ├── /routes
+│   │   └── userRoutes.js
+│   ├── /middlewares
+│   │   └── authMiddleware.js
+│   ├── /config
+│   │   └── dbConfig.js
+│   ├── /utils
+│   │   └── helper.js
+│   └── server.js
+│
+├── /public
+│   └── /uploads
+│       └── profile-pic.jpg
+│
+├── /tests
+│   └── /unit
+│   │   └── userController.test.js
+│   └── /integration
+│       └── userRoutes.test.js
+│
+├── .env
+├── .gitignore
+├── package.json
+└── README.md

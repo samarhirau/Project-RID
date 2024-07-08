@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RID</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./client/css/style.css" />
     <!-- <link rel="stylesheet" href="css.css" /> -->
-    <link rel="stylesheet" href="./css/responsive.css" />
+    <link rel="stylesheet" href="./client/css/responsive.css" />
     <!-- /* box-icon link */ -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link
@@ -16,6 +16,55 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script>
+      let isLoggedIn = false;
+  
+      function handleLogin() {
+        // Replace with your actual login form data retrieval
+        const username = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+  
+        // Send login request to server (replace with your AJAX/fetch logic)
+        fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        })
+          .then(response => {
+            if (response.status === 200) { // Assuming success code as 200
+              return response.json();
+            } else {
+              throw new Error('Login failed'); // Handle non-200 status codes
+            }
+          })
+          .then(data => {
+            if (data.success) { // Assuming success data has a 'success' property
+              isLoggedIn = true;
+              hideLoginButtons();
+              // Optionally, display a welcome message or logout button
+            } else {
+              // Handle failed login, e.g., display error message using data.error
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            // Handle general errors like network issues
+            alert('Login failed. Please check your credentials or try again later.');
+          });
+      }
+  
+      function hideLoginButtons() {
+        const loginButton = document.getElementById('logInButton');
+        const signUpButton = document.getElementById('signUpButton');
+        loginButton.style.display = 'none';
+        signUpButton.style.display = 'none'; // Hide both buttons on success
+      }
+  
+  
+    
+    </script>
   </head>
   <body>
     <header>
@@ -32,10 +81,31 @@
           <p>Email: <span>supportid@gamil.com</span></p>
         </div>
         <div class="right-text">
-          <a class="link" href="#"><object class="svg-object" data="./assets/icons/important_devices.svg" type="image/svg+xml"></object>Main Content</a>
+          <a class="link" href="#"
+            ><object
+              class="svg-object"
+              data="./assets/icons/important_devices.svg"
+              type="image/svg+xml"
+            ></object
+            >Main Content</a
+          >
           <a class="link" href="#">+A A A-</a>
-          <a class="link" href="#"><object class="svg-object" data="./assets/icons/forum.svg" type="image/svg+xml"></object>Feedback</a>
-          <a class="link" href="#"><object class="svg-object" data="./assets/icons/support_agent.svg" type="image/svg+xml"></object>Support</a>
+          <a class="link" href="#"
+            ><object
+              class="svg-object"
+              data="./assets/icons/forum.svg"
+              type="image/svg+xml"
+            ></object
+            >Feedback</a
+          >
+          <a class="link" href="#"
+            ><object
+              class="svg-object"
+              data="./assets/icons/support_agent.svg"
+              type="image/svg+xml"
+            ></object
+            >Support</a
+          >
         </div>
       </div>
     </header>
@@ -61,46 +131,110 @@
             </div>
             <div class="login">
               <!-- <a href="#">Login</a> -->
-              <button id="logInButton">Login</button>
+              <button onclick="handleLogin()" id="logInButton">Login</button>
             </div>
             <div class="signUp">
               <!-- <a href="#">Sign Up</a> -->
               <button id="signUpButton">Sign Up</button>
             </div>
           </ul>
-          
+
           <ul class="lowerNav">
-            
-            <li ><a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/add_home_work.svg" type="image/svg+xml"></object>Home</a></li>
-            <li><a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/article_shortcut.svg" type="image/svg+xml"></object>Research Papers</a></li>
-            <li><a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/group.svg" type="image/svg+xml"></object>About Us</a></li>
             <li>
               <a class="menu-link" href="#"
-                ><object class="svg-object" data="./assets/icons/balcony.svg" type="image/svg+xml"></object>Center <i class="fas fa-chevron-down"></i
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/add_home_work.svg"
+                  type="image/svg+xml"
+                ></object
+                >Home</a
+              >
+            </li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/article_shortcut.svg"
+                  type="image/svg+xml"
+                ></object
+                >Research Papers</a
+              >
+            </li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/group.svg"
+                  type="image/svg+xml"
+                ></object
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/balcony.svg"
+                  type="image/svg+xml"
+                ></object
+                >Center <i class="fas fa-chevron-down"></i
               ></a>
 
               <div class="dropdown-menu">
                 <ul>
                   <li>
                     <a class="nav-link" href="#"
-                      ><object class="svg-object" data="./assets/icons/rocket.svg" type="image/svg+xml"></object>Skill Center <i class="fas fa-chevron-right"></i
+                      ><object
+                        class="svg-object"
+                        data="./assets/icons/rocket.svg"
+                        type="image/svg+xml"
+                      ></object
+                      >Skill Center <i class="fas fa-chevron-right"></i
                     ></a>
                   </li>
                   <li>
                     <a class="nav-link" href="#"
-                      ><object class="svg-object" data="./assets/icons/science.svg" type="image/svg+xml"></object>WIT Center <i class="fas fa-chevron-right"></i
+                      ><object
+                        class="svg-object"
+                        data="./assets/icons/science.svg"
+                        type="image/svg+xml"
+                      ></object
+                      >WIT Center <i class="fas fa-chevron-right"></i
                     ></a>
                   </li>
                   <li>
                     <a class="nav-link" href="#"
-                      ><object class="svg-object" data="./assets/icons/diagnosis.svg" type="image/svg+xml"></object>RID Center <i class="fas fa-chevron-right"></i
+                      ><object
+                        class="svg-object"
+                        data="./assets/icons/diagnosis.svg"
+                        type="image/svg+xml"
+                      ></object
+                      >RID Center <i class="fas fa-chevron-right"></i
                     ></a>
                   </li>
                 </ul>
               </div>
             </li>
-            <li><a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/call_log.svg" type="image/svg+xml"></object>Contact Us</a></li>
-            <li><a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/psychology_alt.svg" type="image/svg+xml"></object>Why Us?</a></li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/call_log.svg"
+                  type="image/svg+xml"
+                ></object
+                >Contact Us</a
+              >
+            </li>
+            <li>
+              <a class="menu-link" href="#"
+                ><object
+                  class="svg-object"
+                  data="./assets/icons/psychology_alt.svg"
+                  type="image/svg+xml"
+                ></object
+                >Why Us?</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -112,7 +246,10 @@
           <h1>IMAGE 1</h1>
           <p>Web Devoloper<br />Text</p>
         </div> -->
-        <img src="./assets/Group 42Image.png" style="width: 100%; height: 100%" />
+        <img
+          src="./assets/Group 42Image.png"
+          style="width: 100%; height: 100%"
+        />
       </div>
 
       <div class="myslide fade">
@@ -159,7 +296,14 @@
           all.
         </p>
       </div>
-      <button><object class="svg-object" data="./assets/icons/slideshow.svg" type="image/svg+xml"></object>Learn More</button>
+      <button>
+        <object
+          class="svg-object"
+          data="./assets/icons/slideshow.svg"
+          type="image/svg+xml"
+        ></object
+        >Learn More
+      </button>
     </div>
 
     <div class="home-content">
@@ -176,83 +320,100 @@
           India.
         </p>
         <div class="boxes">
-        <div class="content-box">
-          <div class="content-img">
-            
-            <h2> <object class="svg-object" data="./assets/icons/experiment.svg" type="image/svg+xml"></object>Research (R)</h2>
+          <div class="content-box">
+            <div class="content-img">
+              <h2>
+                <object
+                  class="svg-object"
+                  data="./assets/icons/experiment.svg"
+                  type="image/svg+xml"
+                ></object
+                >Research (R)
+              </h2>
+            </div>
+            <div class="content-text">
+              <h2>Question: Why we should Reserch?</h2>
+              <ol>
+                <li>Acquisition of new knowledge</li>
+                <li>To solve problems</li>
+                <li>To Social progress</li>
+                <li>To promote development</li>
+                <li>To advances in technology & business</li>
+                <li>To develop the country's science & technology</li>
+              </ol>
+            </div>
           </div>
-          <div class="content-text">
-            <h2>Question: Why we should Reserch?</h2>
-            <ol>
-              <li>Acquisition of new knowledge</li>
-              <li>To solve problems</li>
-              <li>To Social progress</li>
-              <li>To promote development</li>
-              <li>To advances in technology & business</li>
-              <li>To develop the country's science & technology</li>
-            </ol>
+          <div class="content-box">
+            <div class="content-img">
+              <h2>
+                <object
+                  class="svg-object"
+                  data="./assets/icons/innovation.svg"
+                  type="image/svg+xml"
+                ></object>
+                Innovation (I)
+              </h2>
+            </div>
+            <div class="content-text">
+              <h2>Question: Why we should Innovate?</h2>
+              <ol>
+                <li>To progress</li>
+                <li>For change</li>
+                <li>To improve production</li>
+                <li>To benefit society</li>
+                <li>To be ahead of competition</li>
+                <li>Development of the country's science and technology</li>
+              </ol>
+            </div>
+          </div>
+          <div class="content-box">
+            <div class="content-img">
+              <h2>
+                <object
+                  class="svg-object"
+                  data="./assets/icons/travel_explore.svg"
+                  type="image/svg+xml"
+                ></object
+                >Discovery(D)
+              </h2>
+            </div>
+            <div class="content-text">
+              <h2>Question: Why we should Discover?</h2>
+
+              <ol>
+                <li>Acquisition of new knowledge</li>
+                <li>To discovery of inventions</li>
+                <li>To solving problems</li>
+                <li>Contribution to development of knowledge</li>
+                <li>For progress of society</li>
+                <li>To develop the country's science & technology</li>
+              </ol>
+            </div>
           </div>
         </div>
-        <div class="content-box">
-          <div class="content-img">
-           
-            <h2> <object class="svg-object" data="./assets/icons/innovation.svg" type="image/svg+xml"></object> Innovation (I)</h2>
-          </div>
-          <div class="content-text">
-            <h2>Question: Why we should Innovate?</h2>
-            <ol>
-              <li>To progress</li>
-              <li>For change</li>
-              <li>To improve production</li>
-              <li>To benefit society</li>
-              <li>To be ahead of competition</li>
-              <li>Development of the country's science and technology</li>
-            </ol>
-          </div>
-        </div>
-        <div class="content-box">
-          <div class="content-img">
-           
-            <h2><object class="svg-object" data="./assets/icons/travel_explore.svg" type="image/svg+xml"></object>Discovery(D)</h2>
-          </div>
-          <div class="content-text">
-            <h2>Question: Why we should Discover?</h2>
-            
-            <ol>
-              <li>Acquisition of new knowledge</li>
-              <li>To discovery of inventions</li>
-              <li>To solving problems</li>
-              <li>Contribution to development of knowledge</li>
-              <li>For progress of society</li>
-              <li>To develop the country's science & technology</li>
-            </ol>
-            
-          </div>
-        </div>
-      </div>
       </div>
     </div>
 
-<<<<<<< HEAD
+
     <script>
-          document.querySelector('.menu-link').addEventListener('mouseover', function() {
-        const svgDoc = this.querySelector('.svg-object').contentDocument;
-        svgDoc.querySelector('svg').style.fill = 'red';
-		// svgDoc.setAttribute('data', './home.svg' );
-    });
-  
+      document
+        .querySelector(".menu-link")
+        .addEventListener("mouseover", function () {
+          const svgDoc = this.querySelector(".svg-object").contentDocument;
+          svgDoc.querySelector("svg").style.fill = "red";
+          // svgDoc.setAttribute('data', './home.svg' );
+        });
 
-    document.querySelector('.menu-link').addEventListener('mouseout', function() {
-        const svgDoc = this.querySelector('.svg-object').contentDocument;
-        svgDoc.querySelector('svg').style.fill = 'black';
-		// svgDoc.setAttribute('data', "./science.svg" );
-    });
-
+      document
+        .querySelector(".menu-link")
+        .addEventListener("mouseout", function () {
+          const svgDoc = this.querySelector(".svg-object").contentDocument;
+          svgDoc.querySelector("svg").style.fill = "black";
+          // svgDoc.setAttribute('data', "./science.svg" );
+        });
     </script>
 
-=======
-//Hyperdgx
->>>>>>> 3edf6f4732849e787a83487d4969d13011c63af2
+    ======= //Hyperdgx >>>>>>> 3edf6f4732849e787a83487d4969d13011c63af2
     <script src="script.js"></script>
   </body>
 </html>

@@ -17,6 +17,7 @@ function handleLeaveMenu() {
   line.style.width = 0;
 }
 function handleLinkHover(event) {
+// menuLinks.style.color = 'red';
   const elm = event.target;
   const elmRect = elm.getBoundingClientRect();
   const { width, left, height, top } = elmRect;
@@ -107,3 +108,5 @@ document.getElementById('signUpButton').onclick = function() {
 document.getElementById('logInButton').onclick = function() {
 	window.location.href = 'public/login.html';
 };
+
+
