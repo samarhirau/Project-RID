@@ -108,3 +108,5 @@ document.getElementById('signUpButton').onclick = function() {
 document.getElementById('logInButton').onclick = function() {
 	window.location.href = 'public/login.html';
 };
+
+
