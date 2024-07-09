@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
+const session = require('express-session');
 require('dotenv').config();
 
 const connectDB = require('./config/db');
@@ -19,6 +20,12 @@ const port = process.env.PORT || 3020;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'yourSecretKey', // Change this to a secure key
+  resave: false,
+  saveUninitialized: true,
+}));
 
 app.use('/user', userRoutes);
 app.use('/auth', authRoutes);
