@@ -16,55 +16,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script>
-      let isLoggedIn = false;
-  
-      function handleLogin() {
-        // Replace with your actual login form data retrieval
-        const username = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-  
-        // Send login request to server (replace with your AJAX/fetch logic)
-        fetch('/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email, password })
-        })
-          .then(response => {
-            if (response.status === 200) { // Assuming success code as 200
-              return response.json();
-            } else {
-              throw new Error('Login failed'); // Handle non-200 status codes
-            }
-          })
-          .then(data => {
-            if (data.success) { // Assuming success data has a 'success' property
-              isLoggedIn = true;
-              hideLoginButtons();
-              // Optionally, display a welcome message or logout button
-            } else {
-              // Handle failed login, e.g., display error message using data.error
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            // Handle general errors like network issues
-            alert('Login failed. Please check your credentials or try again later.');
-          });
-      }
-  
-      function hideLoginButtons() {
-        const loginButton = document.getElementById('logInButton');
-        const signUpButton = document.getElementById('signUpButton');
-        loginButton.style.display = 'none';
-        signUpButton.style.display = 'none'; // Hide both buttons on success
-      }
-  
-  
-    
-    </script>
+   
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Mrs+Saint+Delafield&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Style+Script&display=swap");
 
@@ -725,6 +677,66 @@ body {
 
 
 
+
+
+
+        /* profile */
+  
+
+#profileButton {
+  background: var(--header-color);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  /* height: 25px; */
+  width: 100px;
+  text-align: center;
+}
+
+.drawer {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.drawer-content {
+    color: white;
+    margin: 20px;
+}
+
+.drawer a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.drawer a:hover {
+    color: #f1f1f1;
+}
+
+.drawer .close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+
     </style>
   </head>
   <body>
@@ -798,8 +810,31 @@ body {
             </div>
             <div class="signUp">
               <!-- <a href="#">Sign Up</a> -->
-              <button  onclick="window.location.href= '/form'">Sign Up</button>
+              <button id="signUpBtn" onclick="window.location.href= '/form'">Sign Up</button>
             
+          </div>
+
+          <div id="profile-section" style="display: none;">
+           
+    <button id="profileButton">Profile</button>
+
+    <div id="profileDrawer" class="drawer">
+        <div class="drawer-content">
+            <span id="closeDrawer" class="close">&times;</span>
+            <h2>Welcome, User</h2>
+            <p>Your profile information goes here.</p>
+            <!-- Add more profile details as needed -->
+            <h3>Services</h3>
+            <ul>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <!-- Add more services as needed -->
+            </ul>
+        </div>
+    </div>
+
+ 
+
           </div>
           </ul>
 
@@ -1078,18 +1113,61 @@ body {
     </script>
 
 <script>
-  window.onload = function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('login') === 'success') {
-          const successMessage = document.createElement('div');
-          successMessage.className = 'success-message';
-          successMessage.innerText = 'Login successful! Welcome back!';
-          document.body.prepend(successMessage);
-      }
-  };
+
+// window.onload = function() {
+//     const urlParams = new URLSearchParams(window.location.search);
+//     if (urlParams.get('login') === 'success') {
+//         const successMessage = document.createElement('div');
+//         successMessage.className = 'success-message';
+//         successMessage.innerText = 'Login successful! Welcome back!';
+//         document.body.prepend(successMessage);
+
+
+        
+        
+//         // Remove the message after 3 seconds
+//         setTimeout(function() {
+//             successMessage.remove();
+//         }, 1000);
+//     }
+// };
+
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('login') === 'success') {
+       const hideLoginBtn = document.getElementById('logInButton');
+       const hideSignUpBtn = document.getElementById('signUpBtn');
+       const showProfileBtn = document.getElementById('profile-section');
+        hideSignUpBtn.style.display = 'none';
+        hideLoginBtn.style.display = 'none';
+        showProfileBtn.style.display = 'block';
+    }
+};
+
+
+
+</script>
+<script>
+  
+// profile drawer
+
+document.getElementById("profileButton").onclick = function() {
+    document.getElementById("profileDrawer").style.width = "250px";
+}
+
+document.getElementById("closeDrawer").onclick = function() {
+    document.getElementById("profileDrawer").style.width = "0";
+}
+
+// Optional: Close the drawer if user clicks outside of it
+window.onclick = function(event) {
+    if (event.target == document.getElementById("profileDrawer")) {
+        document.getElementById("profileDrawer").style.width = "0";
+    }
+};
 </script>
 
     ======= //Hyperdgx >>>>>>> 3edf6f4732849e787a83487d4969d13011c63af2
-    <script src="script.js"></script>
+    <script src="./assets/js/main.js"></script>
   </body>
 </html>
