@@ -1,165 +1,91 @@
-
-
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Upload Certificate</title>
+  <title>Admin Page</title>
 </head>
 <body>
   <h1>Upload Certificate</h1>
   <form id="uploadForm" enctype="multipart/form-data">
-    <label for="mobileNumber">Mobile Number:</label>
-    <input type="text" id="mobileNumber" name="mobileNumber" required>
-    <br><br>
-    <label for="certificate">Certificate:</label>
-    <input type="file" id="certificate" name="certificate" accept=".pdf,.jpg,.jpeg,.png" required>
-    <br><br>
+    <label for="certificateId">Certificate ID:</label>
+    <input type="text" id="certificateId" name="certificateId" required><br>
+    <label for="certificate">Upload Certificate:</label>
+    <input type="file" id="certificate" name="certificate" required><br>
     <button type="submit">Upload</button>
   </form>
-  <div id="errorMessage" style="color: red;"></div>
-  <script>
-    document.getElementById('uploadForm').addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const formData = new FormData(event.target);
-
-      const response = await fetch('/upload', {
-        method: 'POST',
-        body: formData
-      });
-
-      if (response.status === 400) {
-        const errorMessage = await response.text();
-        document.getElementById('errorMessage').textContent = errorMessage;
-      } else {
-        window.location.href = '/uploaded.html';
-      }
-    });
-  </script>
-</body>
-</html>
-
-<!-- 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Upload Certificate</title>
-</head>
-<body>
-  <h1>Upload Certificate</h1>
-
-  <form id="otpForm">
-    <button type="submit">Send OTP</button>
-  </form>
-
-
-  <div id="otpSection" style="display: none;">
-    <h2>OTP Verification</h2>
-    <input type="text" id="otpInput" placeholder="Enter OTP" required>
-    <button id="verifyOTPButton">Verify OTP</button>
-    <div id="otpErrorMessage" style="color: red;"></div>
-  </div>
-
-
-  <form id="uploadForm" enctype="multipart/form-data" style="display: none;">
-    <label for="mobileNumber">Mobile Number:</label>
-    <input type="text" id="mobileNumber" name="mobileNumber" required>
-    <br><br>
-    <label for="certificate">Certificate:</label>
-    <input type="file" id="certificate" name="certificate" accept=".pdf,.jpg,.jpeg,.png" required>
-    <br><br>
-    <button type="submit" id="uploadButton">Upload</button>
-  </form>
-  
-  <div id="errorMessage" style="color: red;"></div>
 
   <script>
-    async function sendOTP() {
-      const email = 'projectrid@gmail.com'; // Change to your email
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-      const response = await fetch('/send-otp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email })
-      });
+      const formData = new FormData();
+      formData.append('certificateId', document.getElementById('certificateId').value);
+      formData.append('certificate', document.getElementById('certificate').files[0]);
 
-      if (response.ok) {
-        return true;
-      } else {
-        const errorMessage = await response.text();
-        document.getElementById('errorMessage').textContent = errorMessage;
-        return false;
-      }
-    }
+      try {
+        const response = await fetch('/admin/upload', {
+          method: 'POST',
+          body: formData,
+        });
 
-    async function verifyOTP(otp) {
-      const email = 'projectrid@gmail.com'; // Change to your email
-
-      const response = await fetch('/verify-otp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, otp })
-      });
-
-      if (response.ok) {
-        return true;
-      } else {
-        const errorMessage = await response.text();
-        document.getElementById('otpErrorMessage').textContent = errorMessage;
-        return false;
-      }
-    }
-
-    document.getElementById('otpForm').addEventListener('submit', async (event) => {
-      event.preventDefault();
-
- 
-      const otpSent = await sendOTP();
-      if (otpSent) {
-        // Hide OTP form and show OTP verification section
-        document.getElementById('otpForm').style.display = 'none';
-        document.getElementById('otpSection').style.display = 'block';
-      }
-    });
-
-    document.getElementById('verifyOTPButton').addEventListener('click', async () => {
-      const otp = document.getElementById('otpInput').value;
-
-     
-      const otpVerified = await verifyOTP(otp);
-      if (otpVerified) {
-        // Hide OTP verification section and show upload form
-        document.getElementById('otpSection').style.display = 'none';
-        document.getElementById('uploadForm').style.display = 'block';
-      }
-    });
-
-    document.getElementById('uploadForm').addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const formData = new FormData(event.target);
-
-      const response = await fetch('/upload', {
-        method: 'POST',
-        body: formData
-      });
-
-      if (response.status === 400) {
-        const errorMessage = await response.text();
-        document.getElementById('errorMessage').textContent = errorMessage;
-      } else {
-        window.location.href = '/uploaded.html';
+        const result = await response.json();
+        alert(result.message);
+      } catch (error) {
+        alert('Failed to upload certificate');
       }
     });
   </script>
 </body>
 </html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Page</title>
+</head>
+<body>
+  <h1>Upload Certificate</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label for="certificateId">Certificate ID:</label>
+    <input type="text" id="certificateId" name="certificateId" required><br>
+    <label for="internName">Intern Name:</label>
+    <input type="text" id="internName" name="internName" required><br>
+    <label for="issueDate">Issue Date:</label>
+    <input type="date" id="issueDate" name="issueDate" required><br>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea><br>
+    <label for="certificate">Upload Certificate:</label>
+    <input type="file" id="certificate" name="certificate" required><br>
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append('certificateId', document.getElementById('certificateId').value);
+      formData.append('internName', document.getElementById('internName').value);
+      formData.append('issueDate', document.getElementById('issueDate').value);
+      formData.append('description', document.getElementById('description').value);
+      formData.append('certificate', document.getElementById('certificate').files[0]);
+
+      try {
+        const response = await fetch('/admin/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.json();
+        alert(result.message);
+      } catch (error) {
+        alert('Failed to upload certificate');
+      }
+    });
+  </script>
+</body>
+</html>

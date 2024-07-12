@@ -8,14 +8,13 @@ const session = require('express-session');
 require('dotenv').config();
 
 const connectDB = require('./config/db');
-const certificateController = require('./controllers/certificateController');
 
 const userRoutes = require('./Routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
-const certificateRoutes = require('./routes/certificateRoutes');
-
+const adminRoutes = require('./routes/admin');
+const verifyRoutes = require('./routes/verify');
 const app = express();
-const port = process.env.PORT || 3020;
+const port = process.env.PORT || 3010;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,9 +28,8 @@ app.use(session({
 
 app.use('/user', userRoutes);
 app.use('/auth', authRoutes);
-app.use('/certificates', certificateRoutes);
-
-
+app.use('/admin', adminRoutes);
+app.use('/verify', verifyRoutes);
 
 app.get('/form', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'form.html'));
@@ -49,16 +47,25 @@ app.get('/search', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'search.html'));
 });
 
+app.get('/verify', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'verify.html'));
+});
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 
+
+
+
+
 app.listen(port, async () => {
     await connectDB();
-    await certificateController.connectDB();
     console.log(`Server is running on http://localhost:${port}`);
 });
+
+
 
 
 

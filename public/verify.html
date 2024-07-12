@@ -1,0 +1,105 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Certificate</title>
+</head>
+<body>
+  <h1>Verify Certificate</h1>
+  <form id="verifyForm">
+    <label for="certificateId">Certificate ID:</label>
+    <input type="text" id="certificateId" name="certificateId" required><br>
+    <button type="submit">Verify</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('verifyForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const certificateId = document.getElementById('certificateId').value;
+
+      try {
+        const response = await fetch('/verify/verify', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ certificateId }),
+        });
+
+        const result = await response.json();
+        document.getElementById('result').textContent = result.message;
+      } catch (error) {
+        document.getElementById('result').textContent = 'Failed to verify certificate';
+      }
+    });
+  </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Certificate</title>
+  <style>
+    .certificate-details {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Verify Certificate</h1>
+  <form id="verifyForm">
+    <label for="certificateId">Certificate ID:</label>
+    <input type="text" id="certificateId" name="certificateId" required><br>
+    <button type="submit">Verify</button>
+  </form>
+  <div id="result"></div>
+  <div class="certificate-details" id="certificateDetails">
+    <h2>Certificate Details</h2>
+    <p><strong>Certificate ID:</strong> <span id="detailCertificateId"></span></p>
+    <p><strong>Intern Name:</strong> <span id="detailInternName"></span></p>
+    <p><strong>Issue Date:</strong> <span id="detailIssueDate"></span></p>
+    <p><strong>Description:</strong> <span id="detailDescription"></span></p>
+    <p><strong>Certificate:</strong> <a id="detailCertificatePath" href="#" target="_blank">View Certificate</a></p>
+  </div>
+
+  <script>
+    document.getElementById('verifyForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const certificateId = document.getElementById('certificateId').value;
+
+      try {
+        const response = await fetch('/verify/verify', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ certificateId }),
+        });
+
+        const result = await response.json();
+        if (result.message === 'Certificate is valid') {
+          document.getElementById('result').textContent = result.message;
+          document.getElementById('certificateDetails').style.display = 'block';
+          document.getElementById('detailCertificateId').textContent = result.certificate.certificateId;
+          document.getElementById('detailInternName').textContent = result.certificate.internName;
+          document.getElementById('detailIssueDate').textContent = new Date(result.certificate.issueDate).toLocaleDateString();
+          document.getElementById('detailDescription').textContent = result.certificate.description;
+          document.getElementById('detailCertificatePath').href = result.certificate.certificatePath;
+        } else {
+          document.getElementById('result').textContent = result.message;
+          document.getElementById('certificateDetails').style.display = 'none';
+        }
+      } catch (error) {
+        document.getElementById('result').textContent = 'Failed to verify certificate';
+        document.getElementById('certificateDetails').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
