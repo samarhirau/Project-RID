@@ -1,56 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Page</title>
-</head>
-<body>
-  <h1>Upload Certificate</h1>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <label for="certificateId">Certificate ID:</label>
-    <input type="text" id="certificateId" name="certificateId" required><br>
-    <label for="internName">Intern Name:</label>
-    <input type="text" id="internName" name="internName" required><br>
-    <label for="issueDate">Issue Date:</label>
-    <input type="date" id="issueDate" name="issueDate" required><br>
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea><br>
-    <label for="certificate">Upload Certificate:</label>
-    <input type="file" id="certificate" name="certificate" required><br>
-    <button type="submit">Upload</button>
-  </form>
-
-  <script>
-    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData();
-      formData.append('certificateId', document.getElementById('certificateId').value);
-      formData.append('internName', document.getElementById('internName').value);
-      formData.append('issueDate', document.getElementById('issueDate').value);
-      formData.append('description', document.getElementById('description').value);
-      formData.append('certificate', document.getElementById('certificate').files[0]);
-
-      try {
-        const response = await fetch('/admin/upload', {
-          method: 'POST',
-          body: formData,
-        });
-
-        const result = await response.json();
-      if (response.ok) {
-        alert(result.message);
-      } else {
-        alert('already exists');  // "Certificate ID already exists" message
-      }
-    } catch (error) {
-      alert('Failed to upload certificate');
-    }
-    });
-  </script>
-</body>
-</html> -->
+<!-- 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,3 +57,57 @@
 </body>
 </html>
 
+
+ -->
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Page</title>
+</head>
+<body>
+  <h1>Upload Certificate</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label for="certificateId">Certificate ID:</label>
+    <input type="text" id="certificateId" name="certificateId" required><br>
+    <label for="internName">Intern Name:</label>
+    <input type="text" id="internName" name="internName" required><br>
+    <label for="issueDate">Issue Date:</label>
+    <input type="date" id="issueDate" name="issueDate" required><br>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea><br>
+    <label for="certificate">Upload Certificate:</label>
+    <input type="file" id="certificate" name="certificate" required><br>
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append('certificateId', document.getElementById('certificateId').value);
+      formData.append('internName', document.getElementById('internName').value);
+      formData.append('issueDate', document.getElementById('issueDate').value);
+      formData.append('description', document.getElementById('description').value);
+      formData.append('certificate', document.getElementById('certificate').files[0]);
+
+      try {
+        const response = await fetch('/admin/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.json();
+        alert(result.message);
+      } catch (error) {
+        alert('Failed to upload certificate');
+      }
+    });
+  </script>
+</body>
+</html>
