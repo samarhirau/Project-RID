@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RID</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="/client/css/style.css" />
     <!-- <link rel="stylesheet" href="css.css" /> -->
     <link rel="stylesheet" href="/client/css/responsive.css" />
@@ -80,13 +85,15 @@ input {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
+  
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f5f5f5;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--header-color);
+  cursor: grab;
 }
 
 :root {
@@ -956,27 +963,27 @@ body {
       </div>
 
       <div class="myslide fade">
-        <div class="txt">
+        <!-- <div class="txt">
           <h1>IMAGE 2</h1>
           <p>Web Devoloper<br />Text</p>
-        </div>
-        <img src="./assets/images/img1.jpg" style="width: 100%; height: 100%" />
+        </div> -->
+        <img src="./assets/research.png" style="width: 100%; height: 100%" />
       </div>
 
       <div class="myslide fade">
-        <div class="txt">
+        <!-- <div class="txt">
           <h1>IMAGE 3</h1>
           <p>Web Devoloper<br />Text</p>
-        </div>
-        <img src="./assets/images/img3.jpg" style="width: 100%; height: 100%" />
+        </div> -->
+        <img src="./assets/innovation.png" style="width: 100%; height: 100%" />
       </div>
 
       <div class="myslide fade">
-        <div class="txt">
+        <!-- <div class="txt">
           <h1>IMAGE 4</h1>
           <p>Web Devoloper<br />Text</p>
-        </div>
-        <img src="./assets/images/img1.png" style="width: 100%; height: 100%" />
+        </div> -->
+        <img src="./assets/discovery.png" style="width: 100%; height: 100%" />
       </div>
 
       <div class="dotsbox" style="text-align: center">
@@ -1098,6 +1105,209 @@ body {
     </div>
 
 
+    <!-- Harsh Adding Code Here (Start Point) -->
+    <section data-scroll data-scroll-speed="0.1"  class="discover-research">
+      <div class="left">
+          <h2>Discover Research</h2>
+          <p>Access over publication pages and stay up to date with what's happening in your field.</p>
+
+          <h3>SEARCH PUBLICATION</h3>
+          <div class="search-publication">
+              <span class="material-symbols-outlined search-icon">search</span>
+              <!-- change this input field as required -->
+              <input type="search" placeholder="Search Publications..."> 
+          </div>
+
+          <h2>Connect with your scientific community</h2>
+          <p>Share your research, collaborate with your peers, and get the support you need to advance your career.</p>
+
+          <h3>VISIT TOPIC PAGES</h3>
+          <div class="topics-section">
+              <a href="#">Astrophysics</a>
+              <a href="#">Nature Balance</a>
+              <a href="#">Social Science</a>
+              <a href="#">Engineering</a>
+              <a href="#">Aero Engineering</a>
+              <a href="#">Computer Science</a>
+              <a href="#">Physics</a>
+              <a href="#">Chemistry</a>
+              <a href="#">Mathematics</a>
+              <a href="#">Medicine</a>
+          </div>
+
+      </div>
+
+      <div class="right">
+          <img src="./assets/discover research.svg" alt="" draggable="false">
+      </div>
+  </section>
+
+  <section  class="newsletter">
+      <div class="newsletter-body">
+          <div class="text">
+              <h2>Sign up for our newsletter</h2>
+              <p>Fresh data delivered whenever you feel low.</p>
+          </div>
+          <div class="inputbtnsubs">
+              <div class="subscribeletter">
+                  <!-- change this input field as required -->
+                  <input type="search" placeholder="Enter Email Address...">
+              </div>
+              <a class="Subscribe" href="#">Subscribe</a>
+          </div>
+      </div>
+
+  </section>
+
+  <section data-scroll data-scroll-speed="0.1" class="latest-reading">
+      <h2>Latest Readings</h2>
+      <p>We're gathering a lot of content from various sources and conducting additional research to provide you with valuable insights and a great experience.</p>
+
+      <div class="reading-one">
+          <div style="display: flex; gap: 8px; align-items: center;">
+              <div style="width: 100%;">
+                  <h3>Internet & Our Publications</h3>
+                  <hr style="border: none; border-bottom: 1px dotted #000;">
+              </div>
+          </div>
+
+          <div class="fullreading">
+              
+              <div class="posts">
+                  <div class="post-one">
+                      <img src="./assets/post-one-image.png" alt="thumbnail post one">
+                      <p>REPORT | MAY 17, 2024</p>
+                      <h2>Stock Market | Popular Now-A-Days | Any Future?</h2>
+                      <p>In the readings, you can learn how the RID algorithm works and discover popular topics such as stock market analysis, AI, and machine learning.</p>
+                      <a>Read More...</a>
+                  </div>
+                  <div style="border-right: 1px dotted #000; height: inherit; width: 1px;"></div>
+                  <div class="post-two">
+                      <img src="./assets/post-two-image.png" alt="thumbnail post">
+                      <p>REPORT | MAY 09, 2024</p>
+                      <h2>AI Generated Art | Open AI Launched new model to generate images more precisely.</h2>
+                      <p>Currently, AI is assisting many freelancers, projects, and various users to work more efficiently. It is also collaborating with different companies to achieve more advanced outcomes.</p>
+                      <a>Read More...</a>
+                  </div>
+              </div>
+              <div style="border-right: 1px dotted #000; height: inherit; width: 1px;"></div>
+              <div class="ourposts">
+                  <div class="post-three">
+                      <img src="./assets/post-three-image.png" alt="thumbnail post">
+                      <p>REPORT | JUNE 21, 2024</p>
+                      <h2>NVIDA is making new records. It is now on top in the list of best tech companies</h2>
+                      <p>NVIDIA is a company that manufactures chips related to visual graphics hardware, known as GPUs. They are integrating AI and machine learning into their processes to develop new updates.</p>
+                      <a>Read More...</a>
+                  </div>
+                  <div class="loadmore">
+                      <a href="#">Load More</a>
+                  </div>
+              </div>
+          </div>
+          <hr style="border: none; border-bottom: 1px dotted #000;">
+      </div>
+  </section>
+
+  <section class="footer">
+      <footer>
+          <div class="left">
+              <img src="./assets/Group 2.png" alt="footer logo">
+              <p>Mig, 72, Rajiv Nagar, A Sector, Aayodhya bypass Bhopal, Madhya Pradesh, India (462022)</p>
+              <div>
+                  <a href="#" style="color: var(--maintheme);">ridorg.in@gmail.com | Email</a>
+                  <br><br>
+                  <a href="#" style="color: var(--maintheme);">+91 9892782728 | Mobile</a>
+              </div>
+          </div>
+
+          <div class="links-head">
+              <div style="width: 100%;">
+              <h3>Research Topics</h3>
+              <br>
+              <hr style="border: none; border-bottom: 1px dotted #000;">
+              </div>
+          
+              <div class="links">
+              <div class="links-1">
+                  <a href="#">Computers</a>
+                  <a href="#">Tech National Affairs</a>
+                  <a href="#">AI: Artificial Intelligence</a>
+                  <a href="#">Race & Ethnicity</a>
+                  <a href="#">Religion</a>
+                  <a href="#">Age & Generations</a>
+                  <a href="#">Gender & Equality</a>
+              </div>
+              <div class="links-2">
+                  <a href="#">Space Engineering</a>
+                  <a href="#">Economy & Work</a>
+                  <a href="#">Science</a>
+                  <a href="#">Internet & Technology</a>
+                  <a href="#">News Habits & Media</a>
+                  <a href="#">Methodological Research</a>
+              </div>
+              <div class="links-3">
+                  <a href="#">Aeronautical Engineering</a>
+                  <a href="#">Become Dev</a>
+                  <a href="#">Frontend Techstack</a>
+                  <a href="#">Resume Building</a>
+                  <a href="#">Formal Communication</a>
+                  <a href="#">English & More</a>
+              </div>
+
+              </div>
+         </div>
+
+         <div class="links-social">
+          <div style="width: 100%;">
+          <h3>Social Links</h3>
+          <br>
+          <hr style="border: none; border-bottom: 1px dotted #000;">
+          </div>
+      
+          <div class="links">
+          <div class="links-1">
+              <a href="#"><ion-icon name="logo-facebook"></ion-icon> Facebook</a>
+              <a href="#"><ion-icon name="logo-linkedin"></ion-icon> LinkedIn</a>
+              <a href="#"><ion-icon name="logo-youtube"></ion-icon> YouTube</a>
+              <a href="#"><ion-icon name="logo-github"></ion-icon> GitHub</a>
+          </div>
+          <div class="links-2">
+              <a href="#"><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
+              <a href="#"><ion-icon name="mail-outline"></ion-icon> Email Us</a>
+          </div>
+          </div>
+     </div>
+
+      </footer>
+
+      
+  </section>
+  <hr style="border: none; border-bottom: 1px dotted #000;">
+  <section class="copyrightsection">
+      
+      <div><p>Copyright ©2024, RID |  TWF (TWKSAA WELFARE FOUNDATION). All Rights Reserved.</p></div>
+      <div class="link">
+            <a href="#">About </a> &nbsp;|&nbsp;
+            <a href="#">Terms & Conditions </a> &nbsp;|&nbsp;
+            <a href="#">Privacy Policy </a> &nbsp;|&nbsp;
+            <a href="#">Feedback</a>
+      </div>
+  </section>
+
+  <!-- Script -->
+
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script>
+        (function () {
+            const locomotiveScroll = new LocomotiveScroll();
+        })();
+        
+    </script>
+    <!-- Harsh Adding Code Here (Start Point) -->
+
+
+
+
     <script>
       document
         .querySelector(".menu-link")
@@ -1171,7 +1381,7 @@ window.onclick = function(event) {
 };
 </script>
 
-    ======= //Hyperdgx >>>>>>> 3edf6f4732849e787a83487d4969d13011c63af2
+    
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
