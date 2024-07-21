@@ -162,7 +162,7 @@
           </ul>
 
           <ul class="lowerNav">
-            <li>
+            <li  >
               <a class="menu-link" href="#"
                 ><object
                   class="svg-object"
@@ -172,7 +172,7 @@
                 >Home</a
               >
             </li>
-            <li>
+            <li class="menu-linki">
               <a class="menu-link" href="#"
                 ><object
                   class="svg-object"
@@ -754,7 +754,12 @@ window.onload = function() {
    swapBtn.style.left = '110px';
    window.location.href= '/form';
   });
-
+  registerBTn.addEventListener('mouseover', () => {
+   swapBtn.style.left = '110px';
+  });
+  registerBTn.addEventListener('mouseout', () => {
+   swapBtn.style.left = '0px';
+  });
 
 
 </script>

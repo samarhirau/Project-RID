@@ -263,7 +263,7 @@ body {
     background: #0a66c2;
     color: #fff;
     border-radius: 30px;
-    transition: all 0.1s ease;
+    transition: all 0.4s ease;
   }
   #certificate{
     background: #0a66c2;
@@ -329,6 +329,7 @@ body {
   align-items: center;
   height: 40px;
   /* background: #f77070; */
+  align-self: flex-end;
 }
 .lowerNav ul {
   display: flex;
@@ -543,13 +544,16 @@ body {
   font-weight: 600;
   color: #333;
   margin-left: 40px;
+  text-align: left;
 }
 .onText-slider .text-area p {
+  margin-top: 10px;
   font-size: 0.9rem;
   font-weight: 300;
   color: #333;
   margin-left: 40px;
   width: 80%;
+  /* text-align: center; */
 }
 .onText-slider button {
   background: var(--header-color);
@@ -587,7 +591,7 @@ body {
   font-size: 0.8rem;
   font-weight: 400;
   color: #333;
-  margin: 10px 0;
+  margin: 10px 0 30px 0;
 }
 .home-content .content span {
   /* font-size: 0.9rem; */
@@ -669,15 +673,20 @@ body {
   border-radius: 50%;
 }
 
-
-.svg-object:hover{
+.menu-link:hover .svg-object{
   filter: invert(27%) sepia(96%) saturate(1812%) hue-rotate(182deg) brightness(89%) contrast(91%);
+
 }
+/* .svg-object:hover{
+  filter: invert(27%) sepia(96%) saturate(1812%) hue-rotate(182deg) brightness(89%) contrast(91%);
+} */
 
 .menu-link:hover{
   color: var(--header-color);
 }
-
+.menu-link:active .svg-object{
+  filter: invert(27%) sepia(96%) saturate(1812%) hue-rotate(182deg) brightness(89%) contrast(91%);
+}
 
 .search-box {
   font-size: 20px;
