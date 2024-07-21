@@ -30,18 +30,18 @@
     </div>
 
     <script>
-document.getElementById('logoutButton').addEventListener('click', function() {
-    fetch('/logout', {
-        method: 'POST',
-        credentials: 'include'
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = '/'; // Redirect to home page after logout
-        }
-    })
-    .catch(error => console.error('Error:', error));
-});
+// document.getElementById('logoutButton').addEventListener('click', function() {
+//     fetch('/logout', {
+//         method: 'POST',
+//         credentials: 'include'
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             window.location.href = '/'; // Redirect to home page after logout
+//         }
+//     })
+//     .catch(error => console.error('Error:', error));
+// });
     </script>
     <script>
          document.addEventListener("DOMContentLoaded", function() {
@@ -79,6 +79,7 @@ document.getElementById('logoutButton').addEventListener('click', function() {
             handleLogin();
           });
     </script>
+    
     <script src="./js/script.js"></script>
   </body>
 </html>
