@@ -1,4 +1,17 @@
+  // add script to profile section
+  document.addEventListener("DOMContentLoaded", function() {
+    fetch('./component/profile.html')
+        .then(response => response.text())
+        .then(data => {
+            const profileSection = document.getElementById('profile-sectionn');
+            profileSection.innerHTML = data;
 
+        
+            const scriptElement = document.createElement('script');
+            scriptElement.src = './component/js/script.js';
+            document.body.appendChild(scriptElement);
+        });
+});
 
 
 const menuLinks = document.querySelectorAll(".menu-link");
@@ -27,14 +40,14 @@ function handleLinkHover(event) {
   line.style.top = `${top + height + offsetBottom}px`;
 }
 
-// footer
+// about
 
-const footerContainer = document.getElementById('footer-container');
+const aboutContainer = document.getElementById('about-container');
 const xhr = new XMLHttpRequest();
-xhr.open('GET', './component/footer.html', true);
+xhr.open('GET', './component/about.html', true);
 xhr.onload = function() {
   if (xhr.status === 200) {
-	footerContainer.innerHTML = xhr.responseText;
+	aboutContainer.innerHTML = xhr.responseText;
   }
 };
 xhr.send();
@@ -136,34 +149,34 @@ function slidefun(n) {
 
 
 
-document.getElementById('registrationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// document.getElementById('registrationForm').addEventListener('submit', function(e) {
+//     e.preventDefault();
     
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+//     const firstName = document.getElementById('firstName').value;
+//     const lastName = document.getElementById('lastName').value;
+//     const email = document.getElementById('email').value;
+//     const password = document.getElementById('password').value;
 
-    // Perform your validation and API call here
-    console.log('Form submitted', { firstName, lastName, email, password });
+//     // Perform your validation and API call here
+//     console.log('Form submitted', { firstName, lastName, email, password });
 
-    // Example of form submission
-    fetch('/api/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ firstName, lastName, email, password })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        // Redirect to next step or show success message
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-});
+//     // Example of form submission
+//     fetch('/api/register', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ firstName, lastName, email, password })
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log('Success:', data);
+//         // Redirect to next step or show success message
+//     })
+//     .catch((error) => {
+//         console.error('Error:', error);
+//     });
+// });
 
 
      
@@ -187,3 +200,8 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     alert('OTP verified successfully!');
   });
 
+
+
+
+
+ 
