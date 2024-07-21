@@ -355,6 +355,7 @@ footer .left{
     width: 25%;
     gap: 32px;
 }
+
 footer .left p{
     font-size: 12px;
 }
@@ -439,3 +440,94 @@ footer .links{
     color: grey;
     font-size: 12px;
 }
+@media only screen and (max-width: 600px) {
+    .discover-research{
+        flex-direction: column;
+        height: fit-content;
+        align-items: start;
+        width: 100%;
+    }
+    .discover-research .left{
+        width: 100%;
+    }
+    .discover-research .right img{
+        display: none;
+    }
+    .newsletter{
+        height: fit-content;
+    }
+    .newsletter-body{
+       flex-direction: column;
+       height: 32vh;
+       justify-content: start;
+       gap: 32px;
+    }
+    .inputbtnsubs{
+        flex-direction: column;
+        width: 100%;
+    }
+    .subscribeletter{
+        height: fit-content;
+        width: 100%;
+    }
+    .subscribeletter input{
+        border: none;
+        outline: none;
+        height: 32px;
+        width: 100%;
+        background: inherit;
+    }
+    .Subscribe{
+        padding: 16px 32px;
+    }
+    .fullreading,
+    .posts,
+    .post-one,
+    .post-two,
+    .post-three{
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .post-one,
+    .post-two,
+    .post-three{
+        border: none;
+        padding-bottom: 32px;
+        border-bottom: black 1px dotted;
+    }
+    hr{
+        padding: 4px 0;
+    }
+    footer{
+        flex-direction: column-reverse;
+        width: 100%;
+        gap: 32px;
+    }
+    footer .left{
+        width: 100%;
+    
+    }
+    footer img{
+        height: 52px;
+    }
+    
+    .links-head{
+        flex-direction: column;
+    }
+    .links-social{
+        flex-direction: column;
+    }
+    .links-head .links{
+        flex-direction: column;
+    }
+    .links-social .links{
+        flex-direction: column;
+    }
+    .copyrightsection{
+        flex-direction: column-reverse;
+        gap: 8px;
+        text-align: center;
+        align-items: center;
+    }
+  }
