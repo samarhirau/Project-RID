@@ -231,15 +231,39 @@ body {
     text-align: center;
     border-radius: 30px;
   }
-  .btn-merge{
-    font-size: 0.9rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* gap: 10px; */
-    background: #0a66c242;
+  .btn-box{
+    width: 220px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+   
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* background: #0a66c242; */
     border-radius: 30px;
+    position: relative;
+  }
+
+  .toggle-btn{
+    padding: 10px 30px;
+    position: relative;
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+   
+  }
+
+  #swap-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 100%;
+    background: #0a66c2;
+    color: #fff;
+    border-radius: 30px;
+    transition: all 0.1s ease;
   }
   #certificate{
     background: #0a66c2;
@@ -253,8 +277,13 @@ body {
     /* width: 100px; */
     text-align: center;
   }
+
+
+
+
+
  
-  #logInButton{
+  /* #logInButton{
     background:var(--header-color);
     color: #fff;
     padding: 8px 15px;
@@ -262,8 +291,7 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    /* height: 25px; */
-    /* width: 100px; */
+
     text-align: center;
   }
   #signUpBtn{
@@ -274,11 +302,15 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    /* height: 25px; */
-    width: 100px;
-    text-align: center;
   
-  }
+  
+  } */
+
+
+
+
+
+/* 
 .upperNav button {
   background: var(--header-color);
   color: white;
@@ -288,9 +320,9 @@ body {
   font-weight: 600;
   transition: all 0.3s ease;
   /* height: 25px; */
-  width: 100px;
-  text-align: center;
-}
+  /* width: 100px;
+  text-align: center; */
+/* } */ 
 .lowerNav {
   display: flex;
   justify-content: space-evenly;
@@ -783,3 +815,5 @@ body {
   flex-direction: column;
   gap: 10px;
 }
+
+

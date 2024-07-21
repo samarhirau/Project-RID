@@ -118,16 +118,17 @@
               <button  id="certificate" onclick="window.location.href= '/verify'">Certificate</button>
             
           </div>
-          <div class="btn-merge">
-            <div class="login">
+          <div class="btn-box">
+            <div id="swap-btn"></div>
+            <!-- <div class="login"> -->
               <!-- <a href="#">Login</a> -->
-              <button   onclick="window.location.href= '/login'" id="logInButton">Login</button>
-            </div>
-            <div class="signUp">
+              <button class="toggle-btn"  onclick="window.location.href= '/login'" id="logInButton">Login</button>
+            <!-- </div> -->
+            <!-- <div class="signUp"> -->
               <!-- <a href="#">Sign Up</a> -->
-              <button id="signUpBtn" onclick="window.location.href= '/form'">Register</button>
+              <button class="toggle-btn"  id="signUpBtn"  >Register</button>
             
-          </div>
+          <!-- </div> -->
         </div>
          
         <div id="footerr" style="display: none;"></div>
@@ -697,7 +698,7 @@ window.onload = function() {
 // };
 </script>
 
-<<<<<<< HEAD
+
 <script>
   // document.getElementById('logoutButton').addEventListener('click', function() {
   //     fetch('/logout', {
@@ -744,6 +745,18 @@ window.onload = function() {
             }
             closeContent();
         });
+</script>
+<script>
+ const swapBtn = document.getElementById('swap-btn');
+ const registerBTn = document.getElementById('signUpBtn');
+
+  registerBTn.addEventListener('click', () => {
+   swapBtn.style.left = '110px';
+   window.location.href= '/form';
+  });
+
+
+
 </script>
     
     <script src="./js/main.js"></script>

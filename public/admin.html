@@ -1,91 +1,200 @@
-<!-- 
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Page</title>
+  <title>Admin page</title>
+  <link rel="stylesheet" href="./css/admin.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-  <h1>Upload Certificate</h1>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <label for="certificateId">Certificate ID:</label>
-    <input type="text" id="certificateId" name="certificateId" required><br>
-    <label for="internName">Intern Name:</label>
-    <input type="text" id="internName" name="internName" required><br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br>
-    <label for="issueDate">Issue Date:</label>
-    <input type="date" id="issueDate" name="issueDate" required><br>
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea><br>
-    <label for="certificate">Upload Certificate:</label>
-    <input type="file" id="certificate" name="certificate" required><br>
-    <button type="submit">Upload</button>
-  </form>
+  <header>
+    <div class="upper-header">
+      <div class="left-content">
+        <span>Website :</span> RID (Research Discovery & Innovation) by TWSKAA Welfare Foundation | <span>Helpline :</span> +91 98927 82728 | <span>Email :</span> supportrid@gmail.com
+      </div>
+      <div class="right-content">
+        <span class="material-symbols-outlined" style="font-size: 15px;">important_devices</span><a href="#">Main Content</a> | 
+        <a href="">+A</a> <a href="">A</a> <a href="">A-</a> | 
+        <span class="material-symbols-outlined" style="font-size: 15px;">forum</span> <a href="#">Feedback</a> |
+        <span class="material-symbols-outlined" style="font-size: 15px;">support_agent</span>  <a href="#">Support</a>
+      </div>
+    </div>
+    <div class="lower-header">
+      <div class="left-content">
+        <div class="logo">
+          <img src="./assets/images/imageLogo.png" alt="RID logo">
+        </div>
+      </div>
+      <div class="right-content">
+        <button><img src="./assets/icons/workspace_premium.png" style="filter: brightness(100); width: 21px; height: 21px; margin-right: 10px; text-align: center;" alt=""><span>Verify Certificate</span></button>
+      </div>
+    </div>
+  </header>
+  <div class="main-content">
+    <div class="side-bar">
+      <div class="div1">
+        <div>
+          <h2>Administrator</h2>
+          <button id="dashboardbtn"><span class="material-symbols-outlined" style="font-size: 20px;">
+            bar_chart_4_bars
+            </span><span>Dashboard</span></button>
+          <button style="color: black; background-color: white;"><span class="material-symbols-outlined" style="font-size: 20px;">
+            group
+            </span><span>Total Registration</span></button>
+        </div>
+        <div>
+          <h2>Certificate tool</h2>
+          <button id="uploadCerti" onclick="uploadcertificate()" style="color: black; background-color: white;"><span class="material-symbols-outlined" style="font-size: 20px;">
+            workspace_premium
+            </span><span>Upload Certificate</span></button>
+        </div>
+      </div>
+      <footer>
+        <h2>Admin Account</h2>
+        <button><span class="material-symbols-outlined" style="font-size: 20px;">
+          logout
+          </span><span>Logout</span></button>
+      </footer>
+    </div>
+    <div class="main-area" id="mainArea">
+      <h2>Dashboard Overview</h2>
+      <div id="div1">
+        <div>
+          <span class="material-symbols-outlined">
+            group
+            </span>
+            <h3>Total Registration</h3>
+        </div>
+        <h1>12 +</h1>
+      </div>
+    </div>
+    <div class="main-area1" id="mainArea1" style="display: none;">
+      <h2>Upload Certificate</h2>
+      <form id="uploadForm" class="uploadForm">
+        <section>
+          <div class="form-group">
+              <label>Certificate Id <span style="color: red; font-weight: bold;">*</span></label>
+              <input type="text" name="certificateId" id="certificateId" placeholder="eg: RIDXR24354" required>
+          </div>
+          <div class="form-group">
+              <label>Issue Date <span style="color: red; font-weight: bold;">*</span></label>
+              <input type="date" name="issueDate" id="issueDate" placeholder="DD/MM/YYYY" required>
+          </div>
+          <div class="form-group">
+              <label>Intern or Student Name <span style="color: red; font-weight: bold;">*</span></label>
+              <input type="text" name="internName" id="internName" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+              <label>Description <span style="color: grey; font-weight: 400;">(Optional)</span></label>
+              <input type="text" name="description" id="description" placeholder="Write Description or leavn it blank">
+          </div>
+         
+        <div class="form-group">
+          <label>Upload Certificate <span style="color: red; font-weight: bold;">*</span></label>
+          <input required type="file" name="certificate" id="certificate" hidden>
+          <div id="dropArea" class="drop-area">
+              <p>Drag & Drop your file here or click to upload</p>
+          </div>
+      </div>
+    </section>
+        <button type="submit">
+          Upload Now
+        </button>
+    
+      </form>
+    </div>
+  </div>
 
   <script>
-    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
+    function uploadcertificate(){
+      document.getElementById('mainArea1').style.display = 'flex';
+      document.getElementById('mainArea').style.display = 'none';
+      document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+      document.getElementById('dashboardbtn').style.color = 'black';
+      document.getElementById('uploadCerti').style.backgroundColor = '#0A66C2';
+      document.getElementById('uploadCerti').style.color = 'white';
+    }
+  </script>
+  <script>
+    // Wait until the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Get the dashboard button by its ID
+    const dashboardBtn = document.getElementById('dashboardbtn');
+    
+    // Add a click event listener to the button
+    dashboardBtn.addEventListener('click', () => {
+        // Redirect to the home page
+        window.location.href = 'index.html'; // Adjust the URL as needed
+    });
+});
 
-      const formData = new FormData();
-      formData.append('certificateId', document.getElementById('certificateId').value);
-      formData.append('internName', document.getElementById('internName').value);
-      formData.append('email', document.getElementById('email').value);
-      formData.append('issueDate', document.getElementById('issueDate').value);
-      formData.append('description', document.getElementById('description').value);
-      formData.append('certificate', document.getElementById('certificate').files[0]);
+  </script>
+  
 
-      try {
-        const response = await fetch('/admin/upload', {
-          method: 'POST',
-          body: formData,
-        });
 
-        const result = await response.json();
-        if (response.ok) {
-          alert(result.message);
-        } else {
-          alert(result.message);  // "Certificate ID already exists" message
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const dropArea = document.getElementById('dropArea');
+      const fileInput = document.getElementById('certificate');
+  
+      // Prevent default drag behaviors
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+      });
+  
+      // Highlight drop area when item is dragged over it
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+      });
+  
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+      });
+  
+      // Handle dropped files
+      dropArea.addEventListener('drop', handleDrop, false);
+  
+      // Handle click to open file input dialog
+      dropArea.addEventListener('click', () => fileInput.click());
+  
+      // Handle file input change
+      fileInput.addEventListener('change', handleFiles, false);
+  
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+  
+      function highlight(e) {
+        dropArea.classList.add('dragover');
+      }
+  
+      function unhighlight(e) {
+        dropArea.classList.remove('dragover');
+      }
+  
+      function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles({ target: { files } });
+      }
+  
+      function handleFiles(e) {
+        const files = e.target.files;
+        // Assuming only one file is dropped or selected
+        if (files.length > 0) {
+          const filename = files[0].name;
+          // Display the file name in the drop area
+          dropArea.innerHTML = `<p>File uploaded: ${filename}</p>`;
         }
-      } catch (error) {
-        alert('Failed to upload certificate');
       }
     });
   </script>
-</body>
-</html>
-
-
- -->
-
-
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Page</title>
-</head>
-<body>
-  <h1>Upload Certificate</h1>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <label for="certificateId">Certificate ID:</label>
-    <input type="text" id="certificateId" name="certificateId" required><br>
-    <label for="internName">Intern Name:</label>
-    <input type="text" id="internName" name="internName" required><br>
-    <label for="issueDate">Issue Date:</label>
-    <input type="date" id="issueDate" name="issueDate" required><br>
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea><br>
-    <label for="certificate">Upload Certificate:</label>
-    <input type="file" id="certificate" name="certificate" required><br>
-    <button type="submit">Upload</button>
-  </form>
-
-  <script>
+   <script>
     document.getElementById('uploadForm').addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -109,5 +218,6 @@
       }
     });
   </script>
+  
 </body>
 </html>
