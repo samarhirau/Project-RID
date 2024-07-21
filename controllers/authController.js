@@ -1,6 +1,5 @@
 const User = require('../models/user');
 const crypto = require('crypto');
-const path = require('path'); // Import the path module
 
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
@@ -38,18 +37,28 @@ exports.checkSession = (req, res) => {
 };
 
 
-exports.logoutUser = (req, res) => {
-    req.session.destroy(err => {
+// exports.logoutUser = (req, res) => {
+//     req.session.destroy(err => {
+//         if (err) {
+//             return res.status(500).send('Error logging out');
+//         }
+//         res.clearCookie('connect.sid'); // Clear session cookie
+//         res.sendStatus(200);
+//     });
+// };
+// // Compare this snippet from models/user.js:
+
+
+// controllers/authController.js
+module.exports.logout = (req, res) => {
+    req.session.destroy((err) => {
         if (err) {
-            return res.status(500).send('Error logging out');
+            return res.status(500).send('Failed to logout.');
         }
-        res.clearCookie('connect.sid'); // Clear session cookie
+        res.clearCookie('connect.sid', { path: '/' });
         res.sendStatus(200);
     });
 };
-// Compare this snippet from models/user.js:
-
-
 
    
 

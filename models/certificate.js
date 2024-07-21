@@ -30,30 +30,47 @@
 // });
 
 // module.exports = mongoose.model('Certificate', CertificateSchema);
+
+
+// const mongoose = require('mongoose');
+
+// const CertificateSchema = new mongoose.Schema({
+//   certificateId: {
+//     type: String,
+//     required: true,
+//     unique: true,
+//   },
+//   internName: {
+//     type: String,
+//     required: true,
+//   },
+//   issueDate: {
+//     type: Date,
+//     required: true,
+//   },
+//   description: {
+//     type: String,
+//     required: true,
+//   },
+//   certificateFile: {
+//     type: Buffer,
+//     required: true,
+//   },
+// });
+
+// module.exports = mongoose.model('Certificate', CertificateSchema);
+
 const mongoose = require('mongoose');
 
-const CertificateSchema = new mongoose.Schema({
-  certificateId: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  internName: {
-    type: String,
-    required: true,
-  },
-  issueDate: {
-    type: Date,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  certificateFile: {
-    type: Buffer,
-    required: true,
-  },
+const certificateSchema = new mongoose.Schema({
+  certificateId: { type: String, required: true, unique: true },
+  internName: { type: String, required: true },
+  issueDate: { type: Date, required: true },
+  description: { type: String, required: true },
+  certificateFile: { type: Buffer, required: true }, // Assuming binary data for the file
 });
 
-module.exports = mongoose.model('Certificate', CertificateSchema);
+const Certificate = mongoose.model('Certificate', certificateSchema);
+
+module.exports = Certificate;
+

@@ -1,0 +1,399 @@
+/* 
+body{
+    background-color: #222121;
+    font-family: Arial, sans-serif;
+}
+.db-container{
+    padding: 10px;
+    max-width: 500px;
+    margin: 100px auto;
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #fff;
+}
+.db-container .form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+.form label{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.form input{
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+.form select{
+    padding: 8px;
+}
+.form button{
+    padding: 8px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 25px;
+    color: none;
+
+} */
+
+/* 
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #83a4d4, #b6fbff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+}
+.signup-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+.signup-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    animation: textColorChange 5s infinite alternate;
+}
+@keyframes textColorChange {
+    0% { color: #4b79a1; }
+    100% { color: #283e51; }
+}
+.signup-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #4b79a1;
+}
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"],
+.signup-form input[type="tel"],
+.signup-form input[type="date"],
+.signup-form select,
+.signup-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-form input[type="text"]:focus,
+.signup-form input[type="email"]:focus,
+.signup-form input[type="password"]:focus,
+.signup-form input[type="tel"]:focus,
+.signup-form input[type="date"]:focus,
+.signup-form select:focus,
+.signup-form textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+.signup-form select {
+    appearance: none;
+    background: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" width%3D"20" height%3D"20" viewBox%3D"0 0 20 20"%3E%3Cpolygon fill%3D"%233498db" points%3D"0,0 20,0 10,10"/%3E%3C/svg%3E') no-repeat right 10px center;
+    background-size: 10px;
+    padding-right: 25px; 
+}
+.signup-form button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #5cb85c, #4cae4c);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.signup-form button:hover {
+    background: linear-gradient(45deg, #4cae4c, #5cb85c);
+    transform: scale(1.05);
+}
+.signup-form button:active {
+    transform: scale(0.95);
+}
+.signup-form #customCourseInput {
+    display: none;
+}
+.signup-form #course:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+    outline: none;
+    background: #fcf8e3;
+}
+.signup-form #courseList {
+    display: none;
+    color: #000;
+    position: absolute;
+    width:500px; 
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    background-color: #fff;
+}
+.signup-form #course:focus + #courseList {
+    display: block;
+}
+.signup-form #courseList option:hover {
+    background-color: #ef7f7f;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(bg1.png);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Hind", sans-serif;
+    background-position: center;
+    background-size: cover;
+}
+
+body .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body .container h1{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 50.46px;  
+}
+
+.container h3{
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 51.23px;
+    color: #0A66C2;
+}
+
+.container img{
+    margin: 30px;
+    width: 350px;
+    height: 69px;
+}
+
+body .container section{
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+    grid-template-rows: repeat(2 , 1fr);
+    gap: 10px;
+    width: 60vw;
+    height: 30vh;
+    border-radius: 8px;
+    border: 1px solid #80808080;
+    background-color: #F3F7FC;
+    justify-content: space-evenly;
+    padding: 40px;
+}
+
+body .container section .form-group label{
+    font-weight: 600;
+    line-height: 35.22px;
+}
+
+body .container section .form-group input{
+    padding: 9.07px 16.13px;
+    border: 1px solid #80808080;
+    gap: 10.08px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+body .container section .form-group{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+body .container footer{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    gap: 10px;
+}
+
+.container .login-span{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28.82px;
+}
+
+.container .login-span a{
+    text-decoration: underline;
+    color: #0A66C2;
+}
+
+.container button{
+    width: 30%;
+    height: 40px;
+    color: white;
+    line-height: 25.82px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 14.13px;
+    padding: 9.07px, 16.13px, 9.07px, 16.13px;
+    background-color: #0A66C2;
+    border: 0.58px #FFFFFF;
+    gap: 10.08px;
+    border-radius: 4.03px;
+    margin: 15px 0px;
+}
+
+.container footer span:nth-child(1){
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28.83px;
+    margin-top: 40px;
+    color: #808080;
+}
+
+.container footer span:nth-child(2) a{
+    color: #000000;
+    size: 14px;
+    font-weight: 400;
+    line-height: 28.82px;
+}
+
+/* for otp page - page2 */
+
+body .container #form-otp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    height: 30vh;
+    width: 30vw;
+    border-radius: 8px;
+    border: 1px solid #80808080;
+    background-color: #F3F7FC;
+    align-items: center;
+}
+
+.container #form-otp .input-boxes{
+    display: flex;
+    grid-area: 5px;
+}
+
+.input-boxes input{
+    width: 50px;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 2px;
+    border: 1px solid #55525c;
+    background-color: white;
+}
+
+.container #span1{
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 28.82px;
+    color: #008000;
+}
+
+.container #span2{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28.82px;
+    color: #808080;
+}
+
+.container #span2 a{
+    text-decoration: underline;
+    color: #0A66C2;
+}
+
+.container #btn-otp{
+    width: 30vw;
+    height: 40px;
+    color: white;
+    line-height: 25.82px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 14.13px;
+    padding: 9.07px, 16.13px, 9.07px, 16.13px;
+    background-color: #0A66C2;
+    border: 0.58px #FFFFFF;
+    gap: 10.08px;
+    border-radius: 4.03px;
+    margin: 15px 0px;
+}
+
+/* This css is for the last page */
+
+
+
+body .container #form-last{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    height: 40vh;
+    width: 30vw;
+    border-radius: 8px;
+    border: 1px solid #80808080;
+    background-color: #F3F7FC;
+    align-items: center;
+}
+
+body .container #form-last img{
+    width: 80px;
+    height: 80px;
+}
+
+body .container #form-last h1{
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 30px;
+    color: #000000;
+}
+
+body .container #form-last span{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 35.22px;
+    color: #000000;
+}
+
+body .container #form-last span a{
+    text-decoration: underline;
+    color: #0A66C2;
+}

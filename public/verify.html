@@ -1,131 +1,125 @@
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verify Certificate</title>
-  <style>
-    .certificate-details {
-      display: none;
-    }
-  </style>
-</head>
-<body>
-  <h1>Verify Certificate</h1>
-  <form id="verifyForm">
-    <label for="certificateId">Certificate ID:</label>
-    <input type="text" id="certificateId" name="certificateId" required><br>
-    <button type="submit">Verify</button>
+
+ 
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Verify Certificate</title>
+    <link rel="stylesheet" href="./css/verify.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+   <style>
+     .certificate-details {
+       display: none;
+     }
+   </style>
+ </head>
+ <body>
+   <!-- <h1>Verify Certificate</h1> -->
+
+     
+  <header>
+    <div class="upper-header">
+      <div class="left-content">
+        <span>Website :</span> RID (Research Discovery & Innovation) by TWSKAA Welfare Foundation | <span>Helpline :</span> +91 98927 82728 | <span>Email :</span> supportrid@gmail.com
+      </div>
+      <div class="right-content">
+        <span class="material-symbols-outlined" style="font-size: 15px;">important_devices</span><a href="#">Main Content</a> | 
+        <a href="">+A</a> <a href="">A</a> <a href="">A-</a> | 
+        <span class="material-symbols-outlined" style="font-size: 15px;">forum</span> <a href="#">Feedback</a> |
+        <span class="material-symbols-outlined" style="font-size: 15px;">support_agent</span>  <a href="#">Support</a>
+      </div>
+    </div>
+    <div class="lower-header">
+      <div class="left-content">
+        <div class="logo">
+          <img src="./assets/images/imageLogo.png" alt="RID logo">
+        </div>
+      </div>
+      <div class="right-content">
+      </div>
+    </div>
+  </header>
+  <div class="main-content">
+  <div class="upper-content">
+    <h2>RID's Certificate Verification & Validation</h2>
+    <p>Welcome to RID’s Certificate Verification & Validation, Here you can easily, verify the status of Research Innovation & Discovery certificate for an internship, training program, seminar, webinar or workshop programs, you may search as follows: </p>
+    <li><span>Step 1:</span> Visit the official website of the Research Innovation & Discovery (RID).</li>
+    <li><span>Step 2:</span> Look for a "Certificate" or "Verify Certificate" button on top of the landing page.</li>
+    <li><span>Step 3:</span> Enter the unique certificate number or certificate id.</li>
+    <li><span>Step 4:</span> Review the results to confirm the validity and status of the certificate.</li>
+</div>
+
+   <form id="verifyForm">
+    <div class="lower-content">
+        <section>
+            <div class="form-group">
+                <label>Certificate ID or Number <span style="color: red; font-weight: bold;">*</span></label>
+                <input id="certificateId" type="text" name=""  placeholder="eg: RIDXR32354">
+            </div>
+        </section>
+         <div id="span-message">
+            <span id="innerspan">hello</span><span id="message">world</span>
+        </div> 
+        <div class="buttons">
+            <button type="submit" onclick="func()"><span class="material-symbols-outlined" style="font-size: 20px;">
+                new_releases
+                </span>Verify Certificate</button>
+            <button><span class="material-symbols-outlined" style="font-size: 20px;">
+                download
+                </span><a id="detailCertificatePath" href="#" target="_blank">Download Certificate</a></button>
+        </div>
+        <div id="result"></div>
+        <div class="certificate-details" id="certificateDetails">
+          <h2>Certificate Details</h2>
+          <p><strong>Certificate ID:</strong> <span id="detailCertificateId"></span></p>
+          <p><strong>Intern Name:</strong> <span id="detailInternName"></span></p>
+          <p><strong>Issue Date:</strong> <span id="detailIssueDate"></span></p>
+          <p><strong>Description:</strong> <span id="detailDescription"></span></p>
+          <!-- <p><strong>Certificate:</strong> <a id="detailCertificatePath" href="#" target="_blank">View Certificate</a></p> -->
+        </div>
+
+        <span class="spanfooter"><span>Note:</span> Incase of failure of certificate validation, please contact us for further process.</span>
+    </div>
   </form>
-  <div id="result"></div>
-  <div class="certificate-details" id="certificateDetails">
-    <h2>Certificate Details</h2>
-    <p><strong>Certificate ID:</strong> <span id="detailCertificateId"></span></p>
-    <p><strong>Intern Name:</strong> <span id="detailInternName"></span></p>
-    <p><strong>Issue Date:</strong> <span id="detailIssueDate"></span></p>
-    <p><strong>Description:</strong> <span id="detailDescription"></span></p>
-    <p><strong>Certificate:</strong> <a id="detailCertificatePath" href="#" target="_blank">View Certificate</a></p>
+   <div id="result"></div>
+  
   </div>
-
-  <script>
-    document.getElementById('verifyForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const certificateId = document.getElementById('certificateId').value;
-
-      try {
-        const response = await fetch('/verify/verify', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ certificateId }),
-        });
-
-        const result = await response.json();
-        if (result.message === 'Certificate is valid') {
-          document.getElementById('result').textContent = result.message;
-          document.getElementById('certificateDetails').style.display = 'block';
-          document.getElementById('detailCertificateId').textContent = result.certificate.certificateId;
-          document.getElementById('detailInternName').textContent = result.certificate.internName;
-          document.getElementById('detailIssueDate').textContent = new Date(result.certificate.issueDate).toLocaleDateString();
-          document.getElementById('detailDescription').textContent = result.certificate.description;
-          document.getElementById('detailCertificatePath').href = result.certificate.certificatePath;
-        } else {
-          document.getElementById('result').textContent = result.message;
-          document.getElementById('certificateDetails').style.display = 'none';
-        }
-      } catch (error) {
-        document.getElementById('result').textContent = 'Failed to verify certificate';
-        document.getElementById('certificateDetails').style.display = 'none';
-      }
-    });
-  </script>
-</body>
-</html> -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verify Certificate</title>
-  <style>
-    .certificate-details {
-      display: none;
-    }
-  </style>
-</head>
-<body>
-  <h1>Verify Certificate</h1>
-  <form id="verifyForm">
-    <label for="certificateId">Certificate ID:</label>
-    <input type="text" id="certificateId" name="certificateId" required><br>
-    <button type="submit">Verify</button>
-  </form>
-  <div id="result"></div>
-  <div class="certificate-details" id="certificateDetails">
-    <h2>Certificate Details</h2>
-    <p><strong>Certificate ID:</strong> <span id="detailCertificateId"></span></p>
-    <p><strong>Intern Name:</strong> <span id="detailInternName"></span></p>
-    <p><strong>Issue Date:</strong> <span id="detailIssueDate"></span></p>
-    <p><strong>Description:</strong> <span id="detailDescription"></span></p>
-    <p><strong>Certificate:</strong> <a id="detailCertificatePath" href="#" target="_blank">View Certificate</a></p>
-  </div>
-
-  <script>
-    document.getElementById('verifyForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const certificateId = document.getElementById('certificateId').value;
-
-      try {
-        const response = await fetch('/verify/verify', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ certificateId }),
-        });
-
-        const result = await response.json();
-        if (result.message === 'Certificate is valid') {
-          document.getElementById('result').textContent = result.message;
-          document.getElementById('certificateDetails').style.display = 'block';
-          document.getElementById('detailCertificateId').textContent = result.certificate.certificateId;
-          document.getElementById('detailInternName').textContent = result.certificate.internName;
-          document.getElementById('detailIssueDate').textContent = new Date(result.certificate.issueDate).toLocaleDateString();
-          document.getElementById('detailDescription').textContent = result.certificate.description;
-          document.getElementById('detailCertificatePath').href = result.certificate.certificatePath;
-        } else {
-          document.getElementById('result').textContent = result.message;
-          document.getElementById('certificateDetails').style.display = 'none';
-        }
-      } catch (error) {
-        document.getElementById('result').textContent = 'Failed to verify certificate';
-        document.getElementById('certificateDetails').style.display = 'none';
-      }
-    });
-  </script>
-</body>
-</html>
+   <script>
+     document.getElementById('verifyForm').addEventListener('submit', async (e) => {
+       e.preventDefault();
+ 
+       const certificateId = document.getElementById('certificateId').value;
+ 
+       try {
+         const response = await fetch('/verify/verify', {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify({ certificateId }),
+         });
+ 
+         const result = await response.json();
+         if (result.message === 'Certificate is valid') {
+           document.getElementById('result').textContent = result.message;
+           document.getElementById('certificateDetails').style.display = 'block';
+           document.getElementById('detailCertificateId').textContent = result.certificate.certificateId;
+           document.getElementById('detailInternName').textContent = result.certificate.internName;
+           document.getElementById('detailIssueDate').textContent = new Date(result.certificate.issueDate).toLocaleDateString();
+           document.getElementById('detailDescription').textContent = result.certificate.description;
+           document.getElementById('detailCertificatePath').href = result.certificate.certificatePath;
+         } else {
+           document.getElementById('result').textContent = result.message;
+           document.getElementById('certificateDetails').style.display = 'none';
+         }
+       } catch (error) {
+         document.getElementById('result').textContent = 'Failed to verify certificate';
+         document.getElementById('certificateDetails').style.display = 'none';
+       }
+     });
+   </script>
+ </body>
+ </html>
+ 

@@ -16,15 +16,29 @@ const verifyRoutes = require('./routes/verify');
 const app = express();
 const port = process.env.PORT || 3010;
 
+const crypto = require('crypto');
+const secretKey = crypto.randomBytes(64).toString('hex');
+console.log(secretKey); // Print the key to use it in your session configuration
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use(session({
-  secret: 'yourSecretKey', // Change this to a secure key
-  resave: false,
-  saveUninitialized: true,
+    secret: secretKey,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Set to true if using HTTPS
 }));
+
+
+
+
+
+// Other routes and middleware
+
 
 app.use('/user', userRoutes);
 app.use('/auth', authRoutes);
