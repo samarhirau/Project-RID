@@ -29,24 +29,34 @@ const authController = require('../controllers/authController');
 
 // Login route
 router.post('/login', authController.loginUser);
-router.post('/logout', authController.logout);
+// router.post('/logout', authController.logout);
 
-module.exports = router;
+// module.exports = router;
 
 
 // Logout route
-router.post('/logout', (req, res) => {
-    req.session.destroy(err => {
-        if (err) {
-            return res.status(500).send('Error logging out');
-        }
-        res.clearCookie('connect.sid'); // Clear session cookie
-        res.sendStatus(200); // Send OK response
-    });
-});
+// router.post('/logout', (req, res) => {
+//     req.session.destroy(err => {
+//         if (err) {
+//             return res.status(500).send('Error logging out');
+//         }
+//         res.clearCookie('connect.sid'); // Clear session cookie
+//         res.sendStatus(200); // Send OK response
+//     });
+// });
 
+
+
+router.get('/logout', (req, res) => {
+    req.logout((err) => { // Include a callback function
+      if (err) {
+        return res.status(500).send('Logout failed'); // Handle the error
+      }
+      res.redirect('/'); // Redirect to the home page after successful logout
+    });
+  });
 // Check session route
-router.get('/check-session', authController.checkSession);
+// router.get('/check-session', authController.checkSession);
 
 module.exports = router;
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <p id="registrations-count">Loading number of registrations...</p>
+
+    <script>
+        async function fetchRegistrationsCount() {
+            try {
+                const response = await fetch('/admin/registrations/count');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                document.getElementById('registrations-count').textContent = `Number of registrations: ${data.count}`;
+            } catch (error) {
+                document.getElementById('registrations-count').textContent = 'Failed to load number of registrations';
+                console.error('Error fetching registrations count:', error);
+            }
+        }
+
+        fetchRegistrationsCount();
+    </script>
+</body>
+</html>
