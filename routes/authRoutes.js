@@ -47,16 +47,23 @@ router.post('/login', authController.loginUser);
 
 
 
+// router.get('/logout', (req, res) => {
+//     req.logout((err) => { // Include a callback function
+//       if (err) {
+//         return res.status(500).send('Logout failed'); // Handle the error
+//       }
+//       res.redirect('/'); // Redirect to the home page after successful logout
+//     });
+//   });
 router.get('/logout', (req, res) => {
-    req.logout((err) => { // Include a callback function
-      if (err) {
-        return res.status(500).send('Logout failed'); // Handle the error
-      }
-      res.redirect('/'); // Redirect to the home page after successful logout
-    });
+  req.logout((err) => {
+    if (err) {
+      return res.status(500).send('Logout failed'); // Handle the error
+    }
+    res.clearCookie('auth_cookie'); // Clear the authentication cookie
+    res.redirect('/'); // Redirect to the home page after successful logout
   });
-// Check session route
-// router.get('/check-session', authController.checkSession);
+});
 
 module.exports = router;
 

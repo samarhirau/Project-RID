@@ -309,3 +309,11 @@ header .lower-header .right-content button span{
     border-color: #000;
   }
   
+  /* #certificateFile {
+    opacity: 0;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    z-index: -1;
+  } */
+  

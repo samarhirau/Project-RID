@@ -107,6 +107,8 @@ require('dotenv').config();
 
 const connectDB = require('./config/db');
 require('./config/passport')(passport); // Initialize Passport with your configuration
+const cookieParser = require('cookie-parser');
+
 
 const userRoutes = require('./Routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
@@ -123,6 +125,7 @@ console.log(secretKey); // Print the key to use it in your session configuration
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser()); // Add cookie-parser middleware
 
 app.use(session({
   secret: secretKey,

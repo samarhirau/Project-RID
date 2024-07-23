@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +92,54 @@
     </div>
     <div class="main-area1" id="mainArea1" style="display: none;">
       <h2>Upload Certificate</h2>
-      <form id="uploadForm" class="uploadForm">
+<!-- ------------- -->
+
+
+<form id="uploadForm" class="uploadForm">
+  <section>
+    <div class="form-group">
+        <label>Certificate Id <span style="color: red; font-weight: bold;">*</span></label>
+        <input type="text" name="certificateId" id="certificateId" placeholder="eg: RIDXR24354" required>
+    </div>
+    <div class="form-group">
+        <label>Issue Date <span style="color: red; font-weight: bold;">*</span></label>
+        <input type="date" name="issueDate" id="issueDate" placeholder="DD/MM/YYYY" required>
+    </div>
+    <div class="form-group">
+        <label>Intern or Student Name <span style="color: red; font-weight: bold;">*</span></label>
+        <input type="text" name="internName" id="internName" placeholder="John Doe" required>
+    </div>
+    <div class="form-group">
+        <label>Description <span style="color: grey; font-weight: 400;">(Optional)</span></label>
+        <input type="text" name="description" id="description" placeholder="Write Description or leave it blank">
+    </div>
+   
+    <div class="form-group">
+      <label>Upload Certificate <span style="color: red; font-weight: bold;">*</span></label>
+      <input type="file" name="certificateFile" id="certificateFile" required hidden>
+      <div id="dropArea" class="drop-area">
+          <p>Drag & Drop your file here or click to upload</p>
+      </div>
+    </div>
+  </section>
+  <button type="submit">Upload Now</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- <form id="uploadForm" class="uploadForm">
         <section>
           <div class="form-group">
               <label>Certificate Id <span style="color: red; font-weight: bold;">*</span></label>
@@ -112,7 +160,7 @@
          
         <div class="form-group">
           <label>Upload Certificate <span style="color: red; font-weight: bold;">*</span></label>
-          <input required type="file" name="certificate" id="certificate" hidden>
+          <input required type="file" name="certificateFile" id="certificateFile" hidden>
           <div id="dropArea" class="drop-area">
               <p>Drag & Drop your file here or click to upload</p>
           </div>
@@ -122,7 +170,7 @@
           Upload Now
         </button>
     
-      </form>
+      </form> -->
     </div>
   </div>
   </div>
@@ -145,7 +193,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Add a click event listener to the button
     dashboardBtn.addEventListener('click', () => {
         // Redirect to the home page
-        window.location.href = 'index.html'; // Adjust the URL as needed
+        window.location.href = 'admin.html'; // Adjust the URL as needed
     });
 });
 
@@ -153,10 +201,113 @@ document.addEventListener('DOMContentLoaded', (event) => {
   
 
 
+
+  <!-- ----------- -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dropArea = document.getElementById('dropArea');
+      const fileInput = document.getElementById('certificateFile');
+
+      // Prevent default drag behaviors
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+      });
+
+      // Highlight drop area when item is dragged over it
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+      });
+
+      // Handle dropped files
+      dropArea.addEventListener('drop', handleDrop, false);
+
+      // Handle click to open file input dialog
+      dropArea.addEventListener('click', () => fileInput.click());
+
+      // Handle file input change
+      fileInput.addEventListener('change', handleFiles, false);
+
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      function highlight(e) {
+        dropArea.classList.add('dragover');
+      }
+
+      function unhighlight(e) {
+        dropArea.classList.remove('dragover');
+      }
+
+      function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files; // Assign files to file input
+        handleFiles({ target: { files } });
+      }
+
+      function handleFiles(e) {
+        const files = e.target.files;
+        if (files.length > 0) {
+          const filename = files[0].name;
+          dropArea.innerHTML = `<p>File uploaded: ${filename}</p>`;
+        }
+      }
+    });
+  </script>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.append('certificateId', document.getElementById('certificateId').value);
+      formData.append('internName', document.getElementById('internName').value);
+      formData.append('issueDate', document.getElementById('issueDate').value);
+      formData.append('description', document.getElementById('description').value);
+      formData.append('certificate', document.getElementById('certificateFile').files[0]);
+
+      try {
+        const response = await fetch('/admin/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const result = await response.json();
+        alert(result.message);
+      } catch (error) {
+        alert('Failed to upload certificate');
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
       const dropArea = document.getElementById('dropArea');
-      const fileInput = document.getElementById('certificate');
+      const fileInput = document.getElementById('certificateFile');
   
       // Prevent default drag behaviors
       ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -220,7 +371,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       formData.append('internName', document.getElementById('internName').value);
       formData.append('issueDate', document.getElementById('issueDate').value);
       formData.append('description', document.getElementById('description').value);
-      formData.append('certificate', document.getElementById('certificate').files[0]);
+      formData.append('certificate', document.getElementById('certificateFile').files[0]);
 
       try {
         const response = await fetch('/admin/upload', {
@@ -234,7 +385,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         alert('Failed to upload certificate');
       }
     });
-  </script>
+  </script> -->
     <script>
       async function fetchRegistrationsCount() {
           try {
@@ -257,6 +408,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 document.getElementById('logOut-btn').addEventListener('click', function() {
   const confirmation = confirm('Are you sure you want to log out?');
   if (confirmation) {
+    sessionStorage.removeItem('loggedIn');
     window.location.href = '/auth/logout'; // Adjust the URL to match your logout route
   }
 });
@@ -265,44 +417,42 @@ document.getElementById('logOut-btn').addEventListener('click', function() {
   </script>
   
 <script>
- 
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if user is already logged in
+    const loggedIn = sessionStorage.getItem('loggedIn');
 
-
- 
-  document.getElementById('login-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    try {
-      const response = await fetch('/admin/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        document.getElementById('login-container').style.display = 'none';
-        document.getElementById('admin-content').style.display = 'block';
-      } else {
-        alert('Invalid email or password');
-      }
-    } catch (error) {
-      alert('Login failed');
+    if (loggedIn) {
+      document.getElementById('login-container').style.display = 'none';
+      document.getElementById('admin-content').style.display = 'block';
     }
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch('/admin/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+          sessionStorage.setItem('loggedIn', 'true');
+          document.getElementById('login-container').style.display = 'none';
+          document.getElementById('admin-content').style.display = 'block';
+        } else {
+          alert('Invalid email or password');
+        }
+      } catch (error) {
+        alert('Login failed');
+      }
+    });
   });
-
-
-
-
-
-
-
-
 </script>
-
 </body>
 </html>
