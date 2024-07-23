@@ -16,11 +16,7 @@
 
 
 
-const express = require('express');
-const router = express.Router();
-const { addCertificate, getRegistrationsCount } = require('../controllers/adminController');
-const multer = require('multer');
-const authenticateAdmin = require('../middleware/authMiddleware');
+
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
