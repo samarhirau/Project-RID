@@ -22,6 +22,7 @@ const { addCertificate, getRegistrationsCount } = require('../controllers/adminC
 const multer = require('multer');
 const authenticateAdmin = require('../middleware/authMiddleware');
 
+
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
