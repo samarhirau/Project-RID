@@ -1,80 +1,154 @@
-<!DOCTYPE html>
-<html>
+ <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>OTP in JS</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <style>
+        /* certificate.css */
+        .certificate-container {
+            width: 800px;
+            margin: 40px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            page-break-after: always;
+        }
+
+        .certificate-header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .certificate-body {
+            padding: 20px;
+        }
+
+        .certificate-footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            font-family: Arial, sans-serif;
+            margin-bottom: 10px;
+        }
+
+        #student-name, #course-name, #issue-date {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .download-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .download-button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <div class="form">
-        <h1>OTP Using JavaScript</h1>
-        <input type="email" id="email" placeholder="Enter Email...">
-        <div class="otpverify">
-            <input type="text" id="otp_inp" placeholder="Enter the OTP sent to your Email...">
-            <button class="btn" id="otp-btn" onclick="verifyOTP()">Verify</button>
-        </div>
-        <button class="btn" onclick="sendOTP()">Send OTP</button>
-    </div>
-   
+    <div id="certificates-container"></div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
-       async function sendOTP() {
-    const email = document.getElementById('email').value;
-    if (!email) {
-        alert('Please enter your email');
-        return;
-    }
+        const students = [
+            { name: 'John Doe', course: 'Web Development', issueDate: 'February 10, 2023' },
+            { name: 'Jane Doe', course: 'Data Science', issueDate: 'March 15, 2023' },
+            { name: 'Alice Smith', course: 'Digital Marketing', issueDate: 'April 20, 2023' }
+        ];
 
-    try {
-        const response = await fetch('/send-otp', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email })
-        });
+        // Function to create a certificate element
+        function createCertificateElement(student) {
+            const container = document.createElement('div');
+            container.className = 'certificate-container';
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
+            const header = document.createElement('div');
+            header.className = 'certificate-header';
+            header.innerHTML = '<h1>Certificate of Completion</h1>';
+            container.appendChild(header);
+
+            const body = document.createElement('div');
+            body.className = 'certificate-body';
+            body.innerHTML = `
+                <p>This is to certify that</p>
+                <h2 id="student-name">${student.name}</h2>
+                <p>has successfully completed the</p>
+                <h2 id="course-name">${student.course}</h2>
+                <p>course on</p>
+                <h2 id="issue-date">${student.issueDate}</h2>
+            `;
+            container.appendChild(body);
+
+            const footer = document.createElement('div');
+            footer.className = 'certificate-footer';
+            footer.innerHTML = '<p>Issued by [Your Organization]</p>';
+            container.appendChild(footer);
+
+            // Create a download button
+            const downloadButton = document.createElement('button');
+            downloadButton.className = 'download-button';
+            downloadButton.textContent = 'Download PDF';
+            downloadButton.addEventListener('click', () => downloadPDF(container, student.name));
+            container.appendChild(downloadButton);
+
+            return container;
         }
 
-        const message = await response.text();
-        alert(message);
-    } catch (error) {
-        console.error('Error sending OTP:', error);
-        alert('Failed to send OTP: ' + error.message);
-    }
-}
+        // Function to download certificate as PDF
+        function downloadPDF(certificateElement, studentName) {
+            const options = {
+                margin: 1,
+                filename: `${studentName}_Certificate.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 1, useCORS: true, logging: true },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+            };
 
-async function verifyOTP() {
-    const otp = document.getElementById('otp_inp').value;
-    if (!otp) {
-        alert('Please enter the OTP');
-        return;
-    }
-
-    try {
-        const response = await fetch('/verify-otp', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ otp })
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
+            html2pdf().from(certificateElement).set(options).save();
         }
 
-        const message = await response.text();
-        alert(message);
-    } catch (error) {
-        console.error('Error verifying OTP:', error);
-        alert('Failed to verify OTP: ' + error.message);
-    }
+
+
+
+// Function to display multiple certificates
+function displayCertificates(students) {
+    const certificatesContainer = document.getElementById('certificates-container');
+    certificatesContainer.innerHTML = ''; // Clear previous certificates
+
+    students.forEach(student => {
+        const certificateElement = createCertificateElement(student);
+        certificatesContainer.appendChild(certificateElement);
+    });
 }
 
-        
+
+       
+
+        // Example usage:
+        displayCertificates(students);
     </script>
 </body>
-</html>
+</html> 
+
+
+
+
+
+
+
+
+
+
