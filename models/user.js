@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     phone: { type: String, required: true },
     dob: { type: Date, required: true },
     gender: { type: String, required: true },
-    address: { type: String, required: true },
+    // address: { type: String, required: true },
     course: { type: String, required: true }
 });
 

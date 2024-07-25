@@ -12,7 +12,7 @@ exports.registerUser = async (req, res) => {
             phone: req.body.phone,
             dob: req.body.dob,
             gender: req.body.gender,
-            address: req.body.address,
+            // address: req.body.address,
             course: req.body.course
         });
         await user.save();

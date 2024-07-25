@@ -1,4 +1,4 @@
-
+<!-- 
  <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -60,5 +60,231 @@
  </div> 
 
   
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Here</title>
+    <link rel="stylesheet" href="./css/form.css">
+</head>
+<body onload="loadPage()">
+    <div class="container" id="container1" style="display: block;">
+        <h1>Registration</h1>
+        <h3>Research Innovation & Discovery</h3>
+        <img src="step-1.png" alt="">
+        <form  action="/user/register" method="post" class="form">
+        <div id="form1">
+            <div class="form-group">
+                <label>First Name <span style="color: red; font-weight: bold;">*</span></label>
+         <input type="text" id="firstname" name="firstname" required>
+           
+            </div>
+            <div class="form-group">
+                <label>Last Name <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="email" id="email" name="email" placeholder="youremail@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label>Create Password <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="password" id="password" name="password" placeholder="*********" required>
+            </div>
+        </div>
+        <button onclick="nextpage1()">Next</button>
+        <span class="login-span">Already have an account? <a>Login</a></span>
+        <!-- <footer>
+            <span>Copyright ©2024, RID | TWF (TWKSAA WELFARE FOUNDATION). All Rights Reserved.</span>
+            <span><a href="">Home</a> | <a href="">Terms & Conditions</a> | <a href="">Privacy Policy</a> | <a href="">Feedback</a></span>
+        </footer> -->
+    </div>
+    <div class="container" id="container2" style="display: none;">
+        <h1>Registration</h1>
+        <h3>Research Innovation & Discovery</h3>
+        <img src="step-2.png" alt="">
+        <div id="form-otp">
+            <label>One Time Password <span style="color: red; font-weight: bold;">*</span></label>
+            <div class="input-boxes">
+                <input type="text" maxlength="1" class="otp-input" id="otp-1" >
+                <input type="text" maxlength="1" class="otp-input" id="otp-2" >
+                <input type="text" maxlength="1" class="otp-input" id="otp-3" >
+                <input type="text" maxlength="1" class="otp-input" id="otp-4" >
+                <input type="text" maxlength="1" class="otp-input" id="otp-5" >
+                <input type="text" maxlength="1" class="otp-input" id="otp-6" >
+            </div>
+        </div>
+        <span id="span1">An OTP(One Time Password) is sent to your email address.</span>
+        <button id="btn-otp" onclick="nextpage2()">Verify OTP</button>
+        <button onclick="previouspage1()">Previous</button>
+        <span id="span2">Didn't Recieved OTP? <a href="">Resend</a></span>
+        <!-- <footer>
+            <span>Copyright ©2024, RID | TWF (TWKSAA WELFARE FOUNDATION). All Rights Reserved.</span>
+            <span><a href="">Home</a> | <a href="">Terms & Conditions</a> | <a href="">Privacy Policy</a> | <a href="">Feedback</a></span>
+        </footer> -->
+    </div>
+    <div class="container" id="container3" style="display: none;">
+        <h1>Registration</h1>
+        <h3>Research Innovation & Discovery</h3>
+        <img src="step-3.png" alt="">
+        <div id="form3">
+            <div class="form-group">
+                <label>Gender <span style="color: red; font-weight: bold;">*</span></label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Mobile Number <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label>Date of Birth <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="date" id="dob" name="dob" required>
+
+            </div>
+            <div class="form-group">
+                <label>Preferred Course <span style="color: grey; font-weight: 400;">(Optional)</span></label>
+                <input type="text" id="course" name="course" placeholder="Search for a course" autocomplete="off" list="courseList" required>
+                <datalist id="courseList">
+                    <option value="Science">
+                    <option value="Arts">
+                    <option value="Commerce">
+                    <option value="Engineering">
+                    <option value="Medicine">
+                    <option value="Law">
+                    <option value="Business">
+                </datalist>
+            </div>
+        </div>
+        <button id="sumit-btn" type="submit">Submit</button>
+    </form>
+        <!-- <button onclick="previouspage2()">Previous</button> -->
+        <!-- <footer>
+            <span>Copyright ©2024, RID | TWF (TWKSAA WELFARE FOUNDATION). All Rights Reserved.</span>
+            <span><a href="">Home</a> | <a href="">Terms & Conditions</a> | <a href="">Privacy Policy</a> | <a href="">Feedback</a></span>
+        </footer> -->
+    </div>
+    <div class="container" id="container4" style="display: none;">
+        <h1>Registration</h1>
+        <h3>Research Innovation & Discovery</h3>
+        <img src="step-4.png" alt="">
+        <div id="form-last">
+            <img src="icon.png" alt="">
+            <h1>Congratulations, <span id="userName">User</span></h1>
+            <span>Successfully Registered in RID. <a href="">Login</a></span>
+        </div>
+
+<!--
+          footer
+
+-->
+
+        <footer>
+            <span>Copyright ©2024, RID | TWF (TWKSAA WELFARE FOUNDATION). All Rights Reserved.</span>
+            <span><a href="">Home</a> | <a href="">Terms & Conditions</a> | <a href="">Privacy Policy</a> | <a href="">Feedback</a></span>
+        </footer>
+    </div>
+
+
+
+
+
+    
+    <script>
+        const otp_main = Math.floor(100000 + Math.random() * 900000);
+
+        function nextpage1(){
+            const form1 = document.getElementById('form1');
+            if (form1.checkValidity()) {
+                alert("Your Otp is : " + otp_main);
+                localStorage.setItem('currentPage', 'container2');
+                document.getElementById('container2').style.display = 'flex';
+                document.getElementById('container1').style.display = 'none';
+            } else {
+                form1.reportValidity();
+            }
+        }
+
+        function nextpage2(){
+            const formOtp = document.getElementById('form-otp');
+            if (formOtp.checkValidity()) {
+                let digit1 = document.getElementById('otp-1').value;
+                let digit2 = document.getElementById('otp-2').value;
+                let digit3 = document.getElementById('otp-3').value;
+                let digit4 = document.getElementById('otp-4').value;
+                let digit5 = document.getElementById('otp-5').value;
+                let digit6 = document.getElementById('otp-6').value;
+
+                let str_otp = digit1 + digit2 + digit3 + digit4 + digit5 + digit6;
+                let otp = parseInt(str_otp, 10);
+
+                if (otp == otp_main) {
+                    localStorage.setItem('currentPage', 'container3');
+                    document.getElementById('container3').style.display = 'flex';
+                    document.getElementById('container2').style.display = 'none';
+                } else {
+                    document.getElementById('span1').innerText = "Invalid OTP, please enter the correct one.";
+                    document.getElementById('span1').style.color = 'red';
+                }
+            } else {
+                formOtp.reportValidity();
+            }
+        }
+
+        function nextpage3(){
+            const form3 = document.getElementById('form3');
+            if (form3.checkValidity()) {
+                localStorage.setItem('currentPage', 'container4');
+                document.getElementById('container4').style.display = 'flex';
+                document.getElementById('container3').style.display = 'none';
+                document.body.style.backgroundImage = "url('bg-green.png')";
+            } else {
+                form3.reportValidity();
+            }
+        }
+
+        function previouspage1(){
+            localStorage.setItem('currentPage', 'container1');
+            document.getElementById('container1').style.display = 'flex';
+            document.getElementById('container2').style.display = 'none';
+        }
+
+        function previouspage2(){
+            localStorage.setItem('currentPage', 'container2');
+            document.getElementById('container2').style.display = 'flex';
+            document.getElementById('container3').style.display = 'none';
+        }
+
+        function loadPage() {
+            const currentPage = localStorage.getItem('currentPage') || 'container1';
+            document.getElementById(currentPage).style.display = 'flex';
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const otpInputs = document.querySelectorAll(".otp-input");
+            
+            otpInputs.forEach((input, index) => {
+                input.addEventListener("input", () => {
+                    if (input.value.length === 1 && index < otpInputs.length - 1) {
+                        otpInputs[index + 1].focus();
+                    }
+                });
+                
+                input.addEventListener("keydown", (e) => {
+                    if (e.key === "Backspace" && index > 0 && !input.value) {
+                        otpInputs[index - 1].focus();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

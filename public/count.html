@@ -1,177 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Page</title>
-  <link rel="stylesheet" href="./css/admin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Data Display</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <style>
-    .hidden {
-      display: none;
-    }
-    .dragover {
-      border: 2px dashed #000;
-    }
-    .drop-area {
-      border: 2px dashed #aaa;
-      padding: 20px;
-      text-align: center;
-      cursor: pointer;
-    }
-  </style>
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
-  <div id="admin-content">
-    <div class="main-area1" id="mainArea1">
-      <h2>Upload Certificate</h2>
-      <!-- <form id="uploadForm" class="uploadForm">
-        <section>
-          <div class="form-group">
-              <label>Certificate Id <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="text" name="certificateId" id="certificateId" placeholder="eg: RIDXR24354" required>
-          </div>
-          <div class="form-group">
-              <label>Issue Date <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="date" name="issueDate" id="issueDate" placeholder="DD/MM/YYYY" required>
-          </div>
-          <div class="form-group">
-              <label>Intern or Student Name <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="text" name="internName" id="internName" placeholder="John Doe" required>
-          </div>
-          <div class="form-group">
-              <label>Description <span style="color: grey; font-weight: 400;">(Optional)</span></label>
-              <input type="text" name="description" id="description" placeholder="Write Description or leave it blank">
-          </div>
-         
-          <div class="form-group">
-            <label>Upload Certificate <span style="color: red; font-weight: bold;">*</span></label>
-            <input type="file" name="certificateFile" id="certificateFile" required hidden>
-            <div id="dropArea" class="drop-area">
-                <p>Drag & Drop your file here or click to upload</p>
-            </div>
-          </div>
-        </section>
-        <button type="submit">Upload Now</button>
-      </form> -->
-
-      <form id="uploadForm" class="uploadForm">
-        <section>
-          <div class="form-group">
-              <label>Certificate Id <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="text" name="certificateId" id="certificateId" placeholder="eg: RIDXR24354" required>
-          </div>
-          <div class="form-group">
-              <label>Issue Date <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="date" name="issueDate" id="issueDate" placeholder="DD/MM/YYYY" required>
-          </div>
-          <div class="form-group">
-              <label>Intern or Student Name <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="text" name="internName" id="internName" placeholder="John Doe" required>
-          </div>
-          <div class="form-group">
-              <label>Description <span style="color: grey; font-weight: 400;">(Optional)</span></label>
-              <input type="text" name="description" id="description" placeholder="Write Description or leave it blank">
-          </div>
-         
-          <div class="form-group">
-            <label>Upload Certificate <span style="color: red; font-weight: bold;">*</span></label>
-            <input type="file" name="certificateFile" id="certificateFile" required hidden>
-            <div id="dropArea" class="drop-area">
-                <p>Drag & Drop your file here or click to upload</p>
-            </div>
-          </div>
-        </section>
-        <button type="submit">Upload Now</button>
-      </form>
-
-
-
-      <!-- ------- -->
-    </div>
-  </div>
-
-  <!-- <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const dropArea = document.getElementById('dropArea');
-      const fileInput = document.getElementById('certificateFile');
-
-      // Prevent default drag behaviors
-      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, preventDefaults, false);
-      });
-
-      // Highlight drop area when item is dragged over it
-      ['dragenter', 'dragover'].forEach(eventName => {
-        dropArea.addEventListener(eventName, highlight, false);
-      });
-
-      ['dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, unhighlight, false);
-      });
-
-      // Handle dropped files
-      dropArea.addEventListener('drop', handleDrop, false);
-
-      // Handle click to open file input dialog
-      dropArea.addEventListener('click', () => fileInput.click());
-
-      // Handle file input change
-      fileInput.addEventListener('change', handleFiles, false);
-
-      function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-
-      function highlight(e) {
-        dropArea.classList.add('dragover');
-      }
-
-      function unhighlight(e) {
-        dropArea.classList.remove('dragover');
-      }
-
-      function handleDrop(e) {
-        const dt = e.dataTransfer;
-        const files = dt.files;
-        fileInput.files = files; // Assign files to file input
-        handleFiles({ target: { files } });
-      }
-
-      function handleFiles(e) {
-        const files = e.target.files;
-        if (files.length > 0) {
-          const filename = files[0].name;
-          dropArea.innerHTML = `<p>File uploaded: ${filename}</p>`;
-        }
-      }
-    });
-  </script>
-
-  <script>
-    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData();
-      formData.append('certificateId', document.getElementById('certificateId').value);
-      formData.append('internName', document.getElementById('internName').value);
-      formData.append('issueDate', document.getElementById('issueDate').value);
-      formData.append('description', document.getElementById('description').value);
-      formData.append('certificate', document.getElementById('certificateFile').files[0]);
-
-      try {
-        const response = await fetch('/admin/upload', {
-          method: 'POST',
-          body: formData,
-        });
-
-        const result = await response.json();
-        alert(result.message);
-      } catch (error) {
-        alert('Failed to upload certificate');
-      }
-    });
-  </script> -->
+    <h1>Data from Excel</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <!-- Add headers based on your Excel sheet -->
+                <th>Column 1</th>
+                <th>Column 2</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <script>
+        fetch('/data')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('data-table').querySelector('tbody');
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    // Adjust based on the data structure
+                    tr.innerHTML = `<td>${row['Column 1']}</td><td>${row['Column 2']}</td>`;
+                    tableBody.appendChild(tr);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
 </body>
 </html>
+
+ 

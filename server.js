@@ -1,4 +1,4 @@
-// // Purpose: Main entry point of the application. It starts the server and connects to the database.
+// // // Purpose: Main entry point of the application. It starts the server and connects to the database.
 
 // const express = require('express');
 // const bodyParser = require('body-parser');
@@ -85,17 +85,6 @@
 
 
 
-// app.listen(port, async () => {
-//     await connectDB();
-//     console.log(`Server is running on http://localhost:${port}`);
-// });
-
-
-
-
-
-
-
 
 
 const express = require('express');
@@ -114,6 +103,7 @@ const userRoutes = require('./Routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/admin');
 const verifyRoutes = require('./routes/verify');
+const excelRoutes = require('./routes/excelRoutes');
 
 const app = express();
 const port = process.env.PORT || 3010;
@@ -142,6 +132,11 @@ app.use('/user', userRoutes);
 app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
 app.use('/verify', verifyRoutes);
+app.use('/api/excel', excelRoutes);
+
+
+
+
 
 app.get('/form', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'form.html'));

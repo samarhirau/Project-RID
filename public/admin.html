@@ -49,6 +49,58 @@
       </div>
     </div>
   </header>
+<!-- =========== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Upload and Display</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload and Display Excel Data</h1>
+    <input type="file" id="fileInput" accept=".xlsx, .xls" />
+    <table id="data-table">
+        <thead>
+            <tr id="table-headers"></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================== -->
   <div class="main-content">
     <div class="side-bar">
       <div class="div1">
@@ -454,5 +506,56 @@ document.getElementById('logOut-btn').addEventListener('click', function() {
     });
   });
 </script>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) {
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+
+                // Assume we're working with the first sheet
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
+                const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+                // Clear previous table data
+                const tableHeaders = document.getElementById('table-headers');
+                const tableBody = document.getElementById('data-table').querySelector('tbody');
+                tableHeaders.innerHTML = '';
+                tableBody.innerHTML = '';
+
+                // Create table headers
+                jsonData[0].forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    tableHeaders.appendChild(th);
+                });
+
+                // Add data rows
+                jsonData.slice(1).forEach(row => {
+                    const tr = document.createElement('tr');
+                    row.forEach(cell => {
+                        const td = document.createElement('td');
+                        td.textContent = cell !== undefined ? cell : ''; // Handle undefined cells
+                        tr.appendChild(td);
+                    });
+                    tableBody.appendChild(tr);
+                });
+            };
+
+            reader.readAsArrayBuffer(file);
+        });
+    </script>
+
 </body>
 </html>
