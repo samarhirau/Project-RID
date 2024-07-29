@@ -627,6 +627,23 @@
       </div>
   </section>
 
+
+  <div id="quiz">
+    <h1>Select a Topic:</h1>
+    <select id="topic-select">
+        <option value="general knowledge">General Knowledge</option>
+        <option value="science">Science</option>
+        <option value="history">History</option>
+        <option value="technology">Technology</option>
+        <!-- Add more topics as needed -->
+    </select>
+    <button onclick="loadQuestion()">Start Quiz</button>
+
+    <h2 id="question"></h2>
+    <ul id="answers"></ul>
+    <button id="next" style="display:none;" onclick="loadQuestion()">Next</button>
+</div>
+
   <!-- Script -->
 
 
@@ -764,6 +781,38 @@ window.onload = function() {
 
 </script>
     
+
+<script>
+        async function loadQuestion() {
+    document.getElementById('next').style.display = 'none';
+    const topic = document.getElementById('topic-select').value;
+    try {
+        const response = await fetch(`/api/question?topic=${encodeURIComponent(topic)}`);
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error);
+        }
+        
+        const data = await response.json();
+        const questionData = parseQuestion(data.question);
+
+        document.getElementById('question').textContent = questionData.question;
+        const answersList = document.getElementById('answers');
+        answersList.innerHTML = '';
+
+        questionData.answers.forEach((answer, index) => {
+            const li = document.createElement('li');
+            li.textContent = answer;
+            li.onclick = () => checkAnswer(index, questionData.correct);
+            answersList.appendChild(li);
+        });
+    } catch (error) {
+        alert(`Failed to load question: ${error.message}`);
+    }
+}
+
+</script>
     <script src="./js/main.js"></script>
 
     

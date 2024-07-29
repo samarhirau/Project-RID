@@ -35,6 +35,8 @@ router.post('/login', authenticateAdmin, (req, res) => {
     res.redirect('/admin'); // Redirect to the admin page upon successful login
   });
 
+
+
 module.exports = router;
 
 

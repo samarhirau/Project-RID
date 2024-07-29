@@ -26,8 +26,8 @@
               name="password"
               placeholder="Enter your password"
             />
-            <a href="#" id="forgetPass">Forget Password?</a>
-            <button type="submit">Login</button>
+            <a  id="forgetPass">Forget Password?</a>
+            <button  type="submit">Login</button>
             
           </form>
 
@@ -55,6 +55,18 @@
         <img id="onLogo" src="./assets/images/imageLogo.png" alt="">
       </div>
     </div>
+
+    <div class="forgot-password-container" style="display: none;">
+      <h2 class="forget-title">Forgot Password</h2>
+      <form id="forgotPasswordForm">
+        <div class="form-group">
+          <label class="email-label" for="email">Enter your email address</label>
+          <input class="email-in" type="email" id="email" name="email" required placeholder="Enter your email">
+        </div>
+        <button id="forgetBtn" type="submit">Submit</button>
+      </form>
+      <div id="message"></div>
+    </div>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
   var currentYear = new Date().getFullYear();
@@ -62,5 +74,43 @@
 });
 
     </script>
+    <!-- <script>
+      document.getElementById('forgetPass').addEventListener('click', function() {
+
+
+
+  document.querySelector('.forgot-password-container').style.display = 'block';
+  document.querySelector('.container').style.filter = 'blur(5px)';
+
+// window.location.href = '/forgot-password'
+}); -->
+    <!-- </script> -->
+
+    <script>
+    document.getElementById('forgetBtn').addEventListener('submit', async (event) => {
+      event.preventDefault();
+  
+      const email = document.getElementById('email').value;
+  
+      try {
+          const response = await fetch('/api/auth/forgot-password', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ email })
+          });
+          const result = await response.json();
+  
+          if (response.ok) {
+              alert(result.message);
+          } else {
+              alert(result.message);
+          }
+      } catch (error) {
+          alert('Error sending reset email.');
+      }
+  });
+  </script>
   </body>
 </html>

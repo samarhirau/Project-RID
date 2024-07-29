@@ -191,3 +191,58 @@ border-radius: 10px 0 0 10px;
 #forgetPass:hover {
   text-decoration: underline;
 }
+
+.forgot-password-container {
+  height: 45vh;
+  width: 50%;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* width: 300px; */
+  text-align: center;
+}
+
+.forget-title {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.email-label{
+  display: block;
+  margin-bottom: 5px;
+}
+
+.email-in {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#forgetBtn {
+  padding: 10px 15px;
+  background-color: #0a66c2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#forgetBtn:hover {
+  background-color: #084a9b;
+}
+
+#message {
+  margin-top: 15px;
+  color: red;
+}
