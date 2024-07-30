@@ -52,6 +52,15 @@ app.use('/api', quizRoutes);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.get('/api/duration', (req, res) => {
+    const duration = process.env.DURATION;
+    if (!duration) {
+      return res.status(500).json({ error: 'Duration not set in .env file' });
+    }
+    res.json({ duration });
+  });
+
 app.get('/form', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'form.html'));
 });
@@ -118,11 +127,6 @@ app.get('/test', async (req, res) => {
     }
 });
 
-// Endpoint to get timer duration
-app.get("/api/timer-duration", (req, res) => {
-    const timerDuration = process.env.TIMER_DURATION || 1800; // Default to 1800 seconds
-    res.json({ timerDuration });
-  });
 
 
 app.listen(port, async () => {

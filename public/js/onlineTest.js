@@ -9,7 +9,7 @@ const main = document.querySelector(".main");
 const continueBtn = document.querySelector(".continue-btn");
 const quizSection = document.querySelector(".quiz-section");
 
-let countdown; 
+
 
 startbtn.addEventListener("click", () => {
   // alert('Quiz Started');
@@ -29,12 +29,37 @@ continueBtn.addEventListener("click", () => {
 });
 
 
+// ====================
+
+
+// Disable copy, right-click, and Ctrl+C
+document.addEventListener('DOMContentLoaded', function() {
+  // Prevent default copy event
+  document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert('Copying text is disabled on this site.');
+  });
+
+  // Optionally, prevent other methods like right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('Right-click is disabled on this site.');
+  });
+
+  // Optionally, prevent other shortcuts like Ctrl+C
+  document.addEventListener('keydown', function(e) {
+    // Detect Ctrl+C or Command+C on macOS
+    if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+      e.preventDefault();
+      alert('Copying text is disabled on this site.');
+    }
+  });
+});
 
 
 
 
-
-
+//==============
 
 const questionElement = document.querySelector("#question");
 const choices = Array.from(document.querySelectorAll(".choice-text"));

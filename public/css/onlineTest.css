@@ -19,7 +19,20 @@ body{
     margin: 0;
     padding: 0;
     overflow: hidden;
+ user-select: none; /* Standard syntax */
+-webkit-user-select: none; /* For WebKit browsers (Safari, Chrome) */
+-moz-user-select: none; /* For Firefox */
+-ms-user-select: none; /* For Internet Explorer/Edge */
 }
+
+
+/* Optional: Allow selection in specific elements */
+.allow-select {
+user-select: text; /* Re-enable selection for specific elements */
+}
+
+
+
 
 /* .head{
     background-color: #f5f5f5;
@@ -215,7 +228,7 @@ width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-background: rgb(255, 45, 45);
+/* background: rgb(255, 45, 45); */
 transition: all 0.3s;
 z-index: 100;
 }

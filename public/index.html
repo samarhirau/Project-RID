@@ -823,6 +823,33 @@ window.onload = function() {
     window.location.href = '/onlineTest';
   });
 </script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  // Prevent default copy event
+  document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    alert('Copying text is disabled on this site.');
+  });
+
+  // Optionally, prevent other methods like right-click context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('Right-click is disabled on this site.');
+  });
+
+  // Optionally, prevent other shortcuts like Ctrl+C
+  document.addEventListener('keydown', function(e) {
+    // Detect Ctrl+C or Command+C on macOS
+    if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+      e.preventDefault();
+      alert('Copying text is disabled on this site.');
+    }
+  });
+});
+
+</script>
     <script src="./js/main.js"></script>
 
     

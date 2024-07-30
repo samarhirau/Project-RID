@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../css/onlineTest.css" />
+    <style>
+         #timer {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    </style>
   </head>
   <body>
     <main class="main">
@@ -56,7 +62,8 @@
             <h1>RID Quiz</h1>
             <div class="quiz-header">
               <span>RID'S Quiz website</span>
-              <span>Time: <span id="time">30:00</span></span>
+              <!-- <span>Time: <span id="time">30:00</span></span> -->
+              <div id="timer">00:00</div>
             </div>
             <h2 class="quiz-que" id="question">Lorem ipsum dolor sit amet.</h2>
             <div class="options-list">
@@ -126,10 +133,60 @@
       <div class="btn-group">
         <button class="cancel-btn info-btn">Cancel</button>
 
-        <button class="continue-btn info-btn">Start</button>
+        <button id="start-button" class="continue-btn info-btn">Start</button>
       </div>
     </div>
+    
 
+
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const startButton = document.getElementById('start-button');
+        if (!startButton) {
+          console.error('Button with ID "start-button" not found.');
+          return;
+        }
+  
+        function startCountDown(duration, display) {
+          let timer = duration, minutes, seconds;
+  
+          const intervalId = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+  
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+  
+            display.textContent = minutes + ":" + seconds;
+  
+            if (--timer < 0) {
+              clearInterval(intervalId); // Stop the timer when it reaches 0
+              display.textContent = "Time's up!";
+            }
+          }, 1000);
+        }
+  
+        startButton.addEventListener('click', function() {
+          fetch('/api/duration')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              const duration = parseInt(data.duration, 10);
+              const display = document.querySelector('#timer');
+              startCountDown(duration, display);
+            })
+            .catch(error => console.error('Error fetching duration:', error));
+        });
+      });
+    </script>
     <script src="../js/onlineTest.js"></script>
+
+    
   </body>
 </html>
