@@ -118,6 +118,12 @@ app.get('/test', async (req, res) => {
     }
 });
 
+// Endpoint to get timer duration
+app.get("/api/timer-duration", (req, res) => {
+    const timerDuration = process.env.TIMER_DURATION || 1800; // Default to 1800 seconds
+    res.json({ timerDuration });
+  });
+
 
 app.listen(port, async () => {
     await connectDB();

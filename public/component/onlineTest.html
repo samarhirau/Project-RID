@@ -17,41 +17,77 @@
 
       <div class="container">
         <!-- quiz section -->
-        <section class="quiz-section">
+        <!-- <section class="quiz-section">
             <div class="quiz-box">
                 <h1>RID Quiz</h1>
                 <div class="quiz-header">
                     <span> RID'S Quiz website</span>
                     <span>Time: <span id="time">30:00</span></span>
                 </div>
-                <h2 class="quiz-que">Lorem ipsum dolor sit amet.</h2>
+                <h2 class="quiz-que" id="question">Lorem ipsum dolor sit amet.</h2>
                 <div class="options-list">
                     <div class="option">
                         <input type="radio" name="option" id="option1" />
-                        <label for="option1">Option 1</label>
+                        <label  class="choice-text" for="option1" data-number="1">Option 1</label>
                     </div>
                     <div class="option">
                         <input type="radio" name="option" id="option2" />
-                        <label for="option2">Option 2</label>
+                        <label class="choice-text" for="option2" data-number="2">Option 2</label>
                     </div>
                     <div class="option">
                         <input type="radio" name="option" id="option3" />
-                        <label for="option3">Option 3</label>
+                        <label  class="choice-text" for="option3" data-number="3">Option 3</label>
                     </div>
                     <div class="option">
                         <input type="radio" name="option" id="option4" />
-                        <label for="option4">Option 4</label>
+                        <label  class="choice-text" for="option4" data-number="4">Option 4</label>
                     </div>
                 </div>
                 <div class="quiz-footer">
                     <span class="question-total">1 of 10</span>
                 <div class="btn-group">
-                    <button class="next-btn">Next</button>
+                    <button class="pre-btn" id="preBtn">Previous</button>
                     <button class="submit-btn">Submit</button>
                 </div>
             </div>
+        </section> -->
+        <section class="quiz-section">
+          <div class="quiz-box">
+            <h1>RID Quiz</h1>
+            <div class="quiz-header">
+              <span>RID'S Quiz website</span>
+              <span>Time: <span id="time">30:00</span></span>
+            </div>
+            <h2 class="quiz-que" id="question">Lorem ipsum dolor sit amet.</h2>
+            <div class="options-list">
+              <div class="option">
+                <input type="radio" name="option" id="option1" />
+                <label class="choice-text" for="option1" data-number="1">Option 1</label>
+              </div>
+              <div class="option">
+                <input type="radio" name="option" id="option2" />
+                <label class="choice-text" for="option2" data-number="2">Option 2</label>
+              </div>
+              <div class="option">
+                <input type="radio" name="option" id="option3" />
+                <label class="choice-text" for="option3" data-number="3">Option 3</label>
+              </div>
+              <div class="option">
+                <input type="radio" name="option" id="option4" />
+                <label class="choice-text" for="option4" data-number="4">Option 4</label>
+              </div>
+            </div>
+            <div class="quiz-footer">
+              <span class="question-total">1 of 10</span>
+              <div class="btn-group">
+                <button class="pre-btn" id="preBtn">Previous</button>
+                <button class="submit-btn">Submit</button>
+              </div>
+            </div>
+            <div id="correct-answers">Correct Answers: 0</div>
+          </div>
         </section>
-
+        
         <!-- home -->
         <section class="home">
           <div class="home-content">
