@@ -159,9 +159,12 @@
  
 
           </div> -->
-          </ul>
 
+         
+          </ul>
+          
           <ul class="lowerNav">
+            <button id="onlineTest" >Online Test</button>
             <li  >
               <a class="menu-link" href="#"
                 ><object
@@ -812,6 +815,13 @@ window.onload = function() {
     }
 }
 
+</script>
+
+<script>
+  const onlinetest = document.getElementById('onlineTest');
+  onlinetest.addEventListener('click', () => {
+    window.location.href = '/onlineTest';
+  });
 </script>
     <script src="./js/main.js"></script>
 

@@ -1,16 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
 document.getElementById("profileButton").onclick = function() {
     document.getElementById("profileDrawer").style.width = "250px";
 }
@@ -78,12 +66,6 @@ document.getElementById('logoutButton').addEventListener('click', function() {
 
 
 
-const para = document.getElementById('para-red');
-          para.style.color = 'red';
-
-
-
           // -------------------------
 
 
-         

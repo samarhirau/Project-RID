@@ -55,6 +55,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/form', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'form.html'));
 });
+app.get('/onlineTest', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', './component/onlineTest.html'));
+});
 
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
