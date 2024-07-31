@@ -22,7 +22,7 @@ const verifyRoutes = require('./routes/verify');
 const excelRoutes = require('./routes/excelRoutes');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3010;
 
 const crypto = require('crypto');
 const secretKey = crypto.randomBytes(64).toString('hex');
