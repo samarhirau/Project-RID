@@ -27,6 +27,7 @@ const express = require('express');
 const authController = require('../controllers/authController');
 
 const router = express.Router();
+const nodemailer = require('nodemailer');
 
 
 
@@ -44,6 +45,44 @@ router.get('/logout', (req, res) => {
     res.redirect('/'); // Redirect to the home page after successful logout
   });
 });
+
+
+
+
+// SMTP configuration
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  auth: {
+      user: 'samarhirau.official@gmail.com',
+      pass: 'mpqjpngtfeestrxq'
+  }
+});
+
+// Route to send reset email
+router.post('/send-reset-email', (req, res) => {
+  const { email } = req.body;
+
+  const mailOptions = {
+      from: 'samarhirau.official@gmail.com',
+      to: email,
+      subject: 'Password Reset Request',
+      text: 'Click the link below to reset your password: \n\nhttp://yourwebsite.com/reset-password'
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.log('SendMail Error:', error);
+          return res.status(500).send('Error sending email');
+      }
+      console.log('Email sent:', info.response);
+      res.status(200).send('Email sent successfully');
+  });
+});
+
+
+
 
 
 module.exports = router;
