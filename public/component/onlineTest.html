@@ -10,6 +10,11 @@
       font-size: 2em;
       margin-bottom: 10px;
     }
+    #warning-message {
+      color: red;
+      font-weight: bold;
+      display: none;
+    }
     </style>
   </head>
   <body>
@@ -112,6 +117,7 @@
 
     <div class="popup-info">
       <h2>Instructions</h2>
+      <p id="warning-message">Please do not minimize the browser or switch tabs during the quiz!</p>
       <span class="info">1. the test is only for 30 min</span>
       <span class="info"
         >2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto,
@@ -185,6 +191,8 @@
         });
       });
     </script>
+
+    
     <script src="../js/onlineTest.js"></script>
 
     

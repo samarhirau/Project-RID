@@ -1,5 +1,26 @@
 
 
+// // const mongoose = require('mongoose');
+
+// // const userSchema = new mongoose.Schema({
+// //     firstname: { type: String, required: true },
+// //     lastname: { type: String, required: true },
+// //     email: { type: String, required: true, unique: true },
+// //     password: { type: String, required: true },
+// //     phone: { type: String, required: true },
+// //     dob: { type: Date, required: true },
+// //     gender: { type: String, required: true },
+// //     course: { type: String, required: true },
+    
+   
+// // });
+
+// // const User = mongoose.model('User', userSchema);
+
+// // module.exports = User;
+
+
+// // models/User.js
 // const mongoose = require('mongoose');
 
 // const userSchema = new mongoose.Schema({
@@ -11,8 +32,8 @@
 //     dob: { type: Date, required: true },
 //     gender: { type: String, required: true },
 //     course: { type: String, required: true },
-    
-   
+//     resetToken: String,
+//     resetTokenExpiry: Date,
 // });
 
 // const User = mongoose.model('User', userSchema);
@@ -20,7 +41,6 @@
 // module.exports = User;
 
 
-// models/User.js
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -32,12 +52,11 @@ const userSchema = new mongoose.Schema({
     dob: { type: Date, required: true },
     gender: { type: String, required: true },
     course: { type: String, required: true },
-    resetToken: String,
-    resetTokenExpiry: Date,
+    resetToken: { type: String },
+    resetTokenExpiry: { type: Date }
 });
 
-const User = mongoose.model('User', userSchema);
+// Use `mongoose.models` to prevent overwriting the model
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 module.exports = User;
-
-
