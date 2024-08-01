@@ -195,7 +195,7 @@
               >
             </li>
             <li class="menu-linki">
-              <a class="menu-link" href="#"
+              <a class="menu-link" href="#" id="ebookBtn"
                 ><object
                   class="svg-object"
                   data="./assets/icons/article_shortcut.svg"
@@ -843,7 +843,12 @@ window.onload = function() {
   });
 
 </script>
-<!-- for harsh ... -->
+<script>
+   const ebookBtn = document.getElementById('ebookBtn');
+   ebookBtn.addEventListener('click', () => {
+    window.location.href = '/ebook';
+   });
+</script>
 
 
 

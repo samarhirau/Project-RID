@@ -12,6 +12,7 @@ require('./config/passport')(passport); // Initialize Passport with your configu
 const cookieParser = require('cookie-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const { books, moreBooks } = require('./views/js/ebook');
 
 
 
@@ -22,7 +23,7 @@ const verifyRoutes = require('./routes/verify');
 const excelRoutes = require('./routes/excelRoutes');
 
 const app = express();
-const port = process.env.PORT || 3010;
+const port = process.env.PORT || 3000;
 
 const crypto = require('crypto');
 const secretKey = crypto.randomBytes(64).toString('hex');
@@ -52,6 +53,7 @@ app.use('/verify', verifyRoutes);
 app.use('/api/excel', excelRoutes);
 // Use quiz routes
 // app.use('/api', quizRoutes);
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -124,8 +126,13 @@ app.get('/form', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'form.html'));
 });
 
-app.get('/harsh', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', './component/harshal.html'));
+app.get('/ebook', (req, res) => {
+    res.render('ebook', { books, moreBooks });
+});
+
+
+app.get('/books', (req, res) => {
+    res.render('book-card', { books, moreBooks }); // Pass the arrays to the EJS template
 });
 
 app.get('/onlineTest', (req, res) => {
