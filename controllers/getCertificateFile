@@ -1,0 +1,30 @@
+const Certificate = require('../models/certificate');
+
+const getCertificateFile = async (req, res) => {
+  try {
+    const certificate = await Certificate.findById(req.params.id);
+
+    if (!certificate) {
+      console.error('Certificate not found in the database');
+      return res.status(404).json({ message: 'Certificate not found' });
+    }
+
+    // Ensure the certificate file exists in binary form
+    if (!certificate.certificateFile || certificate.certificateFile.length === 0) {
+      console.error('Certificate file is missing or empty in the database');
+      return res.status(404).json({ message: 'Certificate file not found' });
+    }
+
+    // Set appropriate headers
+    res.setHeader('Content-Type', 'application/octet-stream');
+    res.setHeader('Content-Disposition', `attachment; filename=${certificate.certificateId}.pdf`);
+
+    // Send the binary file data
+    res.send(certificate.certificateFile);
+  } catch (error) {
+    console.error('Error retrieving certificate:', error);
+    res.status(500).json({ error: 'Failed to retrieve certificate file' });
+  }
+};
+
+module.exports = { getCertificateFile };

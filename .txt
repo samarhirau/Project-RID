@@ -1,0 +1,71 @@
+
+
+
+        cookie: { secure: false } // Set to true if using HTTPS
+
+
+        
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Education Website Signup Form</title>
+     <link rel="stylesheet" href="./css/signUp.css">
+    
+ </head>
+ <body>
+ 
+ <div class="signup-form">
+     <h2>Signup</h2>
+     <form action="/user/register" method="post" class="form">
+         <label for="firstname">First Name:</label>
+         <input type="text" id="firstname" name="firstname" required>
+ 
+         <label for="lastname">Last Name:</label>
+         <input type="text" id="lastname" name="lastname" required>
+ 
+         <label for="email">Email:</label>
+         <input type="email" id="email" name="email" required>
+ 
+         <label for="password">Password:</label>
+         <input type="password" id="password" name="password" required>
+ 
+         <label for="phone">Phone Number:</label>
+         <input type="tel" id="phone" name="phone" required>
+ 
+         <label for="dob">Date of Birth:</label>
+         <input type="date" id="dob" name="dob" required>
+ 
+         <label for="gender">Gender:</label>
+         <select id="gender" name="gender" required>
+             <option value="">Select Gender</option>
+             <option value="male">Male</option>
+             <option value="female">Female</option>
+             <option value="other">Other</option>
+         </select>
+ 
+         <label for="address">Address:</label>
+         <textarea id="address" name="address" rows="3" required></textarea>
+ 
+         <label for="course">Preferred Course:</label>
+         <input type="text" id="course" name="course" placeholder="Search for a course" autocomplete="off" list="courseList" required>
+         <datalist id="courseList">
+             <option value="Science">
+             <option value="Arts">
+             <option value="Commerce">
+             <option value="Engineering">
+             <option value="Medicine">
+             <option value="Law">
+             <option value="Business">
+         </datalist>
+         
+ 
+         <button type="submit">Sign Up</button>
+     </form>
+ </div>
+ 
+ </body>
+ </html>
+ 
+ 

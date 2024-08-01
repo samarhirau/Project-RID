@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* certificate.css */
+.certificate-container {
+  width: 800px;
+  margin: 40px auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.certificate-body {
+  padding: 20px;
+}
+
+.certificate-footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+h1, h2 {
+  font-family: Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
+#student-name, #course-name, #issue-date {
+  font-weight: bold;
+  font-size: 18px;
+}
+</style>
+<body>
+    <!-- certificate.html -->
+<div class="certificate-container">
+    <div class="certificate-header">
+      <h1>Certificate of Completion</h1>
+    </div>
+    <div class="certificate-body">
+      <p>This is to certify that</p>
+      <h2 id="student-name"></h2>
+      <p>has successfully completed the</p>
+      <h2 id="course-name"></h2>
+      <p>course on</p>
+      <h2 id="issue-date"></h2>
+    </div>
+    <div class="certificate-footer">
+      <p>Issued by [Your Organization]</p>
+    </div>
+  </div>
+
+
+
+  <script>
+const studentNameElement = document.getElementById('student-name');
+const courseNameElement = document.getElementById('course-name');
+const issueDateElement = document.getElementById('issue-date');
+
+const students = [
+  { name: 'John Doe', course: 'Web Development', issueDate: 'February 10, 2023' },
+  { name: 'Jane Doe', course: 'Data Science', issueDate: 'March 15, 2023' },
+  { name: 'Alice Smith', course: 'Digital Marketing', issueDate: 'April 20, 2023' }
+];
+
+// Function to update certificate details
+function updateCertificateDetails(studentIndex) {
+  const student = students[studentIndex];
+  studentNameElement.textContent = student.name;
+  courseNameElement.textContent = student.course;
+  issueDateElement.textContent = student.issueDate;
+}
+
+// Example usage:
+updateCertificateDetails(0); // Displays John Doe's certificate details
+
+// certificate.js
+  </script>
+</body>
+</html>
