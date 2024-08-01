@@ -26,7 +26,7 @@
               name="password"
               placeholder="Enter your password"
             />
-            <a  id="forgetPass">Forget Password?</a>
+            <button type="button"  id="forgotPass">Forget Password?</button>
             <button  type="submit">Login</button>
             
           </form>
@@ -63,7 +63,7 @@
           <label class="email-label" for="email">Enter your email address</label>
           <input class="email-in" type="email" id="email" name="email" required placeholder="Enter your email">
         </div>
-        <button id="forgetBtn" type="submit">Submit</button>
+        <button  type="submit">Submit</button>
       </form>
       <div id="message"></div>
     </div>
@@ -74,17 +74,12 @@
 });
 
     </script>
-    <!-- <script>
-      document.getElementById('forgetPass').addEventListener('click', function() {
-
-
-
-  document.querySelector('.forgot-password-container').style.display = 'block';
-  document.querySelector('.container').style.filter = 'blur(5px)';
-
-// window.location.href = '/forgot-password'
-}); -->
-    <!-- </script> -->
+  <script>
+      const forgotPass = document.getElementById('forgotPass');
+      forgotPass.addEventListener('click', () => {
+    window.location.href = '/forgotPassword';
+  });
+  </script>
 
     <script>
     document.getElementById('forgetBtn').addEventListener('submit', async (event) => {

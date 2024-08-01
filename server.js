@@ -5,11 +5,13 @@ const session = require('express-session');
 const passport = require('passport');
 const dotenv = require('dotenv');
 dotenv.config();
-const quizRoutes = require('./routes/quizRoutes');
+// const quizRoutes = require('./routes/quizRoutes');
 
 const connectDB = require('./config/db');
 require('./config/passport')(passport); // Initialize Passport with your configuration
 const cookieParser = require('cookie-parser');
+const nodemailer = require('nodemailer');
+const cors = require('cors');
 
 
 
@@ -20,7 +22,7 @@ const verifyRoutes = require('./routes/verify');
 const excelRoutes = require('./routes/excelRoutes');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3010;
 
 const crypto = require('crypto');
 const secretKey = crypto.randomBytes(64).toString('hex');
@@ -30,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser()); // Add cookie-parser middleware
+app.use(cors()); 
 
 app.use(session({
   secret: secretKey,
@@ -48,9 +51,65 @@ app.use('/admin', adminRoutes);
 app.use('/verify', verifyRoutes);
 app.use('/api/excel', excelRoutes);
 // Use quiz routes
-app.use('/api', quizRoutes);
+// app.use('/api', quizRoutes);
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+
+// SMTP configuration
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+        user: 'samarhirau.official@gmail.com',
+        pass: 'mpqjpngtfeestrxq'
+    }
+});
+
+// Endpoint to send the reset email
+app.post('/send-reset-email', (req, res) => {
+    const { email } = req.body;
+
+    const mailOptions = {
+        from: 'samarhirau.official@gmail.com',
+        to: email,
+        subject: 'Password Reset Request',
+        text: 'Click the link below to reset your password: \n\nhttp://yourwebsite.com/reset-password'
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(error);
+            return res.status(500).send('Error sending email');
+        }
+        console.log('Email sent: ' + info.response);
+        res.status(200).send('Email sent successfully');
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.get('/api/duration', (req, res) => {
@@ -64,8 +123,17 @@ app.get('/api/duration', (req, res) => {
 app.get('/form', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'form.html'));
 });
+
+app.get('/harsh', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', './component/harshal.html'));
+});
+
 app.get('/onlineTest', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', './component/onlineTest.html'));
+});
+
+app.get('/forgotPassword', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'forgotPass.html'));
 });
 
 app.get('/login', (req, res) => {
@@ -98,6 +166,10 @@ app.set('view engine', 'ejs');
 
 // Set the directory where the EJS views are located
 app.set('views', path.join(__dirname, 'views'));
+
+
+
+
 
 app.get('/test', async (req, res) => {
     try {
