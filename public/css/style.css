@@ -77,7 +77,16 @@ body {
   font-family: poppins, sans-serif;
   /* background: rgba(159, 157, 157, 0.779); */
 }
-
+#onlineTest{
+  background: #eb6d6d;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+}
 /* Header */
 .header {
   display: flex;
