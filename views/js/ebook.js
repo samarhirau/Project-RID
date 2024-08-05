@@ -1,23 +1,6 @@
-// ebook.js
 
-// const books = [
-//     {
-//         image: 'https://m.media-amazon.com/images/I/51oTTzbiVIL.jpg',
-//         title: "Developing a Hacker's Mindset: Publication Opened",
-//         description: "Hackers by Steven Levy is a captivating exploration of the ...",
-//         author: 'Steven Levy',
-//         rating: 3.5,
-//         publishYear: 1999
-//     },
-//     {
-//         image: './assets/cover book images/ML-12x18-1-scaled.jpg',
-//         title: 'Machine Learning Book by CSE Department, NIIST',
-//         description: 'Cryptonomicon (1999) is a gripping novel that weaves together two...',
-//         author: 'Shaun Dave',
-//         rating: 3.5,
-//         publishYear: 1999
-//     }
-// ];
+
+
 
 const books = [
     {
