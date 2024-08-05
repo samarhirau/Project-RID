@@ -15,6 +15,53 @@
       font-weight: bold;
       display: none;
     }
+    .question-navigator {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.question-navigator button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.question-navigator button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.question-navigator button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.question-navigator {
+    margin: 20px 0;
+}
+
+.question-navigator button {
+    margin-right: 5px;
+    padding: 10px;
+    background-color: #007bff59;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.question-navigator button.active {
+    background-color: #0056b3;
+}
+
+.question-navigator button.answered {
+    background-color: rgb(81, 209, 18);
+}
+
     </style>
   </head>
   <body>
@@ -66,9 +113,10 @@
           <div class="quiz-box">
             <h1>RID Quiz</h1>
             <!-- Questions Navigation -->
-
-
-
+            <div class="question-navigator">
+              <!-- Buttons will be dynamically added here -->
+            </div>
+         
 
             <div class="quiz-header">
               <span>RID'S Quiz website</span>
