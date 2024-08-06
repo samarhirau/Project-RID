@@ -1,5 +1,33 @@
 
-  
+// Example usage
+document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData();
+  formData.append('certificateId', document.getElementById('certificateId').value);
+  formData.append('internName', document.getElementById('internName').value);
+  formData.append('issueDate', document.getElementById('issueDate').value);
+  formData.append('description', document.getElementById('description').value);
+  formData.append('certificate', document.getElementById('certificateFile').files[0]);
+
+  try {
+    const response = await fetch('/admin/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+      showToast(result.message, 'success');
+    } else {
+      showToast(result.message || 'Failed to upload certificate', 'error');
+    }
+  } catch (error) {
+    showToast('Failed to upload certificate', 'error');
+  }
+});
+
+
 
   function uploadcertificate(){
     document.getElementById('mainArea1').style.display = 'flex';
@@ -146,21 +174,24 @@
 
 
 
-    async function fetchRegistrationsCount() {
-        try {
-            const response = await fetch('/admin/registrations/count');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            document.getElementById('registrations-count').textContent = ` ${data.count}`;
-        } catch (error) {
-            document.getElementById('registrations-count').textContent = 'Failed to load number of registrations';
-            console.error('Error fetching registrations count:', error);
-        }
+  async function fetchRegistrationsCount() {
+    try {
+      const response = await fetch('/admin/registrations/count');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      document.getElementById('registrations-count').textContent = ` ${data.count}`;
+    } catch (error) {
+      document.getElementById('registrations-count').textContent = 'Failed to load number of registrations';
+      showToast('Error fetching registrations count', '#f44336');
+      console.error('Error fetching registrations count:', error);
     }
+  }
 
-    fetchRegistrationsCount();
+  fetchRegistrationsCount();
+
+
 
 
     
@@ -236,42 +267,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const loggedIn = sessionStorage.getItem('loggedIn');
-  
-      if (loggedIn) {
+
+document.addEventListener('DOMContentLoaded', () => {
+  const loggedIn = sessionStorage.getItem('loggedIn');
+
+  if (loggedIn) {
+    document.getElementById('login-container').style.display = 'none';
+    document.getElementById('admin-content').style.display = 'block';
+  }
+
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const response = await fetch('/admin/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        sessionStorage.setItem('loggedIn', 'true');
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('admin-content').style.display = 'block';
+        showToast('Login successful!');
+      } else {
+        showToast('Invalid email or password', '#f44336');
       }
-  
-      document.getElementById('login-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-  
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-  
-        try {
-          const response = await fetch('/admin/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-          });
-  
-          if (response.ok) {
-            sessionStorage.setItem('loggedIn', 'true');
-            document.getElementById('login-container').style.display = 'none';
-            document.getElementById('admin-content').style.display = 'block';
-            showToast('Login successful!');
-          } else {
-            showToast('Invalid email or password', '#f44336');
-          }
-        } catch (error) {
-          showToast('Login failed', '#f44336');
-        }
-      });
-    });
+    } catch (error) {
+      showToast('Login failed', '#f44336');
+    }
+  });
+});
+
+
 
   
  
