@@ -80,14 +80,42 @@ body {
 #onlineTest{
   background: #eb6d6d;
   color: #fff;
-  padding: 8px 15px;
+  padding: 8px 12px;
   border-radius: 3px;
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s ease;
+  animation: loopwarn 1s .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate;
   
 }
+#ebookBtn{
+  background: #0a66c2;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  animation: loopwarn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate;
+}
+#onlineTest:hover, #ebookBtn:hover{
+  background: #000000;
+  opacity: 1;
+  animation: none;
+}
+@keyframes loopwarn {
+  from{
+    opacity: 1;
+    scale: 1;
+  }
+  to{
+    opacity: .75;
+    scale: .95;
+  }
+}
 /* Header */
+
+
 .header {
   display: flex;
   justify-content: space-between;

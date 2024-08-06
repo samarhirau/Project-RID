@@ -1,44 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
+:root{
+    --header-color: #0A66C2;
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "poppins", sans-serif;
 }
-
-
-header .upper-header{
-    background-color: #006989;
-    color: white;
-    display: flex;
-    font-size: small;
-    justify-content: space-between;
-    padding: 5px 10px;
+body{
+    overflow-x: hidden;
 }
 
-.upper-header .left-content span{
-    font-weight: 500;
-}
-
-.upper-header .right-content span{
-    align-content: end;
-}
-
-.upper-header .right-content a{
-    text-decoration: none;
-    color: white;
-    padding: 0px 3px;
-}
-
-header .lower-header{
+.header {
     display: flex;
     justify-content: space-between;
-    padding: 8px 40px;
-    border-bottom: 0.5px solid #0A66C280;
-    background-color: #FFFFFF;
-}
+    align-items: center;
+    background-color: var(--header-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 40px;
+    width: 100%;
+    font-size: 14px;
+  }
+  .web-text p {
+    display: inline-block;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+  }
+  .web-text p:first-child {
+    margin-left: 40px;
+  }
+  .web-text p span {
+    font-weight: 300;
+  }
+  .web-text p::after {
+    content: "|";
+    margin: 0 10px;
+    color: white;
+    font-weight: 300;
+  }
+  .web-text p:last-child::after {
+    content: "";
+  }
+  .right-text {
+    display: flex;
+    
+  }
+  
+  .right-text .link {
+    display: flex;
+    align-items: center;
+  
+  }
+  
+  .right-text .link .svg-object {
+    /* margin-right: 3px;  */
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  
+  .right-text .link {
+    color: white;
+    font-size: 0.6rem;
+    transition: all 0.3s ease;
+  }
+  .right-text a:last-child {
+    margin-right: 40px;
+  }
+  .right-text a::after {
+    content: "|";
+    margin: 0 8px;
+    color: white;
+    font-weight: 300;
+  }
+  .right-text a:last-child::after {
+    content: "";
+  }
+
+
+  
+  
 
 .main-content{
     display: flex;

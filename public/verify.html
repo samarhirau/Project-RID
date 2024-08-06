@@ -10,37 +10,142 @@
     <link rel="stylesheet" href="./css/verify.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
    <style>
-     .certificate-details {
+
+
+    /* Basic styling for the details and button */
+    .certificate-details {
+      display: none; /* Hide details by default */
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+     
+    }
+
+    .info-button {
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 3px;
+    }
+     /* .certificate-details {
        display: none;
-     }
+     } */
+
+     #result strong {
+      color: #008000;
+      font-size: small;
+    }
+    #result span {
+      color: rgb(0, 0, 0);
+      font-size: small;
+    }
+    #result{
+      margin-top: 40px;
+      background: #10301187;
+      border: 1px solid #008000;
+     border-radius: 30px;
+      padding: 5px;
+}
+
+
+/* Create a box with a light green theme */
+.certificate-details {
+  background-color: #C6F4D6; /* Light green background */
+  padding: 20px;
+  border: 1px solid #3E8E41; /* Green border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft box shadow */
+  width: 50%; /* Adjust the width as needed */
+  margin: 40px auto; /* Center the box horizontally */
+}
+
+/* Style the heading */
+.certificate-details h2 {
+  color: #3E8E41; /* Green text color */
+  margin-top: 0; /* Remove top margin */
+}
+
+/* Style the labels and values */
+.certificate-details p {
+  margin-bottom: 10px; /* Add some space between lines */
+}
+
+.certificate-details strong {
+  color: #666; /* Dark gray text color */
+}
+
+.certificate-details span {
+  color: #333; /* Dark text color */
+}
+
+/* Style the link (if uncommented) */
+.certificate-details a {
+  text-decoration: none; /* Remove underline */
+  color: #3E8E41; /* Green text color */
+}
+
+.certificate-details a:hover {
+  color: #666; /* Dark gray text color on hover */
+}
+
+
    </style>
  </head>
  <body>
-   <!-- <h1>Verify Certificate</h1> -->
+  
 
-     
+
   <header>
-    <div class="upper-header">
-      <div class="left-content">
-        <span>Website :</span> RID (Research Discovery & Innovation) by TWSKAA Welfare Foundation | <span>Helpline :</span> +91 98927 82728 | <span>Email :</span> supportrid@gmail.com
+  
+    <div class="header">
+      <div class="web-text">
+        <p>
+          Website:
+          <span
+            >RID (Reserch Innovation & Discovery) by TWSKAA Welfare Foundation
+          </span>
+        </p>
+
+        <p>Helpline: <span>+91 98927 82728 </span></p>
+        <p>Email: <span>supportid@gamil.com</span></p>
       </div>
-      <div class="right-content">
-        <span class="material-symbols-outlined" style="font-size: 15px;">important_devices</span><a href="#">Main Content</a> | 
-        <a href="">+A</a> <a href="">A</a> <a href="">A-</a> | 
-        <span class="material-symbols-outlined" style="font-size: 15px;">forum</span> <a href="#">Feedback</a> |
-        <span class="material-symbols-outlined" style="font-size: 15px;">support_agent</span>  <a href="#">Support</a>
-      </div>
-    </div>
-    <div class="lower-header">
-      <div class="left-content">
-        <div class="logo">
-          <img src="./assets/images/imageLogo.png" alt="RID logo">
-        </div>
-      </div>
-      <div class="right-content">
+      <div class="right-text">
+        <a class="link" href="#"
+          ><object
+            class="svg-object"
+            data="/assets/icons/important_devices.svg"
+            type="image/svg+xml"
+          ></object
+          >Main Content</a
+        >
+        <a class="link" href="#">+A A A-</a>
+        <a class="link" href="#"
+          ><object
+            class="svg-object"
+            data="/assets/icons/forum.svg"
+            type="image/svg+xml"
+          ></object
+          >Feedback</a
+        >
+        <a class="link" href="#"
+          ><object
+            class="svg-object"
+            data="./assets/icons/support_agent.svg"
+            type="image/svg+xml"
+          ></object
+          >Support</a
+        >
       </div>
     </div>
   </header>
+
+
+
+
+
+
   <div class="main-content">
   <div class="upper-content">
     <h2>RID's Certificate Verification & Validation</h2>
@@ -69,8 +174,11 @@
             <button><span class="material-symbols-outlined" style="font-size: 20px;">
                 download
                 </span><a id="detailCertificatePath" href="#" target="_blank">Download Certificate</a></button>
+
         </div>
+
         <div id="result"></div>
+        <button type="button" id="infoButton" class="info-button">i</button>
         <div class="certificate-details" id="certificateDetails">
           <h2>Certificate Details</h2>
           <p><strong>Certificate ID:</strong> <span id="detailCertificateId"></span></p>
@@ -83,7 +191,7 @@
         <span class="spanfooter"><span>Note:</span> Incase of failure of certificate validation, please contact us for further process.</span>
     </div>
   </form>
-   <div id="result"></div>
+   <!-- <div id="result"></div> -->
   
   </div>
    <script>
@@ -103,8 +211,10 @@
  
          const result = await response.json();
          if (result.message === 'Certificate is valid') {
-           document.getElementById('result').textContent = result.message;
-           document.getElementById('certificateDetails').style.display = 'block';
+          //  document.getElementById('result').textContent = ;
+          document.getElementById('result').innerHTML = "<strong>Successfully Verified:</strong> <span>certificate is verified, This certificate is valid</span>";
+
+          //  document.getElementById('certificateDetails').style.display = 'block';
            document.getElementById('detailCertificateId').textContent = result.certificate.certificateId;
            document.getElementById('detailInternName').textContent = result.certificate.internName;
            document.getElementById('detailIssueDate').textContent = new Date(result.certificate.issueDate).toLocaleDateString();
@@ -119,6 +229,18 @@
          document.getElementById('certificateDetails').style.display = 'none';
        }
      });
+   </script>
+   <script>
+     // Toggle visibility of certificate details
+     document.getElementById('infoButton').addEventListener('click', function() {
+      const detailsDiv = document.getElementById('certificateDetails');
+      detailsDiv.style.display = detailsDiv.style.display === 'none' ? 'block' : 'none';
+      
+      // Populate the details each time it's shown
+      if (detailsDiv.style.display === 'block') {
+        populateCertificateDetails(certificateData);
+      }
+    });
    </script>
  </body>
  </html>
