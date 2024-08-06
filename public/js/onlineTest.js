@@ -151,6 +151,7 @@ let questionHistory = [];
 fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple")
   .then((res) => res.json())
   .then((loadedQuestions) => {
+    console.log(loadedQuestions.results);
     questions = loadedQuestions.results.map((loadedQuestion) => {
       const formattedQuestion = { question: loadedQuestion.question };
       const answerChoices = [...loadedQuestion.incorrect_answers];
