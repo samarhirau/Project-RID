@@ -55,13 +55,14 @@ user-select: text; /* Re-enable selection for specific elements */
     height: 100px;
     position: absolute;
     z-index: 1;
-    background-color: var(--blue-color);
+    /* background-color: var(--blue-color); */
 }
 
 .logo img {
-    
-    border-radius: 50%;
-    padding: 10px;
+
+    width: 320px;
+    height: fit-content;
+    padding: 32px 10px;
 }
 
 .main{
