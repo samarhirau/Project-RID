@@ -1,7 +1,4 @@
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +7,71 @@
   <title>Admin page</title>
   <link rel="stylesheet" href="./css/admin.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<style>
+  /* Toast container style */
+.toastify-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual toast notification style */
+.toastify-toast {
+  background: #333; /* Dark background */
+  color: #fff; /* White text color */
+  border-radius: 8px; /* More rounded corners */
+  padding: 15px 20px; /* More padding */
+  margin: 10px 0; /* Spacing between toasts */
+  font-size: 15px; /* Slightly larger font size */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden; /* Ensure the timer line stays within bounds */
+}
+
+/* Timer line style */
+.toastify-toast .timer-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.6); /* Light color for timer line */
+  width: 100%;
+  transform: translateX(-100%); /* Start with timer line off-screen */
+  transition: transform 3s linear; /* Timer line animation */
+}
+
+/* Close button style */
+.toastify-toast .toastify-close {
+  cursor: pointer;
+  color: #ff5722; /* Close button color */
+  font-size: 18px;
+}
+
+/* Toast types */
+.toastify-success {
+  background: #4caf50; /* Green background for success */
+}
+
+.toastify-error {
+  background: #f44336; /* Red background for error */
+}
+
+.toastify-info {
+  background: #2196f3; /* Blue background for info */
+}
+
+</style>
+
+
 </head>
 <body>
   <div id="login-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
@@ -48,10 +110,73 @@
         <button id="certificate" onclick="window.location.href= '/verify'"><img src="./assets/icons/workspace_premium.png" style="filter: brightness(100); width: 21px; height: 21px; margin-right: 10px; text-align: center;" alt=""><span> Verify Certificate</span></button>
       </div>
     </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <style>
+      /* Toast container style */
+.toastify-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual toast notification style */
+.toastify-toast {
+  background: #333; /* Dark background */
+  color: #fff; /* White text color */
+  border-radius: 8px; /* More rounded corners */
+  padding: 15px 20px; /* More padding */
+  margin: 10px 0; /* Spacing between toasts */
+  font-size: 15px; /* Slightly larger font size */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden; /* Ensure the timer line stays within bounds */
+}
+
+/* Timer line style */
+.toastify-toast .timer-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.6); /* Light color for timer line */
+  width: 100%;
+  transform: translateX(-100%); /* Start with timer line off-screen */
+  transition: transform 3s linear; /* Timer line animation */
+}
+
+/* Close button style */
+.toastify-toast .toastify-close {
+  cursor: pointer;
+  color: #ff5722; /* Close button color */
+  font-size: 18px;
+}
+
+/* Toast types */
+.toastify-success {
+  background: #4caf50; /* Green background for success */
+}
+
+.toastify-error {
+  background: #f44336; /* Red background for error */
+}
+
+.toastify-info {
+  background: #2196f3; /* Blue background for info */
+}
+
+    </style>
   </header>
 <!-- =========== -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -82,7 +207,7 @@
 
   
 </body>
-</html>
+</html> -->
 
 
 
@@ -101,6 +226,8 @@
 
 
 <!-- ================== -->
+
+
   <div class="main-content">
     <div class="side-bar">
       <div class="div1">
@@ -190,573 +317,14 @@
 
 
 
-
-      <!-- <form id="uploadForm" class="uploadForm">
-        <section>
-          <div class="form-group">
-              <label>Certificate Id <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="text" name="certificateId" id="certificateId" placeholder="eg: RIDXR24354" required>
-          </div>
-          <div class="form-group">
-              <label>Issue Date <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="date" name="issueDate" id="issueDate" placeholder="DD/MM/YYYY" required>
-          </div>
-          <div class="form-group">
-              <label>Intern or Student Name <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="text" name="internName" id="internName" placeholder="John Doe" required>
-          </div>
-          <div class="form-group">
-              <label>Description <span style="color: grey; font-weight: 400;">(Optional)</span></label>
-              <input type="text" name="description" id="description" placeholder="Write Description or leavn it blank">
-          </div>
-         
-        <div class="form-group">
-          <label>Upload Certificate <span style="color: red; font-weight: bold;">*</span></label>
-          <input required type="file" name="certificateFile" id="certificateFile" hidden>
-          <div id="dropArea" class="drop-area">
-              <p>Drag & Drop your file here or click to upload</p>
-          </div>
-      </div>
-    </section>
-        <button type="submit">
-          Upload Now
-        </button>
-    
-      </form> -->
     </div>
   </div>
   </div>
-  <script>
-    function uploadcertificate(){
-      document.getElementById('mainArea1').style.display = 'flex';
-      document.getElementById('mainArea').style.display = 'none';
-      document.getElementById('dashboardbtn').style.backgroundColor = 'white';
-      document.getElementById('dashboardbtn').style.color = 'black';
-      document.getElementById('uploadCerti').style.backgroundColor = '#0A66C2';
-      document.getElementById('uploadCerti').style.color = 'white';
-    }
-  </script>
-  <script>
-    // Wait until the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', (event) => {
-    // Get the dashboard button by its ID
-    const dashboardBtn = document.getElementById('dashboardbtn');
-    
-    // Add a click event listener to the button
-    dashboardBtn.addEventListener('click', () => {
-        // Redirect to the home page
-        window.location.href = 'admin.html'; // Adjust the URL as needed
-    });
-});
 
-  </script>
+
+<script src="./js/showToast.js"></script>
+<script src="./js/admin.js"></script>
+
   
-
-
-
-  <!-- ----------- -->
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const dropArea = document.getElementById('dropArea');
-      const fileInput = document.getElementById('certificateFile');
-
-      // Prevent default drag behaviors
-      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, preventDefaults, false);
-      });
-
-      // Highlight drop area when item is dragged over it
-      ['dragenter', 'dragover'].forEach(eventName => {
-        dropArea.addEventListener(eventName, highlight, false);
-      });
-
-      ['dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, unhighlight, false);
-      });
-
-      // Handle dropped files
-      dropArea.addEventListener('drop', handleDrop, false);
-
-      // Handle click to open file input dialog
-      dropArea.addEventListener('click', () => fileInput.click());
-
-      // Handle file input change
-      fileInput.addEventListener('change', handleFiles, false);
-
-      function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-
-      function highlight(e) {
-        dropArea.classList.add('dragover');
-      }
-
-      function unhighlight(e) {
-        dropArea.classList.remove('dragover');
-      }
-
-      function handleDrop(e) {
-        const dt = e.dataTransfer;
-        const files = dt.files;
-        fileInput.files = files; // Assign files to file input
-        handleFiles({ target: { files } });
-      }
-
-      function handleFiles(e) {
-        const files = e.target.files;
-        if (files.length > 0) {
-          const filename = files[0].name;
-          dropArea.innerHTML = `<p>File uploaded: ${filename}</p>`;
-        }
-      }
-    });
-  </script>
-
-  <script>
-    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData();
-      formData.append('certificateId', document.getElementById('certificateId').value);
-      formData.append('internName', document.getElementById('internName').value);
-      formData.append('issueDate', document.getElementById('issueDate').value);
-      formData.append('description', document.getElementById('description').value);
-      formData.append('certificate', document.getElementById('certificateFile').files[0]);
-
-      try {
-        const response = await fetch('/admin/upload', {
-          method: 'POST',
-          body: formData,
-        });
-
-        const result = await response.json();
-        alert(result.message);
-      } catch (error) {
-        alert('Failed to upload certificate');
-      }
-    });
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const dropArea = document.getElementById('dropArea');
-      const fileInput = document.getElementById('certificateFile');
-  
-      // Prevent default drag behaviors
-      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, preventDefaults, false);
-      });
-  
-      // Highlight drop area when item is dragged over it
-      ['dragenter', 'dragover'].forEach(eventName => {
-        dropArea.addEventListener(eventName, highlight, false);
-      });
-  
-      ['dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, unhighlight, false);
-      });
-  
-      // Handle dropped files
-      dropArea.addEventListener('drop', handleDrop, false);
-  
-      // Handle click to open file input dialog
-      dropArea.addEventListener('click', () => fileInput.click());
-  
-      // Handle file input change
-      fileInput.addEventListener('change', handleFiles, false);
-  
-      function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-  
-      function highlight(e) {
-        dropArea.classList.add('dragover');
-      }
-  
-      function unhighlight(e) {
-        dropArea.classList.remove('dragover');
-      }
-  
-      function handleDrop(e) {
-        const dt = e.dataTransfer;
-        const files = dt.files;
-        handleFiles({ target: { files } });
-      }
-  
-      function handleFiles(e) {
-        const files = e.target.files;
-        // Assuming only one file is dropped or selected
-        if (files.length > 0) {
-          const filename = files[0].name;
-          // Display the file name in the drop area
-          dropArea.innerHTML = `<p>File uploaded: ${filename}</p>`;
-        }
-      }
-    });
-  </script>
-   <script>
-    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData();
-      formData.append('certificateId', document.getElementById('certificateId').value);
-      formData.append('internName', document.getElementById('internName').value);
-      formData.append('issueDate', document.getElementById('issueDate').value);
-      formData.append('description', document.getElementById('description').value);
-      formData.append('certificate', document.getElementById('certificateFile').files[0]);
-
-      try {
-        const response = await fetch('/admin/upload', {
-          method: 'POST',
-          body: formData,
-        });
-
-        const result = await response.json();
-        alert(result.message);
-      } catch (error) {
-        alert('Failed to upload certificate');
-      }
-    });
-  </script> -->
-    <script>
-      async function fetchRegistrationsCount() {
-          try {
-              const response = await fetch('/admin/registrations/count');
-              if (!response.ok) {
-                  throw new Error('Network response was not ok');
-              }
-              const data = await response.json();
-              document.getElementById('registrations-count').textContent = ` ${data.count}`;
-          } catch (error) {
-              document.getElementById('registrations-count').textContent = 'Failed to load number of registrations';
-              console.error('Error fetching registrations count:', error);
-          }
-      }
-
-      fetchRegistrationsCount();
-
-
-      
-document.getElementById('logOut-btn').addEventListener('click', function() {
-  const confirmation = confirm('Are you sure you want to log out?');
-  if (confirmation) {
-    sessionStorage.removeItem('loggedIn');
-    window.location.href = '/auth/logout'; // Adjust the URL to match your logout route
-  }
-});
-
-
-  </script>
-  
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Check if user is already logged in
-    const loggedIn = sessionStorage.getItem('loggedIn');
-
-    if (loggedIn) {
-      document.getElementById('login-container').style.display = 'none';
-      document.getElementById('admin-content').style.display = 'block';
-    }
-
-    document.getElementById('login-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      try {
-        const response = await fetch('/admin/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
-
-        if (response.ok) {
-          sessionStorage.setItem('loggedIn', 'true');
-          document.getElementById('login-container').style.display = 'none';
-          document.getElementById('admin-content').style.display = 'block';
-        } else {
-          alert('Invalid email or password');
-        }
-      } catch (error) {
-        alert('Login failed');
-      }
-    });
-  });
-</script>
-    
-
-   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <!-- show all data -->
-  
-  <script>
-        // const fileInput = document.getElementById('fileInput');
-
-        // fileInput.addEventListener('change', (event) => {
-        //     const file = event.target.files[0];
-        //     if (!file) {
-        //         return;
-        //     }
-
-        //     const reader = new FileReader();
-        //     reader.onload = (e) => {
-        //         const data = new Uint8Array(e.target.result);
-        //         const workbook = XLSX.read(data, { type: 'array' });
-
-        //         // Assume we're working with the first sheet
-        //         const sheetName = workbook.SheetNames[0];
-        //         const sheet = workbook.Sheets[sheetName];
-        //         const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-
-        //         // Clear previous table data
-        //         const tableHeaders = document.getElementById('table-headers');
-        //         const tableBody = document.getElementById('data-table').querySelector('tbody');
-        //         tableHeaders.innerHTML = '';
-        //         tableBody.innerHTML = '';
-
-        //         // Create table headers
-        //         jsonData[0].forEach(header => {
-        //             const th = document.createElement('th');
-        //             th.textContent = header;
-        //             tableHeaders.appendChild(th);
-        //         });
-
-        //         // Add data rows
-        //         jsonData.slice(1).forEach(row => {
-        //             const tr = document.createElement('tr');
-        //             row.forEach(cell => {
-        //                 const td = document.createElement('td');
-        //                 td.textContent = cell !== undefined ? cell : ''; // Handle undefined cells
-        //                 tr.appendChild(td);
-        //             });
-        //             tableBody.appendChild(tr);
-        //         });
-        //     };
-
-        //     reader.readAsArrayBuffer(file);
-        // });
-
-
-
-
-
-
-
-// show only student name
-
-//         const fileInput = document.getElementById('fileInput');
-
-// fileInput.addEventListener('change', (event) => {
-//     const file = event.target.files[0];
-//     if (!file) {
-//         return;
-//     }
-
-//     const reader = new FileReader();
-//     reader.onload = (e) => {
-//         const data = new Uint8Array(e.target.result);
-//         const workbook = XLSX.read(data, { type: 'array' });
-
-//         // Assume we're working with the first sheet
-//         const sheetName = workbook.SheetNames[0];
-//         const sheet = workbook.Sheets[sheetName];
-//         const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-
-//         // Clear previous table data
-//         const tableHeaders = document.getElementById('table-headers');
-//         const tableBody = document.getElementById('data-table').querySelector('tbody');
-//         tableHeaders.innerHTML = '';
-//         tableBody.innerHTML = '';
-
-//         // Find the index of the "Student Name" column
-//         const headerRow = jsonData[0];
-//         const studentNameIndex = headerRow.indexOf('Student name');
-
-//         if (studentNameIndex === -1) {
-//             alert('Student Name column not found!');
-//             return;
-//         }
-
-//         // Create a single header for "Student Name"
-//         const th = document.createElement('th');
-//         th.textContent = 'Student Name';
-//         tableHeaders.appendChild(th);
-
-//         // Add data rows for "Student Name"
-//         jsonData.slice(1).forEach(row => {
-//             const tr = document.createElement('tr');
-//             const td = document.createElement('td');
-//             td.textContent = row[studentNameIndex] !== undefined ? row[studentNameIndex] : ''; // Handle undefined cells
-//             tr.appendChild(td);
-//             tableBody.appendChild(tr);
-//         });
-//     };
-
-//     reader.readAsArrayBuffer(file);
-// });
-
-
-
-// show  student name and email and oher details
-
-
-// const fileInput = document.getElementById('fileInput');
-
-//         fileInput.addEventListener('change', (event) => {
-//             const file = event.target.files[0];
-//             if (!file) {
-//                 return;
-//             }
-
-//             const reader = new FileReader();
-//             reader.onload = (e) => {
-//                 const data = new Uint8Array(e.target.result);
-//                 const workbook = XLSX.read(data, { type: 'array' });
-
-//                 // Assume we're working with the first sheet
-//                 const sheetName = workbook.SheetNames[0];
-//                 const sheet = workbook.Sheets[sheetName];
-//                 const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-
-//                 // Clear previous table data
-//                 const tableHeaders = document.getElementById('table-headers');
-//                 const tableBody = document.getElementById('data-table').querySelector('tbody');
-//                 tableHeaders.innerHTML = '';
-//                 tableBody.innerHTML = '';
-
-//                 // Specify the columns you want to display
-//                 const columnsToDisplay = ['Student name', 'Exam points']; // Update this list as needed
-// console.log(columnsToDisplay);
-//                 // Find the indices of the columns to display
-//                 const headerRow = jsonData[0];
-//                 const indices = columnsToDisplay.map(column => {
-//                     const index = headerRow.indexOf(column);
-//                     if (index === -1) {
-//                         alert(`Column "${column}" not found!`);
-//                     }
-//                     return index;
-//                 }).filter(index => index !== -1);
-
-//                 // Create table headers for selected columns
-//                 indices.forEach(index => {
-//                     const th = document.createElement('th');
-//                     th.textContent = headerRow[index];
-//                     tableHeaders.appendChild(th);
-//                 });
-
-//                 // Add data rows for selected columns
-//                 jsonData.slice(1).forEach(row => {
-//                     const tr = document.createElement('tr');
-//                     indices.forEach(index => {
-//                         const td = document.createElement('td');
-//                         td.textContent = row[index] !== undefined ? row[index] : ''; // Handle undefined cells
-//                         tr.appendChild(td);
-//                     });
-//                     tableBody.appendChild(tr);
-//                 });
-//             };
-
-//             reader.readAsArrayBuffer(file);
-//         });
-
-
-
-
-// show all data in table
-
-const fileInput = document.getElementById('fileInput');
-
-fileInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (!file) {
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-
-        // Assume we're working with the first sheet
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-
-        // Clear previous table data
-        const tableHeaders = document.getElementById('table-headers');
-        const tableBody = document.getElementById('data-table').querySelector('tbody');
-        tableHeaders.innerHTML = '';
-        tableBody.innerHTML = '';
-
-        // Specify the columns you want to display
-        const columnsToDisplay = ['Student name', 'Exam points']; // Update this list as needed
-
-        // Find the indices of the columns to display
-        const headerRow = jsonData[0];
-        const indices = columnsToDisplay.map(column => {
-            const index = headerRow.indexOf(column);
-            if (index === -1) {
-                alert(`Column "${column}" not found!`);
-            }
-            return index;
-        }).filter(index => index !== -1);
-
-        // Create table headers for selected columns
-        indices.forEach(index => {
-            const th = document.createElement('th');
-            th.textContent = headerRow[index];
-            tableHeaders.appendChild(th);
-        });
-
-        // Store data in an array of objects
-        const dataObjects = [];
-
-        // Add data rows for selected columns
-        jsonData.slice(1).forEach(row => {
-            const tr = document.createElement('tr');
-            const dataObject = {};
-            indices.forEach(index => {
-                const td = document.createElement('td');
-                td.textContent = row[index] !== undefined ? row[index] : ''; // Handle undefined cells
-                tr.appendChild(td);
-                
-                // Add to data object
-                dataObject[headerRow[index]] = row[index];
-            });
-            tableBody.appendChild(tr);
-            dataObjects.push(dataObject);
-        });
-
-        // Output the data objects to console
-        console.log('Data Objects:', dataObjects);
-    };
-
-    reader.readAsArrayBuffer(file);
-});
-    </script>
-
 </body>
 </html>

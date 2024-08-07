@@ -43,6 +43,31 @@ const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
+// const addCertificate = async (req, res) => {
+//   const { certificateId, internName, issueDate, description } = req.body;
+//   const certificateFile = req.file.buffer;
+
+//   try {
+//     const newCertificate = new Certificate({
+//       certificateId,
+//       internName,
+//       issueDate,
+//       description,
+//       certificateFile,
+//     });
+
+//     await newCertificate.save();
+//     res.status(200).json({ message: 'Certificate uploaded successfully' });
+//   } catch (error) {
+//     if (error.code === 11000) { // Handle duplicate key error
+//       res.status(400).json({ message: 'Certificate ID already exists' });
+//     } else {
+//       res.status(500).json({ error: 'Failed to upload certificate' });
+//     }
+//   }
+// };
+// controllers/adminController.js
+
 const addCertificate = async (req, res) => {
   const { certificateId, internName, issueDate, description } = req.body;
   const certificateFile = req.file.buffer;
@@ -59,13 +84,14 @@ const addCertificate = async (req, res) => {
     await newCertificate.save();
     res.status(200).json({ message: 'Certificate uploaded successfully' });
   } catch (error) {
-    if (error.code === 11000) { // Handle duplicate key error
+    if (error.code === 11000) {
       res.status(400).json({ message: 'Certificate ID already exists' });
     } else {
-      res.status(500).json({ error: 'Failed to upload certificate' });
+      res.status(500).json({ message: 'Failed to upload certificate' });
     }
   }
 };
+
 
 const getRegistrationsCount = async (req, res) => {
   try {
