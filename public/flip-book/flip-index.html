@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <!-- costume css -->
+    <link rel="stylesheet" type="text/css" href="flip-css/flipbook.style.css">
+    <link rel="stylesheet" type="text/css" href="flip-css/font-awesome.css">
+     <link rel="stylesheet" type="text/css" href="flip-css/footer.css">
+
+     <!-- Bootstrap Css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <title>RID Button Flipbook</title>
+    <link rel="stylesheet" href="flip-style.css">
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Include JS -->
+    <script src="flip-js/flipbook.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#read").flipBook({
+                //Layout Setting
+                pdfUrl: 'pdf/pdf.pdf',
+                lightBox: true,
+                layout: 3,
+                currentPage: { vAlign: "bottom", hAlign: "left" },
+                // BTN SETTING
+                btnShare: { enabled: false },
+                btnPrint: {
+                    hideOnMobile: true
+                },
+                btnDownloadPages: {
+                    enabled: true,
+                    title: "Download pages",
+                    icon: "fa-download",
+                    icon2: "file_download",
+                    url: "images/pdf.rar",
+                    name: "allPages.zip",
+                    hideOnMobile: false
+                },
+                btnColor: 'rgb(255, 0, 0)',
+                sideBtnColor: 'rgb(12, 255, 73);',
+                sideBtnSize: 30,
+                // sideBtnBackground: "rgba(0,0,0,.7)",
+                sideBtnRadius: 0,
+                btnSound: { vAlign: "top", hAlign: "left" },
+                btnAutoplay: { vAlign: "top", hAlign: "left" },
+                // SHARING
+                btnShare: {
+                    enabled: false
+                },
+                
+            });
+        })
+    </script>
+
+    <style>
+        .fa-angle-left{
+    font-size: 1.5rem;
+    /* background: rgb(12, 255, 73); */
+}
+
+
+.fa-angle-right{
+    font-size: 1.5rem;
+    background: rgb(255, 128, 0);
+
+    
+}
+    </style>
+</head>
+
+<body>
+    <div class="buttons">
+        <button id="read" class="viewBTN"><span class="material-symbols-outlined">menu_book</span>View Demo PDF</button>
+        <button class="downloadBTN"><span class="material-symbols-outlined">file_save</span>Download Demo PDF</button>
+    </div>
+
+
+
+
+    
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+    integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+<script>
+
+</script>
+</body>
+
+</html>

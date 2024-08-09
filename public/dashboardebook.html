@@ -1,0 +1,206 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Book Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <img src="./assets/dash-ebook-images/e-book logo.png" alt="" class="img">
+
+        <h2>E-Book Dashboard</h2>
+        <nav>
+            <ul>
+                <li><a href="#home"> <img src="home-outline.svg" alt=""> Home</a></li>
+                <li><a href="#library"> <img src="library-outline.svg" alt=""> Library</a></li>
+                <li><a href="#stats"> <img src="stats-chart-outline.svg" alt=""> Statistics</a></li>
+                <li><a href="#profile"><img src="person-outline.svg" alt=""> Profile</a></li>
+
+                <li><a href="#settings"> <img src="settings-outline.svg" alt=""> Settings</a></li>
+
+                <button>Logout</button>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header>
+            <h1>Welcome to RID E-Book Dashboard</h1>
+        </header>
+
+        <!-- Sections -->
+        <section id="home">
+            <h2>Home</h2>
+            <div>
+                <h3>Welcome to RID E-Books</h3>
+                <p> Your ultimate resource for academic success. Our platform provides a vast collection of e-books to
+                    support studies and help you achieve your educational goals. Whether you are looking for textbooks,
+                    reference materials, or additional readings to enhance your learning , we have it all.Explore, read,
+                    and
+                    excel with RID E-Books.
+                </p>
+
+            </div> 
+            <br>
+
+            <div>
+                <h3>Platform Features</h3>
+                <p>Our platform is designed to make your learning experience seamless and enriching:</p><br>
+                <ul>
+                    <li><strong>Vast Collection:</strong> Access thousands of e-books across various subjects and
+                        disciplines.</li><br>
+                    <li><strong>Personalized Recommendations:</strong> Receive book suggestions tailored to your
+                        interests and academic needs.</li><br>
+                    <li><strong>Easy Navigation:</strong> Quickly find the books you need with our user-friendly search
+                        and categorization.</li><br>
+                    <li><strong>Reading Progress:</strong> Track your reading habits and progress with detailed
+                        statistics and analytics.</li><br>
+                    <li><strong>Offline Access:</strong> Download e-books for offline reading and study without internet
+                        interruptions.</li><br>
+                    <li><strong>Interactive Features:</strong> Highlight text, add notes, and bookmark pages to enhance
+                        your study sessions.</li>
+                </ul>
+            </div>
+
+
+        </section>
+
+        <section id="library">
+            <h2>Your Library</h2>
+
+            <div class="card-library">
+
+                <div class="books">
+                    <img src="https://loremflickr.com/600/400/books" alt="books">
+                    <div class="books-content">
+                        <h3> HTML </h3>
+
+                    </div>
+                    <buttom class="btn-read">Read</buttom>
+                    <buttom class="btn-download">Download</buttom>
+                </div>
+
+                <!-- <ul class="book-list"> -->
+                <!-- <li class="book-item"> -->
+                <!-- <img src=" " alt="Book 1"> -->
+                <!-- <p>Book Title 1</p> -->
+
+                <!-- </li>
+                <li class="book-item">
+                    <img src=" " alt="Book 2">
+                    <p>Book Title 2</p>
+                    <buttom class="btn-read">Read</buttom>
+                    <buttom class="btn-remove">Remove</buttom>
+                </li>
+             -->
+                <!-- </ul> -->
+                <div class="books">
+                    <img src="https://loremflickr.com/600/400/books" alt="books">
+
+                    <div class="books-content">
+                        <h3> CSS</h3>
+
+                    </div>
+                    <buttom class="btn-read">Read</buttom>
+                    <buttom class="btn-download">Download</buttom>
+                </div>
+
+                <div class="books">
+                    <img src="https://loremflickr.com/600/400/books" alt="books">
+                    <div class="books-content">
+                        <h3> JavaScript</h3>
+
+                    </div>
+                    <buttom class="btn-read">Read</buttom>
+                    <buttom class="btn-download">Download</buttom>
+                </div>
+
+                <div class="books">
+                    <img src="https://loremflickr.com/600/400/books" alt="books">
+
+                    <div class="books-content">
+                        <h3> React</h3>
+
+
+                    </div>
+                    <buttom class="btn-read">Read</buttom>
+                    <buttom class="btn-download">Download</buttom>
+                </div>
+        <button class="btn-add-book">Add Book</button>
+
+            </div>
+        </section>
+
+        <section id="statistics">
+            <h2>Reading Statistics</h2>
+            
+            <p>View your reading statistics and progress.</p>
+            <ul class="stats">
+                <li class="stat-item">
+                    <br>
+                    <h3>Books Read</h3>
+                    <p>10</p>
+                    <progress value="10" max="100"></progress>
+
+                </li>
+                <li class="stat-item">
+                    <h3>Pages Read</h3>
+                    <p>1,200</p>
+                    <progress value="1200" max="2000"></progress>
+
+                </li>
+
+                <li class="stat-item">
+                    <h3>Average Reading Time</h3>
+                    <p>60 minutes</p>
+                </li>
+
+            </ul>
+        </section>
+
+        <section id="profile">
+            <h2>Your Profile</h2>
+            <p>Manage your personal information and preferences.</p>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br><br>
+                <button class="btn-save">Save Changes</button>
+            </form>
+        </section>
+
+
+
+
+        <section id="settings">
+            <h2>Settings</h2>
+            
+            <form>
+                <label for="theme">Theme:</label>
+                <select id="theme" name="theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select><br><br>
+                <label for="font-size">Font Size:</label>
+                <select id="font-size" name="font-size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select><br><br>
+                <button class="btn-save">Save Changes</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

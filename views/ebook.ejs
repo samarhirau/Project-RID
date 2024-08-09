@@ -28,7 +28,7 @@
                 <button onclick="btnOpen()" class="btn_mobile_open">•••</button>
             </div>
             <h1 class="special">RID's E-Book Center</h1>
-            <button class="add-book">
+            <button id="addNewBook" class="add-book">
                 <span class="material-symbols-outlined">add</span>Add New E-Books
             </button>
             <h1 style="font-weight: 600;">Latest Reading</h1>
@@ -101,7 +101,12 @@
             </div>
         </div>
     </div>
-
+    <script>
+        const addNewBook = document.getElementById('addNewBook');
+        addNewBook.addEventListener('click', () => {
+            window.location.href = '/dashboardebook';
+  });
+    </script>
     <script src="./js/ebook.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
     <script>
