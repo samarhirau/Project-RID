@@ -5,6 +5,8 @@ const session = require('express-session');
 const passport = require('passport');
 const dotenv = require('dotenv');
 dotenv.config();
+const otpGenerator = require('otp-generator')
+const otp = require('./utils/sendEmail');
 // const quizRoutes = require('./routes/quizRoutes');
 
 const connectDB = require('./config/db');
@@ -21,11 +23,14 @@ const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/admin');
 const verifyRoutes = require('./routes/verify');
 const excelRoutes = require('./routes/excelRoutes');
+//  const resetpassword  = require('./routes/reset.ejs');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const crypto = require('crypto');
+const { sendEmail } = require('./utils/sendEmail');
+const router = require('./Routes/userRoutes');
 const secretKey = crypto.randomBytes(64).toString('hex');
 console.log(secretKey); // Print the key to use it in your session configuration
 
@@ -36,21 +41,26 @@ app.use(cookieParser()); // Add cookie-parser middleware
 app.use(cors()); 
 
 app.use(session({
-  secret: secretKey,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } // Set to true if using HTTPS
+    secret: secretKey,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Set to true if using HTTPS
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+app.get("/yes",(req,res)=>{
+    res.sendFile(path.join(__dirname, 'public', 'yes.html'));
+})
 app.use('/user', userRoutes);
 app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
 app.use('/verify', verifyRoutes);
 app.use('/api/excel', excelRoutes);
+app.use('/send-mail',sendEmail);
+// app.use('/reset-password',resetpassword);
 // Use quiz routes
 // app.use('/api', quizRoutes);
 
@@ -60,60 +70,35 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-// SMTP configuration
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-        user: 'samarhirau.official@gmail.com',
-        pass: 'mpqjpngtfeestrxq'
-    }
-});
 
-// Endpoint to send the reset email
-app.post('/send-reset-email', (req, res) => {
-    const { email } = req.body;
 
-    const mailOptions = {
-        from: 'samarhirau.official@gmail.com',
-        to: email,
-        subject: 'Password Reset Request',
-        text: 'Click the link below to reset your password: \n\nhttp://yourwebsite.com/reset-password'
-    };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-            return res.status(500).send('Error sending email');
-        }
-        console.log('Email sent: ' + info.response);
-        res.status(200).send('Email sent successfully');
-    });
-});
+// --my code //
 
 
 
 
+app.post('/verify-otp',(req,res)=>{
+    const userOTP = req.body.otp;
+    console.log(otp)
+      res.redirect('/success');
+   
+  })
 
 
+app.get('/success',(req,res,next)=>{
+    res.redirect("yes");
+})
+app.get("/success",(req,res)=>{
+    res.render("success")
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// app.post('/send-mail',(req,res)=>{
+//     res.render({sendEmail});
+// })
+// router.post('/reset-password',(req,res)=>{
+//     res.render({resetpassword});
+// })
 app.get('/api/duration', (req, res) => {
     const duration = process.env.DURATION;
     if (!duration) {
@@ -142,6 +127,7 @@ app.get('/onlineTest', (req, res) => {
 app.get('/forgotPassword', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'forgotPass.html'));
 });
+
 
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
