@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 // const quizRoutes = require('./routes/quizRoutes');
 
-// const connectDB = require('./config/db');
+const connectDB = require('./config/db');
 require('./config/passport')(passport); // Initialize Passport with your configuration
 const cookieParser = require('cookie-parser');
 const nodemailer = require('nodemailer');
@@ -209,7 +209,7 @@ app.get('/test', async (req, res) => {
 
 
 app.listen(port, async () => {
-    // await connectDB();
+    await connectDB();
     console.log(`Server is running on http://localhost:${port}`);
 });
 
