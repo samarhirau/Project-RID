@@ -69,7 +69,7 @@ input {
 }
 
 :root {
-  --header-color: #0a66c2;
+  --header-color: #083D5D;
   --background: rgba(10, 102, 194, 0.05);
 }
 
@@ -78,25 +78,38 @@ body {
   /* background: rgba(159, 157, 157, 0.779); */
 }
 #onlineTest{
-  background: #eb6d6d;
+  background: crimson;
   color: #fff;
-  padding: 8px 12px;
-  border-radius: 3px;
+  
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s ease;
   animation: loopwarn 1s .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate;
+
+  padding: 8px 15px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
   
 }
 #ebookBtn{
-  background: #0a66c2;
+  background: #C67534;
   color: #fff;
-  padding: 8px 12px;
-  border-radius: 3px;
+
+ 
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s ease;
   animation: loopwarn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate;
+
+  padding: 8px 15px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 #onlineTest:hover, #ebookBtn:hover{
   background: #000000;
@@ -105,11 +118,9 @@ body {
 }
 @keyframes loopwarn {
   from{
-    opacity: 1;
     scale: 1;
   }
   to{
-    opacity: .75;
     scale: .95;
   }
 }
@@ -190,27 +201,32 @@ body {
 }
 .menu {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: left;
+  align-items: flex-end;
   flex-direction: column;
   margin-right: 40px;
 }
-.menu ul {
+.upperNav {
   display: flex;
-  gap: 20px;
+  gap: 8px;
+}
+.lowerNav {
+  display: flex;
+  gap: 22px;
 }
 .upperNav {
   display: flex;
-  justify-content: space-evenly;
+  
   align-items: center;
 }
 .upperNav .search {
+  display: none;
   border: 0.5px solid var(--header-color);
   border-radius: 3px;
-  padding: 5px 10px;
+  padding: 4px 8px;
   /* margin-right: 20px; */
   /* width: 300px; */
-  max-width: 400px;
+  max-width: 300px;
 }
 .search svg {
   fill: var(--header-color);
@@ -256,7 +272,7 @@ body {
  
  } */
   .blue-btn{
-    background: #0a66c2;
+    background: 083D5D;
     color: #fff;
     padding: 8px 15px;
     border-radius: 3px;
@@ -276,7 +292,7 @@ body {
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
-    /* background: #0a66c242; */
+    /* background: #083D5D42; */
     border-radius: 30px;
     position: relative;
   }
@@ -288,7 +304,8 @@ body {
     border: none;
     background: transparent;
     font-size: 0.9rem;
-   
+    color: white;
+  
   }
 
   #swap-btn{
@@ -297,13 +314,13 @@ body {
     left: 0;
     width: 110px;
     height: 100%;
-    background: #0a66c2;
+    background: #083D5D;
     color: #fff;
     border-radius: 30px;
     transition: all 0.4s ease;
   }
   #certificate{
-    background: #0a66c2;
+    background: #083D5D;
     color: #fff;
     padding: 8px 15px;
     border-radius: 30px;
@@ -332,7 +349,7 @@ body {
     text-align: center;
   }
   #signUpBtn{
-    background: #0a66c200;
+    background: #083D5D00;
     color: #000;
     padding: 8px 15px;
     border-radius:0  30px 30px 0;
