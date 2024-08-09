@@ -1,0 +1,60 @@
+ /* Toast container style */
+ .toastify-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Individual toast notification style */
+  .toastify-toast {
+    background: #ffffff; /* Dark background */
+    color: #000000; /* White text color */
+    border-radius: 8px; /* More rounded corners */
+    padding: 15px 20px; /* More padding */
+    margin: 10px 0; /* Spacing between toasts */
+    font-size: 15px; /* Slightly larger font size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden; /* Ensure the timer line stays within bounds */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  }
+  
+  /* Timer line style */
+  .toastify-toast .timer-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(0, 255, 13, 0.671); /* Light color for timer line */
+    width: 100%;
+    transform: translateX(-100%); /* Start with timer line off-screen */
+    transition: transform 3s linear; /* Timer line animation */
+  }
+  
+  /* Close button style */
+  .toastify-toast .toastify-close {
+    cursor: pointer;
+    color: #ff5722; /* Close button color */
+    font-size: 18px;
+  }
+  
+  /* Toast types */
+  .toastify-success {
+    background: #4caf50; /* Green background for success */
+  }
+  
+  .toastify-error {
+    background: #f44336; /* Red background for error */
+  }
+  
+  .toastify-info {
+    background: #ffffff; /* Dark background */
+    color: #000000; /* White text color */ /* Blue background for info */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  }
