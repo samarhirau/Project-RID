@@ -1072,6 +1072,7 @@ body {
     transition: all ease-in-out 500ms;
     opacity: 0;
     scale: .85;
+    /* display: none; */
   }
  
   .myslide img{
