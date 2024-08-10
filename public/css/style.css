@@ -661,7 +661,7 @@ body {
   font-size: 1.4rem;
   font-weight: 600;
   color: #333;
-
+  margin-left: 40px;
   text-align: left;
 }
 .onText-slider .text-area p {
@@ -1149,6 +1149,9 @@ body {
     width: fit-content;
   }
   .onText-slider button{
+    margin: 0;
+  }
+  .onText-slider .text-area h1{
     margin: 0;
   }
 }
