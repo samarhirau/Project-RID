@@ -1,46 +1,5 @@
 
 
-// // const mongoose = require('mongoose');
-
-// // const userSchema = new mongoose.Schema({
-// //     firstname: { type: String, required: true },
-// //     lastname: { type: String, required: true },
-// //     email: { type: String, required: true, unique: true },
-// //     password: { type: String, required: true },
-// //     phone: { type: String, required: true },
-// //     dob: { type: Date, required: true },
-// //     gender: { type: String, required: true },
-// //     course: { type: String, required: true },
-    
-   
-// // });
-
-// // const User = mongoose.model('User', userSchema);
-
-// // module.exports = User;
-
-
-// // models/User.js
-// const mongoose = require('mongoose');
-
-// const userSchema = new mongoose.Schema({
-//     firstname: { type: String, required: true },
-//     lastname: { type: String, required: true },
-//     email: { type: String, required: true, unique: true },
-//     password: { type: String, required: true },
-//     phone: { type: String, required: true },
-//     dob: { type: Date, required: true },
-//     gender: { type: String, required: true },
-//     course: { type: String, required: true },
-//     resetToken: String,
-//     resetTokenExpiry: Date,
-// });
-
-// const User = mongoose.model('User', userSchema);
-
-// module.exports = User;
-
-
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -53,7 +12,14 @@ const userSchema = new mongoose.Schema({
     gender: { type: String, required: true },
     course: { type: String, required: true },
     resetToken: { type: String },
-    resetTokenExpiry: { type: Date }
+    resetTokenExpiry: { type: Date },
+    otp: {
+        type: String,
+    },
+    otpExpiry: {
+        type: Date,
+    },
+
 });
 
 // Use `mongoose.models` to prevent overwriting the model
