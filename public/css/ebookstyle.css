@@ -7,6 +7,7 @@
     font-family: "Inter Tight", sans-serif;
     font-weight: 400;
 }
+
 /* locomotive */
 html.lenis{height:auto}.lenis.lenis-smooth{scroll-behavior:auto}.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}.lenis.lenis-stopped{overflow:hidden}.lenis.lenis-scrolling iframe{pointer-events:none}
 /* Only necessary with horizontal scrolling */
@@ -122,7 +123,7 @@ html, body{
     gap: 16px;
 }
 .add-book{
-    background: #0A66C2;
+    background: #083D5D;
     color: white;
     padding: 8px 16px;
     width: 100%;
@@ -186,8 +187,8 @@ html, body{
   'FILL' 0;
 }
 .navigation-bar ul li a:hover{
-    color: #0A66C2;
-    border-bottom: 1px solid #0A66C2;
+    color: #083D5D;
+    border-bottom: 1px solid #083D5D;
     
 }
 .navigation-bar ul li a:hover .material-symbols-outlined.notfilled{
@@ -196,8 +197,8 @@ html, body{
     
 }
 .navigation-bar .active{
-    color: #0A66C2;
-    border-bottom: 1px solid #0A66C2;
+    color: #083D5D;
+    border-bottom: 1px solid #083D5D;
     cursor: default;
     
 }
@@ -228,19 +229,19 @@ html, body{
     
 .searchbar .material-symbols-outlined{
     font-size: 16px;
-    color: #0A66C2;
+    color: #083D5D;
 }
 .learn-more:hover{
-    background: #0A66C2;
+    background: #083D5D;
     color: #fff;
 }
 .learn-more{
     transition: all .25s ease-in-out;
     padding: 4px 16px;
     border-radius: 32px;
-    color: #0A66C2;
+    color: #083D5D;
     text-decoration: none;
-    border: 1px solid #0A66C2;
+    border: 1px solid #083D5D;
 }
 
 /* ---------------------------------- */
@@ -345,7 +346,7 @@ html, body{
 }
 
 ::-webkit-scrollbar-thumb:horizontal{
-    background: #0A66C2;
+    background: #083D5D;
     border-radius: 16px;
 }
 .upperbar{
