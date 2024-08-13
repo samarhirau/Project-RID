@@ -27,7 +27,7 @@
 
 const User = require('../models/user');
 const crypto = require('crypto');
-
+const {jwtAuthMiddleware, generateToken} = require("../utils/jwt")
 exports.registerUser = async (req, res) => {
     try {
         const hashedPassword = crypto.createHash('sha256').update(req.body.password).digest('hex');
@@ -41,6 +41,8 @@ exports.registerUser = async (req, res) => {
             gender: req.body.gender,
             course: req.body.course
         });
+        const token = generateToken(user.userName);
+        console.log("Token is : ",token);
         await user.save();
       // Render success EJS view with userName
       res.render('success', { 
