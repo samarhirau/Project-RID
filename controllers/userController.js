@@ -41,9 +41,14 @@ exports.registerUser = async (req, res) => {
             gender: req.body.gender,
             course: req.body.course
         });
-        const token = generateToken(user.userName);
+        const response =   await user.save();
+        const payload = {
+            id:response.id,
+            userName: response.userName
+        }
+        console.log(JSON.stringify(payload))
+        const token = generateToken(payload);
         console.log("Token is : ",token);
-        await user.save();
       // Render success EJS view with userName
       res.render('success', { 
         message: "User successfully registered",

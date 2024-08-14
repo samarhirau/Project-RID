@@ -229,6 +229,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const crypto = require('crypto');
 const axios = require('axios');
+const jwt = require("jsonwebtoken");
 dotenv.config();
 
 const userRoutes = require('./routes/userRoutes');
