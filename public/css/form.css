@@ -217,3 +217,78 @@ body .container #form-last span a{
     position: absolute;
     left: 1500px;
 } */
+/* Add media queries for screens with max-width of 578px */
+@media screen and (max-width: 578px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto;
+        overflow-x: hidden;
+        padding: 20px;
+    }
+
+    .headings h1 {
+        font-size: 30px;
+    }
+
+    .headings h3 {
+        font-size: 18px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+
+    body .container #form1, body .container #form3 {
+        grid-template-columns: 1fr;
+        width: 90vw;
+        height: auto;
+        padding: 20px;
+    }
+
+    .container img {
+        width: 80%;
+        height: auto;
+        margin: 20px auto;
+    }
+
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .container button, .buttons button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    body .container #form-last {
+        width: 80vw;
+        padding: 20px;
+        height: auto;
+    }
+
+    body .container #form-last h1 {
+        font-size: 24px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer span {
+        font-size: 14px;
+    }
+
+    footer span a {
+        font-size: 14px;
+    }
+}
