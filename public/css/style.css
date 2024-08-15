@@ -232,12 +232,16 @@ body {
 
 
 .search-box {
-  font-size: 20px;
+  font-size: 80px;
   border: solid 0.3em #000000;
   display: inline-block;
   position: relative;
   border-radius: 2.5em;
+<<<<<<< HEAD
   scale: 0.6;
+=======
+  scale:0.6;
+>>>>>>> 8271319d2309b22c6590a9f10e2d42261f108f5a
 }
 .search-box input[type=text] {
   font-family: inherit;
