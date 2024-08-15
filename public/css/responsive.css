@@ -146,11 +146,151 @@
 
   /* registerpage */
 
-  @media screen and (max-width:768px) {
-	/* .headings h1{
-		font-size: 20px;
+  @media screen and (max-width:1024px) {
+	.headings h1{
+		font-size: 15px;
 		font-weight: 600;
-		line-height: 50.46px;  
+		line-height: 10px;  
 		text-align: center;
-	} */
+	}
+	.headings h3{
+		font-size: 20px;
+		font-weight: 400;
+		/* line-height: 51.23px; */
+	}
+	.container img{
+		/* margin-top: 40px; */
+	}
+	body .container #form1 , #form3{
+		padding: 5px;
+	}
+	.container button{
+		margin: 29px 10px;
+		padding: 0px;
+	}
+	.container .login-span{
+		font-weight: 500;
+		font-size: 16px;
+		/* line-height: 28.82px; */
+		margin-bottom: 20px;
+
+	}
+	footer {
+		font-size:20px;
+	}
   }
+  @media screen and (max-width:600px){
+	.container .login-span{
+		font-weight: 500;
+		font-size: 16px;
+		/* line-height: 28.82px; */
+		margin-bottom: 0px;
+
+	}
+	footer{
+		font-size: 15px;
+		
+	}
+	body .container  #form1 , #form3{
+		height: 290px;
+		width: 250px;
+		padding: 2px;
+		gap: 0px;
+		display: flex;
+		flex-direction: column;
+		/* background-color: blue; */
+	}
+	.container img{
+		margin-bottom: 0px;
+		margin-top: 40px;
+	}
+	.container button{
+		margin: 20px 10px;
+		padding: 0px;
+	}
+  }
+
+  /* login */
+   @media screen and (max-width:1200px){
+	.containeri #loginbtnn{
+		font-size: 20px;
+		padding: 10px;
+	}
+	.containeri #continuinglog{
+	padding: 0px;
+	margin: 0px;
+	
+}
+.containeri .footer .links{
+	margin: 0px 0px;
+	font-size: 20px;
+}
+.containeri .footer .text{
+	font-size: 19px;
+	font-weight: 400;
+}
+.containeri{
+		overflow: hidden;
+}
+.containeri .left-content h1{
+		font-size: 20px;
+		margin: 0px;
+		line-height: 2px;
+		padding: 0px;
+		position: absolute;
+		top: 5%;
+		left: 20%;
+}
+.containeri label{
+		font-size: 18px;
+	}
+	.containeri input[type="text"],
+	.containeri input[type="password"] {
+	  width: 100%;
+	  padding: 10px;
+	  margin: 5px 0;
+	  border: 1.3px solid #ccc;
+	  border-radius: 3px;
+	  box-sizing: border-box;
+	  font-size: 25px;
+	  font-family: inherit;
+	}
+	
+	  .containeri #forgotPass{
+		margin-top: 23px;
+		margin-bottom: 0px;
+		padding:10px 0px;
+		width: 100%;
+		font-size: 20px;
+	}
+	.containeri .left-content h2{
+		font-size: 20px;
+	}
+	.containeri .inner-div{
+		height: 410px;
+	width: 250px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-left: 70px;
+	font-size: 20px;
+	}
+	.containeri .right-content{
+		
+		height: 100vh;
+	  }
+	  .containeri .right-content img{
+		height: 90vh;
+		width: 50vw;
+		background-size: cover;
+		background-position: center;
+		background: rgba(10, 102, 194, 1);
+		padding:  0 15px;
+	  }
+	  .containeri .right-content .img{
+		
+		background-size: cover;
+		background-position: center;
+		background: rgba(10, 102, 194, 0.25);
+		padding: 0 0 0 20px;
+	  }
+  } 
