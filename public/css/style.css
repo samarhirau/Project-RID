@@ -237,6 +237,7 @@ body {
   display: inline-block;
   position: relative;
   border-radius: 2.5em;
+  scale: 0.6;
 }
 .search-box input[type=text] {
   font-family: inherit;
