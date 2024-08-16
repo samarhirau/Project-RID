@@ -80,25 +80,32 @@ body {
 #onlineTest{
   background: crimson;
   color: #fff;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s ease;
   animation: loopwarn 1s .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate;
-
   padding: 8px 15px;
   border-radius: 30px;
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  text-align: center;
+ 
   
 }
+
+
 #ebookBtn{
   background: #C67534;
   color: #fff;
 
- 
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 5px;
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -109,7 +116,7 @@ body {
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  text-align: center;
+  text-align: right;
 }
 #onlineTest:hover, #ebookBtn:hover{
   background: #000000;
@@ -237,11 +244,9 @@ body {
   display: inline-block;
   position: relative;
   border-radius: 2.5em;
-<<<<<<< HEAD
   scale: 0.6;
-=======
-  scale:0.6;
->>>>>>> 8271319d2309b22c6590a9f10e2d42261f108f5a
+
+
 }
 .search-box input[type=text] {
   font-family: inherit;
@@ -345,6 +350,12 @@ body {
   text-align: center;
   */
  /* } */
+
+
+ #logInButton{
+  color: white;
+  
+ }
   .blue-btn{
     background: 083D5D;
     color: #000;
@@ -359,40 +370,41 @@ body {
     border-radius: 30px;
   }
   .btn-box{
-    width: 220px;
+    width:250px;
+    display: flex;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    
-   
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* background: #083D5D42; */
     border-radius: 30px;
     position: relative;
+
   }
 
   .toggle-btn{
-    padding: 10px 30px;
+    padding: 8px 26px;
     position: relative;
     outline: none;
     border: none;
     background: transparent;
     font-size: 0.9rem;
     color: black;
-  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
   }
 
   #swap-btn{
     position: absolute;
     top: 0;
     left: 0;
-    width: 110px;
+    width: 125px;
     height: 100%;
     background: #083D5D;
     color: #fff;
     border-radius: 30px;
     transition: all 0.4s ease;
   }
+
+
   #certificate{
     background: #083D5D;
     color: #fff;
@@ -404,6 +416,11 @@ body {
     /* height: 25px; */
     /* width: 100px; */
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
   }
 
 
@@ -411,52 +428,12 @@ body {
 
 
  
-  /* #logInButton{
-    background:var(--header-color);
-    color: #fff;
-    padding: 8px 15px;
-    border-radius:30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-
-    text-align: center;
-  }
-  #signUpBtn{
-    background: #083D5D00;
-    color: #000;
-    padding: 8px 15px;
-    border-radius:0  30px 30px 0;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  
-  
-  } */
-
-
-
-
-
-/* 
-.upperNav button {
-  background: var(--header-color);
-  color: white;
-  padding: 8px 15px;
-  border-radius: 3px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  /* height: 25px; */
-  /* width: 100px;
-  text-align: center; */
-/* } */ 
 .lowerNav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 40px;
-  /* background: #f77070; */
+
   align-self: flex-end;
 }
 .lowerNav ul {
@@ -479,7 +456,7 @@ body {
   position: absolute;
   left: 0;
   top: 100%;
-  /* backdrop-filter: blur(5px); */
+
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
@@ -822,6 +799,7 @@ body {
   display: inline-block;
   position: relative;
   border-radius: 2.5em;
+  /* scale: 0.6; */
 }
 .search-box input[type=text] {
   font-family: inherit;
