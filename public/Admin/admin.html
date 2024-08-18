@@ -5,71 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin page</title>
-  <link rel="stylesheet" href="./css/admin.css">
+  <link rel="stylesheet" href="../css/admin.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
-<style>
-  /* Toast container style */
-.toastify-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-}
 
-/* Individual toast notification style */
-.toastify-toast {
-  background: #333; /* Dark background */
-  color: #fff; /* White text color */
-  border-radius: 8px; /* More rounded corners */
-  padding: 15px 20px; /* More padding */
-  margin: 10px 0; /* Spacing between toasts */
-  font-size: 15px; /* Slightly larger font size */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden; /* Ensure the timer line stays within bounds */
-}
-
-/* Timer line style */
-.toastify-toast .timer-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.6); /* Light color for timer line */
-  width: 100%;
-  transform: translateX(-100%); /* Start with timer line off-screen */
-  transition: transform 3s linear; /* Timer line animation */
-}
-
-/* Close button style */
-.toastify-toast .toastify-close {
-  cursor: pointer;
-  color: #ff5722; /* Close button color */
-  font-size: 18px;
-}
-
-/* Toast types */
-.toastify-success {
-  background: #4caf50; /* Green background for success */
-}
-
-.toastify-error {
-  background: #f44336; /* Red background for error */
-}
-
-.toastify-info {
-  background: #2196f3; /* Blue background for info */
-}
-
-</style>
 
 
 </head>
@@ -103,7 +44,7 @@
     <div class="lower-header">
       <div class="left-content">
         <div class="logo">
-          <img src="./assets/images/imageLogo.png" alt="RID logo">
+          <img src="../assets/images/imageLogo.png" alt="RID logo">
         </div>
       </div>
       <div class="right-content">
@@ -174,40 +115,8 @@
 
     </style>
   </header>
-<!-- =========== -->
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel Upload and Display</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 8px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-    </style>
-</head>
-<body>
-    <h1>Upload and Display Excel Data</h1>
-    <input type="file" id="fileInput" accept=".xlsx, .xls" />
-    <table id="data-table">
-        <thead>
-            <tr id="table-headers"></tr>
-        </thead>
-        <tbody></tbody>
-    </table>
 
   
-</body>
-</html> -->
 
 
 
@@ -224,8 +133,6 @@
 
 
 
-
-<!-- ================== -->
 
 
   <div class="main-content">
@@ -322,8 +229,8 @@
   </div>
 
 
-<script src="./js/showToast.js"></script>
-<script src="./js/admin.js"></script>
+<script src="../js/showToast.js"></script>
+<script src="../js/admin.js"></script>
 
   
 </body>

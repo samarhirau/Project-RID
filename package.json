@@ -12,6 +12,7 @@
         "express-session": "^1.18.0",
         "git-filter-repo": "^0.0.30",
         "googleapis": "^137.1.0",
+        "jsonwebtoken": "^9.0.2",
         "messagebird": "^4.0.1",
         "mongodb": "^6.7.0",
         "mongoose": "^8.5.2",
