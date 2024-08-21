@@ -364,8 +364,13 @@ body {
   
  }
   .blue-btn{
+<<<<<<< HEAD
     background: 083D5D;
     color: #000;
+=======
+    background: #083D5D;
+    color: #fff;
+>>>>>>> 0a7ea0551083c723502746ec6fdf49d2505ce6bb
     padding: 8px 15px;
     border-radius: 3px;
     font-size: 0.9rem;
@@ -413,9 +418,13 @@ body {
 
 
   #certificate{
-    background: #083D5D;
+    background: #129c44;
     color: #fff;
+<<<<<<< HEAD
     padding: 6px 12px;
+=======
+    padding: 8px 32px;
+>>>>>>> 0a7ea0551083c723502746ec6fdf49d2505ce6bb
     border-radius: 30px;
     font-size: 0.8rem;
     font-weight: 600;
@@ -429,6 +438,7 @@ body {
     gap: 5px;
 
   }
+ 
 
 
 
@@ -580,8 +590,8 @@ body {
 }
 
 .active{
-  border-color: var(--header-color);
-  background: var(--header-color);
+  border-color: white;
+  background: white;
   width: 25px;
   border-radius: 50px;
   height: 8px;
@@ -593,14 +603,7 @@ body {
   opacity: 1;
 }
 
-.active:hover{
 
-  border-color: var(--header-color);
-  background: var(--header-color);
-  border-radius: 50px;
-  height: 8px;
-  opacity: 1;
-}
 
 .fade {
   animation-name: fade;
@@ -650,6 +653,7 @@ body {
   left: 50%;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 .onText-slider .text-area h1 {
   font-size: 1.4rem;
@@ -679,6 +683,7 @@ body {
   margin-right: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .onText-slider .text-area::before {
   content: "";
@@ -910,7 +915,9 @@ body {
     color: white;
     margin: 20px;
 }
-
+.btn-box #signUpBtn{
+  color: #000;
+}
 .drawer a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -937,9 +944,214 @@ body {
   flex-direction: column;
   gap: 10px;
 }
+.mobileon{
+  display: none;
+}
 
+.material-symbols-outlined.close{
+  display: none;
+}
 
 /* Quiz */
         .correct { color: green; }
         .incorrect { color: red; }
    
+
+
+
+@media only screen and (max-width: 600px) {
+  .header{
+    display: none;
+  }
+  .logo img{
+    width: 256px;
+  }
+  .nav{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: start;
+    justify-content: start;
+    background-color: white;
+    width: 100%;
+  }
+  .nav .lowerNav{
+    align-items: start;
+    justify-content: start;
+    text-align: center;
+    width: 100%;
+    padding: 32px;
+  }
+  .nav .upperNav{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .menu{
+    width: 75%;
+    flex-direction: column-reverse;
+    gap: 196px;
+  }
+  .nav .upperNav button{
+    width: 100%;
+    text-align: center;
+    height: 44px;
+  }
+  .upperNav #certificate{
+    position: relative;
+  }
+  .upperNav #certificate::after{
+    content: "New";
+    position: absolute;
+    right: -8px;
+    text-align: center;
+    padding: 4px 8px;
+    top: -8px;
+    background: #f40983;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #792fb5, #f40983);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #792fb5, #f40983); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    width: fit-content;
+    border-radius: 32px;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10px;
+    
+    
+  }
+  .search-box{
+    display: none;
+  }
+  .mobileon{
+    display: block;
+  }
+  #signUpBtn, #logInButton{
+    border-radius: 32px;
+  }
+  #swap-btn{
+    display: none;
+  }
+  .btn-box #logInButton{
+    color: white;
+    background: var(--header-color);
+    width: 100%;
+    margin: 16px 0;
+  }
+  .btn-box #signUpBtn{
+    border: 2px solid var(--header-color);
+    color: var(--header-color);
+    width: 100%;
+  }
+  .material-symbols-outlined.close{
+    display: block;
+    font-size: 32px;
+  }
+  .logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 8px 16px;
+  }
+  #main-nav{
+    transition: all ease-in-out .25s;
+    height: 0vh;
+  }
+  .logo{
+    background: #fff;
+  }
+  #sideBarIcon{
+    position: relative;
+    
+  }
+  #innerCont{
+    transition: all ease-in-out 500ms;
+    opacity: 0;
+    scale: .85;
+    /* display: none; */
+  }
+ 
+  .myslide img{
+    width: 100%;
+    height: 300px;
+    object-fit: scale-down;
+    object-position: bottom;
+  }
+  .myslide {
+    height: 100%;
+    display: none;
+    overflow: hidden;
+  }
+  .slider{
+    height: 200px;
+  }
+  .onText-slider {
+    
+    margin-top: 172px;
+
+    height: 300px;
+  width: 80%;
+  /* background: grey; */
+  border: 1px solid #cac6c6;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  background: #fff;
+  }
+  #centerkar{
+    text-align: center;
+  }
+  #centerkarq{
+    text-align: center;
+  }
+  .text-area h1{
+    text-align: center;
+  }
+  .content{
+    padding-top: 200px;
+    background: transparent;
+  }
+  .home-content {
+    background: transparent;
+  }
+  .slider{
+    background: #fff;
+  }
+  .dotsbox{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+    cursor: pointer;
+  }
+  .dotsbox .dot{
+    height: 4px;
+    width: 4px;
+  }
+  .dotsbox .active{
+    height: 4px;
+    width: 16px;
+  }
+  .content-box{
+    width: 90%;
+  }
+  .onText-slider .text-area p{
+    padding: 0;
+    margin: 32px 0 0 0;
+    text-align: center;
+    width: fit-content;
+  }
+  .onText-slider button{
+    margin: 0;
+  }
+  .onText-slider .text-area h1{
+    margin: 0;
+  }
+}
