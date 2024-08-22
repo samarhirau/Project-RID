@@ -99,14 +99,4 @@ function slidefun(n) {
 
 
 	
-// user sign up button
-// document.getElementById('signUpButton').onclick = function() {
-// 	window.location.href = '/form';
-// };
-
-// // udser login button
-// document.getElementById('logInButton').onclick = function() {
-// 	window.location.href = 'public/login.html';
-// };
-
 

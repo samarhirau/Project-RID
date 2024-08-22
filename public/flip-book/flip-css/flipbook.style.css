@@ -597,7 +597,7 @@
     display: inline;
     cursor: pointer;
     background: none;
-    transition: : all .1s ease-out;
+    transition:  all .1s ease-out;
     -webkit-transition: all .1s ease-out;
     -moz-transition: all .1s ease-out;
     -o-transition: all .1s ease-out;
@@ -729,7 +729,7 @@
     top: 0;
     width: 250px;
     bottom: 0;
-    transition: : all .3s ease-out;
+    transition: all .3s ease-out;
     -webkit-transition: all .3s ease-out;
     /* Chrome 1-25, Safari 3.2+ */
     -moz-transition: all .3s ease-out;
@@ -749,7 +749,7 @@
     top: 0;
     width: 250px;
     bottom: 0;
-    transition: : all .3s ease-out;
+    transition:  all .3s ease-out;
     -webkit-transition: all .3s ease-out;
     /* Chrome 1-25, Safari 3.2+ */
     -moz-transition: all .3s ease-out;
@@ -947,7 +947,7 @@
 /*dark*/
 
 .flipbook-bg-dark {
-    background: rgb(49, 53, 56);
+    background: rgb(0, 0, 0);
 }
 
 .flipbook-color-dark {
@@ -968,7 +968,7 @@
 }
 
 .flipbook-color-light {
-    color: rgba(50, 50, 50, 0.75);
+    color: rgba(0, 0, 0, 0.75);
 }
 
 .flipbook-color-light:hover {

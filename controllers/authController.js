@@ -1,153 +1,104 @@
-// const User = require('../models/user');
-// const crypto = require('crypto');
-
-// exports.loginUser = async (req, res) => {
-//     const { email, password } = req.body;
-
-//     try {
-//         const user = await User.findOne({ email: email });
-
-//         if (!user) {
-//             return res.status(404).send('User not found');
-//         }
-
-//         const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
-
-//         if (user.password !== hashedPassword) {
-//             return res.status(401).send('Invalid password');
-//         }
-//         req.session.user = user; 
-//         res.redirect('/?login=success'); // Redirect to index.html with a success query parameter
-//     } catch (error) {
-//         res.status(500).send('Internal Server Error');
-//         console.error("Error:", error);
-//     }
-// };
 
 
-// exports.checkSession = (req, res) => {
-//     if (req.session.user) {
-//         res.json({
-//             loggedIn: true,
-//             user: req.session.user
-//         });
-//     } else {
-//         res.json({ loggedIn: false });
-//     }
-// };
-
-
-
-
-
-// // controllers/authController.js
-// module.exports.logout = (req, res) => {
-//     req.session.destroy((err) => {
-//         if (err) {
-//             return res.status(500).send('Failed to logout.');
-//         }
-//         res.clearCookie('connect.sid', { path: '/' });
-//         res.sendStatus(200);
-//     });
-// };
-
-   
-
-
-
-
-
-// controllers/authController.js
 const User = require('../models/user');
-const sendEmail = require('../utils/sendEmail');
-const crypto = require('crypto');
+const bcrypt = require('bcrypt');
+const { storeOTP, validateOTP } = require('../utils/otpUtils');
+const { sendEmail } = require('../utils/sendEmail');
 
-// User login logic
-const loginUser = (req, res) => {
-  // Implement login logic here
-  // This is typically where you'd check user credentials and create a session or JWT token
-  res.send('Login logic here');
+exports.loginUser = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
+            return res.status(401).send('Invalid password');
+        }
+
+        req.session.user = user;
+        res.redirect('/?login=success');
+    } catch (error) {
+        console.error("Error:", error);
+        res.status(500).send('Internal Server Error');
+    }
 };
 
-// Handle forgot password request
-const forgotPassword = async (req, res) => {
-  const { email } = req.body;
 
-  try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ message: 'User not found.' });
+exports.verifyOTP = async (req, res) => {
+    const { email, otp } = req.body;
+
+    try {
+        const isValidOTP = await validateOTP(email, otp);
+        if (!isValidOTP) {
+            return res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
+        }
+
+        res.status(200).json({ success: true, message: 'OTP verified successfully' });
+    } catch (error) {
+        console.error('Error verifying OTP:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+};
+
+
+exports.forgotPassword = async (req, res) => {
+    const { email } = req.body;
+
+    if (!email) {
+        return res.status(400).json({ error: 'Email is required' });
     }
 
-    const resetToken = crypto.randomBytes(20).toString('hex');
-    user.resetToken = resetToken;
-    user.resetTokenExpiry = Date.now() + 3600000; // 1 hour
-    await user.save();
+    try {
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+        await storeOTP(email, otp);
 
-    const resetUrl = `http://localhost:3000/reset-password.html?token=${resetToken}`;
-    const subject = 'Password Reset Request';
-    const message = `<p>Click <a href="${resetUrl}">here</a> to reset your password.</p>`;
+        const message = `<p>Your OTP is ${otp}. It will expire in 10 minutes.</p>`;
+        await sendEmail(email, 'Password Reset OTP', message);
 
-    await sendEmail(email, subject, message);
-
-    res.json({ message: 'Password reset email sent.' });
-  } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ message: 'Error sending reset email.' });
-  }
+        res.json({ message: 'OTP sent to email' });
+    } catch (error) {
+        console.error('Error sending OTP:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 };
+exports.resetPassword = async (req, res) => {
+    const { email, otp, newPassword } = req.body;
 
-// Handle password reset
-const resetPassword = async (req, res) => {
-  const { token } = req.params;
-  const { password } = req.body;
-
-  try {
-    const user = await User.findOne({
-      resetToken: token,
-      resetTokenExpiry: { $gt: Date.now() },
-    });
-    if (!user) {
-      return res.status(400).json({ message: 'Invalid or expired token.' });
+    if (!email || !otp || !newPassword) {
+        return res.status(400).json({ success: false, message: 'Email, OTP, and new password are required' });
     }
 
-    user.password = password; // Hash password in a real-world scenario
-    user.resetToken = undefined;
-    user.resetTokenExpiry = undefined;
-    await user.save();
-
-    res.json({ message: 'Password has been reset.' });
-  } catch (error) {
-    console.error('Error resetting password:', error);
-    res.status(500).json({ message: 'Error resetting password.' });
-  }
-};
-
-// Update user profile
-const updateProfile = async (req, res) => {
-  const { email, firstname, lastname, phone, dob, gender, course } = req.body;
-
-  try {
-    const updatedUser = await User.findOneAndUpdate(
-      { email },
-      { firstname, lastname, phone, dob, gender, course },
-      { new: true }
-    );
-
-    if (!updatedUser) {
-      return res.status(404).json({ message: 'User not found.' });
+    // Validate OTP
+    const isValidOTP = validateOTP(email, otp);
+    if (!isValidOTP) {
+        return res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
     }
 
-    res.json({ message: 'User profile updated successfully.', user: updatedUser });
-  } catch (error) {
-    console.error('Error updating user profile:', error);
-    res.status(500).json({ message: 'Error updating user profile.' });
-  }
+    try {
+        // Find user
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        // Hash new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update password
+        user.password = hashedPassword;
+        await user.save();
+
+        // Respond with success
+        res.status(200).json({ success: true, message: 'Password reset successful' });
+    } catch (error) {
+        console.error('Error resetting password:', error);
+        res.status(500).json({ success: false, message: 'Error resetting password' });
+    }
 };
 
-module.exports = {
-  loginUser,
-  forgotPassword,
-  resetPassword,
-  updateProfile
-};
