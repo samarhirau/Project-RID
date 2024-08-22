@@ -84,34 +84,41 @@ body {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  font-size: 0.9rem;
+  padding: 8px 16px;
+  font-size: 0.8rem;
   font-weight: 600;
   transition: all 0.3s ease;
   animation: loopwarn 1s .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate;
-  padding: 8px 15px;
   border-radius: 30px;
+<<<<<<< HEAD
   font-size: 0.9rem;
+  font-weight: 300;
+=======
   font-weight: 600;
+>>>>>>> 229673bd4c700f692fc8f99f9b4f8bffcaf60a6d
   transition: all 0.3s ease;
  
   
 }
-
+.material-symbols-outlined.google-ico{
+  font-size: 14px;
+}
 
 #ebookBtn{
   background: #C67534;
   color: #fff;
-
+  padding: 8px 16px;
+  font-size: 0.8rem;
  display: flex;
  justify-content: center;
  align-items: center;
  gap: 5px;
-  font-size: 0.9rem;
+
   font-weight: 600;
   transition: all 0.3s ease;
   animation: loopwarn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite alternate;
 
-  padding: 8px 15px;
+
   border-radius: 30px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -244,9 +251,17 @@ body {
   display: inline-block;
   position: relative;
   border-radius: 2.5em;
+<<<<<<< HEAD
+<<<<<<< HEAD
+  scale: 0.6;
+=======
+  scale:0.6;
+>>>>>>> 8271319d2309b22c6590a9f10e2d42261f108f5a
+=======
   scale: 0.6;
 
 
+>>>>>>> b33b6a638a62c8370fe7e091d2bd5ae14668e0d6
 }
 .search-box input[type=text] {
   font-family: inherit;
@@ -350,6 +365,11 @@ body {
   text-align: center;
   */
  /* } */
+<<<<<<< HEAD
+  .blue-btn{
+    background: 083D5D;
+    color: #000;
+=======
 
 
  #logInButton{
@@ -357,8 +377,14 @@ body {
   
  }
   .blue-btn{
+<<<<<<< HEAD
     background: 083D5D;
     color: #000;
+=======
+    background: #083D5D;
+    color: #fff;
+>>>>>>> 0a7ea0551083c723502746ec6fdf49d2505ce6bb
+>>>>>>> b33b6a638a62c8370fe7e091d2bd5ae14668e0d6
     padding: 8px 15px;
     border-radius: 3px;
     font-size: 0.9rem;
@@ -386,10 +412,14 @@ body {
     background: transparent;
     font-size: 0.9rem;
     color: black;
+<<<<<<< HEAD
+  
+=======
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
+>>>>>>> b33b6a638a62c8370fe7e091d2bd5ae14668e0d6
   }
 
   #swap-btn{
@@ -408,9 +438,17 @@ body {
   #certificate{
     background: #083D5D;
     color: #fff;
+<<<<<<< HEAD
     padding: 8px 15px;
+=======
+<<<<<<< HEAD
+    padding: 6px 12px;
+=======
+    padding: 8px 32px;
+>>>>>>> 0a7ea0551083c723502746ec6fdf49d2505ce6bb
+>>>>>>> b33b6a638a62c8370fe7e091d2bd5ae14668e0d6
     border-radius: 30px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
     transition: all 0.3s ease;
     /* height: 25px; */
