@@ -13,6 +13,8 @@ const axios = require('axios');
 const jwt = require("jsonwebtoken");
 dotenv.config();
 
+const {books ,moreBooks} = require('./views/js/ebook');
+
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/admin');
