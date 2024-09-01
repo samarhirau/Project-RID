@@ -110,6 +110,15 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/student', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'student.html'));
+});
+app.get('/organisation', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'organisation.html'));
+});
+app.get('/teacher', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'teacher.html'));
+});
 // Handle 404 errors
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, 'public', '404/404.html'));
