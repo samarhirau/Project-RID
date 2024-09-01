@@ -16,11 +16,11 @@ exports.loginUser = async (req, res) => {
          if (check) {
              if (ispasswordMatch) {
                 if (roleselect && roleselect.role === 'organisation') {
-                    res.send("home");
+                    res.redirect("/organisation.html")
                 } else if (roleselect && roleselect.role === 'teacher') {
-                  res.send("teacher")
+                  res.redirect("/teacher.html") 
                 } else if (roleselect && roleselect.role === 'student') {
-                    res.send("student");
+                    res.redirect("/student.html")
                 } else {
                     res.send("Role not recognized.");
                 }

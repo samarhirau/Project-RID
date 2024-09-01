@@ -26,18 +26,19 @@
               name="password"
               placeholder="Enter your password"
             />
+            <label for="role">Role <span style="color: red; font-weight: bold;">*</span></label>
+            <input type="text" id="role" name="role" placeholder="Search for a role" autocomplete="off" list="roleList" required>
+            <datalist id="roleList">
+                <option value="organisation">organisation</option>
+            <option value="student">student</option>
+            <option value="teacher">teacher</option>
+               
+            </datalist>
             <button type="button"  id="forgotPass">Forget Password?</button>
             <button  type="submit">Login</button>
             
             
-              <label for="role">Role <span style="color: red; font-weight: bold;">*</span></label>
-              <input type="text" id="role" name="role" placeholder="Search for a role" autocomplete="off" list="roleList" required>
-              <datalist id="roleList">
-                  <option value="organisation">organisation</option>
-              <option value="student">student</option>
-              <option value="teacher">teacher</option>
-                 
-              </datalist>
+             
           
 
           </form>
