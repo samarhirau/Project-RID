@@ -6,27 +6,35 @@ const { storeOTP, validateOTP } = require('../utils/otpUtils');
 const { sendEmail } = require('../utils/sendEmail');
 
 exports.loginUser = async (req, res) => {
-    const { email, password } = req.body;
-
-    try {
-        const user = await User.findOne({ email });
-
-        if (!user) {
-            return res.status(404).send('User not found');
+    try{
+        const check = await User.findOne({email:req.body.email});
+        const ispasswordMatch = await bcrypt.compare(req.body.password, check.password);
+        const roleselect = await User.findOne({role:req.body.role});
+        console.log("role find in database:",roleselect);
+          console.log(ispasswordMatch)
+        console.log(check.email)
+         if (check) {
+             if (ispasswordMatch) {
+                if (roleselect && roleselect.role === 'organisation') {
+                    res.send("home");
+                } else if (roleselect && roleselect.role === 'teacher') {
+                  res.send("teacher")
+                } else if (roleselect && roleselect.role === 'student') {
+                    res.send("student");
+                } else {
+                    res.send("Role not recognized.");
+                }
+            } else {
+               res.send("Incorrect password.");
+            }
+        } else {
+           res.send("Name not recognized.");
         }
-
-        const passwordMatch = await bcrypt.compare(password, user.password);
-
-        if (!passwordMatch) {
-            return res.status(401).send('Invalid password');
-        }
-
-        req.session.user = user;
-        res.redirect('/?login=success');
-    } catch (error) {
-        console.error("Error:", error);
-        res.status(500).send('Internal Server Error');
+    }catch{
+        res.send("wrong details")
     }
+
+   
 };
 
 
