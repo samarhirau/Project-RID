@@ -2,6 +2,9 @@
 
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const {jwtAuthMiddleware, generateToken} = require("../utils/jwt")
+const jwt = require("jsonwebtoken")
+
 const { storeOTP, validateOTP } = require('../utils/otpUtils');
 const { sendEmail } = require('../utils/sendEmail');
 
@@ -10,8 +13,7 @@ exports.loginUser = async (req, res) => {
         const check = await User.findOne({email:req.body.email});
         const ispasswordMatch = await bcrypt.compare(req.body.password, check.password);
         const roleselect = await User.findOne({role:req.body.role});
-        console.log("role find in database:",roleselect);
-          console.log(ispasswordMatch)
+        console.log(ispasswordMatch)
         console.log(check.email)
          if (check) {
              if (ispasswordMatch) {
@@ -30,11 +32,22 @@ exports.loginUser = async (req, res) => {
         } else {
            res.send("Name not recognized.");
         }
+        const response =   await check.save();
+        const payload = {
+            id:response.id,
+            email: response.email
+        }
+        console.log(JSON.stringify(payload))
+        const token = generateToken(payload);
+        console.log("Token is : ",token);
+         
+         
     }catch{
         res.send("wrong details")
     }
 
-   
+
+ 
 };
 
 
