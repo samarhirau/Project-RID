@@ -20,6 +20,8 @@ const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/admin');
 const verifyRoutes = require('./routes/verify');
 const excelRoutes = require('./routes/excelRoutes');
+const routes = require('./routes/protected');
+
 
 // Initialize express app
 const app = express();
@@ -42,6 +44,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 require('./config/passport')(passport); // Initialize Passport with your configuration
 
 // Set EJS as the view engine
@@ -57,6 +60,9 @@ app.use('/api/excel', excelRoutes);
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use('/', routes);
 
 // Other routes
 app.get('/api/duration', (req, res) => {
@@ -110,9 +116,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/student', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'student.html'));
-});
+
 app.get('/organisation', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'organisation.html'));
 });

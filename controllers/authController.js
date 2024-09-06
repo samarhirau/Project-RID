@@ -8,56 +8,53 @@ const jwt = require("jsonwebtoken")
 const { storeOTP, validateOTP } = require('../utils/otpUtils');
 const { sendEmail } = require('../utils/sendEmail');
 
-
-// Login function
+// authController.js
 exports.login = async (req, res) => {
     const { email, password } = req.body;
-
+  
     try {
-        // Find user by email
-        const user = await User.findOne({ email });
-
-        if (!user) {
-            return res.status(400).json({ message: 'Invalid email or password' });
-        }
-
-        // Compare password
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).json({ message: 'Invalid email or password' });
-        }
-
-        // Generate JWT token
-        const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, {
-            expiresIn: '1h' // Token expires in 1 hour
-        });
-
-        // Set token as cookie
-        res.cookie('token', token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // use secure cookies in production
-            maxAge: 3600000 // 1 hour in milliseconds
-        });
-
-        // Redirect based on user role
-        switch (user.role) {
-            case 'student':
-                res.redirect('/student');
-                break;
-            case 'teacher':
-                res.redirect('/teacher');
-                break;
-            case 'organisation':
-                res.redirect('/org');
-                break;
-            default:
-                res.status(400).json({ message: 'Invalid user role' });
-        }
+      // Find user by email
+      const user = await User.findOne({ email });
+  
+      if (!user) {
+        return res.status(400).json({ message: 'Invalid email or password' });
+      }
+  
+      // Compare password
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ message: 'Invalid email or password' });
+      }
+  
+      // Generate JWT token
+      const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, {
+        expiresIn: '1h', // Token expires in 1 hour
+      });
+  
+      // Set token as cookie
+      res.cookie('token', token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+        maxAge: 3600000, // 1 hour in milliseconds
+      });
+  
+      // Redirect based on user role
+      switch (user.role) {
+        case 'student':
+          return res.redirect('/student');
+        case 'teacher':
+          return res.redirect('/teacher');
+        case 'organisation':
+          return res.redirect('/org');
+        default:
+          return res.status(400).json({ message: 'Invalid user role' });
+      }
     } catch (error) {
-        console.error('Error logging in:', error);
-        res.status(500).json({ message: 'Server error' });
+      console.error('Error logging in:', error);
+      res.status(500).json({ message: 'Server error' });
     }
-};
+  };
+  
 
 
 
