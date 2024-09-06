@@ -2,53 +2,63 @@
 
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
-const {jwtAuthMiddleware, generateToken} = require("../utils/jwt")
+// const {jwtAuthMiddleware, generateToken} = require("../utils/jwt")
 const jwt = require("jsonwebtoken")
 
 const { storeOTP, validateOTP } = require('../utils/otpUtils');
 const { sendEmail } = require('../utils/sendEmail');
 
-exports.loginUser = async (req, res) => {
-    try{
-        const check = await User.findOne({email:req.body.email});
-        const ispasswordMatch = await bcrypt.compare(req.body.password, check.password);
-        const roleselect = await User.findOne({role:req.body.role});
-        console.log(ispasswordMatch)
-        console.log(check.email)
-         if (check) {
-             if (ispasswordMatch) {
-                if (roleselect && roleselect.role === 'organisation') {
-                    res.redirect("/organisation")
-                } else if (roleselect && roleselect.role === 'teacher') {
-                  res.redirect("/teacher") 
-                } else if (roleselect && roleselect.role === 'student') {
-                    res.redirect("/student")
-                } else {
-                    res.send("Role not recognized.");
-                }
-            } else {
-               res.send("Incorrect password.");
-            }
-        } else {
-           res.send("Name not recognized.");
+
+// Login function
+exports.login = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        // Find user by email
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ message: 'Invalid email or password' });
         }
-        const response =   await check.save();
-        const payload = {
-            id:response.id,
-            email: response.email
+
+        // Compare password
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid email or password' });
         }
-        console.log(JSON.stringify(payload))
-        const token = generateToken(payload);
-        console.log("Token is : ",token);
-         
-         
-    }catch{
-        res.send("wrong details")
+
+        // Generate JWT token
+        const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, {
+            expiresIn: '1h' // Token expires in 1 hour
+        });
+
+        // Set token as cookie
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // use secure cookies in production
+            maxAge: 3600000 // 1 hour in milliseconds
+        });
+
+        // Redirect based on user role
+        switch (user.role) {
+            case 'student':
+                res.redirect('/student');
+                break;
+            case 'teacher':
+                res.redirect('/teacher');
+                break;
+            case 'organisation':
+                res.redirect('/org');
+                break;
+            default:
+                res.status(400).json({ message: 'Invalid user role' });
+        }
+    } catch (error) {
+        console.error('Error logging in:', error);
+        res.status(500).json({ message: 'Server error' });
     }
-
-
- 
 };
+
 
 
 exports.verifyOTP = async (req, res) => {
