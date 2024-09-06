@@ -222,95 +222,12 @@ if (confirmation) {
 
   fetchRegistrationsCount();
 
-  document.getElementById('logOut-btn').addEventListener('click', function() {
-const confirmation = confirm('Are you sure you want to log out?');
-if (confirmation) {
-  sessionStorage.removeItem('loggedIn');
-  window.location.href = '/auth/logout'; // Adjust the URL to match your logout route
-}
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Check if user is already logged in
-  const loggedIn = sessionStorage.getItem('loggedIn');
-
-  if (loggedIn) {
-    document.getElementById('login-container').style.display = 'none';
-    document.getElementById('admin-content').style.display = 'block';
-  }
-
-  document.getElementById('login-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    try {
-      const response = await fetch('/admin/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        sessionStorage.setItem('loggedIn', 'true');
-        document.getElementById('login-container').style.display = 'none';
-        document.getElementById('admin-content').style.display = 'block';
-      } else {
-        alert('Invalid email or password');
-      }
-    } catch (error) {
-      alert('Login failed');
-    }
-  });
-});
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const loggedIn = sessionStorage.getItem('loggedIn');
-
-  if (loggedIn) {
-    document.getElementById('login-container').style.display = 'none';
-    document.getElementById('admin-content').style.display = 'block';
-  }
-
-  document.getElementById('login-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    try {
-      const response = await fetch('/admin/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        sessionStorage.setItem('loggedIn', 'true');
-        document.getElementById('login-container').style.display = 'none';
-        document.getElementById('admin-content').style.display = 'block';
-        showToast('Login successful!');
-      } else {
-        showToast('Invalid email or password', '#f44336');
-      }
-    } catch (error) {
-      showToast('Login failed', '#f44336');
-    }
-  });
-});
 
 
 
   
- 
-{/* <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> */}
-
 
 
      

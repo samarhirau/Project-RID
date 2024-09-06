@@ -45,7 +45,9 @@ exports.login = async (req, res) => {
         case 'teacher':
           return res.redirect('/teacher');
         case 'organisation':
-          return res.redirect('/org');
+          return res.redirect('/organisation');
+        case 'admin':
+          return res.redirect('/admin');
         default:
           return res.status(400).json({ message: 'Invalid user role' });
       }
@@ -54,7 +56,11 @@ exports.login = async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   };
-  
+
+exports.logout = (req, res) => {
+    res.clearCookie('token');
+    res.redirect('/login');
+  };
 
 
 

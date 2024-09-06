@@ -15,7 +15,7 @@
 
 </head>
 <body>
-  <div id="login-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  <!-- <div id="login-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
     <form id="login-form">
       <div>
         <label for="email">Email:</label>
@@ -27,8 +27,8 @@
       </div>
       <button type="submit">Login</button>
     </form>
-  </div>
-  <div id="admin-content" style="display: none;">
+  </div> -->
+  <div id="admin-content">
   <header>
     <div class="upper-header">
       <div class="left-content">
@@ -228,10 +228,104 @@
   </div>
   </div>
 
+  <h1>Admin Panel</h1>
+
+  <!-- Search for User by Email -->
+  <input type="text" id="emailSearch" placeholder="Enter user email">
+  <button onclick="searchUser()">Search User</button>
+
+  <!-- Display User Info -->
+  <div id="userInfo" style="display: none;">
+    <p id="userEmail"></p>
+    <label for="userRole">Change Role:</label>
+    <select id="userRole">
+      <option value="student">Student</option>
+      <option value="teacher">Teacher</option>
+      <option value="organisation">Organisation</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button onclick="changeUserRole()">Change Role</button>
+  </div>
+
+
+
+   <button onclick="showAllAdmins()">Show All Admins</button>
+   <div id="adminList" style="display: none;">
+     <h2>All Admins</h2>
+     <ul id="admins"></ul>
+   </div>
 
 <script src="../js/showToast.js"></script>
 <script src="../js/admin.js"></script>
+<script>
+  // Fetch users from the server (Make sure the server provides this endpoint)
+ // Function to search for a user by email
+ function searchUser() {
+      const email = document.getElementById('emailSearch').value;
 
-  
+      fetch(`/admin/search-user?email=${email}`, {
+        method: 'GET',
+        credentials: 'include' // Include cookies for authentication
+      })
+        .then(response => response.json())
+        .then(user => {
+          if (user.message) {
+            alert(user.message);
+          } else {
+            document.getElementById('userInfo').style.display = 'block';
+            document.getElementById('userEmail').textContent = `Email: ${user.email}`;
+            document.getElementById('userRole').value = user.role;
+          }
+        })
+        .catch(error => console.error('Error fetching user:', error));
+    }
+
+    // Function to change the user role
+    function changeUserRole() {
+      const email = document.getElementById('userEmail').textContent.split('Email: ')[1];
+      const newRole = document.getElementById('userRole').value;
+
+      fetch('/admin/change-role', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, role: newRole }),
+        credentials: 'include'
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message); // Notify admin of success or failure
+        })
+        .catch(error => console.error('Error changing user role:', error));
+    }
+
+</script>
+
+<script>
+    // Function to show all admins
+    function showAllAdmins() {
+      fetch('/admin/all-admins', {
+        method: 'GET',
+        credentials: 'include'
+      })
+        .then(response => response.json())
+        .then(admins => {
+          if (admins.message) {
+            alert(admins.message);
+          } else {
+            document.getElementById('adminList').style.display = 'block';
+            const adminList = document.getElementById('admins');
+            adminList.innerHTML = ''; // Clear the list before adding new data
+            admins.forEach(admin => {
+              const listItem = document.createElement('li');
+              listItem.textContent = `${admin.email} - Role: ${admin.role}`;
+              adminList.appendChild(listItem);
+            });
+          }
+        })
+        .catch(error => console.error('Error fetching admins:', error));
+    }
+</script>
 </body>
 </html>

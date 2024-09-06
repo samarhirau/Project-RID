@@ -20,7 +20,8 @@ const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/admin');
 const verifyRoutes = require('./routes/verify');
 const excelRoutes = require('./routes/excelRoutes');
-const routes = require('./routes/protected');
+// const routes = require('./routes/protected');
+const authenticateJWT = require('./middleware/authMiddleware');
 
 
 // Initialize express app
@@ -62,7 +63,41 @@ app.use('/api/excel', excelRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/', routes);
+// app.use('/', routes);
+
+
+
+app.use(cookieParser());
+
+// Middleware function to check user role
+const authorizeRole = (role) => {
+  return (req, res, next) => {
+    if (req.user && req.user.role === role) {
+      next(); // User has the correct role, proceed to the route handler
+    } else {
+      res.redirect('/login'); // Redirect to the login page
+    }
+  };
+};
+
+// Route for '/organisation' - Protected for 'organisation' role
+app.get('/organisation', authenticateJWT, authorizeRole('organisation'), (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'organisation.html'));
+});
+
+// Route for '/teacher' - Protected for 'teacher' role
+app.get('/teacher', authenticateJWT, authorizeRole('teacher'), (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'teacher.html'));
+});
+
+// Route for '/student' - Protected for 'student' role
+app.get('/student', authenticateJWT, authorizeRole('student'), (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'student.html'));
+});
+
+app.get('/admin', authenticateJWT, authorizeRole('admin'), (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'Admin/admin.html'));
+});
 
 // Other routes
 app.get('/api/duration', (req, res) => {
@@ -117,12 +152,12 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/organisation', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'organisation.html'));
-});
-app.get('/teacher', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'teacher.html'));
-});
+// app.get('/organisation', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'organisation.html'));
+// });
+// app.get('/teacher', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'teacher.html'));
+// });
 // Handle 404 errors
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, 'public', '404/404.html'));
