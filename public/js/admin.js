@@ -158,22 +158,6 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
   });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   async function fetchRegistrationsCount() {
     try {
       const response = await fetch('/admin/registrations/count');
@@ -193,15 +177,29 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
 
 
 
-
+// logout js
     
 document.getElementById('logOut-btn').addEventListener('click', function() {
-const confirmation = confirm('Are you sure you want to log out?');
+// const confirmation = confirm('Are you sure you want to log out?');
+// if (confirmation) {
+//   sessionStorage.removeItem('loggedIn');
+//   window.location.href = '/'; // Adjust the URL to match your logout route
+// }
+// });
+fetch("/logout", {
+  method: "GET",
+  credentials: "include", // Include cookies in the request
+})
+.then(response => response.json())
+
+ const confirmation = confirm('Are you sure you want to log out?');
 if (confirmation) {
   sessionStorage.removeItem('loggedIn');
-  window.location.href = '/auth/logout'; // Adjust the URL to match your logout route
+  window.location.href = '/'; // Adjust the URL to match your logout route
 }
 });
+
+
 
 
 

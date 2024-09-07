@@ -23,6 +23,7 @@ module.exports = authenticateJWT;
 // const dotenv = require('dotenv');
 // dotenv.config();
 
+
 // const authenticateAdmin = (req, res, next) => {
 //   const { email, password } = req.body;
 
@@ -34,6 +35,5 @@ module.exports = authenticateJWT;
 // };
 
 // module.exports = authenticateAdmin;
-
 
 

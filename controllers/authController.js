@@ -59,11 +59,8 @@ exports.login = async (req, res) => {
 
 exports.logout = (req, res) => {
     res.clearCookie('token');
-    res.redirect('/login');
-  };
-
-
-
+    res.redirect('/');
+};
 exports.verifyOTP = async (req, res) => {
     const { email, otp } = req.body;
 
