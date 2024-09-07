@@ -25,7 +25,9 @@ exports.registerUser = async (req, res) => {
         }
         console.log(JSON.stringify(payload))
         const token = generateToken(payload);
+     
         console.log("Token is : ",token);
+
       // Render success EJS view with userName
       res.render('success', { 
         message: "User successfully registered",
