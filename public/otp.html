@@ -1,88 +1,103 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Certificate Generator</title>
     <style>
-        /* certificate.css */
-        .certificate-container {
-            width: 800px;
-            margin: 40px auto;
-            border: 1px solid #ccc;
-            padding: 20px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            page-break-after: always;
-        }
+      /* certificate.css */
+      .certificate-container {
+        width: 800px;
+        margin: 40px auto;
+        border: 1px solid #ccc;
+        padding: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 10px rgba(1, 0, 0, 0);
+        page-break-after: always;
+      }
 
-        .certificate-header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
+      .certificate-header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
 
-        .certificate-body {
-            padding: 20px;
-        }
+      .certificate-body {
+        padding: 20px;
+      }
 
-        .certificate-footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
+      .certificate-footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
 
-        h1, h2 {
-            font-family: Arial, sans-serif;
-            margin-bottom: 10px;
-        }
+      h1,
+      h2 {
+        font-family: Arial, sans-serif;
+        margin-bottom: 10px;
+      }
 
-        #student-name, #course-name, #issue-date {
-            font-weight: bold;
-            font-size: 18px;
-        }
+      #student-name,
+      #course-name,
+      #issue-date {
+        font-weight: bold;
+        font-size: 18px;
+      }
 
-        .download-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
+      .download-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+      }
 
-        .download-button:hover {
-            background-color: #45a049;
-        }
+      .download-button:hover {
+        background-color: #45a049;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="certificates-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
-        const students = [
-            { name: 'John Doe', course: 'Web Development', issueDate: 'February 10, 2023' },
-            { name: 'Jane Doe', course: 'Data Science', issueDate: 'March 15, 2023' },
-            { name: 'Alice Smith', course: 'Digital Marketing', issueDate: 'April 20, 2023' }
-        ];
+      const students = [
+        {
+          name: "John Doe",
+          course: "Web Development",
+          issueDate: "February 10, 2023",
+        },
+        {
+          name: "Jane Doe",
+          course: "Data Science",
+          issueDate: "March 15, 2023",
+        },
+        {
+          name: "Alice Smith",
+          course: "Digital Marketing",
+          issueDate: "April 20, 2023",
+        },
+      ];
 
-        // Function to create a certificate element
-        function createCertificateElement(student) {
-            const container = document.createElement('div');
-            container.className = 'certificate-container';
+      // Function to create a certificate element
+      function createCertificateElement(student) {
+        const container = document.createElement("div");
+        container.className = "certificate-container";
 
-            const header = document.createElement('div');
-            header.className = 'certificate-header';
-            header.innerHTML = '<h1>Certificate of Completion</h1>';
-            container.appendChild(header);
+        const header = document.createElement("div");
+        header.className = "certificate-header";
+        header.innerHTML = "<h1>Certificate of Completion</h1>";
+        container.appendChild(header);
 
-            const body = document.createElement('div');
-            body.className = 'certificate-body';
-            body.innerHTML = `
+        const body = document.createElement("div");
+        body.className = "certificate-body";
+        body.innerHTML = `
                 <p>This is to certify that</p>
                 <h2 id="student-name">${student.name}</h2>
                 <p>has successfully completed the</p>
@@ -90,65 +105,53 @@
                 <p>course on</p>
                 <h2 id="issue-date">${student.issueDate}</h2>
             `;
-            container.appendChild(body);
+        container.appendChild(body);
 
-            const footer = document.createElement('div');
-            footer.className = 'certificate-footer';
-            footer.innerHTML = '<p>Issued by [Your Organization]</p>';
-            container.appendChild(footer);
+        const footer = document.createElement("div");
+        footer.className = "certificate-footer";
+        footer.innerHTML = "<p>Issued by [Your Organization]</p>";
+        container.appendChild(footer);
 
-            // Create a download button
-            const downloadButton = document.createElement('button');
-            downloadButton.className = 'download-button';
-            downloadButton.textContent = 'Download PDF';
-            downloadButton.addEventListener('click', () => downloadPDF(container, student.name));
-            container.appendChild(downloadButton);
+        // Create a download button
+        const downloadButton = document.createElement("button");
+        downloadButton.className = "download-button";
+        downloadButton.textContent = "Download PDF";
+        downloadButton.addEventListener("click", () =>
+          downloadPDF(container, student.name)
+        );
+        container.appendChild(downloadButton);
 
-            return container;
-        }
+        return container;
+      }
 
-        // Function to download certificate as PDF
-        function downloadPDF(certificateElement, studentName) {
-            const options = {
-                margin: 1,
-                filename: `${studentName}_Certificate.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 1, useCORS: true, logging: true },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
-            };
+      // Function to download certificate as PDF
+      function downloadPDF(certificateElement, studentName) {
+        const options = {
+          margin: 1,
+          filename: `${studentName}_Certificate.pdf`,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 1, useCORS: true, logging: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "landscape" },
+        };
 
-            html2pdf().from(certificateElement).set(options).save();
-        }
+        html2pdf().from(certificateElement).set(options).save();
+      }
 
+      // Function to display multiple certificates
+      function displayCertificates(students) {
+        const certificatesContainer = document.getElementById(
+          "certificates-container"
+        );
+        certificatesContainer.innerHTML = ""; // Clear previous certificates
 
+        students.forEach((student) => {
+          const certificateElement = createCertificateElement(student);
+          certificatesContainer.appendChild(certificateElement);
+        });
+      }
 
-
-// Function to display multiple certificates
-function displayCertificates(students) {
-    const certificatesContainer = document.getElementById('certificates-container');
-    certificatesContainer.innerHTML = ''; // Clear previous certificates
-
-    students.forEach(student => {
-        const certificateElement = createCertificateElement(student);
-        certificatesContainer.appendChild(certificateElement);
-    });
-}
-
-
-       
-
-        // Example usage:
-        displayCertificates(students);
+      // Example usage:
+      displayCertificates(students);
     </script>
-</body>
-</html> 
-
-
-
-
-
-
-
-
-
-
+  </body>
+</html>
