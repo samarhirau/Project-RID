@@ -155,7 +155,7 @@
 	} */
 }
 /* add media queary 450 */
-@media screen and (max-width: 450px) {
+/* @media screen and (max-width: 450px) { 
   body {
     flex-direction: column;
     justify-content: flex-start;
@@ -230,4 +230,4 @@
   footer span a {
     font-size: 12px;
   }
-}
+ /* }   
