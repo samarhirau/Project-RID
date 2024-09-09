@@ -2,6 +2,8 @@
 
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const cookieParser = require('cookie-parser');
+
 // const {jwtAuthMiddleware, generateToken} = require("../utils/jwt")
 const jwt = require("jsonwebtoken")
 
@@ -57,9 +59,15 @@ exports.login = async (req, res) => {
     }
   };
 
+// exports.logout = (req, res) => {
+//     res.clearCookie('token');
+//     res.json({message:"successfully signout!"})
+// };
+
 exports.logout = (req, res) => {
-    res.clearCookie('token');
-    res.redirect('/');
+ res.clearCookie('token')
+    console.log("token remove");
+  res.send({ message: "successfully signed out!" });
 };
 exports.verifyOTP = async (req, res) => {
     const { email, otp } = req.body;

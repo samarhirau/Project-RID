@@ -179,30 +179,61 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
 
 // logout js
     
-document.getElementById('logOut-btn').addEventListener('click', function() {
-// const confirmation = confirm('Are you sure you want to log out?');
+// document.getElementById('logOut-btn').addEventListener('click', function() {
+// // const confirmation = confirm('Are you sure you want to log out?');
+// // if (confirmation) {
+// //   sessionStorage.removeItem('loggedIn');
+// //   window.location.href = '/'; // Adjust the URL to match your logout route
+// // }
+// // });
+
+
+//  const confirmation = confirm('Are you sure you want to log out?');
 // if (confirmation) {
-//   sessionStorage.removeItem('loggedIn');
-//   window.location.href = '/'; // Adjust the URL to match your logout route
+//   fetch("/logout", {
+//     method: "GET",
+//     credentials: "include", // Include cookies in the request
+//   })
+//   .then(response => response.json())
+//   .then(data=>{
+//     if(data.message === "success"){
+//       sessionStorage.removeItem('loggedIn');
+//       window.location.href = '/'; // Adjust the URL to match your logout route
+//     }
+  
+//   })
+//   .catch(error=>{
+//     console.error('logout error:',error)
+//   })
 // }
 // });
-fetch("/logout", {
-  method: "GET",
-  credentials: "include", // Include cookies in the request
-})
-.then(response => response.json())
-
- const confirmation = confirm('Are you sure you want to log out?');
-if (confirmation) {
-  sessionStorage.removeItem('loggedIn');
-  window.location.href = '/'; // Adjust the URL to match your logout route
-}
-});
 
 
 
-
-
+document.getElementById('logout-btn').addEventListener('click', function() {
+  const confirmation = confirm('Are you sure you want to log out?');
+  
+  if (confirmation) {
+      // Only proceed with the logout request if the user confirms
+      fetch("/auth/logout", {
+          method: "GET",
+          credentials: "include", // Include cookies in the request
+      })
+      .then(response => response.json())
+      
+          // if (data.message === "successfully signed out!") {
+              localStorage.removeItem('token');
+              window.location.href = '/'; // Adjust the URL to match your homepage
+          
+        
+    
+     
+    }
+    });
+// document.getElementById('logout-btn').addEventListener('click',function(){
+//   sessionStorage.removeItem('token');
+//   window.location.href='/'
+// });
   async function fetchRegistrationsCount() {
     try {
       const response = await fetch('/admin/registrations/count');
