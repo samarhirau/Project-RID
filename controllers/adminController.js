@@ -67,4 +67,17 @@ const getRegistrationsCount = async (req, res) => {
   }
 };
 
-module.exports = { addCertificate, getRegistrationsCount };
+
+
+// Controller function to get the count of admins
+const getAdminCount = async (req, res) => {
+  try {
+      const adminCount = await User.countDocuments({ role: 'admin' }); 
+      res.status(200).json({ count: adminCount });
+  } catch (error) {
+      res.status(500).json({ message: 'Error fetching admin count' });
+  }
+};
+
+
+module.exports = { addCertificate, getRegistrationsCount, getAdminCount };

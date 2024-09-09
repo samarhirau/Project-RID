@@ -1,24 +1,10 @@
 
 
-// const express = require('express');
-// const router = express.Router();
-// const multer = require('multer');
-// const { addCertificate } = require('../controllers/adminController');
-
-// const storage = multer.memoryStorage();
-// const upload = multer({ storage });
-
-
-
-// router.post('/upload', upload.single('certificate'), addCertificate);
-
-// module.exports = router;
-
 
 
 const express = require('express');
 const router = express.Router();
-const { addCertificate, getRegistrationsCount } = require('../controllers/adminController');
+const { addCertificate, getRegistrationsCount,getAdminCount } = require('../controllers/adminController');
 const multer = require('multer');
 const authenticateJWT = require('../middleware/authMiddleware');
 const authorizeRole = require('../middleware/authorizeRole');
@@ -30,8 +16,7 @@ const upload = multer({ storage });
 
 router.post('/upload', upload.single('certificate'), addCertificate);
 router.get('/registrations/count', getRegistrationsCount); // New route for getting registrations count
-
-
+router.get('/admin-count', getAdminCount);
 
 router.get('/users', authenticateJWT, authorizeRole('admin'), async (req, res) => {
   try {
@@ -97,6 +82,24 @@ router.get('/all-admins', authenticateJWT, authorizeRole('admin'), async (req, r
     res.status(500).json({ message: 'Server error' });
   }
 });
+
+
+
+router.get('/count-admins', async (req, res) => {
+  try {
+    // Count documents where the role is 'admin'
+    const adminCount = await User.countDocuments({ role: 'admin' });
+    
+    // Send the count as a response
+    res.json({ count: adminCount });
+  } catch (error) {
+    console.error('Error fetching admin count:', error);
+    res.status(500).json({ message: 'Error fetching admin count' });
+  }
+});
+
+
+
 
 module.exports = router;
 
