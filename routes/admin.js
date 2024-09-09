@@ -32,16 +32,16 @@ router.post('/upload', upload.single('certificate'), addCertificate);
 router.get('/registrations/count', getRegistrationsCount); // New route for getting registrations count
 
 
-// // Endpoint to get all users (for admin to view and change roles)
-// router.get('/users', authenticateJWT, authorizeRole('admin'), async (req, res) => {
-//   try {
-//     const users = await User.find({}, 'email role'); // Fetch all users with email and role
-//     res.json(users);
-//   } catch (error) {
-//     console.error('Error fetching users:', error);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
+
+router.get('/users', authenticateJWT, authorizeRole('admin'), async (req, res) => {
+  try {
+    const users = await User.find({}, 'email role gender name dob lastname'); // Fetch all users with email and role
+    res.json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 // Endpoint to search for a user by email
 router.get('/search-user', authenticateJWT, authorizeRole('admin'), async (req, res) => {
