@@ -79,5 +79,29 @@ const getAdminCount = async (req, res) => {
   }
 };
 
+const getStudentCount = async (req, res) => {
+  try {
+      const studentCount = await User.countDocuments({ role: 'student' }); 
+      res.status(200).json({ count: studentCount });
+  } catch (error) {
+      res.status(500).json({ message: 'Error fetching student count' });
+  }
+};
 
-module.exports = { addCertificate, getRegistrationsCount, getAdminCount };
+const getTeacherCount = async (req, res) => {
+  try {
+      const teacherCount = await User.countDocuments({ role: 'teacher' }); 
+      res.status(200).json({ count: teacherCount });
+  } catch (error) {
+      res.status(500).json({ message: 'Error fetching teacher count' });
+  }
+};
+const getOrganisationCount = async (req, res) => {
+  try {
+      const organisationCount = await User.countDocuments({ role: 'organisation' }); 
+      res.status(200).json({ count: organisationCount });
+  } catch (error) {
+      res.status(500).json({ message: 'Error fetching organisation count' });
+  }
+};
+module.exports = { addCertificate, getRegistrationsCount, getAdminCount,getStudentCount,getTeacherCount ,getOrganisationCount};
