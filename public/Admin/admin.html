@@ -191,8 +191,22 @@
      
     </div>
 
+<hr>
+<div class="div2">
+  <h1>Total Number of Students</h1>
+        <p id="studentCount">Loading...</p>
+</div>
 
-
+<hr>
+<div class="div2">
+  <h1>Total Number of Teachers</h1>
+        <p id="teacherCount">Loading...</p>
+</div>
+<hr>
+<div class="div2">
+  <h1>Total Number of Organisations</h1>
+        <p id="organisationCount">Loading...</p>
+</div>
     <hr>
       <div id="user-list">
         <!-- This section will be populated by JavaScript -->
@@ -233,20 +247,6 @@
   </section>
   <button type="submit">Upload Now</button>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   </div>
   </div>
@@ -376,7 +376,7 @@ fetch('/admin/users', { method: 'GET', credentials: 'include' })
   })
   .catch(error => console.error('Error fetching users:', error));
 </script>
-
+<!-- show no of admin -->
 <script>
   // Function to fetch and display the total number of admins
 async function fetchAdminCount() {
@@ -398,11 +398,81 @@ async function fetchAdminCount() {
         document.getElementById('adminCount').innerText = 'Error loading admin count';
     }
 }
-
-
-
 fetchAdminCount();
-
 </script>
+<!-- show no of student -->
+<script>
+  // Function to fetch and display the total number of admins
+async function fetchStudentCount() {
+    try {
+        // Fetching data from backend API (replace '/api/student/count' with your actual API endpoint)
+        const response = await fetch('/admin/student-count');
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        const studentCount = data.count;  // Assuming the backend sends { count: 10 }
+
+        // Displaying the total number of students
+        document.getElementById('studentCount').innerText = `Total Students: ${studentCount}`;
+    } catch (error) {
+        console.error('Error fetching student count:', error);
+        document.getElementById('studentCount').innerText = 'Error loading student count';
+    }
+}
+fetchStudentCount();
+</script>
+<!-- show no of teacher -->
+<script>
+  // Function to fetch and display the total number of admins
+async function fetchTeacherCount() {
+    try {
+        // Fetching data from backend API (replace '/api/student/count' with your actual API endpoint)
+        const response = await fetch('/admin/teacher-count');
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        const teacherCount = data.count;  // Assuming the backend sends { count: 10 }
+
+        // Displaying the total number of students
+        document.getElementById('teacherCount').innerText = `Total Teachers: ${teacherCount}`;
+    } catch (error) {
+        console.error('Error fetching teacher count:', error);
+        document.getElementById('teacherCount').innerText = 'Error loading teacher count';
+    }
+}
+fetchTeacherCount();
+</script>
+<!-- show no of organisation -->
+<script>
+  // Function to fetch and display the total number of admins
+async function fetchOrganisationCount() {
+    try {
+        // Fetching data from backend API (replace '/api/student/count' with your actual API endpoint)
+        const response = await fetch('/admin/organisation-count');
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        const organisationCount = data.count;  // Assuming the backend sends { count: 10 }
+
+        // Displaying the total number of students
+        document.getElementById('organisationCount').innerText = `Total Organisations: ${organisationCount}`;
+    } catch (error) {
+        console.error('Error fetching organisation count:', error);
+        document.getElementById('organisationCount').innerText = 'Error loading organisation count';
+    }
+}
+fetchOrganisationCount();
+</script>
+
+
 </body>
 </html>

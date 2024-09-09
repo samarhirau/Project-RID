@@ -4,7 +4,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { addCertificate, getRegistrationsCount,getAdminCount } = require('../controllers/adminController');
+const { addCertificate, getRegistrationsCount,getAdminCount,getStudentCount,getTeacherCount,getOrganisationCount } = require('../controllers/adminController');
 const multer = require('multer');
 const authenticateJWT = require('../middleware/authMiddleware');
 const authorizeRole = require('../middleware/authorizeRole');
@@ -17,7 +17,10 @@ const upload = multer({ storage });
 router.post('/upload', upload.single('certificate'), addCertificate);
 router.get('/registrations/count', getRegistrationsCount); // New route for getting registrations count
 router.get('/admin-count', getAdminCount);
-
+//mujhe
+router.get('/student-count', getStudentCount);
+router.get('/teacher-count',getTeacherCount);
+router.get('/organisation-count',getOrganisationCount);
 router.get('/users', authenticateJWT, authorizeRole('admin'), async (req, res) => {
   try {
     const users = await User.find({}, 'email role gender name dob lastname'); // Fetch all users with email and role
