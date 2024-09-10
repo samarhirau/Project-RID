@@ -23,7 +23,7 @@
                 <p><strong>Publish Year:</strong> <%= book.publishYear %></p>
                 <p><strong>Description:</strong> <%= book.description %></p>
                 <p><strong>Rating:</strong> <%= book.rating %></p>
-                <a class="download-btn" href="<%= book.pdfUrl %>" download>Download PDF</a>
+                <a href="/download-pdf/<%= book._id %>" class="download-btn">Download PDF</a>
             </div>
         <% } else { %>
             <p>Book not found.</p>
