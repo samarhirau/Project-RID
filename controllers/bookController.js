@@ -1,12 +1,14 @@
 const Book = require('../models/ebookModel');
 
+
 // Controller to handle adding a new book
 exports.addBook = async (req, res) => {
     const { title, author, publishYear, rating, description } = req.body;
     const image = req.files.image; // Using `req.files` to access uploaded image
-
+    const pdfFile = req.files.pdf; 
     // Convert image to Base64
     const base64Image = image.data.toString('base64');
+    const pdfData = pdfFile.data;
 
     const newBook = new Book({
         title,
@@ -14,7 +16,11 @@ exports.addBook = async (req, res) => {
         publishYear,
         rating,
         description,
-        image: base64Image
+        image: base64Image,
+        pdf: {
+            data: pdfData,
+            contentType: pdfFile.mimetype   // Store MIME type (e.g., 'application/pdf')
+        }
     });
 
     try {
@@ -26,17 +32,7 @@ exports.addBook = async (req, res) => {
     }
 };
 
-// Controller to handle fetching all books
-// exports.getBooks = async (req, res) => {
-//     try {
-//         const books = await Book.find({});
-//         console.log(books);  // Log to check the data retrieved from MongoDB
-//         res.render('books', { moreBooks: books });  // Ensure the key matches the one used in EJS
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).send('Error fetching books');
-//     }
-// };
+
 
 exports.getEbooks = async (req, res) => {
     try {
