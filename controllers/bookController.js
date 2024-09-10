@@ -19,7 +19,7 @@ exports.addBook = async (req, res) => {
 
     try {
         await newBook.save();
-        res.redirect('/books');
+        // res.redirect('/books');
     } catch (err) {
         console.error(err);
         res.status(500).send('Error uploading book');
@@ -46,5 +46,20 @@ exports.getEbooks = async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).send('Error fetching books');
+    }
+};
+
+
+exports.getBookDetails = async (req, res) => {
+    try {
+        const bookId = req.params.id; // Get the book ID from the URL
+        const book = await Book.findById(bookId);
+        if (!book) {
+            return res.status(404).send('Book not found');
+        }
+        res.render('detail-ebook', { book });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error fetching book details');
     }
 };

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Book Details</h1>
+        <a href="/ebook">Back to eBooks</a>
+    </header>
+    
+    <div class="book-detail">
+        <% if (book) { %>
+            <div class="book-image">
+                <img src="<%= book.image %>" alt="<%= book.title %>">
+            </div>
+            <div class="book-info">
+                <h2><%= book.title %></h2>
+                <p><strong>Author:</strong> <%= book.author %></p>
+                <p><strong>Publish Year:</strong> <%= book.publishYear %></p>
+                <p><strong>Description:</strong> <%= book.description %></p>
+                <p><strong>Rating:</strong> <%= book.rating %></p>
+                <a class="download-btn" href="<%= book.pdfUrl %>" download>Download PDF</a>
+            </div>
+        <% } else { %>
+            <p>Book not found.</p>
+        <% } %>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Website</p>
+    </footer>
+</body>
+</html>

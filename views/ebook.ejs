@@ -36,7 +36,7 @@
             <div class="book-card-holder">
                 <% books.forEach(book => { %>
                 <div class="book-card">
-                    <img src="<%= book.image %>" alt="">
+                    <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
                     <div class="title-desc">
                         <h3><%= book.title %></h3>
                         <p class="desc"><%= book.description %></p>
@@ -101,30 +101,33 @@
             </div> -->
 
 
-            <h1>eBooks</h1>
 
             <!-- Displaying the books array -->
             <div class="bookcard-holder">
                 <% books.forEach(book => { %>
                     <div class="book-card1">
-                        <img src="<%= book.image %>" alt="">
+                        <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
+
+
                         <div class="title-desc1">
-                            <a class="readbtn" href="#pdfUrl">Read Now</a>
+                            <!-- <a class="readbtn" href="#pdfUrl">Read Now</a> -->
+                            <a class="readbtn" href="/book/<%= book._id %>">View Details</a>
                             <h3><%= book.title %></h3>
                             <p>Publish Year: <%= book.publishYear %></p>
-                            <p>Author: <%= book.author %></p>
-                            <p>Description: <%= book.description %></p>
-                            <p>Rating: <%= book.rating %></p>
+                            <!-- <p>Author: <%= book.author %></p> -->
+                            <!-- <p>Description: <%= book.description %></p> -->
+                            <!-- <p>Rating: <%= book.rating %></p> -->
                         </div>
                     </div>
                 <% }); %>
             </div>
         
             <!-- Displaying the moreBooks array -->
-            <div class="more-books-holder">
+            <!-- <div class="more-books-holder">
                 <% moreBooks.forEach(book => { %>
                     <div class="book-card1">
-                        <img src="<%= book.image %>" alt="">
+                        <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
+
                         <div class="title-desc1">
                             <a class="readbtn" href="#pdfUrl">Read Now</a>
                             <h3><%= book.title %></h3>
@@ -135,7 +138,7 @@
                         </div>
                     </div>
                 <% }); %>
-            </div>
+            </div> -->
    
         </div>
     </div>
