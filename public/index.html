@@ -105,7 +105,8 @@
           <p>
             Website:
             <span
-              >RID (Reserch Innovation & Discovery) by TWSKAA Welfare Foundation
+              >RID (Research Innovation & Discovery) by TWSKAA Welfare
+              Foundation
             </span>
           </p>
 
@@ -379,7 +380,7 @@
       <div class="onText-slider">
         <div class="text-area">
           <h1 style="text-transform: uppercase; font-size: 18px">
-            welcome to the future of Reserch Innovation & Discovery (RID)
+            welcome to the future of Research Innovation & Discovery (RID)
           </h1>
           <p>
             At RID, we bring the world's most promising minds into our circle to
@@ -634,7 +635,7 @@
     <section class="footer">
       <footer>
         <div class="left">
-          <img src="./assets/Group 2.png" alt="footer logo" />
+          <img src="./assets/RID Concept Long.svg" alt="footer logo" />
           <p>
             Mig, 72, Rajiv Nagar, A Sector, Aayodhya bypass Bhopal, Madhya
             Pradesh, India (462022)
@@ -731,15 +732,15 @@
     </section>
 
     <div id="quiz">
-      <h1>Select a Topic:</h1>
-      <select id="topic-select">
+      <h1 style="display: none">Select a Topic:</h1>
+      <select id="topic-select" style="display: none">
         <option value="general knowledge">General Knowledge</option>
         <option value="science">Science</option>
         <option value="history">History</option>
         <option value="technology">Technology</option>
         <!-- Add more topics as needed -->
       </select>
-      <button onclick="loadQuestion()">Start Quiz</button>
+      <button onclick="loadQuestion()" style="display: none">Start Quiz</button>
 
       <h2 id="question"></h2>
       <ul id="answers"></ul>
@@ -859,8 +860,8 @@
     <script>
       const swapBtn = document.getElementById("swap-btn");
       const registerBTn = document.getElementById("signUpBtn");
-                
-      const loginBTn = document.getElementById('logInButton')
+
+      const loginBTn = document.getElementById("logInButton");
 
       registerBTn.addEventListener("click", () => {
         swapBtn.style.left = "125px";
@@ -868,24 +869,23 @@
       });
       registerBTn.addEventListener("mouseover", () => {
         swapBtn.style.left = "125px";
-        registerBTn.style.color = 'white';
-        loginBTn.style.color = 'black'
-
+        registerBTn.style.color = "white";
+        loginBTn.style.color = "black";
       });
       registerBTn.addEventListener("mouseout", () => {
         swapBtn.style.left = "0px";
-        registerBTn.style.color = 'black';
-        loginBTn.style.color = 'white'
+        registerBTn.style.color = "black";
+        loginBTn.style.color = "white";
       });
     </script>
 
-    <script>
+    <!-- <script>  
       async function loadQuestion() {
         document.getElementById("next").style.display = "none";
         const topic = document.getElementById("topic-select").value;
         try {
           const response = await fetch(
-            `/api/question?topic=${encodeURIComponent(topic)}`
+            /api/question?topic=${encodeURIComponent(topic)}
           );
 
           if (!response.ok) {
@@ -908,10 +908,10 @@
             answersList.appendChild(li);
           });
         } catch (error) {
-          alert(`Failed to load question: ${error.message}`);
+          alert(Failed to load question: ${error.message});
         }
       }
-    </script>
+    </script> -->
 
     <script>
       const onlinetest = document.getElementById("onlineTest");
