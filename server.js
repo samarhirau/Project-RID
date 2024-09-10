@@ -13,7 +13,15 @@ const axios = require('axios');
 const jwt = require("jsonwebtoken");
 dotenv.config();
 
-const {books ,moreBooks} = require('./views/js/ebook');
+
+const fileUpload = require('express-fileupload');
+const bookRoutes = require('./routes/bookRoutes');
+
+
+
+
+
+// const {books ,moreBooks} = require('./views/js/ebook');
 
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
@@ -62,12 +70,16 @@ app.use('/api/excel', excelRoutes);
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(fileUpload()); // Middleware to handle file uploads
 // app.use('/', routes);
 
 
 
 app.use(cookieParser());
+
+
+app.use('/', bookRoutes)
+
 
 // Middleware function to check user role
 const authorizeRole = (role) => {
@@ -79,6 +91,18 @@ const authorizeRole = (role) => {
     }
   };
 };
+
+
+app.get('/books', async (req, res) => {
+  try {
+      const books = await Book.find({}); // Fetch books from the database
+      res.render('books', { moreBooks: books }); // Correctly pass 'books' to the EJS template
+  } catch (err) {
+      console.error(err);
+      res.status(500).send('Error fetching books');
+  }
+});
+
 
 // Route for '/organisation' - Protected for 'organisation' role
 app.get('/organisation', authenticateJWT, authorizeRole('organisation'), (req, res) => {
@@ -121,13 +145,13 @@ app.get('/form', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', '/Signup/form.html'));
 });
 
-app.get('/ebook', (req, res) => {
-  res.render('ebook', { books, moreBooks });
-});
+// app.get('/ebook', (req, res) => {
+//   res.render('ebook', { books, moreBooks });
+// });
 
-app.get('/books', (req, res) => {
-  res.render('book-card', { books, moreBooks }); // Pass the arrays to the EJS template
-});
+// app.get('/books', (req, res) => {
+//   res.render('book-card', { books, moreBooks }); // Pass the arrays to the EJS template
+// });
 
 app.get('/onlineTest', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', './component/onlineTest.html'));

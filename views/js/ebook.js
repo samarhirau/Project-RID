@@ -2,7 +2,7 @@
 
 
 
-const books = [
+const bookss = [
     {
                 image: 'https://m.media-amazon.com/images/I/51oTTzbiVIL.jpg',
                 title: "Developing a Hacker's Mindset: Publication Opened",
@@ -110,7 +110,7 @@ const books = [
 ];
 
 
-const moreBooks = [
+const moreBookss = [
     {
         image: 'https://m.media-amazon.com/images/I/415Z8IEPDpL._SL500_.jpg',
         title: 'Coders at Work: Trending Publication',
