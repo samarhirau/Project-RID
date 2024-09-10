@@ -1,210 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="./css/ebookstyle.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="./css/ebookstyle.css" />
     <title>E-Book Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="E-Book-Parent">
-        <div class="left-side-panel">
-            <div class="logo"><img src="./assets/logo.png" alt="logo"><button onclick="btnOpen()" class="btn_mobile_open">•••</button></div>
-            <h1 class="special">RID's E-Book Center</h1>
-            <button class="add-book"><span class="material-symbols-outlined">add</span>Add New E-Books</button>
-            <h1 style="font-weight: 600;">Latest Reading</h1>
-    
-            <div class="book-card-holder">
-                
-            <div class="book-card">
-                <img src="https://m.media-amazon.com/images/I/51oTTzbiVIL.jpg" alt="">
-                <div class="title-desc">
-                    <h3>Developing a Hacker's Mindset: Publication Opened</h3>
-                    <p class="desc">Hackers by Steven Levy is a captivating exploration of the ...</p>
-                    <p class="author-name">Author: Steven Levy</p>
-                    <div class="rating">
-                        <span class="material-symbols-outlined filledstar">star</span>
-                        <span class="material-symbols-outlined filledstar">star</span>
-                        <span class="material-symbols-outlined filledstar">star_half</span>
-                        <span class="material-symbols-outlined notfilledstar">star</span>
-                        <span class="material-symbols-outlined notfilledstar">star</span>
-                    </div>
-                    <p>Publish Year: 1999</p>
-                </div>
-            </div>
-    
-            <div class="book-card">
-                <img src="./assets/cover book images/ML-12x18-1-scaled.jpg" alt="">
-                <div class="title-desc">
-                    <h3>Machine Learning Book by CSE Department, NIIST</h3>
-                    <p class="desc">Cryptonomicon (1999) is a gripping novel that weaves together two...</p>
-                    <p class="author-name">Author: Shaun Dave</p>
-                    <div class="rating">
-                        <span class="material-symbols-outlined filledstar">star</span>
-                        <span class="material-symbols-outlined filledstar">star</span>
-                        <span class="material-symbols-outlined filledstar">star_half</span>
-                        <span class="material-symbols-outlined notfilledstar">star</span>
-                        <span class="material-symbols-outlined notfilledstar">star</span>
-                    </div>
-                    <p>Publish Year: 1999</p>
-                </div>
-            </div>
-    
-            </div>
+      <div class="left-side-panel">
+        <div class="logo">
+          <img src="./assets/logo.png" alt="logo" /><button
+            onclick="btnOpen()"
+            class="btn_mobile_open"
+          >
+            •••
+          </button>
         </div>
-    
-        <div class="main-panel">
-            <div class="upperbar">
-                <div class="content-not-imp" id="notImp">
-                    <h1>Explore E-Books, Research Papers & More</h1>
-            <p style="padding: 16px 0;">Explore the latest releases at RID's E-Book Center! Enjoy a seamless reading experience with our flipbook feature and take advantage of limited-time PDF download demos. Don't miss out on discovering new and exciting content! <br><br><a class="learn-more" href="#">Learn More</a></p>
-                </div>
-            
-            <div class="navigation-bar" id="borderRem">
-                <ul>
-                    <button onclick="btnClose()" class="btn_mobile">×</button>
-                    <li><a href="#" class="active"><span class="material-symbols-outlined">home</span>Home</a></li>
-                    <li><a href="#"><span class="material-symbols-outlined notfilled">newspaper</span>Research Paper</a></li>
-                    <li><a href="#"><span class="material-symbols-outlined notfilled">book</span>Library</a></li>
-                    <li><a href="#"><span class="material-symbols-outlined notfilled">settings</span>Setting</a></li>
-                    <li><a href="#" onclick="awakeAction()"><span id="headerBTN"  class="material-symbols-outlined">check_box_outline_blank</span>Hide Header</a></li>
-                </ul>
-                <div class="searchbar">
-                    <span class="material-symbols-outlined">search</span>
-                    <input type="search">
-                </div>
+        <h1 class="special">RID's E-Book Center</h1>
+        <button class="add-book">
+          <span class="material-symbols-outlined">add</span>Add New E-Books
+        </button>
+        <h1 style="font-weight: 600">Latest Reading</h1>
 
+        <div class="book-card-holder">
+          <div class="book-card">
+            <img
+              src="https://m.media-amazon.com/images/I/51oTTzbiVIL.jpg"
+              alt=""
+            />
+            <div class="title-desc">
+              <h3>Developing a Hacker's Mindset: Publication Opened</h3>
+              <p class="desc">
+                Hackers by Steven Levy is a captivating exploration of the ...
+              </p>
+              <p class="author-name">Author: Steven Levy</p>
+              <div class="rating">
+                <span class="material-symbols-outlined filledstar">star</span>
+                <span class="material-symbols-outlined filledstar">star</span>
+                <span class="material-symbols-outlined filledstar"
+                  >star_half</span
+                >
+                <span class="material-symbols-outlined notfilledstar"
+                  >star</span
+                >
+                <span class="material-symbols-outlined notfilledstar"
+                  >star</span
+                >
+              </div>
+              <p>Publish Year: 1999</p>
             </div>
+          </div>
+
+          <div class="book-card">
+            <img
+              src="./assets/cover book images/ML-12x18-1-scaled.jpg"
+              alt=""
+            />
+            <div class="title-desc">
+              <h3>Machine Learning Book by CSE Department, NIIST</h3>
+              <p class="desc">
+                Cryptonomicon (1999) is a gripping novel that weaves together
+                two...
+              </p>
+              <p class="author-name">Author: Shaun Dave</p>
+              <div class="rating">
+                <span class="material-symbols-outlined filledstar">star</span>
+                <span class="material-symbols-outlined filledstar">star</span>
+                <span class="material-symbols-outlined filledstar"
+                  >star_half</span
+                >
+                <span class="material-symbols-outlined notfilledstar"
+                  >star</span
+                >
+                <span class="material-symbols-outlined notfilledstar"
+                  >star</span
+                >
+              </div>
+              <p>Publish Year: 1999</p>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="bookcard-holder">
+      <div class="main-panel">
+        <div class="upperbar">
+          <div class="content-not-imp" id="notImp">
+            <h1>Explore E-Books, Research Papers & More</h1>
+            <p style="padding: 16px 0">
+              Explore the latest releases at RID's E-Book Center! Enjoy a
+              seamless reading experience with our flipbook feature and take
+              advantage of limited-time PDF download demos. Don't miss out on
+              discovering new and exciting content! <br /><br /><a
+                class="learn-more"
+                href="#"
+                >Learn More</a
+              >
+            </p>
+          </div>
 
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/415Z8IEPDpL._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Coders at Work: Trending Publication</h3>
-                        <p>Publish Year: 2000</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/519hB5niytL._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Building Microservices: Designing Systems</h3>
-                        <p>Publish Year: 2004</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/51Rxed9CgdL._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Hackers & Partners: Become Together</h3>
-                        <p>Publish Year: 1998</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/419zAwJJH4L._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Release It (Second Edition)</h3>
-                        <p>Publish Year: 1996</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/51szMmZEoeL._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>HVAC Designing: Extra Publication Open</h3>
-                        <p>Publish Year: 1995</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/51E2055ZGUL._SL1000_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Clean Code Book: Year 2002</h3>
-                        <p>Publish Year: 2002</p>
-                    </div>
-                </div>
-
+          <div class="navigation-bar" id="borderRem">
+            <ul>
+              <button onclick="btnClose()" class="btn_mobile">×</button>
+              <li>
+                <a href="#" class="active"
+                  ><span class="material-symbols-outlined">home</span>Home</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="material-symbols-outlined notfilled"
+                    >newspaper</span
+                  >Research Paper</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="material-symbols-outlined notfilled">book</span
+                  >Library</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="material-symbols-outlined notfilled"
+                    >settings</span
+                  >Setting</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="awakeAction()"
+                  ><span id="headerBTN" class="material-symbols-outlined"
+                    >check_box_outline_blank</span
+                  >Hide Header</a
+                >
+              </li>
+            </ul>
+            <div class="searchbar">
+              <span class="material-symbols-outlined">search</span>
+              <input type="search" />
             </div>
-            <br>
-            <div class="bookcard-holder">
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/415Z8IEPDpL._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Coders at Work: Trending Publication</h3>
-                        <p>Publish Year: 2000</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/519hB5niytL._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Building Microservices: Designing Systems</h3>
-                        <p>Publish Year: 2004</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/51Rxed9CgdL._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Hackers & Partners: Become Together</h3>
-                        <p>Publish Year: 1998</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/419zAwJJH4L._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Release It (Second Edition)</h3>
-                        <p>Publish Year: 1996</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/51szMmZEoeL._SL500_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>HVAC Designing: Extra Publication Open</h3>
-                        <p>Publish Year: 1995</p>
-                    </div>
-                </div>
-
-                <div class="book-card1">
-                    <img src="https://m.media-amazon.com/images/I/51E2055ZGUL._SL1000_.jpg" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#">Read Now</a>
-                        <h3>Clean Code Book: Year 2002</h3>
-                        <p>Publish Year: 2002</p>
-                    </div>
-                </div>
-
-            </div>
+          </div>
         </div>
 
-        
+        <div class="bookcard-holder">
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/415Z8IEPDpL._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Coders at Work: Trending Publication</h3>
+              <p>Publish Year: 2000</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/519hB5niytL._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Building Microservices: Designing Systems</h3>
+              <p>Publish Year: 2004</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/51Rxed9CgdL._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Hackers & Partners: Become Together</h3>
+              <p>Publish Year: 1998</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/419zAwJJH4L._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Release It (Second Edition)</h3>
+              <p>Publish Year: 1996</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/51szMmZEoeL._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>HVAC Designing: Extra Publication Open</h3>
+              <p>Publish Year: 1995</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/51E2055ZGUL._SL1000_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Clean Code Book: Year 2002</h3>
+              <p>Publish Year: 2002</p>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="bookcard-holder">
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/415Z8IEPDpL._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Coders at Work: Trending Publication</h3>
+              <p>Publish Year: 2000</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/519hB5niytL._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Building Microservices: Designing Systems</h3>
+              <p>Publish Year: 2004</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/51Rxed9CgdL._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Hackers & Partners: Become Together</h3>
+              <p>Publish Year: 1998</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/419zAwJJH4L._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Release It (Second Edition)</h3>
+              <p>Publish Year: 1996</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/51szMmZEoeL._SL500_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>HVAC Designing: Extra Publication Open</h3>
+              <p>Publish Year: 1995</p>
+            </div>
+          </div>
+
+          <div class="book-card1">
+            <img
+              src="https://m.media-amazon.com/images/I/51E2055ZGUL._SL1000_.jpg"
+              alt=""
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="#">Read Now</a>
+              <h3>Clean Code Book: Year 2002</h3>
+              <p>Publish Year: 2002</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="./js/enbookscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
     <script>
-        (function () {
-            const locomotiveScroll = new LocomotiveScroll();
-        })();
-        
+      (function () {
+        const locomotiveScroll = new LocomotiveScroll();
+      })();
     </script>
-</body>
+  </body>
 </html>
