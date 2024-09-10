@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bookController = require('../controllers/bookController');
+const Book = require("../models/ebookModel")
 // const authenticateJWT = require('../middleware/authMiddleware');
 // const authorizeRole = require('../middleware/authorizeRole');
 
@@ -32,6 +33,7 @@ router.get('/download-pdf/:id', async (req, res) => {
             return res.status(404).send('PDF not found');
         }
         res.contentType(book.pdf.contentType); // Set the content type of the response
+        
         res.send(book.pdf.data); // Send the binary data
     } catch (error) {
         console.error('Error downloading PDF:', error);
