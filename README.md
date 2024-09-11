@@ -1,6 +1,11 @@
 # Project-RID
 # Research Innovation Discovery (Project-RID)
 
+Use below code to start the server without any error.
+<code>npm i</code>
+<code>npm audit fix --force</code>
+<code>npm run dev</code> or <code>npm start</code>
+
 Welcome to the Research Innovation Discovery project! This project aims to explore new ideas, foster innovation, and make exciting discoveries. 
 
 ## Table of Contents
