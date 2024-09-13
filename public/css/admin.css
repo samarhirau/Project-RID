@@ -179,7 +179,7 @@ header .lower-header .right-content button span{
     color: #000000;
 }
 
-.main-area #div1{
+/* .main-area #div1{
     display: flex;
     flex-direction: column;
     width: 24%;
@@ -187,30 +187,30 @@ header .lower-header .right-content button span{
     border: 0.5px solid #0A66C2;
     border-radius: 16px;
     padding: 20px 20px;
-}
+} */
 
-.main-area #div1 div h3{
+/* .main-area #div1 div h3{
     font-family: "Inter", sans-serif;
     font-weight: 700;
     line-height: 30.66px;
-}
+} */
 
-.main-area #div1 h1{
+/* .main-area #div1 h1{
     font-weight: 400;
     font-size: 64px;
     line-height: 77.45px;
-}
+} */
 
-.main-content .main-area div div{
+/* .main-content .main-area div div{
     display: flex;
     flex-direction: row;
     gap: 10px;
-}
+} */
 
 .main-content .main-area1{
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: column; 
+    /* justify-content: space-evenly; */
     align-items: center;
     width: 80%;
 }
@@ -410,6 +410,24 @@ header .lower-header .right-content button span{
 .main-area .level-3 .card-3{
     height: 130px;
     width: 250px;
+}
+
+.card-1 {
+    display: flex;
+    align-items:start;
+    justify-content: center;
+}
+
+.card-2 {
+    display: flex;
+    align-items:start;
+    justify-content: center;
+}
+
+.card-3 {
+    display: flex;
+    align-items:start;
+    justify-content: center;
 }
 
 .main-area .level-1 #div1{
