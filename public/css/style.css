@@ -235,7 +235,7 @@ body {
 .search-box {
   font-size: 80px;
   border: solid 0.3em #000000;
-  display: inline-block;
+  display: none;
   position: relative;
   border-radius: 2.5em;
   scale: 0.6;
@@ -693,7 +693,11 @@ body {
   font-weight: 400;
   color: #333;
   margin: 10px 0;
+  align-items: first baseline;
+  display: flex;
+  gap: 10px;
 }
+
 .home-content .content strong {
   color: var(--header-color);
   /* color: blue; */
@@ -795,10 +799,11 @@ body {
   width: 2.5em;
   height: 2.5em;
   padding: 0.3em 2.1em 0.3em 0.4em;
-  border: none;
+  /* border: none; */
   box-sizing: border-box;
   border-radius: 2.5em;
   transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 150ms;
+  display: none;
 }
 .search-box input[type="text"]:focus {
   outline: none;
