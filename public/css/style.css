@@ -634,9 +634,8 @@ body {
   font-size: 0.9rem;
   font-weight: 300;
   color: #333;
-  margin-left: 40px;
+  margin-left: 0px;
   width: 80%;
-  /* text-align: center; */
 }
 .onText-slider button {
   background: var(--header-color);
