@@ -1,230 +1,228 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-:root{
-    --header-color: #0A66C2;
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+:root {
+  --header-color: #0a66c2;
 }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "poppins", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
 }
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--header-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 40px;
-    width: 100%;
-    font-size: 14px;
-  }
-  .web-text p {
-    display: inline-block;
-    color: white;
-    font-size: 0.6rem;
-    font-weight: 700;
-  }
-  .web-text p:first-child {
-    margin-left: 40px;
-  }
-  .web-text p span {
-    font-weight: 300;
-  }
-  .web-text p::after {
-    content: "|";
-    margin: 0 10px;
-    color: white;
-    font-weight: 300;
-  }
-  .web-text p:last-child::after {
-    content: "";
-  }
-  .right-text {
-    display: flex;
-    
-  }
-  
-  .right-text .link {
-    display: flex;
-    align-items: center;
-  
-  }
-  
-  .right-text .link .svg-object {
-    /* margin-right: 3px;  */
-    width: 1rem;
-    height: 1rem;
-  }
-  
-  
-  .right-text .link {
-    color: white;
-    font-size: 0.6rem;
-    transition: all 0.3s ease;
-  }
-  .right-text a:last-child {
-    margin-right: 40px;
-  }
-  .right-text a::after {
-    content: "|";
-    margin: 0 8px;
-    color: white;
-    font-weight: 300;
-  }
-  .right-text a:last-child::after {
-    content: "";
-  }
-
-
-  
-  
-
-.main-content{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100vw;
-    height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: var(--header-color); */
+  background-color: #063159;
+  box-shadow: 0 2px 4px rgba(20, 4, 102, 0.587);
+  height: 40px;
+  width: 100%;
+  font-size: 14px;
+}
+.web-text p {
+  display: inline-block;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+.web-text p:first-child {
+  margin-left: 40px;
+}
+.web-text p span {
+  font-weight: 300;
+}
+.web-text p::after {
+  content: "|";
+  margin: 0 10px;
+  color: white;
+  font-weight: 300;
+}
+.web-text p:last-child::after {
+  content: "";
+}
+.right-text {
+  display: flex;
 }
 
-.main-content .upper-content{
-    display: flex;
-    flex-direction: column;
-    padding: 20px 40px;
+.right-text .link {
+  display: flex;
+  align-items: center;
 }
 
-.upper-content p,li{
-    font-weight: 400;
+.right-text .link .svg-object {
+  /* margin-right: 3px;  */
+  width: 1rem;
+  height: 1rem;
 }
 
-.upper-content p{
-    margin-bottom: 10px;
-    font-weight: 500;
+.right-text .link {
+  color: white;
+  font-size: 0.6rem;
+  transition: all 0.3s ease;
+  gap: 5px;
+}
+.right-text a:last-child {
+  margin-right: 40px;
+}
+.right-text a::after {
+  content: "|";
+  margin: 0 8px;
+  color: white;
+  font-weight: 300;
+}
+.right-text a:last-child::after {
+  content: "";
 }
 
-.upper-content li{
-    list-style-type: none;
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100%;
 }
 
-.upper-content li span{
-    font-weight: 700;
-    color: #006989;
+.main-content .upper-content {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  gap: 20px;
 }
 
-.main-content .lower-content{
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.upper-content p,
+li {
+  font-weight: 400;
 }
 
-.lower-content section{
-    margin: 10px 0px 20px 0px;
-    justify-self: flex-start;
+.upper-content p {
+  margin: 10px auto;
+  font-weight: 500;
 }
 
-.main-content .lower-content section .form-group{ 
-    display: flex;
-    flex-direction: column;
-    width: 27vw;
-    height: 20vh;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #80808080;
-    background-color: #F3F7FC;
-    justify-content: center;
-    align-items: flex-start;
+.upper-content li {
+  list-style-type: none;
+  line-height: 10px;
 }
 
-section .form-group label{
-    font-weight: 600;
-    line-height: 35.22px;
+.upper-content li span {
+  font-weight: 700;
+  color: #0b2b34;
 }
 
-section .form-group input{
-    width: 24.8vw;
-    padding: 9.07px 16.13px;
-    border: 1px solid #80808080;
-    gap: 10.08px;
-    border-radius: 4px;
-    background-color: #FFFFFF;
+.main-content .lower-content {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.lower-content .buttons{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+.lower-content section {
+  margin: 10px 0px 20px 0px;
+  justify-self: flex-start;
 }
 
-.buttons button{
-    padding: 12.48px 22.18px;
-    gap: 13.86px;
-    text-align: left;
-    border-radius: 48px;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 21.12px;
+.main-content .lower-content section .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 27vw;
+  height: 20vh;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #80808080;
+  background-color: #f3f7fc;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.buttons button:nth-child(1){
-    border: 0.69px solid #008000;
-    background-color: #008000;
-    color: white;
+section .form-group label {
+  font-weight: 600;
+  line-height: 35.22px;
 }
 
-.buttons button span:nth-child(1){
-    position: relative;
-    margin-right: 6px;
-    top: 4px;
+section .form-group input {
+  width: 24.8vw;
+  padding: 9.07px 16.13px;
+  border: 1px solid #80808080;
+  gap: 10.08px;
+  border-radius: 4px;
+  background-color: #ffffff;
 }
 
-.buttons button:nth-child(2){
-    border: 0.69px solid #0A66C2;
-    background-color: white;
-    color: #0A66C2;
+.lower-content .buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
-.lower-content .spanfooter{
-    margin-top: 4%;
-    font-weight: 400;
-    line-height: 35.22px;
+.buttons button {
+  padding: 12.48px 22.18px;
+  gap: 13.86px;
+  text-align: left;
+  border-radius: 48px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21.12px;
 }
 
-.spanfooter span{
-    font-weight: 700;
-    color: #0A66C2;
-    line-height: 35.22px;
-    margin: 10px;
+.buttons button:nth-child(1) {
+  border: 0.69px solid #008000;
+  background-color: #008000;
+  color: white;
 }
 
-#span-message{
-    display: none;
-    width: 27vw;
-    background-color: #EAFCEA;
-    border: 0.75px solid #008000;
-    padding: 3px 12px;
-    border-radius: 38.25px;
-    gap: 7.5px;
-    color: black;
-    text-align: center;
-    margin: 0px 0px 10px 0px;
+.buttons button span:nth-child(1) {
+  position: relative;
+  margin-right: 6px;
+  top: 4px;
 }
 
-#message{
-    font-size: small;
-    font-weight: 400;
-    line-height: 26.42px;
+.buttons button:nth-child(2) {
+  border: 0.69px solid #0a66c2;
+  background-color: white;
+  color: #0a66c2;
 }
 
-#innerspan{
-    font-weight: 700;
-    font-size: small;
+.lower-content .spanfooter {
+  margin-top: 4%;
+  font-weight: 400;
+  line-height: 35.22px;
+}
+
+.spanfooter span {
+  font-weight: 700;
+  color: #052340;
+  line-height: 35.22px;
+  margin: 10px;
+}
+
+#span-message {
+  display: none;
+  width: 25vw;
+  background-color: #eafcea;
+  border: 0.75px solid #008000;
+  padding: 3px 12px;
+  border-radius: 38.25px;
+  gap: 7.5px;
+  color: black;
+  text-align: center;
+  margin: 0px 0px 10px 0px;
+}
+
+#message {
+  font-size: small;
+  font-weight: 400;
+  line-height: 26.42px;
+}
+
+#innerspan {
+  font-weight: 600;
+  font-size: small;
 }
