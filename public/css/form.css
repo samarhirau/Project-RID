@@ -58,7 +58,7 @@ body .container #form1,
   grid-template-rows: repeat(2, 1fr);
   gap: 15px;
   width: 60vw;
-  height: 30vh;
+  /* height: 40vh; */
   border-radius: 8px;
   border: 1px solid #80808080;
   background-color: #f3f7fc;
