@@ -132,7 +132,7 @@ li {
 .main-content .lower-content section .form-group {
   display: flex;
   flex-direction: column;
-  width: 27vw;
+  width: 30vw;
   height: 20vh;
   padding: 20px;
   border-radius: 8px;
@@ -185,9 +185,9 @@ section .form-group input {
 }
 
 .buttons button:nth-child(2) {
-  border: 0.69px solid #0a66c2;
+  border: 0.69px solid #052b51;
   background-color: white;
-  color: #0a66c2;
+  color: #022447;
 }
 
 .lower-content .spanfooter {
