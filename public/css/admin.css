@@ -60,6 +60,7 @@ header .lower-header .right-content button{
     gap: 10px;
     border-radius: 44px;
     border: 0.5px solid #0A66C280;
+    cursor: pointer;
 }
 
 header .lower-header .right-content button span{
@@ -91,7 +92,7 @@ header .lower-header .right-content button span{
 .main-content .side-bar .div1 div{
     display: flex;
     flex-direction: column;
-    justify-content: normal;
+    /* justify-content: normal; */
     padding: 20px 30px;
     gap: 10px;
     border-bottom: 0.5px solid #0A66C280;
@@ -113,6 +114,7 @@ header .lower-header .right-content button span{
     font-size: 16px;
     font-weight: 700;
     line-height: 21.12px;
+    cursor: pointer;
 }
 
 .main-content .side-bar .div1 div button span:nth-child(1){
@@ -133,7 +135,7 @@ header .lower-header .right-content button span{
 .main-content .side-bar footer{
     display: flex;
     flex-direction: column;
-    justify-content: normal;
+    /* justify-content: normal; */
     padding: 20px 30px;
     gap: 10px;
 }
@@ -141,7 +143,7 @@ header .lower-header .right-content button span{
 .main-content .side-bar footer button{
     padding: 7px 16px;
     gap: 10.91px;
-    border: 0.5px solid #DC143C80;
+    border: 0.5px solid #0A66C2;
     color: #DC143C80;
     background-color: white;
     text-align: center;
@@ -149,6 +151,11 @@ header .lower-header .right-content button span{
     font-size: 16px;
     font-weight: 700;
     line-height: 21.12px;
+    cursor:pointer;
+}
+
+.main-content .side-bar footer #logout{
+    border: 0.5px solid rgb(169, 73, 73);
 }
 
 .main-content .side-bar footer button span:nth-child(1){
@@ -373,5 +380,83 @@ header .lower-header .right-content button span{
 
 .toastify-info {
   background: #2196f3; /* Blue background for info */
+}
+
+.main-area .level-1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-area .level-2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-area .level-3{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-area .level-1 .card-1{
+    height: 130px;
+    width: 250px;
+}
+
+.main-area .level-2 .card-2{
+    height: 130px;
+    width: 250px;
+}
+
+.main-area .level-3 .card-3{
+    height: 130px;
+    width: 250px;
+}
+
+.main-area .level-1 #div1{
+    border: none;
+    border-left: 4px solid green;
+    border-radius: none;
+    background-color: rgb(195, 234, 195);
+    color: green;
+}
+
+.main-area .level-1 #div2{
+    border: none;
+    border-left: 4px solid red;
+    border-radius: none;
+    background-color: pink;
+    color: red;
+}
+
+.main-area .level-1 #div3{
+    border: none;
+    border-left: 4px solid rgb(169, 73, 73);
+    border-radius: none;
+    background-color: #f5d2ba;
+    color: rgb(174, 109, 109);
+}
+
+.main-area .level-1 #div4{
+    border: none;
+    border-left: 4px solid red;
+    border-radius: none;
+    background-color: pink;
+    color: red;
+}
+
+.main-area .level-2 .card-2{
+    border: none;
+    border-left: 4px solid #000033;
+    border-radius: none;
+    background-color: rgb(213, 236, 246);
+    color: rgb(24, 21, 21);
+}
+
+.main-area .level-3 .card-3{
+    border: none;
+    border-left: 4px solid #000033;
+    border-radius: none;
+    background-color: rgb(227, 240, 246);
+    color: rgb(24, 21, 21);
 }
 

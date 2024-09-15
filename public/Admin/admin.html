@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,62 +51,70 @@
       </div>
     </div>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <style>
-      /* Toast container style */
-.toastify-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <style>
+          /* Toast container style */
+          .toastify-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+          }
 
-/* Individual toast notification style */
-.toastify-toast {
-  background: #333; /* Dark background */
-  color: #fff; /* White text color */
-  border-radius: 8px; /* More rounded corners */
-  padding: 15px 20px; /* More padding */
-  margin: 10px 0; /* Spacing between toasts */
-  font-size: 15px; /* Slightly larger font size */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden; /* Ensure the timer line stays within bounds */
-}
+          /* Individual toast notification style */
+          .toastify-toast {
+            background: #333; /* Dark background */
+            color: #fff; /* White text color */
+            border-radius: 8px; /* More rounded corners */
+            padding: 15px 20px; /* More padding */
+            margin: 10px 0; /* Spacing between toasts */
+            font-size: 15px; /* Slightly larger font size */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden; /* Ensure the timer line stays within bounds */
+          }
 
-/* Timer line style */
-.toastify-toast .timer-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.6); /* Light color for timer line */
-  width: 100%;
-  transform: translateX(-100%); /* Start with timer line off-screen */
-  transition: transform 3s linear; /* Timer line animation */
-}
+          /* Timer line style */
+          .toastify-toast .timer-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(
+              255,
+              255,
+              255,
+              0.6
+            ); /* Light color for timer line */
+            width: 100%;
+            transform: translateX(-100%); /* Start with timer line off-screen */
+            transition: transform 3s linear; /* Timer line animation */
+          }
 
-/* Close button style */
-.toastify-toast .toastify-close {
-  cursor: pointer;
-  color: #ff5722; /* Close button color */
-  font-size: 18px;
-}
+          /* Close button style */
+          .toastify-toast .toastify-close {
+            cursor: pointer;
+            color: #ff5722; /* Close button color */
+            font-size: 18px;
+          }
 
-/* Toast types */
-.toastify-success {
-  background: #4caf50; /* Green background for success */
-}
+          /* Toast types */
+          .toastify-success {
+            background: #4caf50; /* Green background for success */
+          }
 
-.toastify-error {
-  background: #f44336; /* Red background for error */
-}
+          .toastify-error {
+            background: #f44336; /* Red background for error */
+          }
 
 .toastify-info {
   background: orange; /* Blue background for info */
@@ -257,20 +264,18 @@
   <input type="text" id="emailSearch" placeholder="Enter user email">
   <button onclick="searchUser()">Search User</button>
 
-  <!-- Display User Info -->
-  <div id="userInfo" style="display: none;">
-    <p id="userEmail"></p>
-    <label for="userRole">Change Role:</label>
-    <select id="userRole">
-      <option value="student">Student</option>
-      <option value="teacher">Teacher</option>
-      <option value="organisation">Organisation</option>
-      <option value="admin">Admin</option>
-    </select>
-    <button onclick="changeUserRole()">Change Role</button>
-  </div>
-
-
+    <!-- Display User Info -->
+    <div id="userInfo" style="display: none">
+      <p id="userEmail"></p>
+      <label for="userRole">Change Role:</label>
+      <select id="userRole">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="organisation">Organisation</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button onclick="changeUserRole()">Change Role</button>
+    </div>
 
    <button onclick="showAllAdmins()">Show All Admins</button>
    <div id="adminList" style="display: none;">
@@ -278,52 +283,55 @@
      <ul id="admins"></ul>
    </div>
 
-<script src="../js/showToast.js"></script>
-<script src="../js/admin.js"></script>
-<script>
-  // Fetch users from the server (Make sure the server provides this endpoint)
- // Function to search for a user by email
- function searchUser() {
-      const email = document.getElementById('emailSearch').value;
+    <script src="../js/showToast.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+      // Fetch users from the server (Make sure the server provides this endpoint)
+      // Function to search for a user by email
+      function searchUser() {
+        const email = document.getElementById("emailSearch").value;
 
-      fetch(`/admin/search-user?email=${email}`, {
-        method: 'GET',
-        credentials: 'include' // Include cookies for authentication
-      })
-        .then(response => response.json())
-        .then(user => {
-          if (user.message) {
-            alert(user.message);
-          } else {
-            document.getElementById('userInfo').style.display = 'block';
-            document.getElementById('userEmail').textContent = `Email: ${user.email}`;
-            document.getElementById('userRole').value = user.role;
-          }
+        fetch(`/admin/search-user?email=${email}`, {
+          method: "GET",
+          credentials: "include", // Include cookies for authentication
         })
-        .catch(error => console.error('Error fetching user:', error));
-    }
+          .then((response) => response.json())
+          .then((user) => {
+            if (user.message) {
+              alert(user.message);
+            } else {
+              document.getElementById("userInfo").style.display = "block";
+              document.getElementById(
+                "userEmail"
+              ).textContent = `Email: ${user.email}`;
+              document.getElementById("userRole").value = user.role;
+            }
+          })
+          .catch((error) => console.error("Error fetching user:", error));
+      }
 
-    // Function to change the user role
-    function changeUserRole() {
-      const email = document.getElementById('userEmail').textContent.split('Email: ')[1];
-      const newRole = document.getElementById('userRole').value;
+      // Function to change the user role
+      function changeUserRole() {
+        const email = document
+          .getElementById("userEmail")
+          .textContent.split("Email: ")[1];
+        const newRole = document.getElementById("userRole").value;
 
-      fetch('/admin/change-role', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, role: newRole }),
-        credentials: 'include'
-      })
-        .then(response => response.json())
-        .then(data => {
-          alert(data.message); // Notify admin of success or failure
+        fetch("/admin/change-role", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, role: newRole }),
+          credentials: "include",
         })
-        .catch(error => console.error('Error changing user role:', error));
-    }
-
-</script>
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.message); // Notify admin of success or failure
+          })
+          .catch((error) => console.error("Error changing user role:", error));
+      }
+    </script>
 
 <script>
     // Function to show all admins
