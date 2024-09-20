@@ -33,7 +33,7 @@
             </button>
             <h1 style="font-weight: 600;">Latest Reading</h1>
     
-            <div class="book-card-holder">
+            <div>
                 <% books.forEach(book => { %>
                 <div class="book-card">
                     <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
@@ -41,6 +41,8 @@
                         <h3><%= book.title %></h3>
                         <p class="desc"><%= book.description %></p>
                         <p class="author-name">Author: <%= book.author %></p>
+                        
+                        <p class="author-name">Publish Year: <%= book.publishYear %></p>
                         <div class="rating">
                             <% for (let i = 0; i < 5; i++) { %>
                                 <% if (i < Math.floor(book.rating)) { %>
@@ -52,12 +54,12 @@
                                 <% } %>
                             <% } %>
                         </div>
+                        <a class="readbtn" href="/book/<%= book._id %>">Learn More</a>
                         <!-- <div class="rating">
                             <% for (let i = 0; i < 5; i++) { %>
                                 <i class="fas fa-star <%= i < book.rating ? '' : 'empty' %> star"></i>
                             <% } %>
                         </div> -->
-                        <p>Publish Year: <%= book.publishYear %></p>
                     </div>
                 </div>
                 <% }); %>
@@ -107,16 +109,24 @@
                 <% books.forEach(book => { %>
                     <div class="book-card1">
                         <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
-
-
                         <div class="title-desc1">
-                            <!-- <a class="readbtn" href="#pdfUrl">Read Now</a> -->
-                            <a class="readbtn" href="/book/<%= book._id %>">View Details</a>
                             <h3><%= book.title %></h3>
-                            <p>Publish Year: <%= book.publishYear %></p>
-                            <!-- <p>Author: <%= book.author %></p> -->
-                            <!-- <p>Description: <%= book.description %></p> -->
-                            <!-- <p>Rating: <%= book.rating %></p> -->
+                            <p class="desc"><%= book.description %></p>
+                            <p class="author-name">Author: <%= book.author %></p>
+                        
+                            <p class="author-name">Publish Year: <%= book.publishYear %></p>
+                            <div class="rating">
+                                <% for (let i = 0; i < 5; i++) { %>
+                                    <% if (i < Math.floor(book.rating)) { %>
+                                        <span class="material-symbols-outlined filledstar">star</span>
+                                    <% } else if (i < book.rating) { %>
+                                        <span class="material-symbols-outlined filledstar">star_half</span>
+                                    <% } else { %>
+                                        <span class="material-symbols-outlined notfilledstar">star</span>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <a class="readbtn" href="/book/<%= book._id %>">Learn More</a>
                         </div>
                     </div>
                 <% }); %>

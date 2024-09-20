@@ -94,6 +94,10 @@ html, body{
     object-fit: cover;
 }
 .book-card h3{
+    white-space: nowrap;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 14px;
     font-weight: 600;
 }
@@ -102,7 +106,7 @@ html, body{
 }
 .author-name{
     font-size: 12px;
-    color: #008000;
+    color: #24c824;
     border: 1px solid #00800033;
     padding: 2px 8px;
     width: fit-content;
@@ -119,6 +123,7 @@ html, body{
 }
 .book-card-holder{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     gap: 16px;
 }
@@ -160,7 +165,6 @@ html, body{
 .main-panel p{
     font-size: 12px;
     line-height: 1.6;
-    color: gray;
 }
 .navigation-bar ul{
     list-style: none;
@@ -267,6 +271,10 @@ html, body{
     object-position: top;
 }
 .book-card1 h3{
+    white-space: nowrap;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 14px;
     font-weight: 600;
 }
@@ -281,10 +289,11 @@ html, body{
     width: fit-content;
     border-radius: 16px;
     background: #f2fdf2;
+    
 }
 .title-desc1{
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: space-between;
     gap: 4px;
 }
@@ -293,12 +302,14 @@ html, body{
 }
 .book-card-holder{
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: column;
     gap: 16px;
 }
 .readbtn{
     margin-top: 8px;
-    color: black;
+    background: #083D5D;
+    color: white;
     border: 1px solid black;
     text-decoration: none;
     border-radius: 4px;
@@ -314,20 +325,13 @@ html, body{
     color: white;
 }
 .bookcard-holder{
-    display: flex;
+    display: grid;
     /* flex-wrap: wrap; */
-    gap: 16px;
-    overflow-x: scroll;
+    gap: 10px;
     padding-bottom: 16px;
-    scroll-behavior: smooth;
-    
+    grid-template-columns: repeat(5,1fr);
 }
 
-.bookcard-holder::-webkit-scrollbar{
-    height: 8px;
-    width: 4px;
-    background: gray;
-}
 
 /* Track */
 .bookcard-holder::-webkit-scrollbar-track {

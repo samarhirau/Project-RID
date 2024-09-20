@@ -9,10 +9,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-
-
-
 </head>
 <body>
   <!-- <div id="login-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
@@ -48,7 +44,8 @@
         </div>
       </div>
       <div class="right-content">
-        <button id="certificate" onclick="window.location.href= '/verify'"><img src="./assets/icons/workspace_premium.png" style="filter: brightness(100); width: 21px; height: 21px; margin-right: 10px; text-align: center;" alt=""><span> Verify Certificate</span></button>
+         <button id="certificate" onclick="window.location.href= ''"><img src="" style="filter: brightness(100); width: 21px; height: 21px; margin-right: 10px; text-align: center;" alt=""><span>Update Ebooks</span></button>
+         <button id="certificate" onclick="window.location.href= '/verify'"><img src="./assets/icons/workspace_premium.png" style="filter: brightness(100); width: 21px; height: 21px; margin-right: 10px; text-align: center;" alt=""><span> Verify Certificate</span></button>
       </div>
     </div>
 
@@ -118,30 +115,8 @@
 
 <style>
 
-
-
 </style>
   </header>
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <div class="main-content">
     <div class="side-bar">
       <div class="div1">
@@ -248,6 +223,34 @@
   <button type="submit">Upload Now</button>
 </form>
     </div>
+
+    <div class="upload-form">
+      <h2>Upload Book Details</h2>
+      <form action="/upload-book" method="POST" enctype="multipart/form-data">
+          <label for="title">Book Title:</label>
+          <input type="text" id="title" name="title" required><br><br>
+
+          <label for="author">Author Name:</label>
+          <input type="text" id="author" name="author" required><br><br>
+
+          <label for="publishYear">Publish Year:</label>
+          <input type="number" id="publishYear" name="publishYear" required><br><br>
+
+          <label for="rating">Rating (out of 5):</label>
+          <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" required><br><br>
+
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" rows="4" required></textarea><br><br>
+
+          <label for="image">Book Image:</label>
+          <input type="file" id="image" name="image" accept="image/*" required><br><br>
+
+          <label for="pdf">Book PDF:</label>
+          <input type="file" id="pdf" name="pdf" accept="application/pdf" required><br><br>
+
+          <input type="submit" value="Upload Book">
+      </form>
+  </div>
   </div>
   </div>
 
