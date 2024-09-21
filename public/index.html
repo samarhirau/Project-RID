@@ -193,12 +193,12 @@
                 <div id="swap-btn"></div>
 
                 <button
-                  class="toggle-btn"
-                  onclick="window.location.href= '/login'"
-                  id="logInButton"
-                >
-                  <span class="material-symbols-outlined"> login </span> Login
-                </button>
+                class="toggle-btn"
+                onclick="handleLoginClick()"
+                id="logInButton"
+              >
+                <span class="material-symbols-outlined"> login </span> Login
+              </button>
 
                 <button class="toggle-btn" id="signUpBtn">
                   <span class="material-symbols-outlined"> how_to_reg </span>
@@ -756,6 +756,68 @@
     </div>
 
     <!-- Script -->
+
+<!-- by khushi -->
+
+
+<script>
+// Function to get the cookie by name
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+// Function to handle login button click
+function handleLoginClick() {
+  const token = getCookie('token'); // Get JWT token from cookies
+
+  if (token) {
+    // If token exists, send it to the server to check the role
+    fetch('/api/verify-token', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}` // Send the token in the headers
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Redirect based on user role
+        switch (data.role) {
+          case 'student':
+            window.location.href = '/student';
+            break;
+          case 'teacher':
+            window.location.href = '/teacher';
+            break;
+          case 'organisation':
+            window.location.href = '/organisation';
+            break;
+          case 'admin':
+            window.location.href = '/admin';
+            break;
+          default:
+            window.location.href = '/login'; // If no valid role, go to login
+        }
+      } else {
+        // If token is invalid, redirect to login page
+        window.location.href = '/login';
+      }
+    })
+    .catch(error => {
+      console.error('Error verifying token:', error);
+      window.location.href = '/login'; // In case of error, go to login
+    });
+  } else {
+    // If no token found, redirect to login page
+    window.location.href = '/login';
+  }
+}
+</script>
+
+
+
 
     <script>
       (function () {

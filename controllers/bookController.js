@@ -36,6 +36,7 @@ exports.addBook = async (req, res) => {
 
 exports.getEbooks = async (req, res) => {
     try {
+       // const shuffledBooks = shuffleArray(books);
         const books = await Book.find({});
         const moreBooks = await Book.find({});
         res.render('ebook', { books, moreBooks });
