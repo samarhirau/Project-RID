@@ -140,6 +140,7 @@
             background: #f44336; /* Red background for error */
           }
 
+
           .toastify-info {
             background: orange; /* Blue background for info */
           }
@@ -186,6 +187,7 @@
               <span>Logout</span>
             </button>
           </footer>
+
         </div>
         <div class="main-area" id="mainArea">
           <h2>Dashboard Overview</h2>
@@ -225,6 +227,7 @@
             <!-- This section will be populated by JavaScript -->
           </div>
         </div>
+
         <div class="main-area1" id="mainArea1" style="display: none">
           <h2>Upload Certificate</h2>
           <!-- ------------- -->
@@ -308,6 +311,7 @@
       </div>
     </div>
 
+
     <h1>Admin Panel</h1>
 
     <!-- Search for User by Email -->
@@ -390,6 +394,7 @@
           method: "GET",
           credentials: "include",
         })
+
           .then((response) => response.json())
           .then((admins) => {
             if (admins.message) {
@@ -457,6 +462,7 @@
           console.error("Error fetching admin count:", error);
           document.getElementById("adminCount").innerText =
             "Error loading admin count";
+
         }
       }
       fetchAdminCount();

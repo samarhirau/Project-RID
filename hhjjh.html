@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin page</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+
+
+</head>
+<body>
+  <!-- <div id="login-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <form id="login-form">
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div> -->
+  <div id="admin-content">
+  <header>
+    <div class="upper-header">
+      <div class="left-content">
+        <span>Website :</span> RID (Research Discovery & Innovation) by TWSKAA Welfare Foundation | <span>Helpline :</span> +91 98927 82728 | <span>Email :</span> supportrid@gmail.com
+      </div>
+      <div class="right-content">
+        <span class="material-symbols-outlined" style="font-size: 15px;">important_devices</span><a href="#">Main Content</a> | 
+        <a href="">+A</a> <a href="">A</a> <a href="">A-</a> | 
+        <span class="material-symbols-outlined" style="font-size: 15px;">forum</span> <a href="#">Feedback</a> |
+        <span class="material-symbols-outlined" style="font-size: 15px;">support_agent</span>  <a href="#">Support</a>
+      </div>
+    </div>
+    <div class="lower-header">
+      <div class="left-content">
+        <div class="logo">
+          <img src="../assets/images/imageLogo.png" alt="RID logo">
+        </div>
+      </div>
+      <div class="right-content">
+        <button id="certificate" onclick="window.location.href= '/verify'"><img src="./assets/icons/workspace_premium.png" style="filter: brightness(100); width: 21px; height: 21px; margin-right: 10px; text-align: center;" alt=""><span> Verify Certificate</span></button>
+      </div>
+    </div>
+
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <style>
+          /* Toast container style */
+          .toastify-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+          }
+
+          /* Individual toast notification style */
+          .toastify-toast {
+            background: #333; /* Dark background */
+            color: #fff; /* White text color */
+            border-radius: 8px; /* More rounded corners */
+            padding: 15px 20px; /* More padding */
+            margin: 10px 0; /* Spacing between toasts */
+            font-size: 15px; /* Slightly larger font size */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden; /* Ensure the timer line stays within bounds */
+          }
+
+          /* Timer line style */
+          .toastify-toast .timer-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(
+              255,
+              255,
+              255,
+              0.6
+            ); /* Light color for timer line */
+            width: 100%;
+            transform: translateX(-100%); /* Start with timer line off-screen */
+            transition: transform 3s linear; /* Timer line animation */
+          }
+
+          /* Close button style */
+          .toastify-toast .toastify-close {
+            cursor: pointer;
+            color: #ff5722; /* Close button color */
+            font-size: 18px;
+          }
+
+          /* Toast types */
+          .toastify-success {
+            background: #4caf50; /* Green background for success */
+          }
+
+          .toastify-error {
+            background: #f44336; /* Red background for error */
+          }
+
+.toastify-info {
+  background: orange; /* Blue background for info */
+}
+
+    </style>
+
+
+<style>
+
+.student-list {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+  }
+  
+  .student-list h3 {
+    margin: 0 0 20px 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    min-width: 100px;
+  }
+  
+  table th {
+    background-color: #003366;
+    color: white;
+  }
+  
+  table a {
+    color: #003366;
+    text-decoration: none;
+  }
+  
+  table a:hover {
+    text-decoration: underline;
+  }
+.active{
+  background: #0A66C2 !important;
+
+  color: #fff !important;
+
+}
+</style>
+  </header>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="main-content">
+    <div class="side-bar">
+      <div class="div1">
+        <div>
+          <h2>Administrator</h2>
+          <button id="dashboardbtn"><span class="material-symbols-outlined" style="font-size: 20px;">
+            bar_chart_4_bars
+            </span><span>Dashboard</span></button>
+          <button style="color: black; background-color: white;" 
+          onclick="showTotalList()"
+          id="showTotal"
+          ><span class="material-symbols-outlined" style="font-size: 20px;">
+            group
+            </span><span>Total Registration</span></button>
+        </div>
+        <div>
+          <h2>Certificate tool</h2>
+          <button id="uploadCerti" onclick="uploadcertificate()" style="color: black; background-color: white;"><span class="material-symbols-outlined" style="font-size: 20px;">
+            workspace_premium
+            </span><span>Upload Certificate</span></button>
+        </div>
+      </div>
+      <footer>
+        <h2>Admin Account</h2>
+        <button id="logout-btn"><span class="material-symbols-outlined" style="font-size: 20px;">
+          logout
+          </span>
+          <span>Logout</span></button>
+      </footer>
+    </div>
+    <div class="main-area" id="mainArea">
+      <h2>Dashboard Overview</h2>
+      <div id="div1">
+        <div>
+          <span class="material-symbols-outlined">
+            group
+            </span>
+            <h3>Total Registration</h3>
+        </div>
+        <h1><p id="registrations-count">Loading number of registrations...</p></h1>
+        
+    
+       
+      </div>
+
+
+      <div class="div2">
+        <h1>Total Number of Admins</h1>
+        <p id="adminCount">Loading...</p>
+     
+    </div>
+
+<hr>
+<div class="div2">
+  <h1>Total Number of Students</h1>
+        <p id="studentCount">Loading...</p>
+</div>
+
+<hr>
+<div class="div2">
+  <h1>Total Number of Teachers</h1>
+        <p id="teacherCount">Loading...</p>
+</div>
+<hr>
+<div class="div2">
+  <h1>Total Number of Organisations</h1>
+        <p id="organisationCount">Loading...</p>
+</div>
+    <hr>
+
+    
+    
+    </div>
+
+
+    <section class="student-list" id="table-list" style="display: none;">
+      <h3>List of Total Students</h3>
+      <table>
+          <thead>
+              <tr>
+                  <th>S.No.</th>
+                  <th>Name</th>
+                  <th>Email Address</th>
+                  <th>Role</th>
+                  <th>Gender</th>
+                  <th>Date Of Birth</th>
+                  <th>A/C Creation Date</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody id="user-list">
+              <!-- Rows will be populated here -->
+          </tbody>
+      </table>
+    </section>
+    <div class="main-area1" id="mainArea1" style="display: none;">
+      <h2>Upload Certificate</h2>
+<!-- ------------- -->
+
+
+<form id="uploadForm" class="uploadForm">
+  <section>
+    <div class="form-group">
+        <label>Certificate Id <span style="color: red; font-weight: bold;">*</span></label>
+        <input type="text" name="certificateId" id="certificateId" placeholder="eg: RIDXR24354" required>
+    </div>
+    <div class="form-group">
+        <label>Issue Date <span style="color: red; font-weight: bold;">*</span></label>
+        <input type="date" name="issueDate" id="issueDate" placeholder="DD/MM/YYYY" required>
+    </div>
+    <div class="form-group">
+        <label>Intern or Student Name <span style="color: red; font-weight: bold;">*</span></label>
+        <input type="text" name="internName" id="internName" placeholder="John Doe" required>
+    </div>
+    <div class="form-group">
+        <label>Description <span style="color: grey; font-weight: 400;">(Optional)</span></label>
+        <input type="text" name="description" id="description" placeholder="Write Description or leave it blank">
+    </div>
+   
+    <div class="form-group">
+      <label>Upload Certificate <span style="color: red; font-weight: bold;">*</span></label>
+      <input type="file" name="certificateFile" id="certificateFile" required hidden>
+      <div id="dropArea" class="drop-area">
+          <p>Drag & Drop your file here or click to upload</p>
+      </div>
+    </div>
+  </section>
+  <button type="submit">Upload Now</button>
+</form>
+    </div>
+  </div>
+  </div>
+
+  <h1>Admin Panel</h1>
+
+  <!-- Search for User by Email -->
+  <input type="text" id="emailSearch" placeholder="Enter user email">
+  <button onclick="searchUser()">Search User</button>
+
+    <!-- Display User Info -->
+    <div id="userInfo" style="display: none">
+      <p id="userEmail"></p>
+      <label for="userRole">Change Role:</label>
+      <select id="userRole">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="organisation">Organisation</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button onclick="changeUserRole()">Change Role</button>
+    </div>
+
+   <button onclick="showAllAdmins()">Show All Admins</button>
+   <div id="adminList" style="display: none;">
+     <h2>All Admins</h2>
+     <ul id="admins"></ul>
+   </div>
+
+    <script src="../js/showToast.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+      // Fetch users from the server (Make sure the server provides this endpoint)
+      // Function to search for a user by email
+      function searchUser() {
+        const email = document.getElementById("emailSearch").value;
+
+        fetch(/admin/search-user?email=${email}, {
+          method: "GET",
+          credentials: "include", // Include cookies for authentication
+        })
+          .then((response) => response.json())
+          .then((user) => {
+            if (user.message) {
+              alert(user.message);
+            } else {
+              document.getElementById("userInfo").style.display = "block";
+              document.getElementById(
+                "userEmail"
+              ).textContent = Email: ${user.email};
+              document.getElementById("userRole").value = user.role;
+            }
+          })
+          .catch((error) => console.error("Error fetching user:", error));
+      }
+
+      // Function to change the user role
+      function changeUserRole() {
+        const email = document
+          .getElementById("userEmail")
+          .textContent.split("Email: ")[1];
+        const newRole = document.getElementById("userRole").value;
+
+        fetch("/admin/change-role", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, role: newRole }),
+          credentials: "include",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.message); // Notify admin of success or failure
+          })
+          .catch((error) => console.error("Error changing user role:", error));
+      }
+    </script>
+
+<script>
+    // Function to show all admins
+    function showAllAdmins() {
+      fetch('/admin/all-admins', {
+        method: 'GET',
+        credentials: 'include'
+      })
+        .then(response => response.json())
+        .then(admins => {
+          if (admins.message) {
+            alert(admins.message);
+          } else {
+            document.getElementById('adminList').style.display = 'block';
+            const adminList = document.getElementById('admins');
+            adminList.innerHTML = ''; // Clear the list before adding new data
+            admins.forEach(admin => {
+              const listItem = document.createElement('li');
+              listItem.textContent = ${admin.email} - Role: ${admin.role};
+              adminList.appendChild(listItem);
+            });
+          }
+        })
+        .catch(error => console.error('Error fetching admins:', error));
+    }
+</script>
+
+<script>
+
+
+   // Fetch users and populate the tab   ----   
+   document.addEventListener('DOMContentLoaded', () => {
+      fetch('/admin/users', { method: 'GET', credentials: 'include' })
+        .then(response => response.json())
+        .then(users => {
+          const userList = document.getElementById('user-list');
+          userList.innerHTML = ''; // Clear existing content
+          users.forEach((user, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${index + 1}</td>
+              <td>${user.name} ${user.lastname}</td>
+              <td>${user.email}</td>
+              <td>${user.role}</td>
+              <td>${user.gender}</td>
+              <td>${user.dob.split('T')[0]}</td>
+              <td>${new Date().toLocaleDateString()}</td>
+              <td><a href="#">View</a></td>
+            `;
+            userList.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Error fetching users:', error));
+    });
+
+
+
+</script>
+<!-- show no of admin -->
+<script>
+  // Function to fetch and display the total number of admins
+async function fetchAdminCount() {
+    try {
+        // Fetching data from backend API (replace '/api/admin/count' with your actual API endpoint)
+        const response = await fetch('/admin/admin-count');
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        const adminCount = data.count;  // Assuming the backend sends { count: 10 }
+
+        // Displaying the total number of admins
+        document.getElementById('adminCount').innerText = Total Admins: ${adminCount};
+    } catch (error) {
+        console.error('Error fetching admin count:', error);
+        document.getElementById('adminCount').innerText = 'Error loading admin count';
+    }
+}
+fetchAdminCount();
+</script>
+<!-- show no of student -->
+<script>
+  // Function to fetch and display the total number of admins
+async function fetchStudentCount() {
+    try {
+        // Fetching data from backend API (replace '/api/student/count' with your actual API endpoint)
+        const response = await fetch('/admin/student-count');
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        const studentCount = data.count;  // Assuming the backend sends { count: 10 }
+
+        // Displaying the total number of students
+        document.getElementById('studentCount').innerText = Total Students: ${studentCount};
+    } catch (error) {
+        console.error('Error fetching student count:', error);
+        document.getElementById('studentCount').innerText = 'Error loading student count';
+    }
+}
+fetchStudentCount();
+</script>
+<!-- show no of teacher -->
+<script>
+  // Function to fetch and display the total number of admins
+async function fetchTeacherCount() {
+    try {
+        // Fetching data from backend API (replace '/api/student/count' with your actual API endpoint)
+        const response = await fetch('/admin/teacher-count');
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        const teacherCount = data.count;  // Assuming the backend sends { count: 10 }
+
+        // Displaying the total number of students
+        document.getElementById('teacherCount').innerText = Total Teachers: ${teacherCount};
+    } catch (error) {
+        console.error('Error fetching teacher count:', error);
+        document.getElementById('teacherCount').innerText = 'Error loading teacher count';
+    }
+}
+fetchTeacherCount();
+</script>
+<!-- show no of organisation -->
+<script>
+  // Function to fetch and display the total number of admins
+async function fetchOrganisationCount() {
+    try {
+        // Fetching data from backend API (replace '/api/student/count' with your actual API endpoint)
+        const response = await fetch('/admin/organisation-count');
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
+        const data = await response.json();
+        const organisationCount = data.count;  // Assuming the backend sends { count: 10 }
+
+        // Displaying the total number of students
+        document.getElementById('organisationCount').innerText = Total Organisations: ${organisationCount};
+    } catch (error) {
+        console.error('Error fetching organisation count:', error);
+        document.getElementById('organisationCount').innerText = 'Error loading organisation count';
+    }
+}
+fetchOrganisationCount();
+</script>
+
+
+</body>
+</html>
