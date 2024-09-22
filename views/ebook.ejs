@@ -39,28 +39,31 @@
                   for (let i = 0; i < 2 && i < reversedBooks.length; i++) { 
                       const book = reversedBooks[i]; 
                 %>
-                    <div class="book-card">
-                        <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
-                        <div class="title-desc">
-                            <h3><%= book.title %></h3>
-                            <p class="desc"><%= book.description %></p>
-                            <p class="author-name">Author: <%= book.author %></p>
-                            <div class="rating">
-                                <% for (let j = 0; j < 5; j++) { %>
-                                    <% if (j < Math.floor(book.rating)) { %>
-                                        <span class="material-symbols-outlined filledstar">star</span>
-                                    <% } else if (j < book.rating) { %>
-                                        <span class="material-symbols-outlined filledstar">star_half</span>
-                                    <% } else { %>
-                                        <span class="material-symbols-outlined notfilledstar">star</span>
-                                    <% } %>
-                                <% } %>
-                            </div>
-                            <p>Publish Year: <%= book.publishYear %></p>
-                        </div>
-                    </div>
+                    <a href="/book/<%= book._id %>" class="book-card-link" style="text-decoration: none;">
+                      <div class="book-card">
+                          <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
+                          <div class="title-desc">
+                              <h3><%= book.title %></h3>
+                              <p class="desc"><%= book.description %></p>
+                              <p class="author-name">Author: <%= book.author %></p>
+                              <div class="rating">
+                                  <% for (let j = 0; j < 5; j++) { %>
+                                      <% if (j < Math.floor(book.rating)) { %>
+                                          <span class="material-symbols-outlined filledstar">star</span>
+                                      <% } else if (j < book.rating) { %>
+                                          <span class="material-symbols-outlined filledstar">star_half</span>
+                                      <% } else { %>
+                                          <span class="material-symbols-outlined notfilledstar">star</span>
+                                      <% } %>
+                                  <% } %>
+                              </div>
+                              <p>Publish Year: <%= book.publishYear %></p>
+                          </div>
+                      </div>
+                    </a>
                 <% } %>
             </div>
+            
             
         </div>
     
@@ -201,5 +204,7 @@ function awakeAction(){
     }
 }
     </script>
+
+   
 </body>
 </html>
