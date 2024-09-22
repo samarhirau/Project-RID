@@ -26,6 +26,8 @@ router.get('/book/:id', bookController.getBookDetails);
 
 
 // Route to download the PDF of a specific book
+
+
 router.get('/download-pdf/:id', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id);
@@ -37,6 +39,26 @@ router.get('/download-pdf/:id', async (req, res) => {
         res.send(book.pdf.data); // Send the binary data
     } catch (error) {
         console.error('Error downloading PDF:', error);
+        res.status(500).send('Server error');
+    }
+});
+
+// Route to render flipbook view with dynamic URL
+router.get('/flipbook/:id', async (req, res) => {
+    try {
+        const book = await Book.findById(req.params.id);
+        if (!book) {
+            return res.status(404).send('Book not found');
+        }
+
+        // Pass the download URL for the flipbook
+        res.render('flipbook', {
+            title: `${book.title} Flipbook`,
+            pdfUrl: `/download-pdf/${book._id}`, // Use the download route as the URL
+            downloadUrl: `/download-pdf/${book._id}` // Dynamic download URL for the book
+        });
+    } catch (error) {
+        console.error('Error fetching book:', error);
         res.status(500).send('Server error');
     }
 });

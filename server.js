@@ -104,6 +104,17 @@ app.get('/books', async (req, res) => {
 });
 
 
+// Route to render the EJS
+app.get('/flipbook', (req, res) => {
+  res.render('flipbook', {
+    title: 'RID Button Flipbook',
+    pdfUrl: '/pdf/pdf.pdf',
+    downloadUrl: '/images/pdf.rar'
+  });
+});
+
+
+
 // Route for '/organisation' - Protected for 'organisation' role
 app.get('/organisation', authenticateJWT, authorizeRole('organisation'), (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'organisation.html'));

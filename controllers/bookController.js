@@ -47,16 +47,49 @@ exports.getEbooks = async (req, res) => {
 };
 
 
-exports.getBookDetails = async (req, res) => {
+// exports.getBookDetails = async (req, res) => {
+//     try {
+//         const bookId = req.params.id; // Get the book ID from the URL
+//         const book = await Book.findById(bookId);
+//         if (!book) {
+//             return res.status(404).send('Book not found');
+//         }
+//         res.render('detail-ebook', { book });
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).send('Error fetching book details');
+//     }
+// };
+
+const getBookById = async (id) => {
     try {
-        const bookId = req.params.id; // Get the book ID from the URL
-        const book = await Book.findById(bookId);
-        if (!book) {
-            return res.status(404).send('Book not found');
-        }
-        res.render('detail-ebook', { book });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Error fetching book details');
+        // Assuming you're using a MongoDB model called Book to fetch the book by ID
+        const book = await Book.findById(id);
+        return book;
+    } catch (error) {
+        console.error('Error fetching book:', error);
+        return null;
+    }
+};
+
+
+
+
+exports.getBookDetails = async (req, res) => {
+    const bookId = req.params.id; // Retrieve the book ID from the route
+
+    const book = await getBookById(bookId); // Fetch the book
+
+    if (book) {
+        res.render('detail-ebook', {
+            title: book.title,
+            book: book, // Pass the book data to the EJS template
+            pdfUrl: `/download-pdf/${book._id}`, // URL for viewing the PDF
+            downloadUrl: `/download-pdf/${book._id}` // URL for downloading the PDF
+        });
+    } else {
+        res.render('error', {
+            message: 'Book not found',
+        });
     }
 };
