@@ -1,9 +1,13 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %> - Book Details</title>
+
+    <link rel="stylesheet" href="/css/detailebookstyle.css"> 
 
     <!-- AJAX -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
@@ -15,6 +19,7 @@
       type="text/css"
       href="/flip-css/flipbook.style.css"
     />
+  
     <link rel="stylesheet" type="text/css" href="/flip-css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="/flip-css/footer.css" />
 
@@ -100,7 +105,7 @@
     </style>
   </head>
   <body>
-    <header>
+    <!-- <header>
       <h1>Book Details</h1>
       <a href="/ebook">Back to eBooks</a>
     </header>
@@ -117,34 +122,21 @@
         <p><strong>Description:</strong> <%= book.description %></p>
         <p><strong>Rating:</strong> <%= book.rating %></p>
 
-        <!-- Download PDF Button -->
+       
         <a href="/download-pdf/<%= book._id %>" class="download-btn"
           >Download PDF</a
-        >
+        > -->
 
         <!-- View Flipbook PDF Button -->
         <!-- <a href="/flipbook/<%= book._id %>" id="flipbook-btn" class="download-btn">View Flipbook PDF</a> -->
 
-      </div>
-
-      <!-- Flipbook container -->
-      <div class="buttons" >
-        <button id="read" class="viewBTN">
-          <span class="material-symbols-outlined">menu_book</span>View  
-        </button>
-  
-      </div>
+      
       <% } else { %>
       <p>Book not found.</p>
       <% } %>
     </div>
 
-    <footer>
-      <p>&copy; 2024 Your Website</p>
-    </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js -->
+  
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
       integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
@@ -155,5 +147,80 @@
       integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
       crossorigin="anonymous"
     ></script>
+
+
+    <!-- Previous code -->
+
+    <header>
+      <div class="upper-header">
+          <div class="left-content">
+              <span>Website :</span> RID (Research Discovery & Innovation) by TWKSAA Welfare Foundation |
+              <span>Helpline :</span> +91 98927 82728 | <span>Email :</span> supportrid@gmail.com
+          </div>
+          <div class="right-content">
+              <span class="material-symbols-outlined" style="font-size: 15px;">important_devices</span><a
+                  href="#">Main Content</a> |
+              <a href="">+A</a> <a href="">A</a> <a href="">A-</a> |
+              <span class="material-symbols-outlined" style="font-size: 15px;">forum</span> <a href="#">Feedback</a> |
+              <span class="material-symbols-outlined" style="font-size: 15px;">support_agent</span> <a
+                  href="#">Support</a>
+          </div>
+      </div>
+      <div class="lower-header">
+          <div class="left-content">
+              <div class="logo">
+                  <img src="../assets/RID Concept Long.svg" width="256px" alt="RID logo">
+              </div>
+          </div>
+  </header>
+
+  <div class="main-panel">
+      <h3 style="background-image: linear-gradient(#1284F6, #F14372);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-left: 35px;
+      margin-bottom: 30px;
+      margin-top: 10px;">E-Book Description</h3>
+      <div class="book-detail">
+          <div class="book-image">
+              <img src="data:image/jpeg;base64,<%= book.image %>" alt="" width="200" height="480">
+          </div>
+
+          <div class="book-info">
+
+              <h2 style="text-transform: capitalize;">
+                  <%= book.title %>
+              </h2><br>
+
+
+              <p><strong style="color: #006989;">Author's Name: </strong>
+                  <%= book.author %>
+              </p>
+              <p><strong style="color: #006989;">Publishing Year: </strong>
+                  <%= book.publishYear %>
+              </p>
+              <p><strong>Description: </strong>
+                  <%= book.description %>
+              </p><br>
+              <p><strong>Average Rating: </strong>
+                  <%= book.rating %>
+              </p><br><br><br><br><br><br><br>
+
+
+              <div class="buttons" style="display: flex; gap: 10px;">
+                <button id="read" class="viewBTN" style="display: flex; align-items: center; gap: 5px;">
+                    <span class="material-symbols-outlined">menu_book</span>View
+                </button>
+                
+                <button class="readNow">
+                    <a style="color: white; text-decoration: none;" href="/download-pdf/<%= book._id %>" class="download-btn">Download PDF</a>
+                </button>
+            </div>
+            
+
+          </div>
+
+      </div>
+</body>
   </body>
 </html>

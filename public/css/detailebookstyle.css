@@ -1,29 +1,157 @@
-/* Example styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+header .upper-header{
+    background-color: #006989;
+    color: white;
+    display: flex;
+    font-size: small;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+.upper-header .left-content span{
+    font-weight: 500;
+}
+
+.upper-header .right-content span{
+    align-content: end;
+}
+
+.lower-header{
+    padding: 10px 30px;
+    border-bottom: 0.5px solid #0A66C280;
+   
+}
+
+.upper-header .right-content a{
+    text-decoration: none;
+    color: white;
+    padding: 0px 3px;
+}
+
 .book-detail {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
 }
 
-.book-image img {
-    max-width: 300px;
+.book-detail img {
+    width: 355px;
+    margin: 40px;
+    margin-left: 90px;
+    margin-top: 80px;
+    box-shadow: -9px 6px 16px 3px #a7a2a2;
+}
+ 
+.main-panel .book-detail .buttons  .viewEbook{
+    border: 2px solid #006989;
+    color: #006989;
+    padding : 5px;
+    margin-right: 7px;
 }
 
-.book-info {
-    text-align: center;
+.main-panel .book-detail .buttons  .readNow{
+    color: white;
+    padding : 5px;
+    background-color: #006989;
 }
 
-.download-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+
+.main-panel img {
+    display: block; 
+    margin: 0; 
+    padding: 0; 
 }
 
-.download-btn:hover {
-    background-color: #0056b3;
+.book-info{
+    padding: 0;
+    margin:0;
+    margin-left: 15px;
+}
+
+.book-info p{
+    margin: 0;
+}
+
+.book-image{
+    margin-left: 30px; 
+    padding: 0;
+}
+.book-info .buttons{
+    margin-left: 500px;
+    border:none;
+}
+.book-detail .book-info .buttons .viewBTN{
+    padding: 3px 90px 3px 90px ;
+}
+
+.book-detail .book-info .buttons .readNow{
+    padding: 6px 90px 6px 90px ;
+ }
+
+
+@media (max-width: 768px) {
+    .upper-header {
+        font-size: smaller;
+    }
+    .main-panel h3{
+        text-align: center;
+    }
+
+    .book-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-detail img {
+        width: 100%;
+        max-width: 200px; 
+        margin: 20px auto;
+    }
+
+    .book-info {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .book-info p {
+        font-size: 14px;
+    }
+
+    .book-info .buttons {
+        margin-left: 0;
+    }
+
+    .book-detail .book-info .buttons .viewEbook, 
+    .book-detail .book-info .buttons .readNow {
+        padding: 8px 40px; 
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header .upper-header {
+        font-size: x-small;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .book-detail {
+        padding: 20px;
+    }
+
+    .book-info p {
+        font-size: 12px;
+    }
+
+    .book-detail img {
+        max-width: 250px;
+        height: auto;
+    }
+
+    .book-detail .book-info .buttons .viewEbook, 
+    .book-detail .book-info .buttons .readNow {
+        padding: 8px 20px;
+    }
 }
