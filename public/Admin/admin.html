@@ -125,8 +125,49 @@
 
 <style>
 
+.student-list {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+  }
+  
+  .student-list h3 {
+    margin: 0 0 20px 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    min-width: 100px;
+  }
+  
+  table th {
+    background-color: #003366;
+    color: white;
+  }
+  
+  table a {
+    color: #003366;
+    text-decoration: none;
+  }
+  
+  table a:hover {
+    text-decoration: underline;
+  }
+.active{
+  background: #0A66C2 !important;
 
+  color: #fff !important;
 
+}
 </style>
   </header>
 
@@ -157,7 +198,10 @@
           <button id="dashboardbtn"><span class="material-symbols-outlined" style="font-size: 20px;">
             bar_chart_4_bars
             </span><span>Dashboard</span></button>
-          <button style="color: black; background-color: white;"><span class="material-symbols-outlined" style="font-size: 20px;">
+          <button style="color: black; background-color: white;" 
+          onclick="showTotalList()"
+          id="showTotal"
+          ><span class="material-symbols-outlined" style="font-size: 20px;">
             group
             </span><span>Total Registration</span></button>
         </div>
@@ -166,6 +210,24 @@
           <button id="uploadCerti" onclick="uploadcertificate()" style="color: black; background-color: white;"><span class="material-symbols-outlined" style="font-size: 20px;">
             workspace_premium
             </span><span>Upload Certificate</span></button>
+        </div>
+        <div>
+          <h2>Admin Features</h2>
+          <button style="color: black; background-color: white;" 
+          onclick="showChangeRole()">
+            <span class="material-symbols-outlined" style="font-size: 20px;">
+            workspace_premium
+            </span>
+            <span>Change Role</span></button>
+
+
+
+          <button style="color: black; background-color: white;"
+          onclick="showAdminList()">
+            <span class="material-symbols-outlined" style="font-size: 20px;">
+            workspace_premium
+            </span>
+            <span>View Admin Accounts</span></button>
         </div>
       </div>
       <footer>
@@ -185,7 +247,7 @@
             </span>
             <h3>Total Registration</h3>
         </div>
-        <h1><p id="registrations-count">Loading number of registrations...</p></h1>
+       <p id="registrations-count">Loading number of registrations...</p>
         
     
        
@@ -215,11 +277,68 @@
         <p id="organisationCount">Loading...</p>
 </div>
     <hr>
-      <div id="user-list">
-        <!-- This section will be populated by JavaScript -->
-      </div>
+
+    
     
     </div>
+
+
+    <section class="student-list" id="table-list" style="display: none;">
+      <h3>List of Total Students</h3>
+      <table>
+          <thead>
+              <tr>
+                  <th>S.No.</th>
+                  <th>Name</th>
+                  <th>Email Address</th>
+                  <th>Role</th>
+                  <th>Gender</th>
+                  <th>Date Of Birth</th>
+                  <th>A/C Creation Date</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody id="user-list">
+              <!-- Rows will be populated here -->
+          </tbody>
+      </table>
+    </section>
+
+
+<!-- change role -->
+    <section id="changeRole" style="display: none;">
+
+  <!-- Search for User by Email -->
+  <input type="text" id="emailSearch" placeholder="Enter user email">
+  <button onclick="searchUser()">Search User</button>
+
+    <!-- Display User Info -->
+    <div id="userInfo" style="display: none">
+      <p id="userEmail"></p>
+      <label for="userRole">Change Role:</label>
+      <select id="userRole">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="organisation">Organisation</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button onclick="changeUserRole()">Change Role</button>
+    </div>
+
+
+    </section>
+
+
+<section id="allAdmins" style="display: none;">
+  <button onclick="showAllAdmins()">Show All Admins</button>
+  <div id="adminList" style="display: none;">
+    <h2>All Admins</h2>
+    <ul id="admins"></ul>
+  </div>
+</section>
+
+
+
     <div class="main-area1" id="mainArea1" style="display: none;">
       <h2>Upload Certificate</h2>
 <!-- ------------- -->
@@ -255,33 +374,20 @@
   <button type="submit">Upload Now</button>
 </form>
     </div>
+
+
+
+
+
+
+
   </div>
   </div>
 
-  <h1>Admin Panel</h1>
+ 
 
-  <!-- Search for User by Email -->
-  <input type="text" id="emailSearch" placeholder="Enter user email">
-  <button onclick="searchUser()">Search User</button>
 
-    <!-- Display User Info -->
-    <div id="userInfo" style="display: none">
-      <p id="userEmail"></p>
-      <label for="userRole">Change Role:</label>
-      <select id="userRole">
-        <option value="student">Student</option>
-        <option value="teacher">Teacher</option>
-        <option value="organisation">Organisation</option>
-        <option value="admin">Admin</option>
-      </select>
-      <button onclick="changeUserRole()">Change Role</button>
-    </div>
-
-   <button onclick="showAllAdmins()">Show All Admins</button>
-   <div id="adminList" style="display: none;">
-     <h2>All Admins</h2>
-     <ul id="admins"></ul>
-   </div>
+  
 
     <script src="../js/showToast.js"></script>
     <script src="../js/admin.js"></script>
@@ -360,29 +466,35 @@
 </script>
 
 <script>
-  // Fetch users from the server (Make sure the server provides this endpoint)
-fetch('/admin/users', { method: 'GET', credentials: 'include' })
-  .then(response => response.json())
-  .then(users => {
-    const userList = document.getElementById('user-list');
-    users.forEach(user => {
-      const userDiv = document.createElement('div');
-      userDiv.classList.add('user-item');
-      userDiv.innerHTML = `
-       <ul>
-        <li>  ${user.role}   
-          ${user.email}  
-           ${user.gender}
-           ${user.name}
-           ${user.lastname}
-          
-           ${user.dob.split('T')[0]}
-        </ul>
-      `;
-      userList.appendChild(userDiv);
+
+
+   // Fetch users and populate the tab   ----   
+   document.addEventListener('DOMContentLoaded', () => {
+      fetch('/admin/users', { method: 'GET', credentials: 'include' })
+        .then(response => response.json())
+        .then(users => {
+          const userList = document.getElementById('user-list');
+          userList.innerHTML = ''; // Clear existing content
+          users.forEach((user, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${index + 1}</td>
+              <td>${user.name} ${user.lastname}</td>
+              <td>${user.email}</td>
+              <td>${user.role}</td>
+              <td>${user.gender}</td>
+              <td>${user.dob.split('T')[0]}</td>
+              <td>${new Date().toLocaleDateString()}</td>
+              <td><a href="#">View</a></td>
+            `;
+            userList.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Error fetching users:', error));
     });
-  })
-  .catch(error => console.error('Error fetching users:', error));
+
+
+
 </script>
 <!-- show no of admin -->
 <script>

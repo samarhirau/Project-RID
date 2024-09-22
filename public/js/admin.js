@@ -34,8 +34,40 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     document.getElementById('mainArea').style.display = 'none';
     document.getElementById('dashboardbtn').style.backgroundColor = 'white';
     document.getElementById('dashboardbtn').style.color = 'black';
-    document.getElementById('uploadCerti').style.backgroundColor = '#0A66C2';
-    document.getElementById('uploadCerti').style.color = 'white';
+     document.getElementById('uploadCerti').className = 'active';
+    document.getElementById('table-list').style.display = 'none';
+    document.getElementById('changeRole').style.display = 'none';
+  }
+
+  function showTotalList() {
+    document.getElementById('mainArea').style.display = 'none';
+    document.getElementById('table-list').style.display = 'initial';
+    document.getElementById('mainArea1').style.display = 'none';
+    document.getElementById('showTotal').className = 'active';
+    document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+    document.getElementById('dashboardbtn').style.color = 'black';
+    document.getElementById('changeRole').style.display = 'none';
+    document.getElementById('allAdmins').style.display = 'none.';
+
+  }
+  function showChangeRole() {
+    document.getElementById('mainArea').style.display = 'none';
+    document.getElementById('changeRole').style.display = 'initial';
+    document.getElementById('mainArea1').style.display = 'none';
+    document.getElementById('showTotal').className = 'active';
+    document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+    document.getElementById('dashboardbtn').style.color = 'black';
+    document.getElementById('table-list').style.display = 'none';
+  }
+  function showAdminList() {
+    document.getElementById('mainArea').style.display = 'none';
+    document.getElementById('allAdmins').style.display = 'initial';
+    document.getElementById('mainArea1').style.display = 'none';
+    document.getElementById('showTotal').className = 'active';
+    document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+    document.getElementById('dashboardbtn').style.color = 'black';
+    document.getElementById('table-list').style.display = 'none';
+    document.getElementById('changeRole').style.display = 'none';
   }
 
   // Wait until the DOM is fully loaded
