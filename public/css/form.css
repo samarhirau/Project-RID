@@ -28,17 +28,17 @@ body {
 }
 
 .headings h1 {
-  font-size: 40px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 50.46px;
   text-align: center;
 }
 
 .headings h3 {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 51.23px;
-  color: #0a66c2;
+  color: #083D5D;
   text-align: center;
 }
 
@@ -69,6 +69,7 @@ body .container #form1,
 .form-group label {
   font-weight: 600;
   line-height: 35.22px;
+  font-size: 14px;
 }
 
 .form-group input,
@@ -97,13 +98,13 @@ footer {
 
 .container .login-span {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 28.82px;
 }
 
 .container .login-span a {
   text-decoration: underline;
-  color: #0a66c2;
+  color: #083D5D;
 }
 
 .anAccount {
@@ -117,8 +118,8 @@ footer {
   line-height: 25.82px;
   font-weight: 700;
   text-align: center;
-  font-size: 14.13px;
-  background-color: #0a66c2;
+  font-size: 14px;
+  background-color: #083D5D;
   border: 0.58px #ffffff;
   border-radius: 4.03px;
   margin: 15px 0px;
@@ -177,21 +178,21 @@ body .container #form-last img {
 
 body .container #form-last h1 {
   font-weight: 600;
-  font-size: 30px;
+  font-size: 22px;
   line-height: 30px;
   color: #000000;
 }
 
 body .container #form-last span {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 35.22px;
   color: #000000;
 }
 
 body .container #form-last span a {
   text-decoration: underline;
-  color: #0a66c2;
+  color: #083D5D;
 }
 
 #sumit-btn {
@@ -202,6 +203,106 @@ body .container #form-last span a {
   justify-content: space-around;
   width: 70%;
 }
+
+/* start of harsh added code */
+
+.container-process{
+  position: relative;
+  scale: .75;
+  margin: 32px 0 48px 0;
+  padding: 32px 0 16px 0;
+}
+.line-1{
+  width: 400px;
+  height: 4px;
+  background: #ddd;
+  position: relative;
+  transition: all ease-in-out 0.25s;
+  border-radius: 4px;
+}
+.line-1::before{
+  content: "";
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: #083D5D;
+  height: 4px;
+  width: 4px;
+  animation: loadup 1s linear infinite alternate;
+  border-radius: 4px;
+}
+.line-2::before{
+  animation: loadup2 1s linear infinite alternate;
+}
+@keyframes loadup {
+  from{
+      width: 4px;
+  }
+  to{
+      width: 50%;
+  }
+}
+
+@keyframes loadup2 {
+  from{
+      width: 50%;
+  }
+  to{
+      width: 100%;
+  }
+}
+.cicle-1, .cicle-2, .cicle-3{
+  background: white;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 22px;
+  font-family: sans-serif;
+  border: 1px solid #ddd;
+  transition: all ease-in-out 0.25s;
+}
+.cicle-1{
+  left: 0%;
+}
+.cicle-2{
+  left: 50%;
+}
+.cicle-3{
+  left: 100%;
+}
+.active-circle{
+  border: 4px dotted #083D5D;
+  
+}
+.active-circle-done{
+  border: 4px solid #083D5D;
+  background: #083D5D;
+  color: white;
+}
+
+.cicle-1::after{
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 16px + 8px);
+  transform: translate(-50%,-50%);
+  content: "Text";
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* end of harsh added code */
+
+
+
+
 
 /* #container3 ,#container4{
     position: absolute;
@@ -218,7 +319,7 @@ body .container #form-last span a {
   }
 
   .headings h1 {
-    font-size: 30px;
+    font-size: 22px;
   }
 
   .headings h3 {
@@ -254,7 +355,7 @@ body .container #form-last span a {
   .buttons button {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .buttons {
