@@ -7,6 +7,7 @@
     <title>Register Here</title>
     <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/responsive.css">
+
 </head>
 <body onload="loadPage">
     <div class="headings">
@@ -23,20 +24,25 @@
         <div id="form1">
             <div class="form-group">
                 <label>First Name <span style="color: red; font-weight: bold;">*</span></label>
-         <input type="text" id="firstname" name="username" required>
+         <input type="text" id="firstName" name="userName" pattern="[A-Za-z]+" required placeholder="Enter Fist Name">
+         <span id="firstNameError" style="color: red; display: none;">please enter a valid first name.</span>
            
             </div>
             <div class="form-group">
                 <label>Last Name <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="text" id="lastname" name="lastname" required>
+                <input type="text" id="lastName" name="lastName" required placeholder="Enter Last Name">
+                <span id="lastNameError" style="color: red; display: none;" >please enter a valid last name.</span>
+
             </div>
             <div class="form-group">
                 <label>Email Address <span style="color: red; font-weight: bold;">*</span></label>
                 <input type="email" id="email" name="email" placeholder="youremail@gmail.com" required>
+                <span id="emailError" style="color: red; display: none;">Please enter a valid email.</span>
             </div>
             <div class="form-group">
                 <label>Create Password <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="password" id="password" name="password" placeholder="*********" required>
+                <input type="password" id="password" name="password" placeholder="*********" required  >
+                <span id="error-msg" style="color: red; display: none;"> 8 digit password allowed.</span>
             </div>
         </div>
         <button id="nextButton">Next</button>
@@ -64,7 +70,9 @@
             </div>
             <div class="form-group">
                 <label>Mobile Number <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="tel" id="phone" name="phone" required>
+                <!-- don't show the error msg ending add the maxlength=10-->
+                <input type="tel" id="phone" name="phone" required placeholder="Enter mobile number">
+                <span id="error" style="color: red; display: none;">Only 10 digits allowed</span>
             </div>
             <div class="form-group">
                 <label>Date of Birth <span style="color: red; font-weight: bold;">*</span></label>
@@ -195,5 +203,112 @@
         });
     </script>
     
+
+    <!-- div1 js code validation.-->
+   <script>
+   
+    function validateInput(inputField, regex, errorSpan) {
+     if (!regex.test(inputField.value)) {
+         errorSpan.style.display = "block";
+         inputField.style.border = "2px solid red";
+     } else {
+         errorSpan.style.display = "none";
+         inputField.style.border = "";
+     }
+ }
+ 
+ const firstNameInput = document.getElementById("firstName");
+ const lastNameInput = document.getElementById("lastName");
+ const emailInput = document.getElementById("email");
+ 
+ firstNameInput.addEventListener("focus", function() {
+     this.style.border = ""; // Reset border on focus
+ });
+ firstNameInput.addEventListener("blur", function() {
+     validateInput(this, /^[A-Za-z]+$/, document.getElementById("firstNameError"));
+ });
+ firstNameInput.addEventListener("input", function() {
+     validateInput(this, /^[A-Za-z]+$/, document.getElementById("firstNameError"));
+ });
+ 
+ lastNameInput.addEventListener("focus", function() {
+     this.style.border = ""; // Reset border on focus
+ });
+ lastNameInput.addEventListener("blur", function() {
+     validateInput(this, /^[A-Za-z]+$/, document.getElementById("lastNameError"));
+ });
+ lastNameInput.addEventListener("input", function() {
+     validateInput(this, /^[A-Za-z]+$/, document.getElementById("lastNameError"));
+ });
+ 
+ emailInput.addEventListener("focus", function() {
+     this.style.border = ""; // Reset border on focus
+ });
+ emailInput.addEventListener("blur", function() {
+     validateInput(this, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, document.getElementById("emailError"));
+ });
+ emailInput.addEventListener("input", function() {
+     validateInput(this, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, document.getElementById("emailError"));
+ });
+ 
+ function validateForm() {
+     // Overall validation before form submission
+     let isValid = true;
+ 
+     // Check if any error spans are visible
+     document.querySelectorAll("span").forEach(span => {
+         if (span.style.display === "block") {
+             isValid = false;
+         }
+     });
+ 
+     return isValid; // Form will only submit if all validations pass
+ }
+ </script>
+ <!-- password validation only. -->
+
+ <script>
+    const passwordInput = document.getElementById('password');
+    const errorMsg = document.getElementById('error-msg');
+
+    // Hide error message on focus
+    passwordInput.addEventListener('focus', function() {
+        errorMsg.style.display = 'none';
+    });
+
+    // Validate password length on input
+    passwordInput.addEventListener('input', function() {
+        if (passwordInput.value.length > 8) {
+            errorMsg.style.display = 'block'; // Show error message
+            passwordInput.value = passwordInput.value.slice(0, 8); // Limit to 8 characters
+        } else {
+            errorMsg.style.display = 'none'; // Hide error message if valid
+        }
+    });
+</script>
+
+<!-- Number validation  -->
+
+<script>
+    const inputField = document.getElementById('phone');
+    const errorMessage = document.getElementById('error');
+
+    inputField.addEventListener('input', function() {
+        // Remove any non-digit characters
+        inputField.value = inputField.value.replace(/\D/g, '');
+        
+        // Show error if more than 10 digits
+        if (inputField.value.length > 10) {
+            errorMessage.style.display = 'block';
+        } else {
+            errorMessage.style.display = 'none';
+        }
+    });
+
+    inputField.addEventListener('focus', function() {
+        errorMessage.style.display = 'none'; // Hide error on focus
+    });
+</script>
+ 
 </body>
 </html>
