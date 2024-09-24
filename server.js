@@ -1,17 +1,19 @@
-
+const dotenv = require('dotenv');
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 const passport = require('passport');
-const dotenv = require('dotenv');
+
 const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const crypto = require('crypto');
 const axios = require('axios');
 const jwt = require("jsonwebtoken");
-dotenv.config();
+
+
 
 
 const fileUpload = require('express-fileupload');
