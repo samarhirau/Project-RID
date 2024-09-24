@@ -1,19 +1,17 @@
-const dotenv = require('dotenv');
-require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 const passport = require('passport');
-
+const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const crypto = require('crypto');
 const axios = require('axios');
 const jwt = require("jsonwebtoken");
-
-
+dotenv.config();
 
 
 const fileUpload = require('express-fileupload');
@@ -32,7 +30,7 @@ const verifyRoutes = require('./routes/verify');
 const excelRoutes = require('./routes/excelRoutes');
 // const routes = require('./routes/protected');
 const authenticateJWT = require('./middleware/authMiddleware');
-
+const organisationRoutes = require('./routes/organisationRoutes');
 
 // Initialize express app
 const app = express();
@@ -187,7 +185,10 @@ app.get('/verify', (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
+app.get('/org', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'orgDashboard.html'));
+});
+app.use('/api', organisationRoutes);
 
 // app.get('/organisation', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'public', 'organisation.html'));

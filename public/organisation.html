@@ -1,144 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Organization Onboarding</title>
-    <link rel="stylesheet" href="./css/organisation.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-  />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
-<body>
+    <link rel="stylesheet" href="./css/organisation.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
     <header>
-        <div class="header-content">
-      
-            <div class="contact-info">
-                <p>Website: RID (Research Innovation & Discovery) by TWSKAA Welfare Foundation | Helpline: +91 89027 82728 | Email: support@rid.com</p>
-            </div>
-            <div class="right-text">
-              
-                <a class="link" href="#"
-                  ><span class="material-symbols-outlined">
-                    important_devices
-                    </span>
-                  Main Content</a
-                >
-                <a class="link" href="#">+A A A-</a>
-                <a class="link" href="#"
-                  ><span class="material-symbols-outlined">
-                    forum
-                    </span>
-                  Feedback</a
-                >
-                <a class="link" href="#"
-                  ><span class="material-symbols-outlined">
-                    support_agent
-                    </span>Support</a
-                >
-              </div>
-
-
+      <div class="header-content">
+        <div class="contact-info">
+          <p>
+            Website: RID (Research Innovation & Discovery) by TWSKAA Welfare
+            Foundation | Helpline: +91 89027 82728 | Email: support@rid.com
+          </p>
         </div>
+        <div class="right-text">
+          <a class="link" href="#"
+            ><span class="material-symbols-outlined"> important_devices </span>
+            Main Content</a
+          >
+          <a class="link" href="#">+A A A-</a>
+          <a class="link" href="#"
+            ><span class="material-symbols-outlined"> forum </span> Feedback</a
+          >
+          <a class="link" href="#"
+            ><span class="material-symbols-outlined"> support_agent </span
+            >Support</a
+          >
+        </div>
+      </div>
     </header>
-        <div id="nav-header">
-            <div class="logo">
-                <img src="./assets/RID Concept Long.svg" alt="Logo" width="200px">
-            </div>
+    <div id="nav-header">
+      <div class="logo">
+        <img src="./assets/RID Concept Long.svg" alt="Logo" width="200px" />
+      </div>
 
-            <div class="logout">
-                <button class="logout-btn">Logout</button>
-            </div>
-        </div>
+      <div class="logout">
+        <button>
+          <span class="material-symbols-outlined iicon"> logout </span>Logout
+        </button>
+      </div>
+    </div>
 
     <main>
-        
-<div class="main-text">
-    <h1>Welcome to Organization Onboarding</h1>
-        <p>Get Started by Filling in Your Organization's Basic Details and Get Pre-Verified!</p>
-</div>
-        <form class="onboarding-form">
-            <div class="form-group">
-                <label for="org-name">Organization Name<span id="for-required">*</span></label>
-                <input type="text" id="org-name" placeholder="XYZ Organization" required>
-            </div>
-<!-- city -->
-<div class="form-group">
-    <label for="city">City<span id="for-required">*</span></label>
-    <input type="text" id="city" placeholder="Madhya Pradesh" required>
-</div>
- <!-- regis num -->
- <div class="form-group">
-    <label for="registration-number">Organization’s Registration Number <span id="optional">(Optional)</span> </label>
-    <input type="text" id="registration-number" placeholder="Enter 21 digit Registration Number">
-</div>
-  <!-- state -->
-  <div class="form-group">
-    <label for="state">State<span id="for-required">*</span></label>
-    <input type="text" id="state" placeholder="Madhya Pradesh" required>
-</div>
-   <!-- owner -->
-   <div class="form-group">
-    <label for="owner-name">Owner Name<span id="for-required">*</span></label>
-    <input type="text" id="owner-name" placeholder="John Doe" required>
-</div>
-    <!-- contact -->
-    <div class="form-group">
-        <label for="contact-number">Contact Number<span id="for-required">*</span></label>
-        <input type="tel" id="contact-number" placeholder="+91" required>
-    </div>
-     <!-- web -->
-     <div class="form-group">
-        <label for="website-link">Organization Website Link <span id="optional"> (Optional)</span></label>
-        <input type="url" id="website-link" placeholder="https://">
-    </div>
-      <!-- up -->
-      <div class="form-group">
-        <label for="org-images">Upload 3 Images of Organization<span>*</span></label>
-        <div class="image-upload">
-            <div class="span-upload">
-                <span class="material-icons-outlined icon"><img src="./assets/Add File.png" alt="">
-
-                    <input type="file" hidden id="image1" required>
-                    <p class="image-label">Image 1</p>
-                    <p class="required-text">Required Image<span id="for-required" class="required">*</span></p>
-                </span>
-            </div>
-            <div class="span-upload">
-                <span class="material-icons-outlined icon" id="ii"><img src="./assets/Add File.png" alt="" width="50px">
-
-                    <input type="file" hidden id="image1" required>
-                    <p class="image-label">Image 2</p>
-                    <p class="required-text">Required Image<span id="for-required" class="required">*</span></p>
-                </span>
-            </div>
-            <div class="span-upload">
-                <span class="material-icons-outlined icon"><img src="./assets/Add File.png" alt="">
-
-                    <input type="file" hidden id="image1" required>
-                    <p class="image-label">Image 3</p>
-                    <p class="required-text">Required Image<span id="for-required" class="required">*</span></p>
-                </span>
-            </div>
+      <div class="main-text">
+        <h1>Welcome to Organization Onboarding</h1>
+        <p>
+          Get Started by Filling in Your Organization's Basic Details and Get
+          Pre-Verified!
+        </p>
+      </div>
+      <form class="onboarding-form" action="/api/organisation" method="POST" enctype="multipart/form-data">
+        <div id="form1">
+          <div class="form-group">
+            <label for="organisationName"
+              >Organization Name<span id="for-required">*</span></label
+            >
+            <input
+              type="text"
+              name="organisationName"
+              id="org-name"
+              placeholder="XYZ Organization"
+              required
+            />
+          </div>
+          <!-- city -->
+          <div class="form-group">
+            <label for="city">City<span id="for-required">*</span></label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              placeholder="Madhya Pradesh"
+              required
+            />
+          </div>
+          <!-- regis num -->
+          <div class="form-group">
+            <label for="registrationNumber"
+              >Registration Number <span id="optional">(Optional)</span>
+            </label>
+            <input
+              type="text"
+              name="registrationNumber"
+              id="registration-number"
+              placeholder="Enter 21 digit Registration Number"
+            />
+          </div>
         </div>
-    </div>
+        <div id="form2">
+          <!-- state -->
+          <div class="form-group">
+            <label for="state">State<span id="for-required">*</span></label>
+            <input
+              type="text"
+              name="state"
+              id="state"
+              placeholder="Madhya Pradesh"
+              required
+            />
+          </div>
+          <!-- owner -->
+          <div class="form-group">
+            <label for="ownerName"
+              >Owner Name<span id="for-required">*</span></label
+            >
+            <input
+              type="text"
+              name="ownerName"
+              id="owner-name"
+              placeholder="John Doe"
+              required
+            />
+          </div>
+          <!-- contact -->
+          <div class="form-group">
+            <label for="contactNumber"
+              >Contact Number<span id="for-required">*</span></label
+            >
+            <input
+              type="tel"
+              name="contactNumber"
+              id="contact-number"
+              placeholder="+91"
+              required
+            />
+          </div>
+        </div>
+        <div id="form3">
+          <div class="form-group">
+            <label for="websiteLink"
+              >Organization Website Link
+              <span id="optional"> (Optional)</span></label
+            >
+            <input
+              type="url"
+              name="websiteLink"
+              id="website-link"
+              placeholder="https://"
+            />
+          </div>
+          <!-- up -->
+           <div class="form-group" id="fileform">
+         
+            <input
+              type="file"
+              name="certificateFile"
+              id="certificateFile"
+              required
+              hidden
+            />
 
-</form>
-<button type="submit" class="submit-btn">Verify & Get Started</button>
+            <input
+              type="file"
+              name="certificateFile2"
+              id="certificateFile2"
+              required
+              hidden
+            />
+
+            <input
+              type="file"
+              name="certificateFile3"
+              id="certificateFile3"
+              required
+              hidden
+            />
+            <div id="dropArea" class="drop-area">
+              <img src="./assets/Add File.png" alt="" width="50px" />
+              <p>Drag & Drop your file here or click to upload</p>
+            </div>
+            <div id="dropArea2" class="drop-area">
+              <img src="./assets/Add File.png" alt="" width="50px" />
+              <p>Drag & Drop your file here or click to upload</p>
+            </div>
+            <div id="dropArea3" class="drop-area">
+              <img src="./assets/Add File.png" alt="" width="50px" />
+              <p>Drag & Drop your file here or click to upload</p>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Verify & Get Started</button>
+      </form>
     </main>
+   
+      
+       <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const dropArea = document.getElementById("dropArea");
+        const dropArea2 = document.getElementById("dropArea2");
+        const dropArea3 = document.getElementById("dropArea3");
+        const fileInput = document.getElementById("certificateFile");
+        const fileInput2 = document.getElementById("certificateFile2");
+        const fileInput3 = document.getElementById("certificateFile3");
 
- 
+        // Prevent default drag behaviors
+        ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+          dropArea.addEventListener(eventName, preventDefaults, false);
+          dropArea2.addEventListener(eventName, preventDefaults, false);
+          dropArea3.addEventListener(eventName, preventDefaults, false);
+        });
+
+        // Highlight drop area when item is dragged over it
+        ["dragenter", "dragover"].forEach((eventName) => {
+          dropArea.addEventListener(
+            eventName,
+            () => highlight(dropArea),
+            false
+          );
+          dropArea2.addEventListener(
+            eventName,
+            () => highlight(dropArea2),
+            false
+          );
+          dropArea3.addEventListener(
+            eventName,
+            () => highlight(dropArea3),
+            false
+          );
+        });
+
+        ["dragleave", "drop"].forEach((eventName) => {
+          dropArea.addEventListener(
+            eventName,
+            () => unhighlight(dropArea),
+            false
+          );
+          dropArea2.addEventListener(
+            eventName,
+            () => unhighlight(dropArea2),
+            false
+          );
+          dropArea3.addEventListener(
+            eventName,
+            () => unhighlight(dropArea3),
+            false
+          );
+        });
+
+        // Handle dropped files
+        dropArea.addEventListener(
+          "drop",
+          (e) => handleDrop(e, fileInput, dropArea),
+          false
+        );
+        dropArea2.addEventListener(
+          "drop",
+          (e) => handleDrop(e, fileInput2, dropArea2),
+          false
+        );
+        dropArea3.addEventListener(
+          "drop",
+          (e) => handleDrop(e, fileInput3, dropArea3),
+          false
+        );
+
+        // Handle click to open file input dialog
+        dropArea.addEventListener("click", () => fileInput.click());
+        dropArea2.addEventListener("click", () => fileInput2.click());
+        dropArea3.addEventListener("click", () => fileInput3.click());
+
+        // Handle file input change
+        fileInput.addEventListener(
+          "change",
+          (e) => handleFiles(e, dropArea),
+          false
+        );
+        fileInput2.addEventListener(
+          "change",
+          (e) => handleFiles(e, dropArea2),
+          false
+        );
+        fileInput3.addEventListener(
+          "change",
+          (e) => handleFiles(e, dropArea3),
+          false
+        );
+
+        function preventDefaults(e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+
+        function highlight(area) {
+          area.classList.add("dragover");
+        }
+
+        function unhighlight(area) {
+          area.classList.remove("dragover");
+        }
+
+        function handleDrop(e, fileInput, dropArea) {
+          preventDefaults(e);
+          const dt = e.dataTransfer;
+          const files = dt.files;
+          fileInput.files = files; // Assign files to file input
+          handleFiles({ target: { files } }, dropArea);
+        }
+
+        function handleFiles(e, dropArea) {
+          const files = e.target.files;
+          if (files.length > 0) {
+            const filename = files[0].name;
+            dropArea.innerHTML = `<p>File uploaded: ${filename}</p>`;
+          }
+        }
+      });
+    </script>
 
     <script
-    type="module"
-    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-  ></script>
-  <script
-    nomodule
-    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-  ></script>
-</body>
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
