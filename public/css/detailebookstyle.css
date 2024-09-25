@@ -95,6 +95,7 @@ header .upper-header{
         font-size: smaller;
     }
     .main-panel h3{
+        padding-top: 15px;
         text-align: center;
     }
 
@@ -119,14 +120,18 @@ header .upper-header{
     }
 
     .book-info .buttons {
-        margin-left: 0;
+        margin-left: 15px;
     }
 
-    .book-detail .book-info .buttons .viewEbook, 
+    /* .book-detail .book-info .buttons .viewEbook, 
     .book-detail .book-info .buttons .readNow {
         padding: 8px 40px; 
         margin-top: 10px;
-    }
+    } */
+    /* .book-detail .book-info .buttons .viewBTN{
+        padding-left: 40px;
+        padding-right: 40px;
+    } */
 }
 
 @media (max-width: 480px) {
@@ -134,6 +139,10 @@ header .upper-header{
         font-size: x-small;
         flex-direction: column;
         align-items: center;
+        text-align: center;
+    }
+    .main-panel h3{
+        padding-top: 15px;
         text-align: center;
     }
 
@@ -144,14 +153,42 @@ header .upper-header{
     .book-info p {
         font-size: 12px;
     }
-
-    .book-detail img {
-        max-width: 250px;
-        height: auto;
+    .book-detail .book-image{
+        width:100%;
+        margin-left: 0;
     }
 
-    .book-detail .book-info .buttons .viewEbook, 
+    .book-detail img {
+        margin-top: 0;
+        max-width: 100%;   
+        height: auto;
+        display: block;    
+        margin-left: 0;
+    }
+    .book-info br {
+        display: none;
+    }
+    .book-info .buttons{
+        display: flex;
+    }
+
+    .book-detail .book-info .buttons .viewBTN {
+        padding-left: 40px;
+        padding-right: 40px;
+        width: 40%;
+        margin-left: 8px;
+        margin-right: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;     /* Vertically centers the content */
+        justify-content: center; /* Horizontally centers the content */
+        gap: 5px;                /* Adds space between the icon and text */
+    }
+    
+
+    .book-detail .book-info .buttons .viewBTN, 
     .book-detail .book-info .buttons .readNow {
         padding: 8px 20px;
+        margin-top: 30px;
     }
 }
