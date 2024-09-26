@@ -44,7 +44,7 @@
                           <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
                           <div class="title-desc">
                               <h3><%= book.title %></h3>
-                              <p class="desc"><%= book.description.substr(0,130) + "..." %></p>
+                              <p class="desc"><%= book.description.substr(0,100) + "..." %></p>
                               <p class="author-name">Author: <%= book.author %></p>
                               <div class="rating">
                                   <% for (let j = 0; j < 5; j++) { %>
