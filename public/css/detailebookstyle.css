@@ -4,7 +4,7 @@
     margin: 0;
 }
 header .upper-header{
-    background-color: #006989;
+    background-color: #083d5d;
     color: white;
     display: flex;
     font-size: small;
@@ -53,7 +53,7 @@ header .upper-header{
 .main-panel .book-detail .buttons  .readNow{
     color: white;
     padding : 5px;
-    background-color: #006989;
+    background-color: #083d5d;
 }
 
 
