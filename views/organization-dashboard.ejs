@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>organisation Dashboard</title>
+    <link rel="stylesheet" href="/css/orgdashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>organisation Dashboard</h1>
+        <p>Welcome, <%= organisation.ownerName %>! Here's an overview of your organisation's details.</p>
+      </div>
+      <div class="logout">
+        <a href="/logout"><button id="logout-btn">Logout</button></a>
+    </div>
+    </header>
+
+    <main>
+      <section class="overview-section">
+        <h2>organisation Overview</h2>
+        <div class="info-container">
+          <div class="info-box">
+            <h3>organisation Name</h3>
+            <p><%= organisation.organisationName %></p>
+          </div>
+          <div class="info-box">
+            <h3>City</h3>
+            <p><%= organisation.city %></p>
+          </div>
+          <div class="info-box">
+            <h3>State</h3>
+            <p><%= organisation.state %></p>
+          </div>
+          <div class="info-box">
+            <h3>Owner Name</h3>
+            <p><%= organisation.ownerName %></p>
+          </div>
+          <div class="info-box">
+            <h3>Contact Number</h3>
+            <p><%= organisation.contactNumber %></p>
+          </div>
+          <div class="info-box">
+            <h3>Registration Number</h3>
+            <p><%= organisation.registrationNumber ? organisation.registrationNumber : "Not Provided" %></p>
+          </div>
+          <div class="info-box">
+            <h3>Website</h3>
+            <p><%= organisation.websiteLink ? organisation.websiteLink : "Not Provided" %></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="files-section">
+        <h2>Uploaded Certificates</h2>
+        <div class="file-box">
+          <h3>Certificate 1</h3>
+          <a href="<%= organisation.certificateFile1 %>" target="_blank">Download File</a>
+        </div>
+        <div class="file-box">
+          <h3>Certificate 2</h3>
+          <a href="<%= organisation.certificateFile2 %>" target="_blank">Download File</a>
+        </div>
+        <div class="file-box">
+          <h3>Certificate 3</h3>
+          <a href="<%= organisation.certificateFile3 %>" target="_blank">Download File</a>
+        </div>
+      </section> -->
+    </main>
+<script>
+  document.getElementById('logout-btn').addEventListener('click', function() {
+  const confirmation = confirm('Are you sure you want to log out?');
+  
+  if (confirmation) {
+      // Only proceed with the logout request if the user confirms
+      fetch("/auth/logout", {
+          method: "GET",
+          credentials: "include", // Include cookies in the request
+      })
+      .then(response => response.json())
+      
+          // if (data.message === "successfully signed out!") {
+              localStorage.removeItem('token');
+              window.location.href = '/'; // Adjust the URL to match your homepage
+          
+        
+    
+     
+    }
+    });
+</script>
+
+  </body>
+</html>

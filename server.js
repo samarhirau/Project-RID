@@ -17,8 +17,8 @@ dotenv.config();
 const fileUpload = require('express-fileupload');
 const bookRoutes = require('./routes/bookRoutes');
 
-
-
+const organisationRoutes = require("./routes/organisation");
+const Organisation = require('./models/Organisation');
 
 
 // const {books ,moreBooks} = require('./views/js/ebook');
@@ -30,7 +30,7 @@ const verifyRoutes = require('./routes/verify');
 const excelRoutes = require('./routes/excelRoutes');
 // const routes = require('./routes/protected');
 const authenticateJWT = require('./middleware/authMiddleware');
-const organisationRoutes = require('./routes/organisationRoutes');
+
 
 // Initialize express app
 const app = express();
@@ -66,6 +66,8 @@ app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
 app.use('/verify', verifyRoutes);
 app.use('/api/excel', excelRoutes);
+app.use("/api/organisation", organisationRoutes);
+
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -80,6 +82,23 @@ app.use(cookieParser());
 
 app.use('/', bookRoutes)
 
+
+
+app.get('/logout', (req, res) => {
+  // For sessions, destroy session if used
+  if (req.session) {
+      req.session.destroy(err => {
+          if (err) {
+              return res.status(500).send("Could not log out.");
+          }
+          res.redirect('/login'); // Redirect after logging out
+      });
+  } else {
+      // If using JWT, no need to do anything on server side
+      // Just send a response back
+      res.json({ message: 'Logged out successfully' });
+  }
+});
 
 // Middleware function to check user role
 const authorizeRole = (role) => {
@@ -113,14 +132,43 @@ app.get('/flipbook', (req, res) => {
   });
 });
 
-
-
-// Route for '/organisation' - Protected for 'organisation' role
-app.get('/organisation', authenticateJWT, authorizeRole('organisation'), (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'organisation.html'));
+app.get('/organization-dashboard',authenticateJWT, async (req, res) => {
+  try {
+    const organization = await Organisation.findOne(); // Fetch organization data
+    if (!organization) {
+      return res.status(404).send('Organization not found');
+    }
+    res.render('organizationDashboard', { organization });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
 });
 
-// Route for '/teacher' - Protected for 'teacher' role
+
+app.get('/organization-dashboard/:id',authenticateJWT, async (req, res) => {
+  try {
+      const organisationId = req.params.id;
+      const organisation = await Organisation.findById(organisationId);
+
+      if (!organisation) {
+          return res.status(404).json({ error: "Organization not found" });
+      }
+
+      // Make sure to use the correct variable name when rendering
+      res.render("organization-dashboard", { organisation }); // Corrected here
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Server error" });
+  }
+});
+
+
+
+app.get('/organisation', authenticateJWT, authorizeRole('organisation'),(req, res) => {
+  res.render('register-org'); 
+});
+
 app.get('/teacher', authenticateJWT, authorizeRole('teacher'), (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'teacher.html'));
 });
@@ -156,13 +204,7 @@ app.get('/form', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', '/Signup/form.html'));
 });
 
-// app.get('/ebook', (req, res) => {
-//   res.render('ebook', { books, moreBooks });
-// });
 
-// app.get('/books', (req, res) => {
-//   res.render('book-card', { books, moreBooks }); // Pass the arrays to the EJS template
-// });
 
 app.get('/onlineTest', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', './component/onlineTest.html'));
@@ -185,10 +227,12 @@ app.get('/verify', (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-app.get('/org', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'orgDashboard.html'));
-});
-app.use('/api', organisationRoutes);
+
+
+
+
+
+
 
 // app.get('/organisation', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'public', 'organisation.html'));
