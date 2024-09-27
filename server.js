@@ -72,9 +72,16 @@ app.use("/api/organisation", organisationRoutes);
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(fileUpload()); // Middleware to handle file uploads
-// app.use('/', routes);
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
+
+
+app.use(fileUpload({
+  useTempFiles: true,         // Use temporary files before uploading to Cloudinary
+  tempFileDir: '/tmp/',       // Directory for storing temporary files
+  limits: { fileSize: 100 * 1024 * 1024 }, // Max file size of 100MB
+}));
 
 
 app.use(cookieParser());
