@@ -1,70 +1,75 @@
 const Book = require('../models/ebookModel');
+const { uploadToCloudinary } = require('../utils/cloudinaryService');
 
-
-// Controller to handle adding a new book
 exports.addBook = async (req, res) => {
     const { title, author, publishYear, rating, description } = req.body;
-    const image = req.files.image; // Using `req.files` to access uploaded image
-    const pdfFile = req.files.pdf; 
-    // Convert image to Base64
-    const base64Image = image.data.toString('base64');
-    const pdfData = pdfFile.data;
-
-    const newBook = new Book({
+    const image = req.files?.image; // Add null check
+    const pdfFile = req.files?.pdf; // Add null check
+  
+    try {
+      if (!image || !pdfFile) {
+        console.error('No files uploaded');
+        return res.status(400).send('Please upload both an image and a PDF');
+      }
+  
+      // Log the received file details
+      console.log('Image details:', image);
+      console.log('PDF details:', pdfFile);
+  
+      // Upload image to Cloudinary
+      const imageUrl = await uploadToCloudinary(image, 'books/images');
+      console.log('Image uploaded to Cloudinary:', imageUrl);
+  
+      // Upload PDF to Cloudinary
+      const pdfUrl = await uploadToCloudinary(pdfFile, 'books/pdfs');
+      console.log('PDF uploaded to Cloudinary:', pdfUrl);
+  
+      // Save book data to MongoDB with Cloudinary URLs
+      const newBook = new Book({
         title,
         author,
         publishYear,
         rating,
         description,
-        image: base64Image,
+        image: imageUrl,
         pdf: {
-            data: pdfData,
-            contentType: pdfFile.mimetype   // Store MIME type (e.g., 'application/pdf')
-        }
-    });
-
-    try {
-        await newBook.save();
-        // res.redirect('/books');
+          data: pdfUrl,
+          contentType: pdfFile.mimetype,
+        },
+      });
+  
+      await newBook.save();
+      res.status(200).send('Book uploaded successfully');
     } catch (err) {
-        console.error(err);
-        res.status(500).send('Error uploading book');
+      console.error('Error uploading book:', err);  // Log the entire error object
+      res.status(500).send(`Error uploading book: ${err.message}`);
     }
-};
+  };
+  
 
 
-
+// Get all ebooks (with Cloudinary image URLs)
 exports.getEbooks = async (req, res) => {
     try {
-       // const shuffledBooks = shuffleArray(books);
         const books = await Book.find({});
         const moreBooks = await Book.find({});
-        res.render('ebook', { books, moreBooks });
+        
+        res.render('ebook', {
+            books, // Pass the books array to the template
+            moreBooks
+        });
     } catch (err) {
         console.error(err);
         res.status(500).send('Error fetching books');
     }
 };
 
-
-// exports.getBookDetails = async (req, res) => {
-//     try {
-//         const bookId = req.params.id; // Get the book ID from the URL
-//         const book = await Book.findById(bookId);
-//         if (!book) {
-//             return res.status(404).send('Book not found');
-//         }
-//         res.render('detail-ebook', { book });
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).send('Error fetching book details');
-//     }
-// };
-
+// Fetch a book by its ID (Cloudinary URLs included)
+// Example of fetching book and ensuring pdf URL is available
 const getBookById = async (id) => {
     try {
-        // Assuming you're using a MongoDB model called Book to fetch the book by ID
         const book = await Book.findById(id);
+        // Assume you have logic here to set the correct PDF URL in the book object
         return book;
     } catch (error) {
         console.error('Error fetching book:', error);
@@ -74,18 +79,17 @@ const getBookById = async (id) => {
 
 
 
-
 exports.getBookDetails = async (req, res) => {
-    const bookId = req.params.id; // Retrieve the book ID from the route
-
-    const book = await getBookById(bookId); // Fetch the book
+    const bookId = req.params.id;
+    const book = await getBookById(bookId);
 
     if (book) {
         res.render('detail-ebook', {
             title: book.title,
-            book: book, // Pass the book data to the EJS template
-            pdfUrl: `/download-pdf/${book._id}`, // URL for viewing the PDF
-            downloadUrl: `/download-pdf/${book._id}` // URL for downloading the PDF
+            book: book,
+            imageUrl: book.image,
+            pdfUrl: book.pdf.url, // Ensure this is set correctly
+            downloadUrl: `/download-pdf/${book._id}`
         });
     } else {
         res.render('error', {
