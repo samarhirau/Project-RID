@@ -31,6 +31,7 @@
   </div> -->
     <div id="admin-content">
       <header>
+        
         <div class="upper-header">
           <div class="left-content">
             <span>Website :</span> RID (Research Discovery & Innovation) by
@@ -59,6 +60,7 @@
             </div>
           </div>
           <div class="right-content">
+           
             <button id="certificate" onclick="window.location.href= '/verify'">
               <img
                 src="./assets/icons/workspace_premium.png"
@@ -160,15 +162,18 @@
 
           table {
             width: 100%;
-            border-collapse: collapse;
+            /* border-collapse: collapse; */
+            overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping */
+    border-collapse: collapse; /* Clean table appearance */
           }
 
           table th,
           table td {
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ccc;
             text-align: left;
-            min-width: 100px;
+            min-width: auto;
           }
 
           table th {
@@ -191,13 +196,20 @@
           }
         </style>
       </header>
-
+      <span class="menu-icon" onclick="toggleSidebar()"><span class="material-symbols-outlined">
+        menu
+        </span></span>
+    
       <div class="main-content">
-        <div class="side-bar">
+       
+        <div class="side-bar" id="sidebar">
           <div class="div1">
+            <div class="close-btn" onclick="toggleSidebar()"><span class="material-symbols-outlined">
+              close
+              </span></div>
             <div>
               <h2>Administrator</h2>
-              <button id="dashboardbtn">
+              <button id="dashboardbtn" >
                 <span class="material-symbols-outlined" style="font-size: 20px">
                   bar_chart_4_bars </span
                 ><span>Dashboard</span>
@@ -293,6 +305,7 @@
 
         <section class="student-list" id="table-list" style="display: none">
           <h3>List of Total Students</h3>
+          <div class="table-container">
           <table>
             <thead>
               <tr>
@@ -310,6 +323,7 @@
               <!-- Rows will be populated here -->
             </tbody>
           </table>
+        </div>
         </section>
 
         <!-- change role -->
@@ -342,11 +356,14 @@
         </section>
 
         <div class="main-area1" id="mainArea1" style="display: none">
-          <h2>Upload Certificate</h2>
+          
           <!-- ------------- -->
+          <h2>Upload Certificate</h2>
 
           <form id="uploadForm" class="uploadForm">
+            
             <section>
+              
               <div class="form-group">
                 <label
                   >Certificate Id
@@ -423,6 +440,34 @@
         </div>
       </div>
     </div>
+    <script>
+      // function toggleSidebar() {
+      //     const sidebar = document.getElementById('sidebar');
+      //     const mainArea = document.getElementById('mainArea');
+      //     sidebar.classList.toggle('active');
+      //     mainArea.classList.add('hide');
+      // }
+      function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainArea = document.getElementById('mainArea');
+    
+    if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+        // Reset the display property to show the sidebar again
+        sidebar.style.display = 'block';
+    }
+    
+    // Toggle the 'active' class for sliding animation
+    sidebar.classList.toggle('active');
+    
+    // Toggle hiding of main content when the sidebar is active
+    if (sidebar.classList.contains('active')) {
+        mainArea.classList.add('hide');  // Hide main area when sidebar is active
+    } else {
+        mainArea.classList.remove('hide'); // Show main area when sidebar is hidden
+    }
+}
+
+  </script>
 
     <script src="../js/showToast.js"></script>
     <script src="../js/admin.js"></script>
@@ -633,6 +678,13 @@
         }
       }
       fetchOrganisationCount();
+    </script>
+    <script>
+      
+const refreshBtn = document.getElementById('dashboardbtn');
+refreshBtn.addEventListener('click', function() {
+  window.location.reload();
+});
     </script>
   </body>
 </html>
