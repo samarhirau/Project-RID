@@ -460,3 +460,65 @@ header .lower-header .right-content button span{
     color: rgb(24, 21, 21);
 }
 
+/* Admin change role css */
+#changeRole {
+    width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #changeRole input[type="text"] {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* position: absolute;
+    top:40%;
+    right: 550px; */
+  }
+  
+  #changeRole button {
+    width: 100%;
+    height: 40px;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* position: absolute;
+    top:48%;
+    right:550px; */
+  }
+  
+  #changeRole button:hover {
+    background-color: #3e8e41;
+    
+  }
+  
+  #userInfo {
+    margin-top: 20px;
+  }
+  
+  #userInfo p {
+    font-weight: bold;
+  }
+  
+  #userRole {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #changeRole label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
