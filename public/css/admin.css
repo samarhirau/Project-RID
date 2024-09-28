@@ -83,17 +83,26 @@ header .lower-header .right-content button span{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2 , 1fr); */
-    width: 250px; /* Default sidebar width */
+    /* width: 250px; 
     background-color: #f4f4f4;
     padding: 20px;
-    transition: transform 0.3s ease; /* Smooth transition for sliding */
-    transform: translateX(-100%); /* Hide sidebar off-screen */
+    transition: transform 0.3s ease; 
+    transform: translateX(-100%);
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
-    z-index: 1000; /* Ensure it stays on top */
-   
+    z-index: 1000;  */
+    width: 20%; /* Default sidebar width for larger screens */
+        height: 82.2vh;
+        border-right: 0.5px solid #0A66C280;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        position: relative;
+        transform: none; /* No sliding effect */
+        z-index: 1; /* Keep it as part of the regular layout */
+        height: 100vh;
 }
 
 .side-bar.active {
@@ -545,7 +554,8 @@ header .lower-header .right-content button span{
     font-size: 35px;
     cursor: pointer;
     color: #0A66C2;
-    margin: 10px;
+    /* margin: 10px; */
+    padding:  20px;
 }
 
 .close-btn span{
@@ -580,8 +590,9 @@ header .lower-header .right-content button span{
 
     .main-content .side-bar {
         width: 100%; /* Full width for the sidebar */
-        height: auto; /* Allow auto height */
+        height: 100vh; /* Allow auto height */
         position: absolute; /* Position absolutely */
+        top: 0; /* Align to the top */
         left: -100%; /* Initially hide off-screen */
         transition: left 0.3s ease; /* Smooth transition for sliding in/out */
         z-index: 1000; /* Ensure it's on top */
