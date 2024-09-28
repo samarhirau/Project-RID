@@ -142,11 +142,14 @@
         </div>
       </div>
       <nav>
-        <div class="nav">
+        <div class="nav" id="main-nav">
           <div class="logo">
-            <img src="./assets/RID Concept Long.svg" alt="logo" height="90px"   />
+
+            <img src="./assets/RID Concept Long.svg" alt="logo" height="82px"/>
+            <span><span class="material-symbols-outlined close" id="sideBarIcon" onclick="cllick()">menu</span></span>
+
           </div>
-          <div class="menu">
+          <div class="menu" id="innerCont">
             <ul class="upperNav">
               <div class="search">
                 <svg
@@ -928,7 +931,6 @@ function handleLoginClick() {
     <script>
       const swapBtn = document.getElementById("swap-btn");
       const registerBTn = document.getElementById("signUpBtn");
-
       const loginBTn = document.getElementById("logInButton");
 
       registerBTn.addEventListener("click", () => {
@@ -1020,6 +1022,50 @@ function handleLoginClick() {
         });
       });
     </script>
+
+
+
+
+
+
+    
+    <script>
+        var sideBarIcon = document.getElementById("sideBarIcon");
+        var mainNav = document.getElementById("main-nav");
+        var innerCont = document.getElementById("innerCont");
+      
+        function noView(){
+          innerCont.style.background = "none";
+        }
+        function yesView(){
+          innerCont.style.background = "flex";
+        }
+        function fadeS(){
+          innerCont.style.opacity = "0";
+          innerCont.style.scale = ".85";
+          setTimeout(2000, noView());
+        }
+        function fadeE(){
+          innerCont.style.opacity = "1";
+          innerCont.style.scale = "1";
+          setTimeout(2000, yesView());
+        }
+        
+        function cllick(){
+          if(sideBarIcon.innerHTML === "close"){
+          sideBarIcon.innerHTML = "menu";
+          mainNav.style.height = "0vh";
+          fadeS();
+          
+        }else{
+          sideBarIcon.innerHTML = "close";
+          mainNav.style.height = "100vh";
+          fadeE();
+        }
+      }
+      
+      </script>
+    
     <script src="./js/main.js"></script>
 
     <script src="./assets/js/main.js"></script>
