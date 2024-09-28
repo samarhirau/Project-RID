@@ -33,5 +33,12 @@
     "scripts": {
         "start": "node server.js",
         "dev": "nodemon server.js"
-    }
+    },
+    "name": "project-rid",
+    "version": "1.0.0",
+    "description": "Use commands one by one to start the server without any error.\r <code>npm i</code>\r <code>npm audit fix --force</code>\r <code>npm run dev</code> or <code>npm start</code>",
+    "main": "script.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
