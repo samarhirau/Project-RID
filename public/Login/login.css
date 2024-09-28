@@ -6,8 +6,12 @@ body {
     min-height: 100vh;
     overflow: hidden;
     /* background-color: #f4f4f4; */
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
   }
   
   .container {
@@ -86,13 +90,11 @@ body {
   }
 
   .left-content{
-width: 50vw;
-/* margin: 0 100px 0 0; */
-padding: 40px;
-
-/* background: rgb(255, 176, 176); */
-
-
+    width: 40vw;
+  /* margin: 0 100px 0 0; */
+    padding: 40px;
+  /* background: rgb(255, 176, 176); */
+  
   }
   .left-content img{
     width: 100%;
@@ -101,7 +103,7 @@ padding: 40px;
    
     overflow: hidden;
   }
-  .right-content{
+  /* .right-content{
     width: 50vw;
     height: 100vh;
   }
@@ -118,7 +120,7 @@ padding: 40px;
     background-position: center;
     background: rgba(10, 102, 194, 0.25);
     padding: 0 0 0 20px;
-  }
+  } */
   .left-content h2{
     color: rgba(10, 102, 194, 1);
     font-size: 30px;
@@ -127,10 +129,10 @@ padding: 40px;
   }
   .inner-div{
     background: rgba(243, 247, 252, 1);
-padding: 40px;
-margin: 0 40px;
-border-radius: 5px;
-border: 1.2px solid rgba(202, 202, 202, 0.788)
+    padding: 40px;
+    margin: 0 40px;
+    border-radius: 5px;
+    border: 1.2px solid rgba(202, 202, 202, 0.788)
 
   }
   
@@ -167,16 +169,16 @@ border: 1.2px solid rgba(202, 202, 202, 0.788)
     justify-content: center;
     gap: 10px;
   }
-  #onLogo{
-background: #fff;
-padding: 10px 20px;
-border-radius: 10px 0 0 10px;
+  /* #onLogo{
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 10px 0 0 10px;
     height: 50px;
     position: absolute;
     bottom: 40px;
     right: 0;
     
-  }
+  } */
  
 #forgetPass {
   
@@ -195,10 +197,10 @@ border-radius: 10px 0 0 10px;
 .forgot-password-container {
   height: 45vh;
   width: 50%;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -245,4 +247,70 @@ transform: translate(-50%, -50%);
 #message {
   margin-top: 15px;
   color: red;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  body {
+      margin-left: 0; /* Center for mobile */
+      font-size: 10px;
+  }
+
+  .left-content {
+      width: 90vw; /* Adjust width for smaller screens */
+      padding: 20px;
+  }
+
+  h1 {
+      font-size: 15px; /* Smaller font size for headings */
+  }
+
+  .inner-div {
+      margin: 0 20px; /* Adjust margin */
+      padding: 20px;
+  }
+
+  .footer .text {
+      font-size: 6px; /* Smaller footer text */
+  }
+}
+
+@media (max-width: 480px) {
+  .left-content h2 {
+      font-size: 12px; /* Further reduce font size */
+  }
+
+  button, input[type="text"], input[type="password"] {
+      padding: 8px; /* Adjust padding */
+      font-size: 7px; /* Smaller font size */
+  }
+
+  label{
+    font-size: 8px;
+  }
+  
+  h1 {
+    font-size: 20px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    font-size: 8px;
+  }
+
+  button {
+    font-size: 8px;
+  }
+  
+  .left-content h2{
+    font-size: 15px;
+  }
+
+  .footer .text{
+    font-size: 7px;
+  }
+
+  .footer .links a{
+    font-size: 10px;
+  }
 }
