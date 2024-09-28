@@ -566,10 +566,7 @@ header .lower-header .right-content button span{
    
 }
 
-.close-btn{
-   background: transparent;
-   
-}
+
 
 
 
@@ -578,9 +575,16 @@ header .lower-header .right-content button span{
     display: none;
 }
 
+.menu-icon{
+    display: none;
+}
+
 
 
   @media (max-width: 480px) {
+    .close-btn{
+        display: block !important;
+    }
     .main-content {
         flex-direction: column; /* Stack elements vertically */
     }

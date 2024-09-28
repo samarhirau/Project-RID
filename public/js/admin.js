@@ -42,8 +42,10 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
      document.getElementById('uploadCerti').className = 'active';
     document.getElementById('table-list').style.display = 'none';
     document.getElementById('changeRole').style.display = 'none';
-    const sidebar = document.getElementById('sidebar');
-    sidebar.style.display = 'none'; // Set display to 'none' when showTotalList is called
+    if (window.innerWidth <= 768) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none'; 
+  }
   }
 
   // function showTotalList() {
@@ -60,19 +62,34 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
 
   // }
 
-  function showTotalList() {
-    document.getElementById('mainArea').style.display = 'none';
-    document.getElementById('table-list').style.display = 'initial';
-    document.getElementById('mainArea1').style.display = 'none';
-    document.getElementById('showTotal').className = 'active';
-    document.getElementById('dashboardbtn').style.backgroundColor = 'white';
-    document.getElementById('dashboardbtn').style.color = 'black';
-    document.getElementById('changeRole').style.display = 'none';
-    document.getElementById('allAdmins').style.display = 'none';
+//   function showTotalList() {
+//     document.getElementById('mainArea').style.display = 'none';
+//     document.getElementById('table-list').style.display = 'initial';
+//     document.getElementById('mainArea1').style.display = 'none';
+//     document.getElementById('showTotal').className = 'active';
+//     document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+//     document.getElementById('dashboardbtn').style.color = 'black';
+//     document.getElementById('changeRole').style.display = 'none';
+//     document.getElementById('allAdmins').style.display = 'none';
     
-    // Hide the sidebar by adding a class
-    const sidebar = document.getElementById('sidebar');
-    sidebar.style.display = 'none'; // Set display to 'none' when showTotalList is called
+//     // Hide the sidebar by adding a class
+//     const sidebar = document.getElementById('sidebar');
+//     sidebar.style.display = 'none'; // Set display to 'none' when showTotalList is called
+// }
+function showTotalList() {
+  document.getElementById('mainArea').style.display = 'none';
+  document.getElementById('table-list').style.display = 'initial';
+  document.getElementById('mainArea1').style.display = 'none';
+  document.getElementById('showTotal').className = 'active';
+  document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+  document.getElementById('dashboardbtn').style.color = 'black';
+  document.getElementById('changeRole').style.display = 'none';
+  document.getElementById('allAdmins').style.display = 'none';
+
+  if (window.innerWidth <= 768) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none'; 
+  }
 }
 
 
@@ -86,8 +103,10 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     document.getElementById('dashboardbtn').style.backgroundColor = 'white';
     document.getElementById('dashboardbtn').style.color = 'black';
     document.getElementById('table-list').style.display = 'none';
-    const sidebar = document.getElementById('sidebar');
-    sidebar.style.display = 'none'; 
+    if (window.innerWidth <= 768) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none'; 
+  }
   }
   function showAdminList() {
     document.getElementById('mainArea').style.display = 'none';
@@ -98,8 +117,10 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     document.getElementById('dashboardbtn').style.color = 'black';
     document.getElementById('table-list').style.display = 'none';
     document.getElementById('changeRole').style.display = 'none';
-    const sidebar = document.getElementById('sidebar');
-    sidebar.style.display = 'none'; 
+    if (window.innerWidth <= 768) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none'; 
+  }
   }
 
   // Wait until the DOM is fully loaded
