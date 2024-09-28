@@ -1,91 +1,73 @@
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Here</title>
-    <link rel="stylesheet" href="../../css/form.css">
-    <link rel="stylesheet" href="../../css/responsive.css">
-    <style>
-        .form-group {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .form-group span {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            font-size: 0.75em;
-            color: red;
-            display: none;
-        }
-
-        #firstNameError,
-        #lastNameError,
-        #emailError,
-        #error-msg,
-        #error {
-            font-size: 0.75em;
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
-<body onload="loadPage()">
+<body onload="loadPage">
     <div class="headings">
         <h1>Registration</h1>
         <h3>Research Innovation & Discovery</h3>
-    </div>
-
+       </div>
     <div class="container" id="container1" style="display: block;">
+        <!-- <h1>Registration</h1>
+        <h3>Research Innovation & Discovery</h3> -->
         <div class="img">
-            <img src="../assets/images/step-1.png" alt="">
-        </div>
-
-        <form action="/user/register" method="post" class="form">
-            <div id="form1">
-                <div class="form-group">
-                    <label>First Name <span style="color: red; font-weight: bold;">*</span></label>
-                    <input type="text" id="firstName" name="userName" pattern="[A-Za-z]+" required placeholder="Enter First Name">
-                    <span id="firstNameError">Please enter a valid first name.</span>
-                </div>
-                <div class="form-group">
-                    <label>Last Name <span style="color: red; font-weight: bold;">*</span></label>
-                    <input type="text" id="lastName" name="lastName" required placeholder="Enter Last Name">
-                    <span id="lastNameError">Please enter a valid last name.</span>
-                </div>
-                <div class="form-group">
-                    <label>Email Address <span style="color: red; font-weight: bold;">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="youremail@gmail.com" required>
-                    <span id="emailError">Please enter a valid email.</span>
-                </div>
-                <div class="form-group">
-                    <label>Create Password <span style="color: red; font-weight: bold;">*</span></label>
-                    <input type="password" id="password" name="password" placeholder="*" required>
-                    <span id="error-msg">8 digit password allowed.</span>
+           
+            <div class="container-process">
+                <div class="line-1">
+                    <div class="cicle-1 active-circle"><p>1</p></div>
+                    <div class="cicle-2"><p>2</p></div>
+                    <div class="cicle-3"><p>3</p></div>
                 </div>
             </div>
-            <button id="nextButton">Next</button>
-            <br>
-            <div class="anAccount">
-                <span class="login-span">Already have an account? <a>Login</a></span>
-            </div>
-        
+          
     </div>
-
+        <form  action="/user/register" method="post" class="form">
+        <div id="form1">
+            <div class="form-group">
+                <label>First Name <span style="color: red; font-weight: bold;">*</span></label>
+         <input type="text" id="firstname" name="username" required>
+           
+            </div>
+            <div class="form-group">
+                <label>Last Name <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="email" id="email" name="email" placeholder="youremail@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label>Create Password <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="password" id="password" name="password" placeholder="*********" required>
+            </div>
+        </div>
+        <button id="nextButton">Next</button>
+        <br>
+        <div class="anAccount">
+        <span class="login-span">Already have an account? <a>Login</a></span>
+    </div>
+       
+    </div>
+   
     <div class="container" id="container3" style="display: none;">
         <div class="img">
-            <img src="../assets/images/step-2.png" alt="">
-        </div>
+          
+            <div class="container-process">
+                <div class="line-1 line-2">
+                    <div class="cicle-1 active-circle-done"><p>1</p></div>
+                    <div class="cicle-2 active-circle"><p>2</p></div>
+                    <div class="cicle-3"><p>3</p></div>
+                </div>
+            </div>
+           
+    </div>
+        
         <div id="form3">
             <div class="form-group">
                 <label>Gender <span style="color: red; font-weight: bold;">*</span></label>
@@ -98,134 +80,136 @@
             </div>
             <div class="form-group">
                 <label>Mobile Number <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="tel" id="phone" name="phone" required placeholder="Enter mobile number">
-                <span id="error">Only 10 digits allowed</span>
+                <input type="tel" id="phone" name="phone" required>
             </div>
             <div class="form-group">
                 <label>Date of Birth <span style="color: red; font-weight: bold;">*</span></label>
                 <input type="date" id="dob" name="dob" required>
+
             </div>
             <div class="form-group">
-                <label for="role">Role <span style="color: red; font-weight: bold;">*</span></label>
+                <label for="role" >Role<span style="color: red; font-weight: bold;">*</span></label>
                 <input type="text" id="role" name="role" placeholder="Search for a role" autocomplete="off" list="roleList" required>
                 <datalist id="roleList">
-                    <option value="organisation">Organisation</option>
-                    <option value="student">Student</option>
-                    <option value="teacher">Teacher</option>
+                <option value="organisation">organisation</option>
+                <option value="student">student</option>
+                <option value="teacher">teacher</option>
+                <!-- <option value="admin">admin</option> -->
+                   
                 </datalist>
             </div>
         </div>
         <div class="buttons">
-            <button id="PreviousBtn" type="button">Previous</button>
-            <button id="submit-btn" type="submit">Submit</button>
-        </div>
-    </form>
-        <br>
+            <button id="PreviousBtn" type="button" >Previous</button>
+        <button id="sumit-btn" type="submit">Submit</button>
+       
+    </div>
+    <br>
         <div class="anAccount">
             <span class="login-span">Already have an account? <a>Login</a></span>
         </div>
+        
+        
     </div>
+    <div class="container" id="container4" style="display: none;">
+        <h1>Registration</h1>
+        <h3>Research Innovation & Discovery</h3>
+        <img src="../assets/images/step-4.png" alt="">
+        <div id="form-last">
+            <img src="../assets/images/icon-success.png" alt="">
+            <h1>Congratulations, <span id="userName">User</span></h1>
+            <span>Successfully Registered in RID. <a href="">Login</a></span>
+        </div>
+
+<!--
+ footer
+
+-->
+
+       
+    </div>
+</form>
 
     <footer>
         <p>Copyright ©2024, RID | TWF (TWKSAA WELFARE FOUNDATION). All Rights Reserved.</p>
         <div class="links">
-            <span><a href="">Home</a> | <a href="">Terms & Conditions</a> | <a href="">Privacy Policy</a> | <a href="">Feedback</a></span>
-        </div>
+        <span><a href="">Home</a> | <a href="">Terms & Conditions</a> | <a href="">Privacy Policy</a> | <a href="">Feedback</a></span>
+    </div>
     </footer>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const nextBtn = document.querySelector('#nextButton');
-    const previousBtn = document.querySelector('#PreviousBtn');
-    const container1 = document.querySelector('#container1');
-    const container3 = document.querySelector('#container3');
 
-    nextBtn.addEventListener('click', function (event) {
-        event.preventDefault();
-        if (validateForm()) {
-            container1.style.display = 'none';
-            container3.style.display = 'flex';
-            localStorage.setItem('currentPage', 'container3');
+    
+    <script>
+  
+
+        
+
+        function loadPage() {
+            const currentPage = localStorage.getItem('currentPage') || 'container1';
+            document.getElementById(currentPage).style.display = 'flex';
         }
+    </script>
+    <script>
+    const nextBtn = document.querySelector('#nextButton');
+    const container3 = document.querySelector('#container3');
+    nextBtn.addEventListener('click',function(){
+        const container1 = document.querySelector('#container1');
+        container1.style.display = 'none';
+        container3.style.display = 'flex';
+        localStorage.setItem('currentPage', 'container3');
     });
 
-    previousBtn.addEventListener('click', function () {
+    const previousBtn = document.querySelector('#PreviousBtn');
+    previousBtn.addEventListener('click',function(){
+        const container1 = document.querySelector('#container1');
+        const container3 = document.querySelector('#container3');
         container3.style.display = 'none';
         container1.style.display = 'flex';
         localStorage.setItem('currentPage', 'container1');
     });
+    </script>
+    <script>
+        //  document.querySelector('#submitBtn').addEventListener('click', function(event) {
+        //     const form = document.querySelector('#form3');
+        //     if (form.checkValidity()) {
+        //         // Simulate form submission
+        //         // You can replace this part with actual form submission logic using fetch or XMLHttpRequest
+        //         setTimeout(() => {
+        //             document.getElementById('container3').style.display = 'none';
+        //             document.getElementById('container4').style.display = 'flex';
+        //             localStorage.setItem('currentPage', 'container4');
+        //         }, 1000); // Simulating a delay for form submission
+        //     } else {
+        //         event.preventDefault();
+        //         form.reportValidity(); // Display validation messages
+        //     }
+        // });
+    </script>
+    <script>
+ document.querySelector('#submitBtn').addEventListener('click', async function(event) {
+            event.preventDefault(); // Prevent default form submission
 
-    function validateInput(inputField, regex, errorSpan) {
-        if (!regex.test(inputField.value)) {
-            errorSpan.style.display = "block";
-            inputField.style.border = "2px solid red";
-        } else {
-            errorSpan.style.display = "none";
-            inputField.style.border = "";
-        }
-    }
+            const formData = new FormData(document.querySelector('#container4'));
+            try {
+                const response = await fetch('/user/register', {
+                    method: 'POST',
+                    body: formData
+                });
 
-    const firstNameInput = document.getElementById("firstName");
-    const lastNameInput = document.getElementById("lastName");
-    const emailInput = document.getElementById("email");
-
-    firstNameInput.addEventListener("blur", function () {
-        validateInput(this, /^[A-Za-z]+$/, document.getElementById("firstNameError"));
-    });
-
-    lastNameInput.addEventListener("blur", function () {
-        validateInput(this, /^[A-Za-z]+$/, document.getElementById("lastNameError"));
-    });
-
-    emailInput.addEventListener("blur", function () {
-        validateInput(this, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, document.getElementById("emailError"));
-    });
-
-    const passwordInput = document.getElementById('password');
-    const errorMsg = document.getElementById('error-msg');
-    passwordInput.addEventListener('input', function () {
-        if (passwordInput.value.length > 8) {
-            errorMsg.style.display = 'block';
-            passwordInput.value = passwordInput.value.slice(0, 8);
-        } else {
-            errorMsg.style.display = 'none';
-        }
-    });
-
-
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
-
-        passwordInput.addEventListener('input', function () {
-            if (!passwordRegex.test(passwordInput.value)) {
-                errorMsg.style.display = 'block';
-                errorMsg.textContent = 'Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character.';
-            } else {
-                errorMsg.style.display = 'none';
+                const result = await response.json();
+                if (result.success) {
+                    document.getElementById('container3').style.display = 'none';
+                    document.getElementById('container4').style.display = 'flex';
+                    // localStorage.setItem('currentPage', 'container4');
+                } else {
+                    // Handle failure (e.g., show an error message)
+                    alert(result.message); 
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
         });
-
-    const phoneInput = document.getElementById('phone');
-    const phoneError = document.getElementById('error');
-    phoneInput.addEventListener('input', function () {
-        phoneInput.value = phoneInput.value.replace(/\D/g, '');
-        if (phoneInput.value.length > 10) {
-            phoneError.style.display = 'block';
-        } else {
-            phoneError.style.display = 'none';
-        }
-    });
-
-    function validateForm() {
-        let isValid = true;
-        const errorSpans = document.querySelectorAll("span");
-        errorSpans.forEach(span => {
-            if (span.style.display === "block") {
-                isValid = false;
-            }
-        });
-        return isValid;
-    }
-});
-</script>
+    </script>
+    
 </body>
 </html>
