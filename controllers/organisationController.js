@@ -1,4 +1,6 @@
-const Organisation = require("../models/Organisation");
+// controllers/organisationController.js
+const Organisation = require("../models/Organisation"); // Correct path
+
 
 // Register Organization
 const registerOrganisation = async (req, res) => {
@@ -43,71 +45,3 @@ module.exports = {
   registerOrganisation,
   displayDashboard,
 };
-
-
-// const Organisation = require('../models/Organisation');
-
-// // Controller to handle creating a new organization
-// exports.createOrganisation = async (req, res) => {
-//   try {
-//     const {
-//       organisationName,
-//       city,
-//       state,
-//       ownerName,
-//       contactNumber,
-//       registrationNumber,
-//       websiteLink
-//     } = req.body;
-
-//     // Check if files are uploaded
-//     const certificateFile = req.files.certificateFile;
-//     const certificateFile2 = req.files.certificateFile2;
-//     const certificateFile3 = req.files.certificateFile3;
-
-//     // Convert the uploaded files to binary (buffer)
-//     const certificateFileData = {
-//       data: certificateFile.data, // binary data from the uploaded file
-//       contentType: certificateFile.mimetype
-//     };
-
-//     const certificateFile2Data = {
-//       data: certificateFile2.data,
-//       contentType: certificateFile2.mimetype
-//     };
-
-//     const certificateFile3Data = {
-//       data: certificateFile3.data,
-//       contentType: certificateFile3.mimetype
-//     };
-
-//     // Create a new organization instance
-//     const newOrganisation = new Organisation({
-//       organisationName,
-//       city,
-//       state,
-//       ownerName,
-//       contactNumber,
-//       registrationNumber,
-//       websiteLink,
-//       certificateFile: certificateFileData,   // store binary data
-//       certificateFile2: certificateFile2Data, // store binary data
-//       certificateFile3: certificateFile3Data  // store binary data
-//     });
-
-//     // Save organization to the database
-//     await newOrganisation.save();
-
-//     // Success response
-//     // res.status(201).json({ message: 'Organisation created successfully', organisation: newOrganisation });
-//     res.redirect("/organization-dashboard")
-//   } catch (error) {
-//     console.error(error);
-
-//     if (error.code === 11000) {
-//       res.status(400).json({ message: 'Duplicate key error: Organisation or registration number already exists.' });
-//     } else {
-//       res.status(400).json({ message: 'Error creating organisation', error: error.message });
-//     }
-//   }
-// };
