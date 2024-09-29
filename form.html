@@ -1,0 +1,270 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Here</title>
+    <link rel="stylesheet" href="../../css/form.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <style>
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .form-group span {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            font-size: 0.75em;
+            color: red;
+            display: none;
+        }
+
+        #firstNameError,
+        #lastNameError,
+        #emailError,
+        #error-msg,
+        #error {
+            font-size: 0.75em;
+            color: red;
+        }
+    </style>
+</head>
+<body onload="loadPage()">
+    <div class="headings">
+        <h1>Registration</h1>
+        <h3>Research Innovation & Discovery</h3>
+    </div>
+
+    <div class="container" id="container1" style="display: block;">
+        <div class="img">
+            <img src="../assets/images/step-1.png" alt="">
+        </div>
+
+        <form action="/user/register" method="post" class="form">
+            <div id="form1">
+                <div class="form-group">
+                    <label>First Name <span style="color: red; font-weight: bold;">*</span></label>
+                    <input type="text" id="firstName" name="userName" pattern="[A-Za-z]+" required placeholder="Enter First Name">
+                    <span id="firstNameError">Please enter a valid first name.</span>
+                </div>
+                <div class="form-group">
+                    <label>Last Name <span style="color: red; font-weight: bold;">*</span></label>
+                    <input type="text" id="lastName" name="lastName" required placeholder="Enter Last Name">
+                    <span id="lastNameError">Please enter a valid last name.</span>
+                </div>
+                <div class="form-group">
+                    <label>Email Address <span style="color: red; font-weight: bold;">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="youremail@gmail.com" required>
+                    <span id="emailError">Please enter a valid email.</span>
+                </div>
+                <div class="form-group">
+                    <label>Create Password <span style="color: red; font-weight: bold;">*</span></label>
+                    <input type="password" id="password" name="password" placeholder="*" required>
+                    <span id="error-msg">8 digit password allowed.</span>
+                </div>
+            </div>
+            <button id="nextButton">Next</button>
+            <br>
+            <div class="anAccount">
+                <span class="login-span">Already have an account? <a>Login</a></span>
+            </div>
+        
+    </div>
+
+    <div class="container" id="container3" style="display: none;">
+        <div class="img">
+            <img src="../assets/images/step-2.png" alt="">
+        </div>
+        <div id="form3">
+            <div class="form-group">
+                <label>Gender <span style="color: red; font-weight: bold;">*</span></label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Mobile Number <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter mobile number" maxlength="10">
+                <span id="error">Only 10 digits allowed</span>
+            </div>
+            <div class="form-group">
+                <label>Date of Birth <span style="color: red; font-weight: bold;">*</span></label>
+                <input maxlength="10" type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" required pattern="\d{2}/\d{2}/\d{4}" oninput="formatDate(this)" onblur="validateDate(this)">
+                <small id="dob-error" style="color: red; display: none;">Please enter a valid date in dd/mm/yyyy format.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="role">Role <span style="color: red; font-weight: bold;">*</span></label>
+                <input type="text" id="role" name="role" placeholder="Search for a role" autocomplete="off" list="roleList" required>
+                <datalist id="roleList">
+                    <option value="organisation">Organisation</option>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                </datalist>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="PreviousBtn" type="button">Previous</button>
+            <button id="submit-btn" type="submit">Submit</button>
+        </div>
+    </form>
+        <br>
+        <div class="anAccount">
+            <span class="login-span">Already have an account? <a>Login</a></span>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright ©2024, RID | TWF (TWKSAA WELFARE FOUNDATION). All Rights Reserved.</p>
+        <div class="links">
+            <span><a href="">Home</a> | <a href="">Terms & Conditions</a> | <a href="">Privacy Policy</a> | <a href="">Feedback</a></span>
+        </div>
+    </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const nextBtn = document.querySelector('#nextButton');
+    const previousBtn = document.querySelector('#PreviousBtn');
+    const container1 = document.querySelector('#container1');
+    const container3 = document.querySelector('#container3');
+
+    nextBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (validateForm()) {
+            container1.style.display = 'none';
+            container3.style.display = 'flex';
+            localStorage.setItem('currentPage', 'container3');
+        }
+    });
+
+    previousBtn.addEventListener('click', function () {
+        container3.style.display = 'none';
+        container1.style.display = 'flex';
+        localStorage.setItem('currentPage', 'container1');
+    });
+
+    function validateInput(inputField, regex, errorSpan) {
+        if (!regex.test(inputField.value)) {
+            errorSpan.style.display = "block";
+            inputField.style.border = "2px solid red";
+        } else {
+            errorSpan.style.display = "none";
+            inputField.style.border = "";
+        }
+    }
+
+    const firstNameInput = document.getElementById("firstName");
+    const lastNameInput = document.getElementById("lastName");
+    const emailInput = document.getElementById("email");
+
+    firstNameInput.addEventListener("blur", function () {
+        validateInput(this, /^[A-Za-z]+$/, document.getElementById("firstNameError"));
+    });
+
+    lastNameInput.addEventListener("blur", function () {
+        validateInput(this, /^[A-Za-z]+$/, document.getElementById("lastNameError"));
+    });
+
+    emailInput.addEventListener("blur", function () {
+        validateInput(this, /^[^\s@]+@[^\s@]+\.[^\s@]+$/, document.getElementById("emailError"));
+    });
+
+    const passwordInput = document.getElementById('password');
+    const errorMsg = document.getElementById('error-msg');
+    passwordInput.addEventListener('input', function () {
+        if (passwordInput.value.length > 8) {
+            errorMsg.style.display = 'block';
+            passwordInput.value = passwordInput.value.slice(0, 8);
+        } else {
+            errorMsg.style.display = 'none';
+        }
+    });
+
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{8,}$/;
+
+        passwordInput.addEventListener('input', function () {
+            if (!passwordRegex.test(passwordInput.value)) {
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = 'Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character.';
+            } else {
+                errorMsg.style.display = 'none';
+            }
+        });
+
+    const phoneInput = document.getElementById('phone');
+    const phoneError = document.getElementById('error');
+    phoneInput.addEventListener('input', function () {
+        phoneInput.value = phoneInput.value.replace(/\D/g, '');
+        if (phoneInput.value.length > 10) {
+            phoneError.style.display = 'block';
+        } else {
+            phoneError.style.display = 'none';
+        }
+    });
+
+    function validateForm() {
+        let isValid = true;
+        const errorSpans = document.querySelectorAll("span");
+        errorSpans.forEach(span => {
+            if (span.style.display === "block") {
+                isValid = false;
+            }
+        });
+        return isValid;
+    }
+});
+
+function formatDate(input) {
+    let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+    if (value.length >= 2 && value.length <= 4) {
+        input.value = value.replace(/(\d{2})(\d{0,2})/, '$1/$2');
+    } else if (value.length > 4) {
+        input.value = value.replace(/(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3');
+    }
+}
+
+function validateDate(input) {
+    let value = input.value;
+    let dobError = document.getElementById("dob-error");
+
+    // Regular expression for dd/mm/yyyy format
+    let datePattern = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+    let match = value.match(datePattern);
+
+    if (match) {
+        let day = parseInt(match[1]);
+        let month = parseInt(match[2]);
+        let year = parseInt(match[3]);
+
+        // Check for valid month and day ranges
+        if (month >= 1 && month <= 12 && day >= 1 && day <= daysInMonth(month, year)) {
+            dobError.style.display = 'none'; // Valid date
+        } else {
+            dobError.style.display = 'block'; // Invalid date
+        }
+    } else {
+        dobError.style.display = 'block'; // Invalid format
+    }
+}
+
+function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+</script>
+</body>
+</html>

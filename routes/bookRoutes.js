@@ -28,18 +28,37 @@ router.get('/book/:id', bookController.getBookDetails);
 // Route to download the PDF of a specific book
 
 
-router.get('/download-pdf/:id', async (req, res) => {
-    try {
-        const book = await Book.findById(req.params.id);
-        if (!book || !book.pdf) {
-            return res.status(404).send('PDF not found');
-        }
-        res.contentType(book.pdf.contentType); // Set the content type of the response
+// router.get('/download-pdf/:id', async (req, res) => {
+//     try {
+//         const book = await Book.findById(req.params.id);
+//         if (!book || !book.pdf) {
+//             return res.status(404).send('PDF not found');
+//         }
+//         res.contentType(book.pdf.contentType); // Set the content type of the response
         
-        res.send(book.pdf.data); // Send the binary data
+//         res.send(book.pdf.data); // Send the binary data
+//     } catch (error) {
+//         console.error('Error downloading PDF:', error);
+//         res.status(500).send('Server error');
+//     }
+// });
+
+router.get('/download-pdf/:id', async (req, res) => {
+    const bookId = req.params.id; // Get the book ID from the request
+
+    try {
+        // Fetch the book from your database using the book ID
+        const book = await Book.findById(bookId);
+
+        if (!book || !book.pdfUrl) {
+            return res.status(404).send('PDF not found'); // Respond with 404 if not found
+        }
+
+        // Redirect to the Cloudinary URL for the PDF
+        res.redirect(book.pdfUrl);
     } catch (error) {
-        console.error('Error downloading PDF:', error);
-        res.status(500).send('Server error');
+        console.error('Error fetching the book for PDF download:', error);
+        res.status(500).send('Error fetching PDF');
     }
 });
 

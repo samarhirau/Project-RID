@@ -180,14 +180,15 @@ body {
     
   } */
  
+
 #forgetPass {
-  
+
   align-self: flex-end;
-  margin-top: -10px; 
-  font-size: 0.9em; 
-  color: #007BFF;   
+  margin-top: -10px;
+  font-size: 14px;
+  color: #007BFF;
   text-decoration: none;
-  padding:10px 5px;
+  padding: 10px 5px;
 }
 
 #forgetPass:hover {
@@ -218,7 +219,7 @@ body {
   text-align: left;
 }
 
-.email-label{
+.email-label {
   display: block;
   margin-bottom: 5px;
 }

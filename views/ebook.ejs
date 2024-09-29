@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- <link rel="stylesheet" href="/css/ebookstyle.css"> -->
     <link rel="stylesheet" href="/css/ebookstyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -41,10 +40,11 @@
                 %>
                     <a href="/book/<%= book._id %>" class="book-card-link" style="text-decoration: none;">
                       <div class="book-card">
-                          <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
+                        <img src="<%= book.image %>" alt="<%= book.title %>" />
+
                           <div class="title-desc">
                               <h3><%= book.title %></h3>
-                              <p class="desc"><%= book.description.substr(0,130) + "..." %></p>
+                              <p class="desc"><%= book.description.substr(0,100) + "..." %></p>
                               <p class="author-name">Author: <%= book.author %></p>
                               <div class="rating">
                                   <% for (let j = 0; j < 5; j++) { %>
@@ -90,21 +90,7 @@
                 </div>
             </div>
 
-            <!-- <div class="bookcard-holder">
-                <% moreBooks.forEach(book => { %>
-                <div class="book-card1">
-                    <img src="<%= book.image %>" alt="">
-                    <div class="title-desc1">
-                        <a class="readbtn" href="#pdfUrl">Read Now</a>
-                        <h3><%= book.title %></h3>
-                        <p>Publish Year: <%= book.publishYear %></p>
-                    </div>
-                </div>
-                <% }); %>
-            </div> -->
-
-       
-                <!-- Other sections remain the same -->
+        
             
                 <!-- Displaying the books array in reversed order -->
                 <div class="bookcard-holder">
@@ -122,7 +108,7 @@
                         shuffledBooksArray.forEach(book => { 
                     %>
                         <div class="book-card1">
-                            <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
+                            <img src="<%= book.image %>"  alt="<%= book.title %>">
                             <div class="title-desc1">
                                 <a class="readbtn" href="/book/<%= book._id %>">View Details</a>
                                 <h3><%= book.title %></h3>
@@ -136,25 +122,6 @@
 
             
 
-            <!-- Displaying the books array -->
-  
-            <!-- Displaying the moreBooks array -->
-            <!-- <div class="more-books-holder">
-                <% moreBooks.forEach(book => { %>
-                    <div class="book-card1">
-                        <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
-
-                        <div class="title-desc1">
-                            <a class="readbtn" href="#pdfUrl">Read Now</a>
-                            <h3><%= book.title %></h3>
-                            <p>Publish Year: <%= book.publishYear %></p>
-                            <p>Author: <%= book.author %></p>
-                            <p>Description: <%= book.description %></p>
-                            <p>Rating: <%= book.rating %></p>
-                        </div>
-                    </div>
-                <% }); %>
-            </div> -->
    
         </div>
     </div>
