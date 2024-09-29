@@ -5,92 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %> - Book Details</title>
 
-    <link rel="stylesheet" href="/css/detailebookstyle.css"> 
-
-    <!-- AJAX -->
+    <link rel="stylesheet" href="/css/detailebookstyle.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-
-    <!-- Custom CSS -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/flip-css/flipbook.style.css"
-    />
-  
+    <link rel="stylesheet" type="text/css" href="/flip-css/flipbook.style.css" />
     <link rel="stylesheet" type="text/css" href="/flip-css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="/flip-css/footer.css" />
-
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <!-- Include Flipbook JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="/flip-js/flipbook.min.js"></script>
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 
    
 
-
-
     <script type="text/javascript">
-        $(document).ready(function () {
-          // Flipbook initialization will happen only when the button is clicked
-          $('#read').on('click', function () {
-            $(this).flipBook({
-              //Layout Setting
-              pdfUrl: "<%= pdfUrl %>",
-              lightBox: true,
-              layout: 3,
-              currentPage: { vAlign: "bottom", hAlign: "left" },
-              // BTN SETTING
-              btnShare: { enabled: false },
-              btnPrint: { hideOnMobile: true },
-              btnDownloadPages: {
-                enabled: true,
-                title: "Download pages",
-                icon: "fa-download",
-                icon2: "file_download",
-                url: "<%= downloadUrl %>",
-                name: "allPages.zip",
-                hideOnMobile: false,
-              },
-              btnColor: "rgb(255,0,0)",
-              sideBtnColor: "#FAFAFA;",
-              sideBtnSize: 30,
-              sideBtnBackground: "rgb(26, 88, 235)",
-              sideBtnRadius: 0,
-              btnSound: { vAlign: "top", hAlign: "left" },
-              btnAutoplay: { vAlign: "top", hAlign: "left" },
+    $(document).ready(function () {
+    $('#read').on('click', function () {
+        const book = <%- JSON.stringify(book) %>;
+
+        if (book && book.pdf && book.pdf.data) {
+    if (Array.isArray(book.pdf.data.data)) {
+        const byteArray = new Uint8Array(book.pdf.data.data);
+        const blob = new Blob([byteArray], { type: book.pdf.contentType });
+        const pdfUrl = URL.createObjectURL(blob);
+
+        // Load the PDF using pdf.js
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+        loadingTask.promise
+            .then(function(pdf) {
+                console.log('PDF loaded successfully');
+                // You can use pdf.getPage(), etc. here
+            })
+            .catch(function(error) {
+                console.error('Error during PDF loading: ', error);
             });
-          });
-        });
-      </script>
-      
+    } else {
+        console.error("PDF data is not in the expected format.");
+    }
+} else {
+    console.error("Book or PDF data is not available.");
+}
+
+            }
+        
+);
+
+  </script>
+  
+  
+  
+  
+
+
+  
+  
+
     <style>
       .fa-angle-left {
         font-size: 1.5rem;
         background: rgb(0, 0, 0);
       }
-
       .fa-angle-right {
         font-size: 1.5rem;
         background: rgb(244, 197, 126);
@@ -98,6 +73,7 @@
     </style>
   </head>
   <body>
+ BalramS
     <!-- <header>
       <h1>Book Details</h1>
       <a href="/ebook">Back to eBooks</a>
@@ -164,57 +140,76 @@
           <div class="left-content">
               <div class="logo">
                   <img src="../assets/images/final_logo-Copy.svg" width="256px" alt="RID logo">
+
+    <% if (book) { %>
+      <header>
+          <div class="upper-header">
+              <div class="left-content">
+                  <span>Website :</span> RID (Research Discovery & Innovation) by TWKSAA Welfare Foundation |
+                  <span>Helpline :</span> +91 98927 82728 | <span>Email :</span> supportrid@gmail.com
+              </div>
+              <div class="right-content" style="display: flex; align-items: center; margin: 0 8px;">
+                  <span class="material-symbols-outlined" style="font-size: 15px;">important_devices</span><a href="#">Main Content</a> |
+                  <a href="">+A</a> <a href="">A</a> <a href="">A-</a> |
+                  <span class="material-symbols-outlined" style="font-size: 15px;">forum</span> <a href="#">Feedback</a> |
+                  <span class="material-symbols-outlined" style="font-size: 15px;">support_agent</span> <a href="#">Support</a>
+
               </div>
           </div>
-  </header>
-
-  <div class="main-panel">
-      <h3 style="background-image: linear-gradient(#1284F6, #F14372);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-left: 35px;
-      margin-bottom: 30px;
-      margin-top: 10px;">E-Book Description</h3>
-      <div class="book-detail">
-          <div class="book-image">
-              <img src="data:image/jpeg;base64,<%= book.image %>" alt="" width="200" height="480">
+          <div class="lower-header">
+              <div class="left-content">
+                  <div class="logo">
+                      <img src="../assets/RID Concept Long.svg" width="256px" alt="RID logo" />
+                  </div>
+              </div>
           </div>
+      </header>
 
-          <div class="book-info">
+      <div class="main-panel">
+          <h3 style="background-image: linear-gradient(#1284F6, #F14372);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-left: 35px;
+          margin-bottom: 30px;
+          margin-top: 10px;">E-Book Description</h3>
+          <div class="book-detail">
+              <div class="book-image">
+                  <img src="<%= imageUrl %>" alt="Book Image" style="max-width: 300px;" />
+              </div>
 
-              <h2 style="text-transform: capitalize;">
-                  <%= book.title %>
-              </h2><br>
+              <div class="book-info">
+                  <h2 style="text-transform: capitalize;">
+                      <%= book.title %>
+                  </h2>
+                  <p><strong style="color: #006989;">Author's Name: </strong>
+                      <%= book.author %>
+                  </p>
+                  <p><strong style="color: #006989;">Publishing Year: </strong>
+                      <%= book.publishYear %>
+                  </p>
+                  <p><strong>Description: </strong>
+                      <%= book.description %>
+                  </p>
+                  <p><strong>Average Rating: </strong>
+                      <%= book.rating %>
+                  </p>
 
-
-              <p><strong style="color: #006989;">Author's Name: </strong>
-                  <%= book.author %>
-              </p>
-              <p><strong style="color: #006989;">Publishing Year: </strong>
-                  <%= book.publishYear %>
-              </p>
-              <p><strong>Description: </strong>
-                  <%= book.description %>
-              </p><br>
-              <p><strong>Average Rating: </strong>
-                  <%= book.rating %>
-              </p><br><br><br><br><br><br><br><br><br>
-
-
-              <div class="buttons" style="display: flex; gap: 10px;">
-                <button id="read" class="viewBTN" style="display: flex; align-items: center; gap: 5px;">
-                    <span class="material-symbols-outlined">menu_book</span>View
-                </button>
-                
-                <button class="readNow">
-                    <a style="color: white; text-decoration: none;" href="/download-pdf/<%= book._id %>" class="download-btn">Download PDF</a>
-                </button>
-            </div>
-            
-
+                  <div class="buttons" style="display: flex; gap: 10px;">
+                      <button id="read" class="viewBTN" style="display: flex; align-items: center; gap: 5px;">
+                          <span class="material-symbols-outlined">menu_book</span>View
+                      </button>
+                      <button class="readNow">
+                          <a style="color: white; text-decoration: none;" href="/download-pdf/<%= book.pdfUrl %>" class="download-btn">Download PDF</a>
+                      </button>
+                  </div>
+              </div>
           </div>
-
       </div>
-</body>
+    <% } else { %>
+      <p>Book not found.</p>
+    <% } %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
   </body>
 </html>

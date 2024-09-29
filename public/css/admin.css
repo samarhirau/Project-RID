@@ -77,13 +77,39 @@ header .lower-header .right-content button span{
 }
 
 .main-content .side-bar{
-    width: 20%;
+    /* width: 20%;
     height: 82.2vh;
     border-right: 0.5px solid #0A66C280;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2 , 1fr);
+    grid-template-rows: repeat(2 , 1fr); */
+    /* width: 250px; 
+    background-color: #f4f4f4;
+    padding: 20px;
+    transition: transform 0.3s ease; 
+    transform: translateX(-100%);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 1000;  */
+    width: 20%; /* Default sidebar width for larger screens */
+        height: 82.2vh;
+        border-right: 0.5px solid #0A66C280;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        position: relative;
+        transform: none; /* No sliding effect */
+        z-index: 1; /* Keep it as part of the regular layout */
+        height: 100vh;
 }
+
+.side-bar.active {
+    transform: translateX(0); /* Show sidebar */
+}
+
+
 
 .main-content .side-bar  .div1{
     align-self: flex-start;
@@ -460,7 +486,10 @@ header .lower-header .right-content button span{
     color: rgb(24, 21, 21);
 }
 
+
 /* Admin change role css */
+
+ main
 #changeRole {
     width: 400px;
     margin: 40px auto;
@@ -485,7 +514,11 @@ header .lower-header .right-content button span{
   #changeRole button {
     width: 100%;
     height: 40px;
+
     background-color: #4CAF50;
+
+    background-color: #0a66c2;
+ main
     color: #fff;
     padding: 10px;
     border: none;
@@ -497,7 +530,11 @@ header .lower-header .right-content button span{
   }
   
   #changeRole button:hover {
+
     background-color: #3e8e41;
+
+    background-color: #0a66c2;
+ main
     
   }
   
@@ -522,3 +559,266 @@ header .lower-header .right-content button span{
     margin-bottom: 10px;
   }
 
+
+
+
+
+.menu-icon span{
+    font-size: 35px;
+    cursor: pointer;
+    color: #0A66C2;
+    /* margin: 10px; */
+    padding:  20px;
+}
+
+.close-btn span{
+    font-size: 35px;
+    cursor: pointer;
+    color: #f4f4f4;
+    /* margin: 10px; */
+   
+}
+
+
+
+
+
+
+.hide {
+    display: none;
+}
+
+.menu-icon{
+    display: none;
+}
+
+
+
+  @media (max-width: 480px) {
+    .close-btn{
+        display: block !important;
+    }
+    .main-content {
+        flex-direction: column; /* Stack elements vertically */
+    }
+    header{
+        display: none;
+    }
+
+    .main-content .side-bar {
+        width: 100%; /* Full width for the sidebar */
+        height: 100vh; /* Allow auto height */
+        position: absolute; /* Position absolutely */
+        top: 0; /* Align to the top */
+        left: -100%; /* Initially hide off-screen */
+        transition: left 0.3s ease; /* Smooth transition for sliding in/out */
+        z-index: 1000; /* Ensure it's on top */
+        
+    }
+
+    .main-content .side-bar.active {
+        left: 0; /* Show sidebar when active */
+    }
+
+ 
+
+    header .lower-header {
+        padding: 8px 20px; /* Adjust padding for smaller screens */
+    }
+
+    header .lower-header .right-content button {
+        padding: 7px 10px; /* Adjust button padding */
+    }
+
+    .main-content .main-area {
+        padding: 15px; /* Adjust padding in main area */
+    }
+
+    .main-area h2 {
+        font-size: 20px; /* Adjust font size for headers */
+    }
+
+    #changeRole {
+        width: 90%; /* Make changeRole section responsive */
+        margin: 20px auto; /* Adjust margin */
+    }
+
+    #changeRole input[type="text"],
+    #changeRole button {
+        width: 100%; /* Make inputs and buttons full width */
+    }
+
+    .main-area .level-1 .card-1,
+    .main-area .level-2 .card-2,
+    .main-area .level-3 .card-3 {
+        width: 100%; /* Full width for cards */
+    }
+
+    /* Adjust other elements as necessary */
+    
+        .menu-icon {
+            display: block; /* Show menu icon on smaller screens */
+        }
+    
+        .main-content {
+            margin-left: 0; /* Reset margin when sidebar is active */
+        }
+    
+        .main-area {
+            padding: 20px; /* Adjust padding */
+        }
+ 
+           
+
+        
+
+        
+    
+}
+
+@media (max-width: 480px) {
+    /* Table container for horizontal scrolling */
+    .table-container {
+        width: 100vw;
+        height: 100vh;
+        overflow-x: auto; /* Enables horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling for mobile */
+        overflow-y: hidden; /* Prevent vertical overflow */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px; /* Ensures the table has a minimum width for scrolling */
+    }
+
+    /* Styling table rows */
+    table tr {
+        display: table-row; /* Maintain table structure */
+        margin-bottom: 0; /* Removes bottom margin for table rows */
+        border-bottom: 1px solid #ccc;
+        overflow: hidden; /* Prevent overflow in rows */
+    }
+
+    /* Styling table headers and data */
+    table th, table td {
+        display: table-cell; /* Keeps proper table structure */
+        padding: 10px;
+        text-align: left; /* Align text to the left for readability */
+        font-size: 14px;
+        border: 1px solid #ddd; /* Adds borders between cells */
+    }
+
+    /* Table header styling */
+    table th {
+        background-color: #003366; /* Dark background for header */
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    /* Styling for links in table */
+    table a {
+        font-size: 12px;
+        color: #0a66c2;
+        text-decoration: none;
+    }
+
+    /* Hover effect for links */
+    table a:hover {
+        text-decoration: underline;
+    }
+
+
+}
+@media (max-width: 480px) {
+    /* Upload form container */
+    .main-content .main-area1 .uploadForm {
+      padding: 10px;
+      width: 100%;
+      align-items: center; 
+    }
+
+     .main-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+
+     }
+  
+   
+  
+    /* Form section adjustments */
+    .main-content .main-area1 .uploadForm section {
+      grid-template-columns: 1fr; /* Single column on small screens */
+      grid-template-rows: auto; /* Allow rows to adapt to content */
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      gap: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  
+    /* Form group adjustments */
+    .main-content .main-area1 .uploadForm section .form-group {
+      width: 100%; /* Ensure form groups take full width */
+    }
+  
+    /* Input adjustments */
+    .main-content .main-area1 .uploadForm section .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+  
+    /* Drop area for file upload */
+    .main-content .main-area1 .uploadForm section .form-group:nth-child(5) {
+      grid-column: auto; /* Reset grid placement */
+      grid-row: auto;
+    }
+  
+    /* Adjusting the height of the drop area */
+    .main-content .main-area1 .uploadForm section .form-group:nth-child(5) input {
+      height: auto; /* Allow height to adjust */
+    }
+  
+    /* Drop area styling */
+    #dropArea {
+      width: 100%;
+      padding: 20px;
+      border: 2px dashed #ccc;
+      background-color: #f9f9f9;
+      text-align: center;
+      cursor: pointer;
+    }
+  
+    /* Submit button */
+    .main-content .main-area1 .uploadForm button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #0a66c2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+  
+
+
+  
+
+
+
+
+
+
+
+
+ main
