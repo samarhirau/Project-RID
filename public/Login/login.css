@@ -103,7 +103,7 @@ body {
    
     overflow: hidden;
   }
-  /* .right-content{
+  .right-content{
     width: 50vw;
     height: 100vh;
   }
@@ -120,8 +120,8 @@ body {
     background-position: center;
     background: rgba(10, 102, 194, 0.25);
     padding: 0 0 0 20px;
-  } */
-  .left-content h2{
+  }
+  .left-content h3{
     color: rgba(10, 102, 194, 1);
     font-size: 30px;
     font-weight: normal;
@@ -169,7 +169,7 @@ body {
     justify-content: center;
     gap: 10px;
   }
-  /* #onLogo{
+  #onLogo{
     background: #fff;
     padding: 10px 20px;
     border-radius: 10px 0 0 10px;
@@ -178,7 +178,7 @@ body {
     bottom: 40px;
     right: 0;
     
-  } */
+  }
  
 
 #forgetPass {
@@ -253,17 +253,18 @@ body {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   body {
-      margin-left: 0; /* Center for mobile */
+      margin-right: 20px; /* Center for mobile */
       font-size: 10px;
   }
 
   .left-content {
       width: 90vw; /* Adjust width for smaller screens */
-      padding: 20px;
+      padding: 0 22px 0 0;
   }
 
   h1 {
-      font-size: 15px; /* Smaller font size for headings */
+        font-size: 28px;
+        margin-top: 16px; /* Smaller font size for headings */
   }
 
   .inner-div {
@@ -272,46 +273,51 @@ body {
   }
 
   .footer .text {
-      font-size: 6px; /* Smaller footer text */
+      font-size: 12px; /* Smaller footer text */
   }
 }
 
 @media (max-width: 480px) {
-  .left-content h2 {
-      font-size: 12px; /* Further reduce font size */
+  .left-content h3 {
+      font-size: 18px; /* Further reduce font size */
   }
 
   button, input[type="text"], input[type="password"] {
       padding: 8px; /* Adjust padding */
-      font-size: 7px; /* Smaller font size */
+      font-size: 14px; /* Smaller font size */
   }
 
   label{
-    font-size: 8px;
+    font-size: 16px;
   }
   
   h1 {
-    font-size: 20px;
+    font-size: 28px;
+    margin-top: 16px;
   }
   
   input[type="text"],
   input[type="password"] {
-    font-size: 8px;
+    font-size: 16px;
   }
 
   button {
-    font-size: 8px;
+    font-size: 16px;
   }
   
-  .left-content h2{
-    font-size: 15px;
+  .left-content h3{
+    font-size: 18px;
   }
 
   .footer .text{
-    font-size: 7px;
+    font-size: 12px;
   }
 
   .footer .links a{
-    font-size: 10px;
+    font-size: 12px;
+  }
+
+  .right-content{
+    display: none;
   }
 }
