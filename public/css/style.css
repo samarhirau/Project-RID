@@ -708,7 +708,7 @@ body {
   /* color: blue; */
 }
 .home-content .content-box {
-  height: 300px;
+  height: 100%;
   width: 100%;
   /* background: grey; */
   border: 1px solid #cac6c6;
