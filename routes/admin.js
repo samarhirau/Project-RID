@@ -73,7 +73,7 @@ router.post('/change-role', authenticateJWT, authorizeRole('admin'), async (req,
 
 router.get('/all-admins', authenticateJWT, authorizeRole('admin'), async (req, res) => {
   try {
-    const admins = await User.find({ role: 'admin' }, 'email role'); // Fetch all users with 'admin' role
+    const admins = await User.find({ role: 'admin' }, 'email role name lastname gender createdAt '); // Fetch all users with 'admin' role
 
     if (admins.length === 0) {
       return res.status(404).json({ message: 'No admins found' });

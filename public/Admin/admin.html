@@ -14,21 +14,128 @@
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <style>
+    /* Toast container style */
+    .toastify-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Individual toast notification style */
+    .toastify-toast {
+      background: #333; /* Dark background */
+      color: #fff; /* White text color */
+      border-radius: 8px; /* More rounded corners */
+      padding: 15px 20px; /* More padding */
+      margin: 10px 0; /* Spacing between toasts */
+      font-size: 15px; /* Slightly larger font size */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden; /* Ensure the timer line stays within bounds */
+    }
+
+    /* Timer line style */
+    .toastify-toast .timer-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: rgba(
+        255,
+        255,
+        255,
+        0.6
+      ); /* Light color for timer line */
+      width: 100%;
+      transform: translateX(-100%); /* Start with timer line off-screen */
+      transition: transform 3s linear; /* Timer line animation */
+    }
+
+    /* Close button style */
+    .toastify-toast .toastify-close {
+      cursor: pointer;
+      color: #ff5722; /* Close button color */
+      font-size: 18px;
+    }
+
+    /* Toast types */
+    .toastify-success {
+      background: #4caf50; /* Green background for success */
+    }
+
+    .toastify-error {
+      background: #f44336; /* Red background for error */
+    }
+
+    .toastify-info {
+      background: orange; /* Blue background for info */
+    }
+  </style>
+
+  <style>
+    .student-list {
+      padding: 20px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+    }
+
+    .student-list h3 {
+      margin: 0 0 20px 0;
+    }
+
+    table {
+      width: 100%;
+      /* border-collapse: collapse; */
+      overflow-x: auto; /* Enable horizontal scrolling */
+      white-space: nowrap; /* Prevent wrapping */
+      border-collapse: collapse; /* Clean table appearance */
+    }
+
+    table th,
+    table td {
+      padding: 8px;
+      border: 1px solid #ccc;
+      text-align: left;
+      min-width: auto;
+    }
+
+    table th {
+      background-color: #003366;
+      color: white;
+    }
+
+    table a {
+      color: #003366;
+      text-decoration: none;
+    }
+
+    table a:hover {
+      text-decoration: underline;
+    }
+    .active {
+      background: #0a66c2 !important;
+
+      color: #fff !important;
+    }
+  </style>
   </head>
   <body>
-    <!-- <div id="login-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <form id="login-form">
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-      </div>
-      <button type="submit">Login</button>
-    </form>
-  </div> -->
     <div id="admin-content">
       <header>
         <div class="upper-header">
@@ -75,124 +182,7 @@
           </div>
         </div>
 
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-        />
-        <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-        <style>
-          /* Toast container style */
-          .toastify-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-          }
-
-          /* Individual toast notification style */
-          .toastify-toast {
-            background: #333; /* Dark background */
-            color: #fff; /* White text color */
-            border-radius: 8px; /* More rounded corners */
-            padding: 15px 20px; /* More padding */
-            margin: 10px 0; /* Spacing between toasts */
-            font-size: 15px; /* Slightly larger font size */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden; /* Ensure the timer line stays within bounds */
-          }
-
-          /* Timer line style */
-          .toastify-toast .timer-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            background: rgba(
-              255,
-              255,
-              255,
-              0.6
-            ); /* Light color for timer line */
-            width: 100%;
-            transform: translateX(-100%); /* Start with timer line off-screen */
-            transition: transform 3s linear; /* Timer line animation */
-          }
-
-          /* Close button style */
-          .toastify-toast .toastify-close {
-            cursor: pointer;
-            color: #ff5722; /* Close button color */
-            font-size: 18px;
-          }
-
-          /* Toast types */
-          .toastify-success {
-            background: #4caf50; /* Green background for success */
-          }
-
-          .toastify-error {
-            background: #f44336; /* Red background for error */
-          }
-
-          .toastify-info {
-            background: orange; /* Blue background for info */
-          }
-        </style>
-
-        <style>
-          .student-list {
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow-x: auto;
-          }
-
-          .student-list h3 {
-            margin: 0 0 20px 0;
-          }
-
-          table {
-            width: 100%;
-            /* border-collapse: collapse; */
-            overflow-x: auto; /* Enable horizontal scrolling */
-            white-space: nowrap; /* Prevent wrapping */
-            border-collapse: collapse; /* Clean table appearance */
-          }
-
-          table th,
-          table td {
-            padding: 8px;
-            border: 1px solid #ccc;
-            text-align: left;
-            min-width: auto;
-          }
-
-          table th {
-            background-color: #003366;
-            color: white;
-          }
-
-          table a {
-            color: #003366;
-            text-decoration: none;
-          }
-
-          table a:hover {
-            text-decoration: underline;
-          }
-          .active {
-            background: #0a66c2 !important;
-
-            color: #fff !important;
-          }
-        </style>
+       
       </header>
       <span class="menu-icon" onclick="toggleSidebar()"
         ><span class="material-symbols-outlined"> menu </span></span
@@ -348,16 +338,11 @@
           </div>
         </section>
 
-        <!-- <section id="allAdmins" style="display: none">
-          <div id="adminList" style="display: none">
-            <h2>All Admins</h2>
-            <ul id="admins"></ul>
-          </div>
-        </section> -->
 
         <section id="allAdmins">
-          <section class="student-list" id="adminList">
+          <section class="student-list" id="adminList" style="display: none;">
             <h3>List of Total Admin</h3>
+            <div class="table-container">
             <table>
               <thead>
                 <tr>
@@ -374,6 +359,7 @@
                 <!-- Rows will be populated here -->
               </tbody>
             </table>
+          </div>
           </section>
         </section>
 
@@ -460,12 +446,7 @@
       </div>
     </div>
     <script>
-      // function toggleSidebar() {
-      //     const sidebar = document.getElementById('sidebar');
-      //     const mainArea = document.getElementById('mainArea');
-      //     sidebar.classList.toggle('active');
-      //     mainArea.classList.add('hide');
-      // }
+   
       function toggleSidebar() {
         const sidebar = document.getElementById("sidebar");
         const mainArea = document.getElementById("mainArea");
@@ -556,11 +537,11 @@
                 const row = document.createElement("tr"); // Create a new table row for each admin
                 row.innerHTML = `
             <td>${index + 1}</td>
-            <td>${admin.name}</td>
+            <td>${admin.name} ${admin.lastname}</td>
             <td>${admin.email}</td>
             <td>${admin.role}</td>
             <td>${admin.gender}</td>
-            <td>${admin.createdAt}</td>
+            <td>${admin.createdAt.substr(0,10)}</td>
           `;
                 adminList.appendChild(row);
               });
