@@ -246,22 +246,7 @@ function showTotalList() {
   });
 
 
-  async function fetchRegistrationsCount() {
-    try {
-      const response = await fetch('/admin/registrations/count');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      document.getElementById('registrations-count').textContent = ` ${data.count}`;
-    } catch (error) {
-      document.getElementById('registrations-count').textContent = 'Failed to load number of registrations';
-      showToast('Error fetching registrations count', '#f44336');
-      console.error('Error fetching registrations count:', error);
-    }
-  }
 
-  fetchRegistrationsCount();
 
 
 

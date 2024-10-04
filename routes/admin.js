@@ -4,7 +4,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { addCertificate, getRegistrationsCount,getAdminCount,getStudentCount,getTeacherCount,getOrganisationCount } = require('../controllers/adminController');
+const { addCertificate, getRegistrationsCount,getAdminCount,getStudentCount,getTeacherCount,getOrganisationCount,getEbooksCount } = require('../controllers/adminController');
 const multer = require('multer');
 const authenticateJWT = require('../middleware/authMiddleware');
 const authorizeRole = require('../middleware/authorizeRole');
@@ -21,6 +21,9 @@ router.get('/admin-count', getAdminCount);
 router.get('/student-count', getStudentCount);
 router.get('/teacher-count',getTeacherCount);
 router.get('/organisation-count',getOrganisationCount);
+router.get('/admin/ebooks/count', getEbooksCount);
+
+
 router.get('/users', authenticateJWT, authorizeRole('admin'), async (req, res) => {
   try {
     const users = await User.find({}, 'email role gender name dob lastname'); // Fetch all users with email and role

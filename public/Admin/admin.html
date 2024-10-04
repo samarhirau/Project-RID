@@ -138,47 +138,66 @@
   <body>
     <div id="admin-content">
       <header>
-        <div class="upper-header">
-          <div class="left-content">
-            <span>Website :</span> RID (Research Discovery & Innovation) by
-            TWSKAA Welfare Foundation | <span>Helpline :</span> +91 98927 82728
-            | <span>Email :</span> supportrid@gmail.com
-          </div>
-          <div class="right-content">
-            <span class="material-symbols-outlined" style="font-size: 15px"
-              >important_devices</span
-            ><a href="#">Main Content</a> | <a href="">+A</a> <a href="">A</a>
-            <a href="">A-</a> |
-            <span class="material-symbols-outlined" style="font-size: 15px"
-              >forum</span
-            >
-            <a href="#">Feedback</a> |
-            <span class="material-symbols-outlined" style="font-size: 15px"
-              >support_agent</span
-            >
-            <a href="#">Support</a>
-          </div>
+       <div class="header">
+        <div class="web-text">
+          <p>
+            Website:
+            <span
+              >RID (Research Innovation & Discovery) by TWKSAA Welfare
+              Foundation
+            </span>
+          </p>
+
+          <p>Helpline: <span>+91-98927 82728 </span></p>
+          <p>Email: <span>supportid@gamil.com</span></p>
         </div>
+        <div class="right-text">
+          <a class="link" href="#"
+            ><object
+              class="svg-object"
+              data="/assets/icons/important_devices.svg"
+              type="image/svg+xml"
+            ></object
+            >Main Content</a
+          >
+          <a class="link" href="#">+A A A-</a>
+          <a class="link" href="#"
+            ><object
+              class="svg-object"
+              data="/assets/icons/forum.svg"
+              type="image/svg+xml"
+            ></object
+            >Feedback</a
+          >
+          <a class="link" href="#"
+            ><object
+              class="svg-object"
+              data="./assets/icons/support_agent.svg"
+              type="image/svg+xml"
+            ></object
+            >Support</a
+          >
+        </div>
+      </div>
         <div class="lower-header">
           <div class="left-content">
             <div class="logo">
-              <img src="../assets/images/imageLogo.png" alt="RID logo" />
+              <img src="../assets/RID Concept Long.svg" alt="RID logo" width="250" />
             </div>
           </div>
           <div class="right-content">
-            <button id="certificate" onclick="window.location.href= '/verify'">
-              <img
-                src="./assets/icons/workspace_premium.png"
-                style="
-                  filter: brightness(100);
-                  width: 21px;
-                  height: 21px;
-                  margin-right: 10px;
-                  text-align: center;
-                "
-                alt=""
-              /><span> Verify Certificate</span>
-            </button>
+        
+            <button
+            id="certificate"
+            onclick="window.location.href= '/verify'"
+          >
+            <span class="material-symbols-outlined">
+              developer_guide
+            </span>
+            Certificate
+          </button>
+           
+            
           </div>
         </div>
 
@@ -260,39 +279,63 @@
             </button>
           </footer>
         </div>
-        <div class="main-area" id="mainArea">
-          <h2>Dashboard Overview</h2>
-          <div id="div1">
-            <div>
-              <span class="material-symbols-outlined"> group </span>
-              <h3>Total Registration</h3>
-            </div>
-            <p id="registrations-count">Loading number of registrations...</p>
-          </div>
+      
 
-          <div class="div2">
-            <h1>Total Number of Admins</h1>
+        <div class="main-area" id="mainArea">
+          <h2>Dashboard (Overall Summary)</h2>
+          <!-- Overall Summary -->
+          <div class="summary-box green-box">
+            <span class="material-symbols-outlined"> group </span>
+            <h3>Total Registration</h3>
+            <p id="registrations-count">Loading..</p>
+          </div>
+        
+          <div class="summary-box red-box">
+            <span class="material-symbols-outlined"> picture_as_pdf </span>
+            <h3>Total PDF(s)</h3>
+            <p>43</p>
+          </div>
+        
+          <div class="summary-box orange-box">
+            <span class="material-symbols-outlined"> book </span>
+            <h3>Total E Book(s)</h3>
+            <p>32</p>
+          </div>
+        
+          <div class="summary-box pink-box">
+            <span class="material-symbols-outlined"> assignment </span>
+            <h3>Total RP(s)</h3>
+            <p>234</p>
+          </div>
+        
+          <h2>Role Based Summary</h2>
+          <!-- Role-Based Summary -->
+          <div class="role-box light-blue-box">
+            <span class="material-symbols-outlined"> admin_panel_settings </span>
+            <h3>Total Admin Assigned</h3>
             <p id="adminCount">Loading...</p>
           </div>
-
-          <hr />
-          <div class="div2">
-            <h1>Total Number of Students</h1>
-            <p id="studentCount">Loading...</p>
-          </div>
-
-          <hr />
-          <div class="div2">
-            <h1>Total Number of Teachers</h1>
+        
+          <div class="role-box light-blue-box">
+            <span class="material-symbols-outlined"> person </span>
+            <h3>Registered Teachers</h3>
             <p id="teacherCount">Loading...</p>
           </div>
-          <hr />
-          <div class="div2">
-            <h1>Total Number of Organisations</h1>
+        
+          <div class="role-box light-blue-box">
+            <span class="material-symbols-outlined"> school </span>
+            <h3>Registered Students</h3>
+            <p id="studentCount">Loading...</p>
+          </div>
+        
+          <div class="role-box light-blue-box">
+            <span class="material-symbols-outlined"> business </span>
+            <h3>Registered Organizations</h3>
             <p id="organisationCount">Loading...</p>
           </div>
-          <hr />
         </div>
+        
+
 
         <section class="student-list" id="table-list" style="display: none">
           <h3>List of Total Students</h3>
@@ -468,6 +511,45 @@
       }
     </script>
 
+    <script>
+        async function fetchRegistrationsCount() {
+    try {
+      const response = await fetch('/admin/registrations/count');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      document.getElementById('registrations-count').textContent = ` ${data.count}`;
+    } catch (error) {
+      document.getElementById('registrations-count').textContent = 'Failed to load number of registrations';
+      showToast('Error fetching registrations count', '#f44336');
+      console.error('Error fetching registrations count:', error);
+    }
+  }
+
+  fetchRegistrationsCount();
+    </script>
+
+    <script>
+      async function fetchEbooksCount() {
+  try {
+    const response = await fetch('/admin/ebooks/count');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    document.getElementById('ebooks-count').textContent = ` ${data.count}`;
+  } catch (error) {
+    document.getElementById('ebooks-count').textContent = 'Failed to load eBooks count';
+    showToast('Error fetching eBooks count', '#f44336');
+    console.error('Error fetching eBooks count:', error);
+  }
+}
+
+fetchEbooksCount();
+
+    </script>
+
     <script src="../js/showToast.js"></script>
     <script src="../js/admin.js"></script>
     <script>
@@ -595,7 +677,7 @@
           // Displaying the total number of admins
           document.getElementById(
             "adminCount"
-          ).innerText = `Total Admins: ${adminCount}`;
+          ).innerText = `${adminCount}`;
         } catch (error) {
           console.error("Error fetching admin count:", error);
           document.getElementById("adminCount").innerText =
@@ -622,7 +704,7 @@
           // Displaying the total number of students
           document.getElementById(
             "studentCount"
-          ).innerText = `Total Students: ${studentCount}`;
+          ).innerText = `${studentCount}`;
         } catch (error) {
           console.error("Error fetching student count:", error);
           document.getElementById("studentCount").innerText =
@@ -649,7 +731,7 @@
           // Displaying the total number of students
           document.getElementById(
             "teacherCount"
-          ).innerText = `Total Teachers: ${teacherCount}`;
+          ).innerText = `${teacherCount}`;
         } catch (error) {
           console.error("Error fetching teacher count:", error);
           document.getElementById("teacherCount").innerText =
@@ -676,7 +758,7 @@
           // Displaying the total number of students
           document.getElementById(
             "organisationCount"
-          ).innerText = `Total Organisations: ${organisationCount}`;
+          ).innerText = `${organisationCount}`;
         } catch (error) {
           console.error("Error fetching organisation count:", error);
           document.getElementById("organisationCount").innerText =

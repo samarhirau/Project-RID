@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+
+:root{
+    --header-color : #083d5d;
+}
 *{
     margin: 0;
     padding: 0;
@@ -14,28 +18,90 @@
     overflow: hidden;
 }
 
-header .upper-header{
-    background-color: #006989;
-    color: white;
+
+
+.header {
     display: flex;
-    font-size: small;
     justify-content: space-between;
-    padding: 5px 10px;
-}
-
-.upper-header .left-content span{
-    font-weight: 500;
-}
-
-.upper-header .right-content span{
-    align-content: end;
-}
-
-.upper-header .right-content a{
-    text-decoration: none;
+    align-items: center;
+    background-color: var(--header-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 40px;
+    width: 100%;
+    font-size: 14px;
+  }
+  .web-text p {
+    display: inline-block;
     color: white;
-    padding: 0px 3px;
-}
+    font-size: 0.6rem;
+    font-weight: 700;
+  }
+  .web-text p:first-child {
+    margin-left: 40px;
+  }
+  .web-text p span {
+    font-weight: 300;
+  }
+  .web-text p::after {
+    content: "|";
+    margin: 0 10px;
+    color: white;
+    font-weight: 300;
+  }
+  .web-text p:last-child::after {
+    content: "";
+  }
+  .right-text {
+    display: flex;
+  }
+  
+  .right-text .link {
+    display: flex;
+    align-items: center;
+  }
+  
+  .right-text .link .svg-object {
+    /* margin-right: 3px;  */
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .right-text .link {
+    color: white;
+    font-size: 0.6rem;
+    transition: all 0.3s ease;
+  }
+  .right-text a:last-child {
+    margin-right: 40px;
+  }
+  .right-text a::after {
+    content: "|";
+    margin: 0 8px;
+    color: white;
+    font-weight: 300;
+  }
+  .right-text a:last-child::after {
+    content: "";
+  }
+  #certificate {
+    background: #085d0f;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    /* height: 25px; */
+    /* width: 100px; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+
+
 
 header .lower-header{
     display: flex;
@@ -802,9 +868,99 @@ header .lower-header .right-content button span{
   
 
 
-
-
-
-
-
-
+  
+  /* Section heading */
+  .main-area h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  /* Summary boxes for overall summary */
+  .summary-box {
+    display: inline-block;
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 12px;
+    color: #333;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .summary-box h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .summary-box p {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .green-box {
+    background-color: #e6f7e9;
+    border-left: 8px solid #28a745;
+  }
+  
+  .red-box {
+    background-color: #ffe6e6;
+    border-left: 8px solid #dc3545;
+  }
+  
+  .orange-box {
+    background-color: #fff4e6;
+    border-left: 8px solid #fd7e14;
+  }
+  
+  .pink-box {
+    background-color: #ffe6f2;
+    border-left: 8px solid #f40983;
+  }
+  
+  /* Role-based summary boxes */
+  .role-box {
+    display: inline-block;
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 12px;
+    color: #333;
+    background-color: #dfefff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .role-box h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .role-box p {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .light-blue-box {
+    border-left: 8px solid #007bff;
+  }
+  
+  /* Material icons */
+  .material-symbols-outlined {
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
+    color: #333;
+  }
+  
+  /* Responsive Design */
+  @media only screen and (max-width: 600px) {
+    .summary-box, .role-box {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
