@@ -684,16 +684,9 @@ body {
   color: #333;
   margin: 10px 0 30px 0;
 }
-.home-content .content span {
-  /* font-size: 0.9rem; */
-  font-weight: 700;
-  color: #333;
-  /* position: relative;
-  left: 0;
-  right: auto; */
-}
+
 .home-content .content h1 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 400;
   color: #333;
   margin: 10px 0;
@@ -708,7 +701,7 @@ body {
   /* color: blue; */
 }
 .home-content .content-box {
-  height: 300px;
+  height: 100%;
   width: 100%;
   /* background: grey; */
   border: 1px solid #cac6c6;
@@ -945,18 +938,19 @@ body {
 
 
  /* This is the media query of the to make the resopinsive */
-    /*------------- Ankit kumar -------------------*/
+    /* /------------- Ankit kumar -------------------/ */
  @media only screen and (max-width: 600px) {
 
-  body{
+  /* body{
     overflow: hidden;
-  }
+  } */
 
   #signUpBtn{
     margin-top: 45px;
   }
   #certificate{
     padding: 10px 70px 10px 70px;
+    /* margin-left: 65px; */
   }
   .header{
     display: none;
@@ -1006,9 +1000,9 @@ body {
     text-align: center;
     padding: 4px 8px;
     top: -8px;
-    background: #f40983;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #792fb5, #f40983);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #792fb5, #f40983); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #f40983;  
+    background: -webkit-linear-gradient(to bottom, #792fb5, #f40983); 
+    background: linear-gradient(to bottom, #792fb5, #f40983); 
 
     width: fit-content;
     border-radius: 32px;
@@ -1035,7 +1029,7 @@ body {
   }
   .btn-box #logInButton{
     color: white;
-    /* color: red; */
+    
     background: var(--header-color);
     width: 100%;
     margin: 16px 0;
@@ -1045,8 +1039,12 @@ body {
   .btn-box #signUpBtn{
     border: 2px solid var(--header-color);
     color: var(--header-color);
-    /* color: black; */
+    
     width: 100%;
+  }
+  .nav .btn-box{
+    background: none;
+    background-color: transparent;
   }
 
   .material-symbols-outlined.close{
@@ -1110,6 +1108,42 @@ body {
   flex-direction: column;
   background: #fff;
   }
+  /* .content #contentText{
+    background-color: red;
+    
+  } */
+  .content-box .content-img h2{
+    font-size: 22px;
+  }
+  .content-box .content-text h2{
+    font-size: 20px;
+  }
+  .content-box .content-img h2{
+    font-size: 20px;
+  }
+  .content-box .content-text h2{
+    font-size: 19px;
+  }
+  #para{
+    margin-top: 70px;
+  }
+  .left .search-publication input{
+    width: 174px;
+  }
+  .newsletter-body{
+    padding: 15px;
+    height:280px;
+  }
+  .discover-research{
+    padding: 15px;
+  }
+  .boxes{
+    
+    margin-top: 5px;
+
+    height: 1200px;
+  width: 100%;
+   }
   #centerkar{
     text-align: center;
   }
@@ -1126,6 +1160,9 @@ body {
   .home-content {
     background: transparent;
   }
+  .home-content .content h1{
+    font-size: 22px;
+  }
   .slider{
     background: #fff;
   }
@@ -1136,6 +1173,7 @@ body {
     bottom: 8px;
     cursor: pointer;
   }
+
   .dotsbox .dot{
     height: 4px;
     width: 4px;
@@ -1159,6 +1197,13 @@ body {
   .onText-slider .text-area h1{
     margin: 0;
   }
+  #onlineTest{
+    margin-left: 10px;
+  }
+  #ebookBtn{
+    margin-left: 10px;
+  }
+
   
 }
 

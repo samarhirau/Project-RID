@@ -11,6 +11,8 @@ const cors = require('cors');
 const crypto = require('crypto');
 const axios = require('axios');
 const jwt = require("jsonwebtoken");
+
+
 dotenv.config();
 
 
@@ -34,7 +36,7 @@ const authenticateJWT = require('./middleware/authMiddleware');
 
 // Initialize express app
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 // Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
