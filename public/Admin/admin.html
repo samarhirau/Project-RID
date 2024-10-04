@@ -31,7 +31,6 @@
   </div> -->
     <div id="admin-content">
       <header>
-        
         <div class="upper-header">
           <div class="left-content">
             <span>Website :</span> RID (Research Discovery & Innovation) by
@@ -60,7 +59,6 @@
             </div>
           </div>
           <div class="right-content">
-           
             <button id="certificate" onclick="window.location.href= '/verify'">
               <img
                 src="./assets/icons/workspace_premium.png"
@@ -164,8 +162,8 @@
             width: 100%;
             /* border-collapse: collapse; */
             overflow-x: auto; /* Enable horizontal scrolling */
-    white-space: nowrap; /* Prevent wrapping */
-    border-collapse: collapse; /* Clean table appearance */
+            white-space: nowrap; /* Prevent wrapping */
+            border-collapse: collapse; /* Clean table appearance */
           }
 
           table th,
@@ -196,20 +194,23 @@
           }
         </style>
       </header>
-      <span class="menu-icon" onclick="toggleSidebar()"><span class="material-symbols-outlined">
-        menu
-        </span></span>
-    
+      <span class="menu-icon" onclick="toggleSidebar()"
+        ><span class="material-symbols-outlined"> menu </span></span
+      >
+
       <div class="main-content">
-       
         <div class="side-bar" id="sidebar">
           <div class="div1">
-            <div class="close-btn" style="display: none;" onclick="toggleSidebar()"><span class="material-symbols-outlined" >
-              close
-              </span></div>
+            <div
+              class="close-btn"
+              style="display: none"
+              onclick="toggleSidebar()"
+            >
+              <span class="material-symbols-outlined"> close </span>
+            </div>
             <div>
               <h2>Administrator</h2>
-              <button id="dashboardbtn" >
+              <button id="dashboardbtn">
                 <span class="material-symbols-outlined" style="font-size: 20px">
                   bar_chart_4_bars </span
                 ><span>Dashboard</span>
@@ -255,7 +256,7 @@
                 <span class="material-symbols-outlined" style="font-size: 20px">
                   workspace_premium
                 </span>
-                <span>View Admin Accounts</span>
+                <span onclick="showAllAdmins()">View Admin Accounts</span>
               </button>
             </div>
           </div>
@@ -306,24 +307,24 @@
         <section class="student-list" id="table-list" style="display: none">
           <h3>List of Total Students</h3>
           <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>S.No.</th>
-                <th>Name</th>
-                <th>Email Address</th>
-                <th>Role</th>
-                <th>Gender</th>
-                <th>Date Of Birth</th>
-                <th>A/C Creation Date</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="user-list">
-              <!-- Rows will be populated here -->
-            </tbody>
-          </table>
-        </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>S.No.</th>
+                  <th>Name</th>
+                  <th>Email Address</th>
+                  <th>Role</th>
+                  <th>Gender</th>
+                  <th>Date Of Birth</th>
+                  <th>A/C Creation Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="user-list">
+                <!-- Rows will be populated here -->
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <!-- change role -->
@@ -347,23 +348,41 @@
           </div>
         </section>
 
-        <section id="allAdmins" style="display: none">
-          <button onclick="showAllAdmins()">Show All Admins</button>
+        <!-- <section id="allAdmins" style="display: none">
           <div id="adminList" style="display: none">
             <h2>All Admins</h2>
             <ul id="admins"></ul>
           </div>
+        </section> -->
+
+        <section id="allAdmins">
+          <section class="student-list" id="adminList">
+            <h3>List of Total Admin</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>S.No.</h>
+                  <th>Name</th>
+                  <th>Email Address</th>
+                  <th>Role</th>~
+                  <th>Gender</th>
+                  <th>A/C Creation Date</th>
+                </tr>
+              </thead>
+
+              <tbody id="admins">
+                <!-- Rows will be populated here -->
+              </tbody>
+            </table>
+          </section>
         </section>
 
         <div class="main-area1" id="mainArea1" style="display: none">
-          
           <!-- ------------- -->
           <h2>Upload Certificate</h2>
 
           <form id="uploadForm" class="uploadForm">
-            
             <section>
-              
               <div class="form-group">
                 <label
                   >Certificate Id
@@ -448,26 +467,25 @@
       //     mainArea.classList.add('hide');
       // }
       function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const mainArea = document.getElementById('mainArea');
-    
-    if (sidebar.style.display === 'none' || sidebar.style.display === '') {
-        // Reset the display property to show the sidebar again
-        sidebar.style.display = 'block';
-    }
-    
-    // Toggle the 'active' class for sliding animation
-    sidebar.classList.toggle('active');
-    
-    // Toggle hiding of main content when the sidebar is active
-    if (sidebar.classList.contains('active')) {
-        mainArea.classList.add('hide');  // Hide main area when sidebar is active
-    } else {
-        mainArea.classList.remove('hide'); // Show main area when sidebar is hidden
-    }
-}
+        const sidebar = document.getElementById("sidebar");
+        const mainArea = document.getElementById("mainArea");
 
-  </script>
+        if (sidebar.style.display === "none" || sidebar.style.display === "") {
+          // Reset the display property to show the sidebar again
+          sidebar.style.display = "block";
+        }
+
+        // Toggle the 'active' class for sliding animation
+        sidebar.classList.toggle("active");
+
+        // Toggle hiding of main content when the sidebar is active
+        if (sidebar.classList.contains("active")) {
+          mainArea.classList.add("hide"); // Hide main area when sidebar is active
+        } else {
+          mainArea.classList.remove("hide"); // Show main area when sidebar is hidden
+        }
+      }
+    </script>
 
     <script src="../js/showToast.js"></script>
     <script src="../js/admin.js"></script>
@@ -534,10 +552,17 @@
               document.getElementById("adminList").style.display = "block";
               const adminList = document.getElementById("admins");
               adminList.innerHTML = ""; // Clear the list before adding new data
-              admins.forEach((admin) => {
-                const listItem = document.createElement("li");
-                listItem.textContent = `${admin.email} - Role: ${admin.role}`;
-                adminList.appendChild(listItem);
+              admins.forEach((admin, index) => {
+                const row = document.createElement("tr"); // Create a new table row for each admin
+                row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${admin.name}</td>
+            <td>${admin.email}</td>
+            <td>${admin.role}</td>
+            <td>${admin.gender}</td>
+            <td>${admin.createdAt}</td>
+          `;
+                adminList.appendChild(row);
               });
             }
           })
@@ -680,11 +705,10 @@
       fetchOrganisationCount();
     </script>
     <script>
-      
-const refreshBtn = document.getElementById('dashboardbtn');
-refreshBtn.addEventListener('click', function() {
-  window.location.reload();
-});
+      const refreshBtn = document.getElementById("dashboardbtn");
+      refreshBtn.addEventListener("click", function () {
+        window.location.reload();
+      });
     </script>
   </body>
 </html>

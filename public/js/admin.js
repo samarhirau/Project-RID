@@ -42,6 +42,8 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
      document.getElementById('uploadCerti').className = 'active';
     document.getElementById('table-list').style.display = 'none';
     document.getElementById('changeRole').style.display = 'none';
+    document.getElementById('allAdmins'). style.display ='none'
+
     if (window.innerWidth <= 768) {
       const sidebar = document.getElementById('sidebar');
       sidebar.style.display = 'none'; 
@@ -103,6 +105,7 @@ function showTotalList() {
     document.getElementById('dashboardbtn').style.backgroundColor = 'white';
     document.getElementById('dashboardbtn').style.color = 'black';
     document.getElementById('table-list').style.display = 'none';
+    document.getElementById('allAdmins'). style.display ='none'
     if (window.innerWidth <= 768) {
       const sidebar = document.getElementById('sidebar');
       sidebar.style.display = 'none'; 
@@ -117,13 +120,13 @@ function showTotalList() {
     document.getElementById('dashboardbtn').style.color = 'black';
     document.getElementById('table-list').style.display = 'none';
     document.getElementById('changeRole').style.display = 'none';
-    if (window.innerWidth <= 768) {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.style.display = 'none'; 
+     if (window.innerWidth <= 768) {
+       const sidebar = document.getElementById('sidebar');
+     sidebar.style.display = 'none'; 
   }
-  }
+  }+
 
-  // Wait until the DOM is fully loaded
+  // Wait until th DOM is fully loaded
 // document.addEventListener('DOMContentLoaded', (event) => {
 //   // Get the dashboard button by its ID
 //   const dashboardBtn = document.getElementById('dashboardbtn');
