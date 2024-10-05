@@ -100,8 +100,7 @@
           <h3 style="background-image: linear-gradient(#1284F6, #F14372);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          margin-left: 35px;
-          margin-bottom: 30px;
+          
           margin-top: 10px;">E-Book Description</h3>
           <div class="book-detail">
               <div class="book-image">
@@ -118,12 +117,13 @@
                   <p><strong style="color: #006989;">Publishing Year: </strong>
                       <%= book.publishYear %>
                   </p>
+                  <p><strong style="color: #006989;">Average Rating: </strong>
+                      <%= book.rating %>
+                  </p>
                   <p><strong>Description: </strong>
                       <%= book.description %>
                   </p>
-                  <p><strong>Average Rating: </strong>
-                      <%= book.rating %>
-                  </p>
+                
 
                   <div class="buttons" style="display: flex; gap: 10px;">
                       <button id="read" class="viewBTN" style="display: flex; align-items: center; gap: 5px;">

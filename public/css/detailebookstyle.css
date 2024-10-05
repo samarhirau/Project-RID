@@ -40,7 +40,8 @@ header .upper-header{
     margin: 40px;
     margin-left: 90px;
     margin-top: 80px;
-    box-shadow: -9px 6px 16px 3px #a7a2a2;
+    box-shadow: -6px 3px 13px 3px #a7a2a2;
+    align-items: center;
 }
  
 .main-panel .book-detail .buttons  .viewEbook{
@@ -83,19 +84,14 @@ header .upper-header{
 }
 .book-detail .book-info .buttons .viewBTN{
     padding: 3px 90px 3px 90px ;
+    background-color: #083d5d;
+    color: white;
 }
 
 .book-detail .book-info .buttons .readNow{
     padding: 6px 90px 6px 90px ;
  }
 
-
-@media (max-width: 768px) {
-    /* .upper-header {
-        
-        font-size: 200px;
-        
-    } */
     @media (max-width: 768px) {
       
     header .upper-header {
@@ -104,9 +100,15 @@ header .upper-header{
         align-items: center;
         text-align: center;
     }
-    .main-panel h3{
+    .main-panel h3 {
         padding-top: 15px;
         text-align: center;
+        background-image: linear-gradient(#1284F6, #F14372); 
+          -webkit-background-clip: text; 
+          -webkit-text-fill-color: transparent; 
+          margin-left: 35px !important;
+          margin-bottom: 10px !important;
+          margin-top: 10px !important;
     }
 
     .book-detail {
@@ -159,13 +161,12 @@ header .upper-header{
 
     }
 }
-
-@media (max-width: 480px) {
+ .main-panel h3{
+    margin-left: 40px;
+ }
+/* @media (max-width: 480px) {
     header .upper-header {
-        font-size: x-small;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        display: none;
     }
     .main-panel h3{
         padding-top: 15px;
@@ -181,7 +182,7 @@ header .upper-header{
     }
     .book-detail .book-image{
         width:100%;
-        margin-left: 0;
+        margin-left: 20px 0;
     }
 
     .book-detail img {
@@ -206,15 +207,59 @@ header .upper-header{
         margin-right: 20px;
         text-align: center;
         display: flex;
-        align-items: center;     /* Vertically centers the content */
-        justify-content: center; /* Horizontally centers the content */
-        gap: 5px;                /* Adds space between the icon and text */
-    }
+        align-items: center;     Vertically centers the content */
+        /* justify-content: center;  */
+    
     
 
-    .book-detail .book-info .buttons .viewBTN, 
+    /* .book-detail .book-info .buttons .viewBTN, 
     .book-detail .book-info .buttons .readNow {
         padding: 8px 20px;
         margin-top: 30px;
+    } */
+
+    @media (max-width: 480px) {
+        header .upper-header {
+            display: none; /* Hide the upper header */
+        }
+    
+        .book-detail {
+            flex-direction: column; /* Stack elements vertically */
+            padding: 20px; /* Add some padding */
+        }
+    
+        .book-detail img {
+            margin: 0px 30px 20px 0; /* Adjust margin for better spacing */
+            max-width: 100%; /* Ensure the image is responsive */
+            height: auto; /* Maintain aspect ratio */
+            width: 250px;
+            align-items: center;
+            /* padding: 20px; */
+        }
+    
+        .book-info {
+            margin-left: 0; /* Reset margin for mobile view */
+            text-align: center; /* Center align text */
+        }
+    
+        .book-info p {
+            font-size: 14px; /* Adjust font size for readability */
+        }
+    
+        .book-info .buttons {
+            display: flex; /* Ensure buttons are displayed as a flex container */
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center; /* Center align buttons */
+            margin-top: 20px; /* Add some space above buttons */
+        }
+    
+        .book-detail .book-info .buttons .viewBTN,
+        .book-detail .book-info .buttons .readNow {
+            width: 100%; /* Full width for buttons */
+            padding: 10px; /* Adjust padding for better touch targets */
+            margin: 5px 0; /* Add margin between buttons */
+            font-size: 16px; /* Increase font size for better visibility */
+        }
     }
-}
+    
+ 
