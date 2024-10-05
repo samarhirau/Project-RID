@@ -3,7 +3,7 @@
 const Certificate = require('../models/certificate');
 const User = require('../models/user');
 const multer = require('multer');
-
+const Book = require("../models/ebookModel");
 // Configure multer for handling file uploads
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -117,10 +117,19 @@ const getEbooksCount = async (req, res) => {
 
 
 
+// const getPdfsCount = async (req, res) => {
+//   try {
+//     const count = await Book.countDocuments({ 'pdf.data': { $exists: true } });
+//     res.status(200).json({ count });
+//   } catch (error) {
+//     res.status(500).json({ error: 'Failed to fetch PDF count' });
+//   }
+// };
 const getPdfsCount = async (req, res) => {
   try {
+    // Count documents where 'pdf.data' field exists
     const count = await Book.countDocuments({ 'pdf.data': { $exists: true } });
-    res.status(200).json({ count });
+    res.status(200).json({ count }); // Respond with the count
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch PDF count' });
   }

@@ -4,7 +4,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { addCertificate, getRegistrationsCount,getAdminCount,getStudentCount,getTeacherCount,getOrganisationCount,getEbooksCount } = require('../controllers/adminController');
+const { addCertificate, getRegistrationsCount,getAdminCount,getStudentCount,getTeacherCount,getOrganisationCount,getEbooksCount,getPdfsCount } = require('../controllers/adminController');
 const multer = require('multer');
 const authenticateJWT = require('../middleware/authMiddleware');
 const authorizeRole = require('../middleware/authorizeRole');
@@ -17,11 +17,12 @@ const upload = multer({ storage });
 router.post('/upload', upload.single('certificate'), addCertificate);
 router.get('/registrations/count', getRegistrationsCount); // New route for getting registrations count
 router.get('/admin-count', getAdminCount);
+router.get('/pdf-Count', getPdfsCount);
 //mujhe
 router.get('/student-count', getStudentCount);
 router.get('/teacher-count',getTeacherCount);
 router.get('/organisation-count',getOrganisationCount);
-router.get('/admin/ebooks/count', getEbooksCount);
+router.get('/ebooks/count', getEbooksCount);
 
 
 router.get('/users', authenticateJWT, authorizeRole('admin'), async (req, res) => {
