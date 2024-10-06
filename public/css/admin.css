@@ -83,22 +83,6 @@
   .right-text a:last-child::after {
     content: "";
   }
-  #certificate {
-    background: #085d0f;
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    /* height: 25px; */
-    /* width: 100px; */
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-  }
 
 
 
