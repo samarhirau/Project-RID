@@ -88,11 +88,26 @@ body {
   width: 100vw;
   height: 100%;
 }
+.logo{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  z-index: 1;
+  /* background-color: var(--blue-color); */
+}
 
+.logo img {
+
+  width: 500px;
+  height: fit-content;
+  padding: 50px 5px;
+}
 .main-content .upper-content {
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 190px;
   gap: 20px;
 }
 
