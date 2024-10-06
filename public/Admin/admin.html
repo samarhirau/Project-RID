@@ -293,13 +293,15 @@
           <div class="summary-box red-box">
             <span class="material-symbols-outlined"> picture_as_pdf </span>
             <h3>Total PDF(s)</h3>
-            <p>43</p>
+            <p id="pdfcount">Loading...</p>
+
+            <!-- <p id="pdfCount">Loading...</p> -->
           </div>
         
           <div class="summary-box orange-box">
             <span class="material-symbols-outlined"> book </span>
             <h3>Total E Book(s)</h3>
-            <p>32</p>
+            <p id="ebookcount">loading---</p>
           </div>
         
           <div class="summary-box pink-box">
@@ -530,26 +532,7 @@
   fetchRegistrationsCount();
     </script>
 
-    <script>
-      async function fetchEbooksCount() {
-  try {
-    const response = await fetch('/admin/ebooks/count');
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    document.getElementById('ebooks-count').textContent = ` ${data.count}`;
-  } catch (error) {
-    document.getElementById('ebooks-count').textContent = 'Failed to load eBooks count';
-    showToast('Error fetching eBooks count', '#f44336');
-    console.error('Error fetching eBooks count:', error);
-  }
-}
-
-fetchEbooksCount();
-
-    </script>
-
+  
     <script src="../js/showToast.js"></script>
     <script src="../js/admin.js"></script>
     <script>
@@ -773,5 +756,59 @@ fetchEbooksCount();
         window.location.reload();
       });
     </script>
+    <!-- show no. of pdf -->
+         <script>
+          document.addEventListener("DOMContentLoaded", function () {
+      // Function to fetch and display the total number of PDFs
+      async function fetchpdfcount() {
+        try {
+          // Fetching data from backend API (replace '/admin/Cnt' with your actual API endpoint)
+          const response = await fetch("/admin/pdf-Count");
+    
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+    
+          const data = await response.json();
+          const pdfcount = data.count; // Assuming the backend sends { count: 10 }
+    
+          // Displaying the total number of PDFs
+          document.getElementById("pdfcount").innerText = `${pdfcount}`; // Use pdfcount instead of pdfcount
+        } catch (error) {
+          console.error("Error fetching PDF count:", error);
+          document.getElementById("pdfcount").innerText = "Error loading PDF count";
+        }
+      }
+    
+      fetchpdfcount();
+    });
+    </script>
+    <!-- show no. of ebook -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  // Function to fetch and display the total number of PDFs
+  async function fetchebookcount() {
+    try {
+      // Fetching data from backend API (replace '/admin/Cnt' with your actual API endpoint)
+      const response = await fetch("/admin/ebooks/count");
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      const ebookcount = data.count; // Assuming the backend sends { count: 10 }
+
+      // Displaying the total number of PDFs
+      document.getElementById("ebookcount").innerText = `${ebookcount}`; // Use ebookcount instead of ebookcount
+    } catch (error) {
+      console.error("Error fetching PDF count:", error);
+      document.getElementById("ebookcount").innerText = "Error loading PDF count";
+    }
+  }
+
+  fetchebookcount();
+});
+</script>
   </body>
 </html>
