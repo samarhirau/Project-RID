@@ -1332,8 +1332,18 @@ body {
 }
 
 
-@media only screen and (min-width: 1200px) {
-  .logo .material-symbols-outlined.close {
+
+
+
+@media only screen and (max-width: 1200px){
+  .logo .material-symbols-outlined.close{
     display: none;
   }
+ }
+=======
+
 }
+
+
+
+
