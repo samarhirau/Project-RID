@@ -11,6 +11,8 @@ const cors = require('cors');
 const crypto = require('crypto');
 const axios = require('axios');
 const jwt = require("jsonwebtoken");
+
+
 dotenv.config();
 
 
@@ -34,7 +36,7 @@ const authenticateJWT = require('./middleware/authMiddleware');
 
 // Initialize express app
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 // Middleware setup
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -72,9 +74,16 @@ app.use("/api/organisation", organisationRoutes);
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(fileUpload()); // Middleware to handle file uploads
-// app.use('/', routes);
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
+
+
+app.use(fileUpload({
+  useTempFiles: true,         // Use temporary files before uploading to Cloudinary
+  tempFileDir: '/tmp/',       // Directory for storing temporary files
+  limits: { fileSize: 100 * 1024 * 1024 }, // Max file size of 100MB
+}));
 
 
 app.use(cookieParser());

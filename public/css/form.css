@@ -30,14 +30,14 @@ body {
 .headings h1 {
   font-size: 24px;
   font-weight: 600;
-  line-height: 50.46px;
+ 
   text-align: center;
 }
 
 .headings h3 {
   font-size: 18px;
   font-weight: 400;
-  line-height: 51.23px;
+  
   color: #083D5D;
   text-align: center;
 }
@@ -49,6 +49,9 @@ body {
 }
 .container .img {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body .container #form1,
@@ -288,16 +291,26 @@ body .container #form-last span a {
   color: white;
 }
 
-.cicle-1::after{
+.cicle-1::after, .cicle-2::after, .cicle-3::after, .cicle-1.active-circle-done::after{
   position: absolute;
   left: 50%;
   top: calc(100% + 16px + 8px);
   transform: translate(-50%,-50%);
-  content: "Text";
   font-size: 12px;
   font-weight: 400;
 }
-
+.cicle-1.active-circle-done::after{
+  content: "Basic Details";
+}
+.cicle-1::after{
+  content: "Basic Details";
+}
+.cicle-2::after{
+  content: "Contact Details";
+}
+.cicle-3::after{
+  content: "Submit Details";
+}
 /* end of harsh added code */
 
 
