@@ -315,7 +315,7 @@ html, body{
 }
 .bookcard-holder{
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     gap: 16px;
     overflow-x: scroll;
     padding-bottom: 16px;
