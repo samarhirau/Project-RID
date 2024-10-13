@@ -137,6 +137,8 @@
       color: #fff !important;
     }
   </style>
+
+    
   </head>
   <body>
     <div id="admin-content">
@@ -246,6 +248,14 @@
                 <span class="material-symbols-outlined" style="font-size: 20px">
                   workspace_premium </span
                 ><span>Upload Certificate</span>
+              </button>
+              <button
+                id="uploadCerti"
+                onclick="uploadEbook()"
+                style="color: black; background-color: white"
+              >
+              <span class="material-symbols-outlined" style="font-size: 20px;"> auto_stories </span>
+                <span>Upload Ebook</span>
               </button>
             </div>
             <div>
@@ -410,6 +420,67 @@
           </section>
         </section>
 
+
+        <!-- <div class="upload-form" style="display: none;" id="upload-form">
+          <h2>Upload Book Details</h2>
+          <form action="/upload-book" method="POST" enctype="multipart/form-data">
+              <label for="title">Book Title:</label>
+              <input type="text" id="title" name="title" required><br><br>
+            
+              <label for="author">Author Name:</label>
+              <input type="text" id="author" name="author" required><br><br>
+            
+              <label for="publishYear">Publish Year:</label>
+              <input type="number" id="publishYear" name="publishYear" required><br><br>
+            
+              <label for="rating">Rating (out of 5):</label>
+              <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" required><br><br>
+            
+              <label for="description">Description:</label>
+              <textarea id="description" name="description" rows="4" required></textarea><br><br>
+            
+              <label for="image">Book Image:</label>
+              <input type="file" id="image" name="image" accept="image/*" required><br><br>
+            
+              <label for="pdf">Book PDF:</label>
+              <input type="file" id="pdf" name="pdf" accept="application/pdf" required><br><br>
+            
+              <input type="submit" value="Upload Book">
+            </form>
+            
+      </div> -->
+
+      <div class="upload-form" style="display: none;" id="upload-form">
+        <h2>Upload Book Details</h2>
+        <form id="book-form" action="/upload-book" method="POST" enctype="multipart/form-data">
+            
+            <div id="error-messages" class="error-message"></div>
+    
+            <label for="title">Book Title:</label>
+            <input type="text" id="title" name="title" required><br><br>
+          
+            <label for="author">Author Name:</label>
+            <input type="text" id="author" name="author" required><br><br>
+          
+            <label for="publishYear">Publish Year:</label>
+            <input type="number" id="publishYear" name="publishYear" required><br><br>
+          
+            <label for="rating">Rating (out of 5):</label>
+            <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" required><br><br>
+          
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea><br><br>
+          
+            <label for="image">Book Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required><br><br>
+          
+            <label for="pdf">Book PDF:</label>
+            <input type="file" id="pdf" name="pdf" accept="application/pdf" required><br><br>
+          
+            <input type="submit" value="Upload Book">
+        </form>
+    </div>
+    
         <div class="main-area1" id="mainArea1" style="display: none">
           <!-- ------------- -->
           <h2>Upload Certificate</h2>
@@ -834,5 +905,48 @@
     }
     });
 </script>
+<script>
+  document.querySelector("form").addEventListener("submit", function(e) {
+      const title = document.getElementById("title").value.trim();
+      const author = document.getElementById("author").value.trim();
+      const publishYear = document.getElementById("publishYear").value;
+      const rating = document.getElementById("rating").value;
+      const description = document.getElementById("description").value.trim();
+      const image = document.getElementById("image").value;
+      const pdf = document.getElementById("pdf").value;
+      const errorMessageDiv = document.getElementById("error-message");
+  
+      let errorMessage = '';
+  
+      if (title === '' || author === '' || description === '') {
+          errorMessage += "Please fill out all required fields.<br>";
+      }
+  
+      if (publishYear < 1800 || publishYear > new Date().getFullYear()) {
+          errorMessage += "Publish year must be between 1800 and the current year.<br>";
+      }
+  
+      if (rating < 0 || rating > 5) {
+          errorMessage += "Rating must be between 0 and 5.<br>";
+      }
+  
+      if (!image) {
+          errorMessage += "Please upload a book image.<br>";
+      }
+  
+      if (!pdf) {
+          errorMessage += "Please upload the book's PDF.<br>";
+      }
+  
+      if (errorMessage) {
+          e.preventDefault();
+          errorMessageDiv.innerHTML = errorMessage;
+          errorMessageDiv.style.display = "block";
+      } else {
+          errorMessageDiv.style.display = "none";
+      }
+  });
+  </script>
+  
   </body>
 </html>

@@ -50,6 +50,24 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
   }
   }
 
+  
+
+  function uploadEbook(){
+    document.getElementById('upload-form').style.display = 'flex';
+    document.getElementById('mainArea').style.display = 'none';
+    document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+    document.getElementById('dashboardbtn').style.color = 'black';
+     document.getElementById('uploadCerti').className = 'active';
+    document.getElementById('table-list').style.display = 'none';
+    document.getElementById('changeRole').style.display = 'none';
+    document.getElementById('allAdmins'). style.display ='none'
+
+    if (window.innerWidth <= 768) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none'; 
+  }
+  }
+
   // function showTotalList() {
   //   document.getElementById('mainArea').style.display = 'none';
   //   document.getElementById('table-list').style.display = 'initial';
