@@ -12,12 +12,13 @@
         "bcrypt": "^5.1.1",
         "body-parser": "^1.20.2",
         "cloudinary": "^2.5.0",
-        "cookie-parser": "^1.4.6",
+        "cookie": "^0.7.1",
+        "cookie-parser": "^1.0.0",
         "cors": "^2.8.5",
         "crypto": "^1.0.1",
         "dotenv": "^16.4.5",
         "ejs": "^3.1.10",
-        "express": "^4.19.2",
+        "express": "^4.21.0",
         "express-fileupload": "^1.5.1",
         "express-session": "^1.18.0",
         "git-filter-repo": "^0.0.30",
@@ -34,7 +35,6 @@
         "xlsx": "^0.20.3"
     },
     "devDependencies": {
-
         "nodemon": "^3.1.7"
     },
     "keywords": [
