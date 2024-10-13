@@ -8,6 +8,10 @@
   <!-- 
     custom css
      -->
+     <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+   />
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./style.css" />
   <!-- <link rel="stylesheet" href="/client/css/style.css" /> -->
@@ -69,7 +73,7 @@
       ">
     <div class="header">
       <div class="web-text">
-        <p>
+        <p >
           Website:
           <span>RID (Research Innovation & Discovery) by TWKSAA Welfare
             Foundation
@@ -138,10 +142,21 @@
                 <span class="material-symbols-outlined"> login </span> Login
               </button>
 
-              <button class="toggle-btn" id="signUpBtn">
+              <button class="toggle-btn" id="signUpBtn" onclick="changes(event)">
                 <span class="material-symbols-outlined"> how_to_reg </span>
                 Register
+
               </button>
+              <script>
+                function changes(event){
+                  event.preventDefault();
+                  var changes=document.getElementById("signUpBtn");
+                  changes.style.color="";
+                  var handle=document.getElementById("logInButton");
+                  handle.style.color="white";
+                  
+                }
+              </script>
             </div>
 
             <div id="footerr" style="display: none"></div>
@@ -275,18 +290,18 @@
       <div class="text-area">
         <h1 style="text-transform: uppercase; font-size: 18px">
 
-
-          <strong> Welcome to the future of</strong> research innovation & discovery (RID)
+          
+          <strong>Welcome to the future of</strong> research innovation & discovery (RID)
+         
+          
           <h1>
             <p>
-
-
               At RID, we bring the world's most promising minds into our circle to
               investigate, inspire, and innovate a technical & logical world for
               all.
             </p>
       </div>
-      <button>
+      <button id="learnMore">
         <object class="svg-object" data="./assets/icons/slideshow.svg" type="image/svg+xml"></object>Learn More
       </button>
     </div>
@@ -303,13 +318,16 @@
           civilization and language from this holy land of India.
         </p>
         <div class="boxes">
-          <div class="content-box">
+
+          <div class="content-box animate__animated animate__zoomIn animate__faster">
+
             <div class="content-img">
               <h2>
                 <object class="svg-object" data="./assets/icons/experiment.svg" type="image/svg+xml"></object>Research
                 (R)
               </h2>
             </div>
+
 
             <div class="content-box">
               <div class="content-img">
@@ -334,16 +352,19 @@
                 </ol>
               </div>
 
+
             </div>
           </div>
-          <div class="content-box">
+
+          <div class="content-box animate__animated animate__zoomIn animate__faster">
+
             <div class="content-img">
               <h2>
                 <object class="svg-object" data="./assets/icons/innovation.svg" type="image/svg+xml"></object>
                 Innovation (I)
               </h2>
             </div>
-            <div class="content-text">
+            <div class="content-text" id="innovate">
               <h2>Why should we Innovate?</h2>
               <ol>
                 <li>To progress</li>
@@ -355,7 +376,9 @@
               </ol>
             </div>
           </div>
-          <div class="content-box">
+
+          <div class="content-box animate__animated animate__zoomIn animate__faster">
+
             <div class="content-img">
               <h2>
                 <object class="svg-object" data="./assets/icons/travel_explore.svg"
@@ -378,7 +401,7 @@
         </div>
 
       </div>
-      <p id="para"><b>Important Message:</b> All the students, teachers and intellectuals who are interested in
+      <p id="para"><b id="msg">Important Message:</b> All the students, teachers and intellectuals who are interested in
         Research, Innovation & Discovery to join this RID organization and by discovering something new (RID, PMS & TLR)
         to the world with their intelligence, wisdom and talent. Solve people's problems by creating and adopting.</p>
       <!-- ------------- -->
@@ -397,7 +420,7 @@
             happening in your field.
           </p>
 
-          <h3>SEARCH PUBLICATION</h3>
+          <h2>SEARCH PUBLICATION</h2>
           <div class="search-publication">
             <span class="material-symbols-outlined search-icon">search</span>
             <!-- change this input field as required -->
@@ -425,7 +448,9 @@
           </div>
         </div>
 
-        <div class="right">
+
+        <div class="right animate__animated animate__fadeInRight" >
+
           <img src="./assets/keywords-research.svg" alt="" draggable="false" />
         </div>
       </section>
@@ -643,6 +668,7 @@
 
       // Function to handle login button click
       function handleLoginClick() {
+        
         const token = getCookie('token'); // Get JWT token from cookies
 
         if (token) {

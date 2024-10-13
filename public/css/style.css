@@ -1001,10 +1001,29 @@ body {
   color: red;
 }
 
+#msg{
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #083d5d;
+}
+#learnMore{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* This is the media query of the to make the resopinsive */
 /* /------------- Ankit kumar -------------------/ */
 @media only screen and (max-width: 600px) {
+.btn-box{
+  box-shadow: none;
+  
+}
+#Welcome{
+  font-weight: bold;
+  text-align: justify;
+}
 
 
   #mobileMenu.hidden {
@@ -1126,6 +1145,7 @@ body {
 
   .btn-box #signUpBtn {
     border: 2px solid var(--header-color);
+    
     color: var(--header-color);
 
     width: 100%;
@@ -1210,6 +1230,11 @@ body {
     background-color: red;
     
   } */
+
+   .boxes .content-box{
+    height: auto;
+    width: auto;
+   }
   .content-box .content-img h2 {
     font-size: 22px;
   }
@@ -1227,8 +1252,13 @@ body {
   }
 
   #para {
-    margin-top: 30px;
+    margin-top: 70px;
     margin-bottom: 40px;
+  }
+  #msg{
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #083d5d;
   }
 
   .left .search-publication input {
@@ -1250,7 +1280,7 @@ body {
     margin-top: 5px;
 
     height: 1200px;
-    width: 100%;
+    
   }
 
   #centerkar {
@@ -1326,22 +1356,28 @@ body {
   #ebookBtn {
     margin-left: 10px;
   }
+ 
+
+
 
 
 }
 
 
+/* @media only screen and (max-width: 600px){
+  .logo .material-symbols-outlined.close{
+    display: none;
+  }
+} */
 
 
 
-@media only screen and (max-width: 1200px){
+@media only screen and (min-width: 800px){
   .logo .material-symbols-outlined.close{
     display: none;
   }
  }
-=======
 
-}
 
 
 
