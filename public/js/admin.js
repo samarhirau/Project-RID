@@ -1,3 +1,8 @@
+menuIcon.addEventListener('click', function() {
+  console.log("Menu icon clicked"); // Debugging line
+  sideBar.classList.toggle('show-sidebar');
+});
+
 
 // Example usage
 document.getElementById('uploadForm').addEventListener('submit', async (e) => {
@@ -37,19 +42,61 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
      document.getElementById('uploadCerti').className = 'active';
     document.getElementById('table-list').style.display = 'none';
     document.getElementById('changeRole').style.display = 'none';
+    document.getElementById('allAdmins'). style.display ='none'
+
+    if (window.innerWidth <= 768) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none'; 
+  }
   }
 
-  function showTotalList() {
-    document.getElementById('mainArea').style.display = 'none';
-    document.getElementById('table-list').style.display = 'initial';
-    document.getElementById('mainArea1').style.display = 'none';
-    document.getElementById('showTotal').className = 'active';
-    document.getElementById('dashboardbtn').style.backgroundColor = 'white';
-    document.getElementById('dashboardbtn').style.color = 'black';
-    document.getElementById('changeRole').style.display = 'none';
-    document.getElementById('allAdmins').style.display = 'none.';
+  // function showTotalList() {
+  //   document.getElementById('mainArea').style.display = 'none';
+  //   document.getElementById('table-list').style.display = 'initial';
+  //   document.getElementById('mainArea1').style.display = 'none';
+  //   document.getElementById('showTotal').className = 'active';
+  //   document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+  //   document.getElementById('dashboardbtn').style.color = 'black';
+  //   document.getElementById('changeRole').style.display = 'none';
+  //   document.getElementById('allAdmins').style.display = 'none';
+  //   document.getElementById('sidebar').style.display = 'none';
 
+
+  // }
+
+//   function showTotalList() {
+//     document.getElementById('mainArea').style.display = 'none';
+//     document.getElementById('table-list').style.display = 'initial';
+//     document.getElementById('mainArea1').style.display = 'none';
+//     document.getElementById('showTotal').className = 'active';
+//     document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+//     document.getElementById('dashboardbtn').style.color = 'black';
+//     document.getElementById('changeRole').style.display = 'none';
+//     document.getElementById('allAdmins').style.display = 'none';
+    
+//     // Hide the sidebar by adding a class
+//     const sidebar = document.getElementById('sidebar');
+//     sidebar.style.display = 'none'; // Set display to 'none' when showTotalList is called
+// }
+function showTotalList() {
+  document.getElementById('mainArea').style.display = 'none';
+  document.getElementById('table-list').style.display = 'initial';
+  document.getElementById('mainArea1').style.display = 'none';
+  document.getElementById('showTotal').className = 'active';
+  document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+  document.getElementById('dashboardbtn').style.color = 'black';
+  document.getElementById('changeRole').style.display = 'none';
+  document.getElementById('allAdmins').style.display = 'none';
+
+  if (window.innerWidth <= 768) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none'; 
   }
+}
+
+
+
+
   function showChangeRole() {
     document.getElementById('mainArea').style.display = 'none';
     document.getElementById('changeRole').style.display = 'initial';
@@ -58,6 +105,11 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     document.getElementById('dashboardbtn').style.backgroundColor = 'white';
     document.getElementById('dashboardbtn').style.color = 'black';
     document.getElementById('table-list').style.display = 'none';
+    document.getElementById('allAdmins'). style.display ='none'
+    if (window.innerWidth <= 768) {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none'; 
+  }
   }
   function showAdminList() {
     document.getElementById('mainArea').style.display = 'none';
@@ -68,9 +120,13 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
     document.getElementById('dashboardbtn').style.color = 'black';
     document.getElementById('table-list').style.display = 'none';
     document.getElementById('changeRole').style.display = 'none';
+     if (window.innerWidth <= 768) {
+       const sidebar = document.getElementById('sidebar');
+     sidebar.style.display = 'none'; 
   }
+  }+
 
-  // Wait until the DOM is fully loaded
+  // Wait until th DOM is fully loaded
 // document.addEventListener('DOMContentLoaded', (event) => {
 //   // Get the dashboard button by its ID
 //   const dashboardBtn = document.getElementById('dashboardbtn');
@@ -190,22 +246,7 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
   });
 
 
-  async function fetchRegistrationsCount() {
-    try {
-      const response = await fetch('/admin/registrations/count');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      document.getElementById('registrations-count').textContent = ` ${data.count}`;
-    } catch (error) {
-      document.getElementById('registrations-count').textContent = 'Failed to load number of registrations';
-      showToast('Error fetching registrations count', '#f44336');
-      console.error('Error fetching registrations count:', error);
-    }
-  }
 
-  fetchRegistrationsCount();
 
 
 
@@ -366,3 +407,7 @@ fileInput.addEventListener('change', (event) => {
 
   reader.readAsArrayBuffer(file);
 });
+
+
+
+

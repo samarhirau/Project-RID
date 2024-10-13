@@ -1,8 +1,28 @@
 const Organisation = require("../models/Organisation");
+const { uploadedToCloudinary } = require('../utils/cloudinaryorg');
 
 // Register Organization
 const registerOrganisation = async (req, res) => {
   try {
+    if (!req.body.organisationName || !req.files.certificateFile1 || !req.files.certificateFile2 || !req.files.certificateFile3) {
+      return res.status(400).send("Missing required fields or files");
+    }
+
+    const certificateFile1 = req.files.certificateFile1[0].buffer;
+    const certificateFile2 = req.files.certificateFile2[0].buffer;
+    const certificateFile3 = req.files.certificateFile3[0].buffer;
+
+    // Upload to Cloudinary using buffer
+    const uploadedCertificateFile1 = await uploadedToCloudinary(certificateFile1, 'org/certificate1');
+    console.log('Certificate File 1 successfully uploaded:', uploadedCertificateFile1.secure_url);
+    
+   
+    const uploadedCertificateFile2 = await uploadedToCloudinary(certificateFile2, 'org/certificate2');
+    console.log('Certificate File 2 successfully uploaded:', uploadedCertificateFile2.secure_url); 
+
+
+    const uploadedCertificateFile3 = await uploadedToCloudinary(certificateFile3, 'org/certificate3');
+    console.log('Certificate File 3 successfully uploaded:', uploadedCertificateFile3.secure_url); 
     const organisationData = {
       organisationName: req.body.organisationName,
       city: req.body.city,
@@ -11,27 +31,40 @@ const registerOrganisation = async (req, res) => {
       contactNumber: req.body.contactNumber,
       registrationNumber: req.body.registrationNumber,
       websiteLink: req.body.websiteLink,
-      certificateFile1: { data: req.files.certificateFile1[0].buffer, contentType: req.files.certificateFile1[0].mimetype },
-      certificateFile2: { data: req.files.certificateFile2[0].buffer, contentType: req.files.certificateFile2[0].mimetype },
-      certificateFile3: { data: req.files.certificateFile3[0].buffer, contentType: req.files.certificateFile3[0].mimetype },
+      certificateFile1: uploadedCertificateFile1.secure_url,
+      certificateFile2: uploadedCertificateFile2.secure_url,
+      certificateFile3: uploadedCertificateFile3.secure_url,
     };
 
     const organisation = new Organisation(organisationData);
     await organisation.save();
+
     res.redirect(`/organization-dashboard/${organisation._id}`);
   } catch (error) {
-    console.error(error);
+    console.error('Error registering organization:', error);
     res.status(500).send("Error registering organization");
   }
 };
 
+// Usage in router
+
+  
+
+
+
+
 // Display Organization Dashboard
 const displayDashboard = async (req, res) => {
   try {
+    // Fetch organization by ID
     const organisation = await Organisation.findById(req.params.id);
+
+    // Check if the organization exists
     if (!organisation) {
       return res.status(404).send("Organization not found");
     }
+
+    // Render the dashboard page with organization data
     res.render("organization-dashboard", { organization: organisation });
   } catch (error) {
     console.error(error);
@@ -43,71 +76,3 @@ module.exports = {
   registerOrganisation,
   displayDashboard,
 };
-
-
-// const Organisation = require('../models/Organisation');
-
-// // Controller to handle creating a new organization
-// exports.createOrganisation = async (req, res) => {
-//   try {
-//     const {
-//       organisationName,
-//       city,
-//       state,
-//       ownerName,
-//       contactNumber,
-//       registrationNumber,
-//       websiteLink
-//     } = req.body;
-
-//     // Check if files are uploaded
-//     const certificateFile = req.files.certificateFile;
-//     const certificateFile2 = req.files.certificateFile2;
-//     const certificateFile3 = req.files.certificateFile3;
-
-//     // Convert the uploaded files to binary (buffer)
-//     const certificateFileData = {
-//       data: certificateFile.data, // binary data from the uploaded file
-//       contentType: certificateFile.mimetype
-//     };
-
-//     const certificateFile2Data = {
-//       data: certificateFile2.data,
-//       contentType: certificateFile2.mimetype
-//     };
-
-//     const certificateFile3Data = {
-//       data: certificateFile3.data,
-//       contentType: certificateFile3.mimetype
-//     };
-
-//     // Create a new organization instance
-//     const newOrganisation = new Organisation({
-//       organisationName,
-//       city,
-//       state,
-//       ownerName,
-//       contactNumber,
-//       registrationNumber,
-//       websiteLink,
-//       certificateFile: certificateFileData,   // store binary data
-//       certificateFile2: certificateFile2Data, // store binary data
-//       certificateFile3: certificateFile3Data  // store binary data
-//     });
-
-//     // Save organization to the database
-//     await newOrganisation.save();
-
-//     // Success response
-//     // res.status(201).json({ message: 'Organisation created successfully', organisation: newOrganisation });
-//     res.redirect("/organization-dashboard")
-//   } catch (error) {
-//     console.error(error);
-
-//     if (error.code === 11000) {
-//       res.status(400).json({ message: 'Duplicate key error: Organisation or registration number already exists.' });
-//     } else {
-//       res.status(400).json({ message: 'Error creating organisation', error: error.message });
-//     }
-//   }
-// };
