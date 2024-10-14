@@ -449,3 +449,27 @@ html, body{
         display: none;
     }
   }
+
+
+
+  @media only screen and (max-width: 480px){ .book-card1{
+    width: calc(100% - 16px);
+    height: fit-content;
+    border: 1px solid #dddddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+  }
+    .book-card1 img{
+        width: calc(100% - 26px);
+        height: 355px;
+        border-radius: 12px;
+        object-fit: cover;
+        object-position: top;
+    }
+  }
