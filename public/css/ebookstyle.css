@@ -262,7 +262,7 @@ html, body{
 .book-card1 img{
     width: 168px;
     height: 206px;
-    border-radius: 2;
+    border-radius: 12px;
     object-fit: cover;
     object-position: top;
 }
@@ -315,8 +315,9 @@ html, body{
 }
 .bookcard-holder{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 20px;
     overflow-x: scroll;
     padding-bottom: 16px;
     scroll-behavior: smooth;
