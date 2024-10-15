@@ -59,6 +59,18 @@
           
     </div>
         <form  action="/user/register" method="post" class="form">
+          <style>
+            
+            .error {
+                color: red;
+                display: none;
+            }
+            button:disabled {
+                background-color: grey;
+                cursor: not-allowed;
+            }
+    
+            </style>
             <div id="form1">
             <div class="form-group">
               <label
@@ -119,7 +131,34 @@
               </div>
               
           </div>
-        <button id="nextButton">Next</button>
+        <button id="nextButton" disabled>Next</button>
+
+        
+<script>
+          const firstName = document.getElementById('firstName');
+          const lastName = document.getElementById('lastName');
+          const email = document.getElementById('email');
+          const password = document.getElementById('password');
+          const nextButton = document.getElementById('nextButton');
+  
+          // Function to check if all fields are filled
+          function validateForm() {
+              if (firstName.value.trim() !== ""
+               && lastName.value.trim() !== "" 
+               && email.value.trim() !== "" 
+               && password.value.trim() !== "") {
+                  nextButton.disabled = false; // Enable button when all fields are filled
+              } else {
+                  nextButton.disabled = true; // Disable button when any field is empty
+              }
+          }
+  
+          // Add event listeners to check each time the user types in the inputs
+          firstName.addEventListener('input', validateForm);
+          lastName.addEventListener('input', validateForm);
+          email.addEventListener('input', validateForm);
+          password.addEventListener('input', validateForm);
+      </script>
         <br>
         <div class="anAccount">
         <span class="login-span">Already have an account? <a>Login</a></span>
@@ -166,20 +205,35 @@
               </div>
             <div class="form-group">
                 <label>Date of Birth <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="date" id="dob" name="dob" required>
+                <!-- <input type="date" id="dob" name="dob" required> -->
+                <input type="date" id="dob" name="dob" max="" required>
 
             </div>
+            <script>
+              const today = new Date();
+              
+              // Current year, month, and day
+              const yyyy = today.getFullYear();
+              const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+              const dd = String(today.getDate()).padStart(2, '0');
+          
+              // Calculate date for 10 years ago
+              const tenYearsAgo = `${yyyy - 10}-${mm}-${dd}`;
+          
+              // Set the 'max' attribute to 10 years ago
+              document.getElementById('dob').setAttribute('max', tenYearsAgo);
+          </script>
+          
             <div class="form-group">
-                <label for="role" >Role<span style="color: red; font-weight: bold;">*</span></label>
-                <input type="text" id="role" name="role" placeholder="Search for a role" autocomplete="off" list="roleList" required>
-                <datalist id="roleList">
-                <option value="organisation">organisation</option>
-                <option value="student">student</option>
-                <option value="teacher">teacher</option>
-                <!-- <option value="admin">admin</option> -->
-                   
-                </datalist>
-            </div>
+              <label>Role <span style="color: red; font-weight: bold;">*</span></label>
+              <select id="role" name="role" required>
+                  <option value="">Select a Role</option>
+                  <option value="organisation">Organisation</option>
+                  <option value="student">Student</option>
+                  <option value="teacher">Teacher</option>
+              </select>
+          </div>
+            
         </div>
         <div class="buttons">
             <button id="PreviousBtn" type="button" >Previous</button>

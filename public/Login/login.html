@@ -124,25 +124,51 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Login</title>
+ <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
  <link rel="stylesheet" type="text/css" href="login.css" />
 </head>
 
 <body>
  <div class="container">
-  <div class="left-content">
-   <h1>Login</h1>
+  <div class="left-content animate__animated animate__zoomIn animate__faster">
+   <h1 style="font-family: sans-serif;">Login</h1>
    <h2>Research Innovation & Discovery</h2>
    <div class="inner-div">
-    <form id="loginForm" action="/auth/login" method="POST">
+    <form id="loginForm" action="/auth/login" method="POST" onsubmit="return validatePassword()">
      <label for="loginEmail">Enter Email Address:</label>
      <input type="text" id="loginEmail" name="email" placeholder="Enter your email address" />
-
+<!-- Ankit kumar -->
+ 
      <label for="password">Enter Password:</label>
-     <input type="password" id="password" name="password" placeholder="Enter your password" />
-
-     <button type="button" id="forgotPass">Forget Password?</button>
-     <button type="submit">Login</button>
+     <input type="password" id="password" name="password" placeholder="Enter your password" required 
+     oncopy="return false" oncut="return false" onpaste="return false"/>
+     <span id="error-message" style="color: red;"></span>
+     <button type="button" id="forgotPass" style="border-radius: 8px;">Forget Password?</button>
+     <button type="submit" style="border-radius: 8px;">Login</button>
     </form>
+    <script>
+      
+function validatePassword() {
+  var password = document.getElementById('password').value;
+  var errorMessage = document.getElementById('error-message');
+  var specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+  // Check if the password is at least 6 characters long
+  if (password.length < 6) {
+    errorMessage.innerHTML = "Password must be at least 6 characters long!";
+    return false;  // Prevent form submission
+  } 
+  if (!specialCharRegex.test(password)) {
+    errorMessage.innerHTML = "Password must contain at least one special character!";
+    return false;  // Prevent form submission
+  }
+  else {
+    errorMessage.innerHTML = "";  // Clear any previous error message
+    return true;  // Allow form submission
+  }
+}
+</script>
+    
 
     <p>
      By continuing login process, you agree to RID's
