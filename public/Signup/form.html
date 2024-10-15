@@ -7,6 +7,37 @@
     <title>Register Here</title>
     <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .form-group {
+          position: relative;
+          margin-bottom: 20px;
+        }
+  
+        .form-group input,
+        .form-group select {
+          width: 100%;
+          padding: 10px;
+          box-sizing: border-box;
+        }
+  
+        .form-group span {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          font-size: 0.75em;
+          color: red;
+          display: none;
+        }
+  
+        #firstNameError,
+        #lastNameError,
+        #emailError,
+        #error-msg,
+        #phoneError {
+          font-size: 0.75em;
+          color: red;
+        }
+      </style>
 </head>
 <body onload="loadPage">
     <div class="headings">
@@ -28,26 +59,106 @@
           
     </div>
         <form  action="/user/register" method="post" class="form">
-        <div id="form1">
+          <style>
+            
+            .error {
+                color: red;
+                display: none;
+            }
+            button:disabled {
+                background-color: grey;
+                cursor: not-allowed;
+            }
+    
+            </style>
+            <div id="form1">
             <div class="form-group">
-                <label>First Name <span style="color: red; font-weight: bold;">*</span></label>
-         <input type="text" id="firstname" name="username" required>
-           
+              <label
+                >First Name
+                <span style="color: red; font-weight: bold">*</span></label
+              >
+              <input
+                type="text"
+                id="firstName"
+                name="username"
+                pattern="[A-Za-z]+"
+                required
+                placeholder="Enter First Name"
+              />
+              <span id="firstNameError">Please enter a valid first name.</span>
             </div>
             <div class="form-group">
-                <label>Last Name <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="text" id="lastname" name="lastname" required>
+              <label
+                >Last Name
+                <span style="color: red; font-weight: bold">*</span></label
+              >
+              <input
+                type="text"
+                id="lastName"
+                name="lastname"
+                required
+                placeholder="Enter Last Name"
+              />
+              <span id="lastNameError">Please enter a valid last name.</span>
             </div>
             <div class="form-group">
-                <label>Email Address <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="email" id="email" name="email" placeholder="youremail@gmail.com" required>
+              <label
+                >Email Address
+                <span style="color: red; font-weight: bold">*</span></label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="youremail@gmail.com"
+                required
+              />
+              <span id="emailError">Please enter a valid email.</span>
             </div>
             <div class="form-group">
-                <label>Create Password <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="password" id="password" name="password" placeholder="*********" required>
-            </div>
-        </div>
-        <button id="nextButton">Next</button>
+                <label>
+                  Create Password
+                  <span style="color: red; font-weight: bold">*</span>
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="*********"
+                  required
+                />
+                <span id="error-msg" style="color: red; display: none;">Password must be at least 8 characters long, include one uppercase letter, one number, and one special character.</span>
+              </div>
+              
+          </div>
+        <button id="nextButton" disabled>Next</button>
+
+        
+<script>
+          const firstName = document.getElementById('firstName');
+          const lastName = document.getElementById('lastName');
+          const email = document.getElementById('email');
+          const password = document.getElementById('password');
+          const nextButton = document.getElementById('nextButton');
+  
+          // Function to check if all fields are filled
+          function validateForm() {
+              if (firstName.value.trim() !== ""
+               && lastName.value.trim() !== "" 
+               && email.value.trim() !== "" 
+               && password.value.trim() !== "") {
+                  nextButton.disabled = false; // Enable button when all fields are filled
+              } else {
+                  nextButton.disabled = true; // Disable button when any field is empty
+              }
+          }
+  
+          // Add event listeners to check each time the user types in the inputs
+          firstName.addEventListener('input', validateForm);
+          lastName.addEventListener('input', validateForm);
+          email.addEventListener('input', validateForm);
+          password.addEventListener('input', validateForm);
+      </script>
         <br>
         <div class="anAccount">
         <span class="login-span">Already have an account? <a>Login</a></span>
@@ -79,25 +190,50 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Mobile Number <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
+                <label
+                  >Mobile Number
+                  <span style="color: red; font-weight: bold">*</span></label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  placeholder="Enter mobile number"
+                />
+                <span id="phoneError">Only 10 digits allowed.</span>
+              </div>
             <div class="form-group">
                 <label>Date of Birth <span style="color: red; font-weight: bold;">*</span></label>
-                <input type="date" id="dob" name="dob" required>
+                <!-- <input type="date" id="dob" name="dob" required> -->
+                <input type="date" id="dob" name="dob" max="" required>
 
             </div>
+            <script>
+              const today = new Date();
+              
+              // Current year, month, and day
+              const yyyy = today.getFullYear();
+              const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+              const dd = String(today.getDate()).padStart(2, '0');
+          
+              // Calculate date for 10 years ago
+              const tenYearsAgo = `${yyyy - 10}-${mm}-${dd}`;
+          
+              // Set the 'max' attribute to 10 years ago
+              document.getElementById('dob').setAttribute('max', tenYearsAgo);
+          </script>
+          
             <div class="form-group">
-                <label for="role" >Role<span style="color: red; font-weight: bold;">*</span></label>
-                <input type="text" id="role" name="role" placeholder="Search for a role" autocomplete="off" list="roleList" required>
-                <datalist id="roleList">
-                <option value="organisation">organisation</option>
-                <option value="student">student</option>
-                <option value="teacher">teacher</option>
-                <!-- <option value="admin">admin</option> -->
-                   
-                </datalist>
-            </div>
+              <label>Role <span style="color: red; font-weight: bold;">*</span></label>
+              <select id="role" name="role" required>
+                  <option value="">Select a Role</option>
+                  <option value="organisation">Organisation</option>
+                  <option value="student">Student</option>
+                  <option value="teacher">Teacher</option>
+              </select>
+          </div>
+            
         </div>
         <div class="buttons">
             <button id="PreviousBtn" type="button" >Previous</button>
@@ -168,23 +304,7 @@
         localStorage.setItem('currentPage', 'container1');
     });
     </script>
-    <script>
-        //  document.querySelector('#submitBtn').addEventListener('click', function(event) {
-        //     const form = document.querySelector('#form3');
-        //     if (form.checkValidity()) {
-        //         // Simulate form submission
-        //         // You can replace this part with actual form submission logic using fetch or XMLHttpRequest
-        //         setTimeout(() => {
-        //             document.getElementById('container3').style.display = 'none';
-        //             document.getElementById('container4').style.display = 'flex';
-        //             localStorage.setItem('currentPage', 'container4');
-        //         }, 1000); // Simulating a delay for form submission
-        //     } else {
-        //         event.preventDefault();
-        //         form.reportValidity(); // Display validation messages
-        //     }
-        // });
-    </script>
+  
     <script>
  document.querySelector('#submitBtn').addEventListener('click', async function(event) {
             event.preventDefault(); // Prevent default form submission
@@ -209,6 +329,82 @@
                 console.error('Error:', error);
             }
         });
+    </script>
+    <script>
+           function validateInput(inputField, regex, errorSpan) {
+          if (!regex.test(inputField.value)) {
+            errorSpan.style.display = "block";
+            inputField.style.border = "2px solid red";
+          } else {
+            errorSpan.style.display = "none";
+            inputField.style.border = "";
+          }
+        }
+
+
+
+        const firstNameInput = document.getElementById("firstName");
+        const lastNameInput = document.getElementById("lastName");
+        const emailInput = document.getElementById("email");
+
+        firstNameInput.addEventListener("blur", function () {
+          validateInput(
+            this,
+            /^[A-Za-z]+$/,
+            document.getElementById("firstNameError")
+          );
+        });
+
+        lastNameInput.addEventListener("blur", function () {
+          validateInput(
+            this,
+            /^[A-Za-z]+$/,
+            document.getElementById("lastNameError")
+          );
+        });
+
+        emailInput.addEventListener("blur", function () {
+          validateInput(
+            this,
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            document.getElementById("emailError")
+          );
+        });
+
+
+        const passwordInput = document.getElementById("password");
+const errorMsg = document.getElementById("error-msg");
+
+// Regular expression for password validation
+const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+passwordInput.addEventListener("input", function () {
+  const passwordValue = passwordInput.value;
+
+  // Check if the password meets the required pattern
+  if (!passwordPattern.test(passwordValue)) {
+    errorMsg.style.display = "block";
+  } else {
+    errorMsg.style.display = "none";
+  }
+});
+
+
+    </script>
+
+    <script>
+        const phoneInput = document.getElementById("phone");
+        const phoneError = document.getElementById("phoneError");
+        phoneInput.addEventListener("input", function () {
+          phoneInput.value = phoneInput.value.replace(/\D/g, "");
+          if (phoneInput.value.length > 10) {
+            phoneError.style.display = "block";
+          } else {
+            phoneError.style.display = "none";
+          }
+        });
+
+      
     </script>
     
 </body>

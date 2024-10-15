@@ -1,46 +1,58 @@
 
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
-const {jwtAuthMiddleware, generateToken} = require("../utils/jwt")
+const { generateToken } = require("../utils/jwt");
+
 exports.registerUser = async (req, res) => {
     try {
-       
-        const user = new User({
-           name: req.body.username,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            password: req.body.password,
-            phone: req.body.phone,
-            dob: req.body.dob,
-            gender: req.body.gender,
-            role:req.body.role
-        });
-        const salt = 10;
-        const hasedpssword = await bcrypt.hash(user.password, salt);
-        user.password=hasedpssword;
-        const response =   await user.save();
-        const payload = {
-            id:response.id,
-            userName: response.userName
-        }
-        console.log(JSON.stringify(payload))
-        const token = generateToken(payload);
-     
-        console.log("Token is : ",token);
+        const { username, lastname, email, password, phone, dob, gender, role } = req.body;
 
-      // Render success EJS view with userName
-      res.render('success', { 
-        message: "User successfully registered",
-        userName: `${req.body.username} ${req.body.lastname}` // Pass the user's full name
-    });
-    console.log("User registered:", req.body);
-} catch (error) {
-    // Render error EJS view with userName
-    res.render('error', { 
-        message: 'Email already exists', 
-        userName: `${req.body.username} ${req.body.lastname}` // Pass the user's full name
-    });
-    console.error("Error:", error);
-}
+        // Check if the email is already registered
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return renderError(res, 'Email already exists', username, lastname);
+        }
+
+        // Create and save a new user with hashed password
+        const hashedPassword = await bcrypt.hash(password, 10); // 10 rounds for salt
+        const newUser = new User({
+            name: username,
+            lastname,
+            email,
+            password: hashedPassword,
+            phone,
+            dob,
+            gender,
+            role
+        });
+        
+        const savedUser = await newUser.save();
+
+        // Generate JWT token
+        const token = generateToken({ id: savedUser._id, userName: `${savedUser.name} ${savedUser.lastname}` });
+        console.log("Token generated:", token);
+
+        // Render success page
+        return renderSuccess(res, 'User successfully registered', username, lastname);
+
+    } catch (error) {
+        console.error("Registration error:", error);
+        return renderError(res, 'Registration failed. Please try again later.', req.body.username, req.body.lastname);
+    }
 };
 
+// Helper function to render error
+const renderError = (res, message, username, lastname) => {
+    return res.render('error', {
+        message,
+        userName: `${username} ${lastname}`
+    });
+};
+
+// Helper function to render success
+const renderSuccess = (res, message, username, lastname) => {
+    return res.render('success', {
+        message,
+        userName: `${username} ${lastname}`
+    });
+};
