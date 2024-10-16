@@ -834,5 +834,102 @@
     }
     });
 </script>
+<script>
+  
+
+
+
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropArea = document.getElementById('dropArea');
+    const fileInput = document.getElementById('certificateFile');
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    // Highlight drop area when item is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    // Handle dropped files
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    // Handle click to open file input dialog
+    dropArea.addEventListener('click', () => fileInput.click());
+
+    // Handle file input change
+    fileInput.addEventListener('change', handleFiles, false);
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    function highlight(e) {
+      dropArea.classList.add('dragover');
+    }
+
+    function unhighlight(e) {
+      dropArea.classList.remove('dragover');
+    }
+
+    function handleDrop(e) {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      fileInput.files = files; // Assign files to file input
+      handleFiles({ target: { files } });
+    }
+
+    function handleFiles(e) {
+      const files = e.target.files;
+      if (files.length > 0) {
+        const filename = files[0].name;
+        dropArea.innerHTML = `<p>File uploaded: ${filename}</p>`;
+      }
+    }
+  });
+
+
+
+  document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('certificateId', document.getElementById('certificateId').value);
+    formData.append('internName', document.getElementById('internName').value);
+    formData.append('issueDate', document.getElementById('issueDate').value);
+    formData.append('description', document.getElementById('description').value);
+    formData.append('certificate', document.getElementById('certificateFile').files[0]);
+
+    try {
+      const response = await fetch('/admin/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        showToast(result.message);
+      } else {
+        showToast(result.message || 'Failed to upload certificate', '#f44336');
+      }
+    } catch (error) {
+      showToast('Failed to upload certificate', '#f44336');
+    }
+  });
+
+
+
+
+</script>
   </body>
 </html>
