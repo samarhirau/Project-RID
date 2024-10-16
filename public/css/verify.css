@@ -283,7 +283,7 @@ section .form-group input {
     position: relative;
   }
   .spanfooter{
-    width: 80vw;
+    width: 90vw;
     margin: auto;
     font-size: 8px;
     text-align: center;
@@ -297,5 +297,45 @@ section .form-group input {
   .upper-content{
    padding-right: 109px;
   }
+
   
+}
+
+@media (max-width: 768px) {
+  .upper-content {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 0.95em;
+  }
+
+  span {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content .upper-content {
+    
+    padding-left: 25px;
+    margin: 0px;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+
+  span {
+    font-size: 0.7em;
+  }
 }
