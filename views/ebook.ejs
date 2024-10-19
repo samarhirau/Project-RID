@@ -1,158 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Preload important fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"></noscript>
-
-    <link rel="stylesheet" href="/css/ebookstyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Defer loading of JavaScript to avoid blocking rendering -->
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <!-- <link rel="stylesheet" href="/css/ebookstyle.css"> -->
+    <link rel="stylesheet" href="/css/ebookstyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 
     <title>E-Book Dashboard</title>
-    
     <style>
-        .star {
-            color: gold;
-            font-size: 1em;
-        }
-        .star.empty {
-            color: lightgray;
-        }
+      .star {
+        color: gold;
+        font-size: 1em;
+      }
+      .star.empty {
+        color: lightgray;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="E-Book-Parent">
-        <div class="left-side-panel">
-            <div class="logo">
-                <img src="/assets/RID Concept Long.svg" alt="logo" loading="lazy">
-                <button onclick="toggleMenu()" class="btn_mobile_open">•••</button>
-            </div>
-            <h1 class="special">RID's E-Book Center</h1>
-            <button id="addNewBook" class="add-book">
-                <span class="material-symbols-outlined">add</span>Add New E-Books
-            </button>
-            <h1 style="font-weight: 600;">Latest Reading</h1>
+      <div class="left-side-panel">
+        <div class="logo">
+          <img src="/assets/RID Concept Long.svg" alt="logo" />
+          <button onclick="btnOpen()" class="btn_mobile_open">•••</button>
+        </div>
+        <h1 class="special">RID's E-Book Center</h1>
+        <button id="addNewBook" class="add-book">
+          <span class="material-symbols-outlined">add</span>Add New E-Books
+        </button>
+        <h1 style="font-weight: 600">Latest Reading</h1>
 
-            <div class="book-card-holder">
-                <% 
-                  const reversedBooks = books.reverse();
-                  for (let i = 0; i < 2 && i < reversedBooks.length; i++) { 
-                      const book = reversedBooks[i]; 
-                %>
-                    <a href="/book/<%= book._id %>" class="book-card-link" style="text-decoration: none;">
-                      <div class="book-card">
-                        <img src="<%= book.image %>" alt="<%= book.title %>" loading="lazy">
-                          <div class="title-desc">
-                              <h3><%= book.title %></h3>
-                              <p class="desc"><%= book.description.substr(0,100) + "..." %></p>
-                              <p class="author-name">Author: <%= book.author %></p>
-                              <div class="rating">
-                                  <% for (let j = 0; j < 5; j++) { %>
-                                      <% if (j < Math.floor(book.rating)) { %>
-                                          <span class="material-symbols-outlined filledstar">star</span>
-                                      <% } else if (j < book.rating) { %>
-                                          <span class="material-symbols-outlined filledstar">star_half</span>
-                                      <% } else { %>
-                                          <span class="material-symbols-outlined notfilledstar">star</span>
-                                      <% } %>
-                                  <% } %>
-                              </div>
-                              <p>Publish Year: <%= book.publishYear %></p>
-                          </div>
-                      </div>
-                    </a>
-                <% } %>
+        <div class="book-card-holder">
+          <% const reversedBooks = books.reverse(); for (let i = 0; i < 2 && i <
+          reversedBooks.length; i++) { const book = reversedBooks[i]; %>
+          <a
+            href="/book/<%= book._id %>"
+            class="book-card-link"
+            style="text-decoration: none"
+          >
+            <div class="book-card">
+              <img
+                src="data:image/jpeg;base64,<%= book.image %>"
+                alt="<%= book.title %>"
+              />
+              <div class="title-desc">
+                <h3><%= book.title %></h3>
+                <p class="desc">
+                  <%= book.description.substr(0,100) + "..." %>
+                </p>
+                <p class="author-name">Author: <%= book.author %></p>
+                <div class="rating">
+                  <% for (let j = 0; j < 5; j++) { %> <% if (j <
+                  Math.floor(book.rating)) { %>
+                  <span class="material-symbols-outlined filledstar">star</span>
+                  <% } else if (j < book.rating) { %>
+                  <span class="material-symbols-outlined filledstar"
+                    >star_half</span
+                  >
+                  <% } else { %>
+                  <span class="material-symbols-outlined notfilledstar"
+                    >star</span
+                  >
+                  <% } %> <% } %>
+                </div>
+                <p>Publish Year: <%= book.publishYear %></p>
+              </div>
             </div>
+          </a>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="main-panel">
+        <div class="upperbar">
+          <div class="content-not-imp" id="notImp">
+            <h1>Explore E-Books, Research Papers & More</h1>
+            <p style="padding: 16px 0">
+              Explore the latest releases at RID's E-Book Center! Enjoy a
+              seamless reading experience with our flipbook feature and take
+              advantage of limited-time PDF download demos. Don't miss out on
+              discovering new and exciting content! <br /><br /><a
+                class="learn-more"
+                href="#"
+                >Learn More</a
+              >
+            </p>
+          </div>
+
+          <div class="navigation-bar" id="borderRem">
+            <ul>
+              <button onclick="btnClose()" class="btn_mobile">×</button>
+              <li>
+                <a href="#" class="active"
+                  ><span class="material-symbols-outlined">home</span>Home</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="material-symbols-outlined notfilled"
+                    >newspaper</span
+                  >Research Paper</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="material-symbols-outlined notfilled">book</span
+                  >Library</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span class="material-symbols-outlined notfilled"
+                    >settings</span
+                  >Setting</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="awakeAction()"
+                  ><span id="headerBTN" class="material-symbols-outlined"
+                    >check_box_outline_blank</span
+                  >Hide Header</a
+                >
+              </li>
+            </ul>
+            <div class="searchbar">
+              <span class="material-symbols-outlined">search</span>
+              <input type="search" />
+            </div>
+          </div>
         </div>
 
-        <div class="main-panel">
-            <div class="upperbar">
-                <div class="content-not-imp" id="notImp">
-                    <h1>Explore E-Books, Research Papers & More</h1>
-                    <p style="padding: 16px 0;">Explore the latest releases at RID's E-Book Center! Enjoy a seamless reading experience with our flipbook feature and take advantage of limited-time PDF download demos. Don't miss out on discovering new and exciting content! <br><br><a class="learn-more" href="#">Learn More</a></p>
-                </div>
-                
-                <div class="navigation-bar" id="borderRem">
-                    <ul>
-                        <button onclick="toggleMenu()" class="btn_mobile">×</button>
-                        <li><a href="#" class="active"><span class="material-symbols-outlined">home</span>Home</a></li>
-                        <li><a href="#"><span class="material-symbols-outlined notfilled">newspaper</span>Research Paper</a></li>
-                        <li><a href="#"><span class="material-symbols-outlined notfilled">book</span>Library</a></li>
-                        <li><a href="#"><span class="material-symbols-outlined notfilled">settings</span>Setting</a></li>
-                        <li><a href="#" onclick="awakeAction()"><span id="headerBTN"  class="material-symbols-outlined">check_box_outline_blank</span>Hide Header</a></li>
-                    </ul>
-                    <div class="searchbar">
-                        <span class="material-symbols-outlined">search</span>
-                        <input type="search" placeholder="Search...">
+        <!-- <div class="bookcard-holder">
+                <% moreBooks.forEach(book => { %>
+                <div class="book-card1">
+                    <img src="<%= book.image %>" alt="">
+                    <div class="title-desc1">
+                        <a class="readbtn" href="#pdfUrl">Read Now</a>
+                        <h3><%= book.title %></h3>
+                        <p>Publish Year: <%= book.publishYear %></p>
                     </div>
                 </div>
-            </div>
+                <% }); %>
+            </div> -->
 
-            <div class="bookcard-holder">
-                <% 
-                    function shuffleArray(array) {
-                        for (let i = array.length - 1; i > 0; i--) {
-                            const j = Math.floor(Math.random() * (i + 1));
-                            [array[i], array[j]] = [array[j], array[i]];
-                        }
-                    }
-                    
-                    const shuffledBooksArray = [...books];
-                    shuffleArray(shuffledBooksArray);
-                    shuffledBooksArray.forEach(book => { 
-                %>
+        <!-- Other sections remain the same -->
+
+        <!-- Displaying the books array in reversed order -->
+        <div class="bookcard-holder">
+          <% // Shuffle the books array using Fisher-Yates algorithm function
+          shuffleArray(array) { for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1)); [array[i], array[j]] =
+          [array[j], array[i]]; } } const shuffledBooksArray = [...books]; //
+          Create a shallow copy of the books array
+          shuffleArray(shuffledBooksArray); // Shuffle the copy
+          shuffledBooksArray.forEach(book => { %>
+          <div class="book-card1">
+            <img
+              src="data:image/jpeg;base64,<%= book.image %>"
+              alt="<%= book.title %>"
+            />
+            <div class="title-desc1">
+              <a class="readbtn" href="/book/<%= book._id %>">View Details</a>
+              <h3><%= book.title %></h3>
+              <p>Publish Year: <%= book.publishYear %></p>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+
+        <!-- Displaying the books array -->
+
+        <!-- Displaying the moreBooks array -->
+        <!-- <div class="more-books-holder">
+                <% moreBooks.forEach(book => { %>
                     <div class="book-card1">
-                        <img src="<%= book.image %>" alt="<%= book.title %>" loading="lazy">
+                        <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
+
                         <div class="title-desc1">
-                            <a class="readbtn" href="/book/<%= book._id %>">View Details</a>
+                            <a class="readbtn" href="#pdfUrl">Read Now</a>
                             <h3><%= book.title %></h3>
                             <p>Publish Year: <%= book.publishYear %></p>
+                            <p>Author: <%= book.author %></p>
+                            <p>Description: <%= book.description %></p>
+                            <p>Rating: <%= book.rating %></p>
                         </div>
                     </div>
                 <% }); %>
-            </div>
-        </div>
+            </div> -->
+      </div>
     </div>
-
     <script>
-        document.getElementById('addNewBook').addEventListener('click', () => {
-            window.location.href = '/dashboardebook';
-        });
-
-        const toggleMenu = () => {
-            const borderRem = document.getElementById("borderRem");
-            borderRem.style.display = borderRem.style.display === "none" ? "flex" : "none";  
-        }
-
-        var notImpContent = document.getElementById("notImp");
-        var headerBTN = document.getElementById("headerBTN");
-
-        function headerhide() {
-            headerBTN.innerHTML = "check_box_outline_blank";
-            notImpContent.style.display = "block";
-            borderRem.style.borderTop = "1px solid #ddd";  
-        }
-
-        function headershow() {
-            headerBTN.innerHTML = "check_box";
-            notImpContent.style.display = "none";
-            borderRem.style.border = "none";
-            borderRem.style.padding = "16px 0"; 
-        }
-
-        function awakeAction(){
-            if (headerBTN.innerHTML === "check_box"){
-                headerhide();
-            } else {
-                headershow();
-            }
-        }
+      const addNewBook = document.getElementById("addNewBook");
+      addNewBook.addEventListener("click", () => {
+        window.location.href = "/ebook-upload";
+      });
     </script>
-</body>
+    <script src="./js/ebook.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@beta/bundled/locomotive-scroll.min.js"></script>
+    <script>
+      (function () {
+        const locomotiveScroll = new LocomotiveScroll();
+      })();
+    </script>
+    <script>
+      var notImpContent = document.getElementById("notImp");
+      var borderRem = document.getElementById("borderRem");
+      var headerBTN = document.getElementById("headerBTN");
+
+      function btnClose() {
+        borderRem.style.display = "none";
+      }
+      function btnOpen() {
+        borderRem.style.display = "flex";
+      }
+
+      function headerhide() {
+        headerBTN.innerHTML = "check_box_outline_blank";
+        notImpContent.style.display = "block";
+        borderRem.style.borderTop = "1px solid #ddd";
+      }
+      function headershow() {
+        headerBTN.innerHTML = "check_box";
+        notImpContent.style.display = "none";
+        borderRem.style.border = "none";
+        borderRem.style.padding = "16px 0";
+      }
+
+      function awakeAction() {
+        if (headerBTN.innerHTML === "check_box") {
+          headerhide();
+        } else {
+          headershow();
+        }
+      }
+    </script>
+  </body>
 </html>
