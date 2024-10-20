@@ -12,6 +12,12 @@ body {
     left: 50%;
     position: absolute;
     transform: translate(-50%,-50%);
+    
+   
+      /* background-image: url('path-to-technology-image.jpg');
+      background-size: cover;
+      background-position: center; */
+    
   }
   
   .container {
@@ -249,6 +255,7 @@ body {
   margin-top: 15px;
   color: red;
 }
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
