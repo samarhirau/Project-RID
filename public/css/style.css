@@ -787,16 +787,15 @@ body {
 }
 
 .content-box .content-text h2 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 600;
 
-  margin: 1.5px 0;
+  margin: 1px 0;
 }
 
 .content-box .content-text ol {
   font-size: 1rem;
   font-weight: 300;
-
   margin: 15px;
   /* no padding: 3px; */
 }
