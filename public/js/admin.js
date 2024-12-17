@@ -33,6 +33,22 @@ document.getElementById('uploadForm').addEventListener('submit', async (e) => {
 });
 
 
+function ShowUploadBook(){
+  document.getElementById('mainArea').style.display = 'none';
+  document.getElementById('allAdmins').style.display = 'none';
+  document.getElementById('bookUpload').style.display = 'initial';
+  document.getElementById('mainArea1').style.display = 'none';
+  document.getElementById('showTotal').className = 'active';
+  document.getElementById('dashboardbtn').style.backgroundColor = 'white';
+  document.getElementById('dashboardbtn').style.color = 'black';
+  document.getElementById('table-list').style.display = 'none';
+  document.getElementById('changeRole').style.display = 'none';
+   if (window.innerWidth <= 768) {
+     const sidebar = document.getElementById('sidebar');
+   sidebar.style.display = 'none'; 
+}
+}
+
 
   function uploadcertificate(){
     document.getElementById('mainArea1').style.display = 'flex';
@@ -125,6 +141,8 @@ function showTotalList() {
      sidebar.style.display = 'none'; 
   }
   }+
+
+
 
   // Wait until th DOM is fully loaded
 // document.addEventListener('DOMContentLoaded', (event) => {
