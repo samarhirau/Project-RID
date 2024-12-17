@@ -1,5 +1,5 @@
 /* Color Root is Here */
-:root {
+:root {   
   --maintheme: #083d5d;
   --preblue: #f2f7fc;
   --ourborder: 0.5px solid #083b5d;
@@ -48,6 +48,8 @@ html,
 body {
   width: 100%;
   height: 100%;
+  
+
 }
 
 /* Google Icons */
@@ -632,6 +634,7 @@ footer .links {
       text-align: center;
       align-items: center;
   }
+
 }
 
 @media screen and (max-width: 568px) {
@@ -643,6 +646,7 @@ footer .links {
   #ebookBtn {
     display: none;
   }
+ 
 }
 
 
