@@ -56,20 +56,24 @@
   <meta name="msapplication-TileColor" content="#da532c" />
   <meta name="theme-color" content="#ffffff" />
 
-  <!-- <h3>this is testing</h3> -->
-
-  <!-- <h4>testing.html</h4> -->
+  <style>
+    #circle-img {
+                border-radius: 50%; 
+             
+            }
+ </style>
 </head>
 
 <body>
   <header style="
         border-bottom: 1px solid #083d5d;
         backdrop-filter: blur(4px);
-        position: sticky;
+        position: fixed;
         top: 0;
+        left: 0;
         background: rgba(255, 255, 255, 0.5);
         width: 100%;
-        z-index: +999;
+        z-index: 999;
       ">
     <div class="header">
       <div class="web-text">
@@ -161,32 +165,7 @@
 
             <div id="footerr" style="display: none"></div>
             <div id="profile-sectionn" style="display: none"></div>
-            <!-- <div id="profile-section" style="display: none;">
-             
-      <button id="profileButton">Profile</button>
-  
-      <div id="profileDrawer" class="drawer">
-          <div class="drawer-content">
-              <span id="closeDrawer" class="close">&times;</span>
-              <h2>Welcome, User</h2>
-              <p>Your profile information goes here.</p>
-              Add more profile details as needed
-              <h3>Services</h3>
-              <ul>
-                  <li><a href="#certificates">Certificates</a></li>
-                  <li><a href="#courses">Courses</a></li>
-  
-                  
-  <button id="logoutButton">Logout</button>
-  
-                  Add more services as needed
-              </ul>
-          </div>
-      </div>
-  
-   
-  
-            </div> -->
+            
           </ul>
 
           <ul class="lowerNav">
@@ -227,16 +206,7 @@
               <a class="menu-link" href="#"><object class="svg-object" data="./assets/icons/call_log.svg"
                   type="image/svg+xml"></object>Contact Us</a>
             </li>
-            <!-- <li>
-                <a class="menu-link" href="#"
-                  ><object
-                    class="svg-object"
-                    data="./assets/icons/psychology_alt.svg"
-                    type="image/svg+xml"
-                  ></object
-                  >Why Us?</a
-                >
-              </li> -->
+            
           </ul>
         </div>
       </div>
@@ -245,7 +215,7 @@
 
   <div style="display: none" id="about-container"></div>
   <div id="closeContent">
-    <div class="slider">
+    <div class="slider" style="margin-top: 130px;">
       <div class="myslide fade">
         <!-- <div class="txt">
           <h1>IMAGE 1</h1>
@@ -420,12 +390,12 @@
             happening in your field.
           </p>
 
-          <h2>SEARCH PUBLICATION</h2>
+          <!-- <h2>SEARCH PUBLICATION</h2>
           <div class="search-publication">
             <span class="material-symbols-outlined search-icon">search</span>
-            <!-- change this input field as required -->
+           
             <input type="search" placeholder="Search Publications..." />
-          </div>
+          </div> -->
 
           <h2>Connect with your scientific community</h2>
           <p>
@@ -449,11 +419,13 @@
         </div>
 
 
-        <div class="right animate__animated animate__fadeInRight" >
-
-          <img src="./assets/keywords-research.svg" alt="" draggable="false" />
+        <div id="circle-img" class="right animate__animated animate__fadeInRight" >
+          <img src="../assets/dash-ebook-images/technology related img.jpeg" alt="" draggable="false" />
+        
         </div>
+      
       </section>
+      
 
       <section class="newsletter">
         <div class="newsletter-body">
@@ -607,13 +579,14 @@
           <div class="links">
             <div class="links-1">
               <a href="#"><ion-icon name="logo-facebook"></ion-icon> Facebook</a>
-              <a href="#"><ion-icon name="logo-linkedin"></ion-icon> LinkedIn</a>
-              <a href="#"><ion-icon name="logo-youtube"></ion-icon> YouTube</a>
-              <a href="#"><ion-icon name="logo-github"></ion-icon> GitHub</a>
+              <a href="https://www.linkedin.com/in/rid-bharat-9a4517324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=andro"><ion-icon name="logo-linkedin"></ion-icon> LinkedIn</a>
+              <a href="https://youtube.com/@ridbharat?si=KEFBYHmDgDyJcRMD"><ion-icon name="logo-youtube"></ion-icon> YouTube</a>
+              <a href="https://github.com/RID-bharat25"><ion-icon name="logo-github"></ion-icon> GitHub</a>
+             
             </div>
             <div class="links-2">
-              <a href="#"><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
-              <a href="#"><ion-icon name="mail-outline"></ion-icon> Email Us</a>
+              <a href="https://www.instagram.com/ridbharat?igsh=MW1seTNvMnhrMmdyNA=="><ion-icon name="logo-instagram"></ion-icon> Instagram</a>
+              <a href="mailto:ridorg.in@gmail.com"><ion-icon name="mail-outline"></ion-icon> Email Us</a>
             </div>
           </div>
         </div>

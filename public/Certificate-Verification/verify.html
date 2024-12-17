@@ -1,362 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Verify Certificate</title>
-    <link rel="stylesheet" href="../css/verify.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <style>
-      .certificate-details {
-        display: none;
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-top: 10px;
-      }
 
-      .info-button {
-        cursor: pointer;
-        padding: 5px 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 3px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Certificate</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="../css/verify.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    .certificate-details {
+      display: none;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+    }
 
-      #result strong {
-        color: #008000;
-        font-size: small;
-      }
-      #result span {
-        color: rgb(0, 0, 0);
-        font-size: small;
-      }
-      #result {
-        margin-top: 40px;
-        background: #eafcea;
-        border: 1px solid #008000;
-        border-radius: 30px;
-        padding: 5px 10px;
-      }
-      .certificate-details {
-        background-color: #c6f4d6; /* Light green background */
-        padding: 20px;
-        border: 1px solid #3e8e41; /* Green border */
-        border-radius: 10px; /* Rounded corners */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft box shadow */
-        width: 50%; /* Adjust the width as needed */
-        margin: 40px auto; /* Center the box horizontally */
-      }
+    .info-button {
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 3px;
+    }
 
-      /* Style the heading */
-      .certificate-details h2 {
-        color: #3e8e41; /* Green text color */
-        margin-top: 0; /* Remove top margin */
-      }
-      .certificate-details p {
-        margin-bottom: 10px; /* Add some space between lines */
-      }
+    #result strong {
+      color: #008000;
+      font-size: small;
+    }
 
-      .certificate-details strong {
-        color: #666; /* Dark gray text color */
-      }
+    #result span {
+      color: rgb(0, 0, 0);
+      font-size: small;
+    }
 
-      .certificate-details span {
-        color: #333; /* Dark text color */
-      }
+    #result {
+      margin-top: 40px;
+      background: #eafcea;
+      border: 1px solid #008000;
+      border-radius: 30px;
+      padding: 5px 10px;
+    }
 
-      /* Style the link (if uncommented) */
-      .certificate-details a {
-        text-decoration: none; /* Remove underline */
-        color: #3e8e41; /* Green text color */
-      }
+    .certificate-details {
+      background-color: #c6f4d6;
+      /* Light green background */
+      padding: 20px;
+      border: 1px solid #3e8e41;
+      /* Green border */
+      border-radius: 10px;
+      /* Rounded corners */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      /* Soft box shadow */
+      width: 50%;
+      /* Adjust the width as needed */
+      margin: 40px auto;
+      /* Center the box horizontally */
+    }
 
-      .certificate-details a:hover {
-        color: #666; /* Dark gray text color on hover */
-      }
+    /* Style the heading */
+    .certificate-details h2 {
+      color: #3e8e41;
+      /* Green text color */
+      margin-top: 0;
+      /* Remove top margin */
+    }
 
-      .popup-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-      }
+    .certificate-details p {
+      margin-bottom: 10px;
+      /* Add some space between lines */
+    }
 
-      .popup-content {
-        background-color: white;
-        padding: 50px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        position: relative;
-        width: 400px;
-      }
+    .certificate-details strong {
+      color: #666;
+      /* Dark gray text color */
+    }
 
-      .popup-content h2,
-      p {
-        margin: 10px;
-      }
+    .certificate-details span {
+      color: #333;
+      /* Dark text color */
+    }
 
-      .popup-close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        background: #007bff;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        font-size: 20px;
-        line-height: 30px;
-        text-align: center;
-      }
-      .blur-background {
-        filter: blur(5px);
-      }
-    </style>
-  </head>
-  <body>
+    /* Style the link (if uncommented) */
+    .certificate-details a {
+      text-decoration: none;
+      /* Remove underline */
+      color: #3e8e41;
+      /* Green text color */
+    }
+
+    .certificate-details a:hover {
+      color: #666;
+      /* Dark gray text color on hover */
+    }
+
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background-color: white;
+      padding: 50px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      width: 400px;
+    }
+
+    .popup-content h2,
+    p {
+      margin: 10px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .blur-background {
+      filter: blur(5px);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header">
+      <div class="web-text">
+        <p>
+          Website:
+          <span>RID (Reserch Innovation & Discovery) by TWKSAA Welfare Foundation
+          </span>
+        </p>
+
+        <p>Helpline: <span>+91 98927 82728 </span></p>
+        <p>Email: <span>supportid@gamil.com</span></p>
+      </div>
+      <div class="right-text">
+        <a class="link"><object class="svg-object" data="/assets/icons/important_devices.svg"
+            type="image/svg+xml"></object>Main Content</a>
+        <a class="link">+A A A-</a>
+        <a class="link"><object class="svg-object" data="/assets/icons/forum.svg"
+            type="image/svg+xml"></object>Feedback</a>
+        <a class="link"><object class="svg-object" data="./assets/icons/support_agent.svg"
+            type="image/svg+xml"></object>Support</a>
+      </div>
+    </div>
+  </header>
+  <div class="main-content">
     <header>
-      <div class="header">
-        <div class="web-text">
-          <p>
-            Website:
-            <span
-              >RID (Reserch Innovation & Discovery) by TWSKAA Welfare Foundation
-            </span>
-          </p>
+      <div class="logo">
+        <img src="../assets/final_logo.svg" alt="logo" height="82px" />
 
-          <p>Helpline: <span>+91 98927 82728 </span></p>
-          <p>Email: <span>supportid@gamil.com</span></p>
-        </div>
-        <div class="right-text">
-          <a class="link"
-            ><object
-              class="svg-object"
-              data="/assets/icons/important_devices.svg"
-              type="image/svg+xml"
-            ></object
-            >Main Content</a
-          >
-          <a class="link">+A A A-</a>
-          <a class="link"
-            ><object
-              class="svg-object"
-              data="/assets/icons/forum.svg"
-              type="image/svg+xml"
-            ></object
-            >Feedback</a
-          >
-          <a class="link"
-            ><object
-              class="svg-object"
-              data="./assets/icons/support_agent.svg"
-              type="image/svg+xml"
-            ></object
-            >Support</a
-          >
-        </div>
       </div>
     </header>
-    <div class="main-content">
-      <header>
-        <div class="logo">
-          <img src="../assets/final_logo.svg" alt="logo" height="82px" />
-          
-        </div>
-      </header>
-      <div class="upper-content">
-        
-        <h2>RID's Certificate Verification & Validation</h2>
-        <p>
-          Welcome to RID’s Certificate Verification & Validation, Here you can
-          easily, verify the status of Research Innovation & Discovery
-          certificate for an internship, training program, seminar, webinar or
-          workshop programs, you may search as follows:
-        </p>
-        <li>
-          <span>Step 1:  Visit the official website of the Research
-            Innovation & Discovery (RID). </span>
-        </li>
-        <li>
-          <span>Step 2:  Look for a "Certificate" or "Verify Certificate"
-            button on top of the landing page.</span> 
-        </li>
-        <li>
-          <span>Step 3:  Enter the unique certificate number or
-            certificate id.</span> 
-        </li>
-        <li>
-          <span>Step 4:  Review the results to confirm the validity and
-            status of the certificate.</span> 
-        </li>
-      </div>
 
-      <form id="verifyForm">
-        <div class="lower-content">
-          <section>
-            <div class="form-group">
-              <label
-                >Certificate ID or Number
-                <span style="color: red; font-weight: bold">*</span></label
-              >
-              <input
-                id="certificateId"
-                type="text"
-                name=""
-                placeholder="eg: RIDXR32354"
-                required
-              />
-            </div>
-          </section>
-          <div id="span-message">
-            <span id="innerspan">hello</span><span id="message">world</span>
-          </div>
-          <div class="buttons">
-            <button type="submit" onclick="func()">
-              <span class="material-symbols-outlined" style="font-size: 20px">
-                new_releases </span
-              >Verify Certificate
-            </button>
-            <button>
-              <span class="material-symbols-outlined" style="font-size: 20px">
-                download </span
-              ><a id="detailCertificatePath" target="_blank"
-                >Download Certificate</a
-              >
-            </button>
-          </div>
-          <div style="display: flex; gap: 20px; align-items: center">
-            <div id="result" style="display: none"></div>
-            <button
-              type="button"
-              id="infoButton"
-              class="info-button"
-              style="display: none; position: relative; top: 20px"
-            >
-              i
-            </button>
-          </div>
-          <div
-            class="certificate-details"
-            id="certificateDetails"
-            style="display: none"
-          >
-            <h2>Certificate Details</h2>
-            <p>
-              <strong>Certificate ID:</strong>
-              <span id="detailCertificateId"></span>
-            </p>
-            <p>
-              <strong>Intern Name:</strong> <span id="detailInternName"></span>
-            </p>
-            <p>
-              <strong>Issue Date:</strong> <span id="detailIssueDate"></span>
-            </p>
-            <p>
-              <strong>Description:</strong> <span id="detailDescription"></span>
-            </p>
-            <!-- <p><strong>Certificate:</strong> <a id="detailCertificatePath" href="#" target="_blank">View Certificate</a></p> -->
-          </div>
+    <form id="verifyForm" style="margin-top: 200px;" class="animate__animated animate__pulse animate__faster">
+      <div class="lower-content">
+        <section>
+          <div class="form-group">
+            <label>Certificate ID or Number
+              <span style="color: red; font-weight: bold">*</span></label>
+            <input id="certificateId" type="text" name="" placeholder="eg: RIDXR32354" required />
 
-          <span class="spanfooter"
-            ><span>Note:</span> Incase of failure of certificate validation,
-            please contact us for further process.</span
-          >
+          </div>
+        </section>
+        <div id="span-message">
+          <span id="innerspan">hello</span><span id="message">world</span>
         </div>
-      </form>
-    </div>
-    <div id="popup" class="popup-overlay">
-      <div class="popup-content">
-        <button id="closePopup" class="popup-close">&times;</button>
-        <h2 style="color: #007bff">Certificate Information</h2>
-        <p>
-          <strong>Certificate ID:</strong> <span id="popupCertificateId"></span>
-        </p>
-        <p><strong>Intern Name:</strong> <span id="popupInternName"></span></p>
-        <p><strong>Issue Date:</strong> <span id="popupIssueDate"></span></p>
-        <p><strong>Description:</strong> <span id="popupDescription"></span></p>
+        <div class="buttons">
+          <button type="submit" onclick="func()">
+            <span class="material-symbols-outlined" style="font-size: 20px">
+              new_releases </span>Verify Certificate
+          </button>
+          <button>
+            <span class="material-symbols-outlined" style="font-size: 20px">
+              download </span><a id="detailCertificatePath" target="_blank">Download Certificate</a>
+          </button>
+        </div>
+        <div style="display: flex; gap: 20px; align-items: center">
+          <div id="result" style="display: none"></div>
+          <button type="button" id="infoButton" class="info-button"
+            style="display: none; position: relative; top: 20px">
+            i
+          </button>
+        </div>
+        <div class="certificate-details" id="certificateDetails" style="display: none">
+          <h2>Certificate Details</h2>
+          <p>
+            <strong>Certificate ID:</strong>
+            <span id="detailCertificateId"></span>
+          </p>
+          <p>
+            <strong>Intern Name:</strong> <span id="detailInternName"></span>
+          </p>
+          <p>
+            <strong>Issue Date:</strong> <span id="detailIssueDate"></span>
+          </p>
+          <p>
+            <strong>Description:</strong> <span id="detailDescription"></span>
+          </p>
+          <!-- <p><strong>Certificate:</strong> <a id="detailCertificatePath" href="#" target="_blank">View Certificate</a></p> -->
+        </div>
+
+        <span class="spanfooter"><span>Note:</span>Incase of failure of certificate validation,
+          please contact us for further process.</span>
       </div>
+    </form>
+    <div class="upper-content">
+
+      <h2>RID's Certificate Verification & Validation</h2>
+      <p>
+        Welcome to RID’s Certificate Verification & Validation, Here you can
+        easily, verify the status of Research Innovation & Discovery
+        certificate for an internship, training program, seminar, webinar or
+        workshop programs, you may search as follows:
+      </p>
+      <li>
+        <span>Step 1: Visit the official website of the Research
+          Innovation & Discovery (RID). </span>
+      </li>
+      <li>
+        <span>Step 2: Look for a "Certificate" or "Verify Certificate"
+          button on top of the landing page.</span>
+      </li>
+      <li>
+        <span>Step 3: Enter the unique certificate number or
+          certificate id.</span>
+      </li>
+      <li>
+        <span>Step 4: Review the results to confirm the validity and
+          status of the certificate.</span>
+      </li>
     </div>
 
-    <script>
-      document
-        .getElementById("verifyForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
 
-          const certificateId = document.getElementById("certificateId").value;
 
-          try {
-            const response = await fetch("/verify/verify", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ certificateId }),
-            });
+  </div>
+  <div id="popup" class="popup-overlay">
+    <div class="popup-content">
+      <button id="closePopup" class="popup-close">&times;</button>
+      <h2 style="color: #007bff">Certificate Information</h2>
+      <p>
+        <strong>Certificate ID:</strong> <span id="popupCertificateId"></span>
+      </p>
+      <p><strong>Intern Name:</strong> <span id="popupInternName"></span></p>
+      <p><strong>Issue Date:</strong> <span id="popupIssueDate"></span></p>
+      <p><strong>Description:</strong> <span id="popupDescription"></span></p>
+    </div>
+  </div>
 
-            const result = await response.json();
-            if (result.message === "Certificate is valid") {
-              document.getElementById("result").style.display = "block";
-              document.getElementById("result").innerHTML =
-                "<strong>Successfully Verified:</strong> <span>certificate is verified, This certificate is valid</span>";
-              document.getElementById("infoButton").style.display = "block";
+  <script>
+    document
+      .getElementById("verifyForm")
+      .addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-              document.getElementById("popupCertificateId").textContent =
-                result.certificate.certificateId;
-              document.getElementById("popupInternName").textContent =
-                result.certificate.internName;
-              document.getElementById("popupIssueDate").textContent =
-                result.certificate.issueDate;
-              document.getElementById("popupDescription").textContent =
-                result.certificate.description;
-              document.getElementById("detailCertificatePath").href =
-                result.certificate.certificatePath;
-            } else {
-              document.getElementById("result").style.display = "block";
-              document.getElementById("result").style.backgroundColor =
-                "#FDE5EA";
-              document.getElementById("result").style.borderColor = "#DC143C";
-              document.getElementById("result").innerHTML =
-                "<strong style='color: red;'>Verification Failed:</strong> <span>Certificate ID is invalid or not found.</span>";
-              document.getElementById("infoButton").style.display = "none";
-            }
-          } catch (error) {
-            console.error("Error:", error);
+        const certificateId = document.getElementById("certificateId").value;
+
+        try {
+          const response = await fetch("/verify/verify", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ certificateId }),
+          });
+
+          const result = await response.json();
+          if (result.message === "Certificate is valid") {
+            document.getElementById("result").style.display = "block";
+            document.getElementById("result").innerHTML =
+              "<strong>Successfully Verified:</strong> <span>certificate is verified, This certificate is valid</span>";
+            document.getElementById("infoButton").style.display = "block";
+
+            document.getElementById("popupCertificateId").textContent =
+              result.certificate.certificateId;
+            document.getElementById("popupInternName").textContent =
+              result.certificate.internName;
+            document.getElementById("popupIssueDate").textContent =
+              result.certificate.issueDate;
+            document.getElementById("popupDescription").textContent =
+              result.certificate.description;
+            document.getElementById("detailCertificatePath").href =
+              result.certificate.certificatePath;
+
+
+            // Clear input field after successful verification
+            document.getElementById("certificateId").value = "";
+
+            // Change button text
+            document.querySelector("button[type='submit']").textContent =
+              "Verify Other Certificate";
+
+            // Hide the success message after 5 seconds (optional)
+            setTimeout(() => {
+              document.getElementById("result").style.display = "none";
+            }, 5000);
+
+
+          } else {
+            document.getElementById("result").style.display = "block";
+            document.getElementById("result").style.backgroundColor =
+              "#FDE5EA";
+            document.getElementById("result").style.borderColor = "#DC143C";
+            document.getElementById("result").innerHTML =
+              "<strong style='color: red;'>Verification Failed:</strong> <span>Certificate ID is invalid or not found.</span>";
+            document.getElementById("infoButton").style.display = "none";
           }
-        });
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      });
 
-      document
-        .getElementById("infoButton")
-        .addEventListener("click", function () {
-          document.getElementById("popup").style.display = "flex";
-          document.getElementById("popupBackground").style.display = "block";
-          document
-            .querySelector(".main-content")
-            .classList.add("blur-background");
-        });
+    document
+      .getElementById("infoButton")
+      .addEventListener("click", function () {
+        document.getElementById("popup").style.display = "flex";
+        document.getElementById("popupBackground").style.display = "block";
+        document
+          .querySelector(".main-content")
+          .classList.add("blur-background");
+      });
 
-      document
-        .getElementById("closePopup")
-        .addEventListener("click", function () {
-          document.getElementById("popup").style.display = "none";
-          document.getElementById("popupBackground").style.display = "none";
-          document
-            .querySelector(".main-content")
-            .classList.remove("blur-background");
-        });
-    </script>
-  </body>
+    document
+      .getElementById("closePopup")
+      .addEventListener("click", function () {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("popupBackground").style.display = "none";
+        document
+          .querySelector(".main-content")
+          .classList.remove("blur-background");
+      });
+  </script>
+</body>
+
 </html>

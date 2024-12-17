@@ -102,17 +102,19 @@ body {
 
   width: 500px;
   height: fit-content;
-  padding: 50px 5px;
+  padding: 20px 110px;
 }
 .main-content .upper-content {
   display: flex;
   flex-direction: column;
-  padding: 190px;
+  padding: 50px;
   gap: 20px;
+  margin-left: 40px;
 }
 
 .upper-content p,
 li {
+  
   font-weight: 400;
 }
 
@@ -243,6 +245,8 @@ section .form-group input {
   font-size: small;
 }
 
+
+ 
 @media screen and (max-width: 600px) {
   .header{
     display: none;
@@ -279,7 +283,7 @@ section .form-group input {
     position: relative;
   }
   .spanfooter{
-    width: 80vw;
+    width: 90vw;
     margin: auto;
     font-size: 8px;
     text-align: center;
@@ -289,5 +293,47 @@ section .form-group input {
     margin-right: 0px;
     top: 0px;
   }
+
+  .upper-content{
+   padding-right: 109px;
+  }
   
+}
+@media (max-width: 768px) {
+  .upper-content {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 0.95em;
+  }
+
+  span {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content .upper-content {
+    
+    padding-left: 27px;
+    margin: 0px;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+
+  span {
+    font-size: 0.7em;
+  }
 }

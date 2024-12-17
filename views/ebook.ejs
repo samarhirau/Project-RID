@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,10 +24,12 @@
       .star.empty {
         color: lightgray;
       }
+
     </style>
   </head>
   <body>
     <div class="E-Book-Parent">
+
       <div class="left-side-panel">
         <div class="logo">
           <img src="/assets/RID Concept Long.svg" alt="logo" />
@@ -73,11 +76,13 @@
                 </div>
                 <p>Publish Year: <%= book.publishYear %></p>
               </div>
+
             </div>
           </a>
           <% } %>
         </div>
       </div>
+
 
       <div class="main-panel">
         <div class="upperbar">
@@ -134,9 +139,11 @@
             <div class="searchbar">
               <span class="material-symbols-outlined">search</span>
               <input type="search" />
+
             </div>
           </div>
         </div>
+
 
         <!-- <div class="bookcard-holder">
                 <% moreBooks.forEach(book => { %>
@@ -146,6 +153,7 @@
                         <a class="readbtn" href="#pdfUrl">Read Now</a>
                         <h3><%= book.title %></h3>
                         <p>Publish Year: <%= book.publishYear %></p>
+
                     </div>
                 </div>
                 <% }); %>
@@ -176,6 +184,7 @@
           <% }); %>
         </div>
 
+
         <!-- Displaying the books array -->
 
         <!-- Displaying the moreBooks array -->
@@ -183,6 +192,7 @@
                 <% moreBooks.forEach(book => { %>
                     <div class="book-card1">
                         <img src="data:image/jpeg;base64,<%= book.image %>" alt="<%= book.title %>">
+
 
                         <div class="title-desc1">
                             <a class="readbtn" href="#pdfUrl">Read Now</a>
@@ -198,6 +208,7 @@
       </div>
     </div>
     <script>
+
       const addNewBook = document.getElementById("addNewBook");
       addNewBook.addEventListener("click", () => {
         window.location.href = "/ebook-upload";
@@ -240,6 +251,7 @@
           headerhide();
         } else {
           headershow();
+
         }
       }
     </script>

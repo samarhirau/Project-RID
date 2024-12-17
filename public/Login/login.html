@@ -1,121 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="login.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="left-content">
-        <h1>Login</h1>
-        <h2>Research Innovation & Discovery</h2>
-        <div class="inner-div">
-          <form id="loginForm" action="/auth/login" method="POST">
-            <label for="email">Enter Email Address:</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Enter your email address"
-            />
-
-            <label for="password">Enter Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-            />
-        
-            <button type="button"  id="forgotPass">Forget Password?</button>
-            <button  type="submit">Login</button>
-            
-            
-             
-          
-
-          </form>
-
-          <p>
-            By continuing login process, you agree to RID's
-            <a href="#">Conditions </a> of Use and
-            <a href="#">Privacy Notice</a>.
-          </p>
-        </div>
-        <div class="footer">
-          <p class="text">
-            Copyright ©<span id="currentYear"></span>, RID | TWF (TWKSAA WELFARE FOUNDATION). All Rights
-            Reserved.
-          </p>
-          <div class="links">
-            <a href="#">About</a> | <a href="#">Terms & Conditions</a> |
-            <a href="#">Privacy Policy</a> | <a href="#">Feedback</a>
-          </div>
-        </div>
-      </div>
-      <div class="right-content">
-        <div class="img">
-          <img src="./assets/images/loginMainImg.png" alt="LoginMainIMG" />
-        </div>
-        <img id="onLogo" src="./assets/images/imageLogo.png" alt="">
-      </div>
-    </div>
-
-    <div class="forgot-password-container" style="display: none;">
-      <h2 class="forget-title">Forgot Password</h2>
-      <form id="forgotPasswordForm">
-        <div class="form-group">
-          <label class="email-label" for="email">Enter your email address</label>
-          <input class="email-in" type="email" id="email" name="email" required placeholder="Enter your email">
-        </div>
-        <button  type="submit">Submit</button>
-      </form>
-      <div id="message"></div>
-    </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-  var currentYear = new Date().getFullYear();
-  document.getElementById('currentYear').textContent = currentYear;
-});
-
-    </script>
-  <script>
-      const forgotPass = document.getElementById('forgotPass');
-      forgotPass.addEventListener('click', () => {
-    window.location.href = '/forgot-password';
-  });
-  </script>
-
-    <script>
-    document.getElementById('forgetBtn').addEventListener('submit', async (event) => {
-      event.preventDefault();
-  
-      const email = document.getElementById('email').value;
-  
-      try {
-          const response = await fetch('/api/auth/forgot-password', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ email })
-          });
-          const result = await response.json();
-  
-          if (response.ok) {
-              alert(result.message);
-          } else {
-              alert(result.message);
-          }
-      } catch (error) {
-          alert('Error sending reset email.');
-      }
-  });
-  </script>
-  <script src="../js/showToast.js"></script>
-  </body>
-</html> -->
-
 
 
 <!DOCTYPE html>
@@ -124,30 +6,93 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Login</title>
- <link rel="stylesheet" type="text/css" href="login.css" />
+ <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+ <link rel="stylesheet" type="text/css" href="../css/login.css" />
+ <style>
+  #hiddenImg{
+    height: 700px;
+    width: 700px;
+    display: flex;
+    margin-left: 122px;
+    /* justify-content: space-evenly; */
+  }
+  
+@media screen and (max-width: 568px) {
+  /* Hide specific elements by setting their display to none */
+  .header, 
+  .web-text, 
+  .right-text, 
+  #onlineTest, 
+  #ebookBtn , #hiddenImg{
+    display: none;
+  }
+
+}
+ </style>
 </head>
 
 <body>
  <div class="container">
-  <div class="left-content">
-   <h1>Login</h1>
-   <h2>Research Innovation & Discovery</h2>
+  <div class="left-content animate__animated animate__zoomIn animate__faster">
+    <h1 style="font-family: 'Open Sans', sans-serif; font-size: 30px;">Login</h1>
+
+    <h2 style="color: #083b5d; font-family: sans-serif; font-size: 25px;">Research Innovation & Discovery</h2>
    <div class="inner-div">
-    <form id="loginForm" action="/auth/login" method="POST">
+    <form id="loginForm" action="/auth/login" method="POST" onsubmit="return validatePassword()">
      <label for="loginEmail">Enter Email Address:</label>
      <input type="text" id="loginEmail" name="email" placeholder="Enter your email address" />
-
+<!-- Ankit kumar -->
+ 
      <label for="password">Enter Password:</label>
-     <input type="password" id="password" name="password" placeholder="Enter your password" />
+     <input type="password" id="password" name="password" placeholder="Enter your password" required 
+     oncopy="return false" oncut="return false" onpaste="return false"/>
+     <span id="error-message" style="color: red;"></span>
+     <!-- <button type="button" id="forgotPass" style="border-radius: 8px;">Forget Password?</button> -->
+      <!-- <p id="fp">Forgot Password?</p> -->
+       <a href="/forgot-password" style="text-decoration: none;
+       color: #083b5d;
+       text-align: right;
+       font-family: sans-serif;
+       font-size: 13px;
+       "
+       >Forgot Password?</a>
+       
 
-     <button type="button" id="forgotPass">Forget Password?</button>
-     <button type="submit">Login</button>
+     <button type="submit" 
+     style="border-radius: 4px;
+      background-color: #083b5d; 
+      font-size: 13px;
+      font-family: sans-serif;"
+     >Login</button>
     </form>
+    <script>
+      
+function validatePassword() {
+  var password = document.getElementById('password').value;
+  var errorMessage = document.getElementById('error-message');
+  var specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+  // Check if the password is at least 6 characters long
+  if (password.length < 6) {
+    errorMessage.innerHTML = "Password must be at least 6 characters long!";
+    return false;  // Prevent form submission
+  } 
+  if (!specialCharRegex.test(password)) {
+    errorMessage.innerHTML = "Password must contain at least one special character!";
+    return false;  // Prevent form submission
+  }
+  else {
+    errorMessage.innerHTML = "";  // Clear any previous error message
+    return true;  // Allow form submission
+  }
+}
+</script>
+    
 
     <p>
      By continuing login process, you agree to RID's
-     <a href="#">Conditions </a> of Use and
-     <a href="#">Privacy Notice</a>.
+     <a href="#" style="color: #083b5d; text-decoration: underline;">Conditions </a> of Use and
+     <a href="#" style="color: #083b5d; text-decoration: underline;">Privacy Notice</a>.
     </p>
    </div>
    <div class="footer">
@@ -156,32 +101,16 @@
      Reserved.
     </p>
     <div class="links">
-     <a href="#">About</a> | <a href="#">Terms & Conditions</a> |
-     <a href="#">Privacy Policy</a> | <a href="#">Feedback</a>
+     <a href="#" style="color: #083b5d; text-decoration: underline;">About</a> | <a href="#" style="color: #083b5d; text-decoration: underline;">Terms & Conditions</a> |
+     <a href="#" style="color: #083b5d; text-decoration: underline;">Privacy Policy</a> | <a href="#" style="color: #083b5d; text-decoration: underline;">Feedback</a>
     </div>
    </div>
   </div>
-
-  <!-- <div class="right-content">
-   <div class="img">
-    <img src="./assets/images/loginMainImg.png" alt="LoginMainIMG" />
-   </div>
-   <img id="onLogo" src="./assets/images/imageLogo.png" alt="">
-
-  </div>
- </div> -->
-
- <!-- <div class="forgot-password-container" style="display: none;">
-  <h2 class="forget-title">Forgot Password</h2>
-  <form id="forgotPasswordForm">
-   <div class="form-group">
-    <label class="email-label" for="forgotEmail">Enter your email address</label>
-    <input class="email-in" type="email" id="forgotEmail" name="email" required placeholder="Enter your email">
-   </div>
-   <button type="submit" id="forgetBtn">Submit</button>
-  </form>
-  <div id="message"></div>
- </div> -->
+</div>
+<div id="hiddenImg">
+  <img src="../assets/images/login_image.png" alt="images">
+</div>
+ 
 
  <!-- JavaScript should be placed at the end of the body -->
  <script>

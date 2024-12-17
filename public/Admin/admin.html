@@ -247,6 +247,14 @@
                   workspace_premium </span
                 ><span>Upload Certificate</span>
               </button>
+              <button
+                id="uploadBook"
+                onclick="ShowUploadBook()"
+                style="color: black; background-color: white"
+              
+               
+                ><span>Upload Certificate</span>
+              </button>
             </div>
             <div>
               <h2>Admin Features</h2>
@@ -409,6 +417,34 @@
           </div>
           </section>
         </section>
+        <div class="upload-form" id="bookUpload" style="display: none;">
+        <h2>Upload Book Details</h2>
+        <form action="/upload-book" method="POST" enctype="multipart/form-data">
+            <label for="title">Book Title:</label>
+            <input type="text" id="title" name="title" required><br><br>
+          
+            <label for="author">Author Name:</label>
+            <input type="text" id="author" name="author" required><br><br>
+          
+            <label for="publishYear">Publish Year:</label>
+            <input type="number" id="publishYear" name="publishYear" required><br><br>
+          
+            <label for="rating">Rating (out of 5):</label>
+            <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" required><br><br>
+          
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea><br><br>
+          
+            <label for="image">Book Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required><br><br>
+          
+            <label for="pdf">Book PDF:</label>
+            <input type="file" id="pdf" name="pdf" accept="application/pdf" required><br><br>
+          
+            <input type="submit" value="Upload Book">
+          </form>
+          
+    </div>
 
         <div class="main-area1" id="mainArea1" style="display: none">
           <!-- ------------- -->
@@ -834,5 +870,159 @@
     }
     });
 </script>
+<script>
+  
+
+
+
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropArea = document.getElementById('dropArea');
+    const fileInput = document.getElementById('certificateFile');
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    // Highlight drop area when item is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    // Handle dropped files
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    // Handle click to open file input dialog
+    dropArea.addEventListener('click', () => fileInput.click());
+
+    // Handle file input change
+    fileInput.addEventListener('change', handleFiles, false);
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    function highlight(e) {
+      dropArea.classList.add('dragover');
+    }
+
+    function unhighlight(e) {
+      dropArea.classList.remove('dragover');
+    }
+
+    function handleDrop(e) {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      fileInput.files = files; // Assign files to file input
+      handleFiles({ target: { files } });
+    }
+
+    function handleFiles(e) {
+      const files = e.target.files;
+      if (files.length > 0) {
+        const filename = files[0].name;
+        dropArea.innerHTML = `<p>File uploaded: ${filename}</p>`;
+      }
+    }
+  });
+
+
+
+  document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('certificateId', document.getElementById('certificateId').value);
+    formData.append('internName', document.getElementById('internName').value);
+    formData.append('issueDate', document.getElementById('issueDate').value);
+    formData.append('description', document.getElementById('description').value);
+    formData.append('certificate', document.getElementById('certificateFile').files[0]);
+
+    try {
+      const response = await fetch('/admin/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        showToast(result.message);
+      } else {
+        showToast(result.message || 'Failed to upload certificate', '#f44336');
+      }
+    } catch (error) {
+      showToast('Failed to upload certificate', '#f44336');
+    }
+  });
+
+
+
+
+</script>
   </body>
 </html>
+
+
+ <div class="upload-form" id="bookUpload" style="display: none;">
+
+          <h2>Upload Book Details</h2>
+  
+          <form action="/upload-book" method="POST" enctype="multipart/form-data">
+  
+              <label for="title">Book Title:</label>
+  
+              <input type="text" id="title" name="title" required><br><br>
+  
+            
+  
+              <label for="author">Author Name:</label>
+  
+              <input type="text" id="author" name="author" required><br><br>
+  
+            
+  
+              <label for="publishYear">Publish Year:</label>
+  
+              <input type="number" id="publishYear" name="publishYear" required><br><br>
+  
+            
+  
+              <label for="rating">Rating (out of 5):</label>
+  
+              <input type="number" step="0.1" id="rating" name="rating" min="0" max="5" required><br><br>
+  
+            
+  
+              <label for="description">Description:</label>
+  
+              <textarea id="description" name="description" rows="4" required></textarea><br><br>
+  
+            
+  
+              <label for="image">Book Image:</label>
+  
+              <input type="file" id="image" name="image" accept="image/*" required><br><br>
+  
+            
+  
+              <label for="pdf">Book PDF:</label>
+  
+              <input type="file" id="pdf" name="pdf" accept="application/pdf" required><br><br>
+  
+            
+  
+              <input type="submit" value="Upload Book">
+  
+            </form>
+  
+            
+  
+      </div>   
