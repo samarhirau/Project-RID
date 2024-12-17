@@ -51,7 +51,7 @@ user-select: text; /* Re-enable selection for specific elements */
 .logo{
     display: flex;
     justify-content: center;
-    width: 105%;
+    width: 100%;
     height: 100px;
     position: absolute;
     z-index: 1;
@@ -62,7 +62,7 @@ user-select: text; /* Re-enable selection for specific elements */
 
     width: 320px;
     height: fit-content;
-    padding: 50px 5px;
+    padding: 50px 60px;
 }
 
 .main{
